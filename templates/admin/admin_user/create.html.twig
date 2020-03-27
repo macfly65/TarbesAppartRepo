@@ -1,0 +1,47 @@
+{% extends 'base_BO.html.twig' %}
+
+{% block title %}Hello BoAutoPromoController!{% endblock %}
+{% form_theme formUser 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+              <div>
+ <div class="container-fluid container-perso-bleu">
+                            {{ form_start(formUser)}}
+                            {{ form_row(formUser.nom, {'attr': {'placeholder' : "Nom de l'utilisateur"}}) }}
+                            {{ form_row(formUser.prenom, {'attr': {'placeholder' : "Prénom de l'utilisateur"}}) }}
+                            {{ form_row(formUser.email, {'attr': {'placeholder' : "E-mail de l'utilisateur"}}) }}
+                            {{ form_row(formUser.password, {'attr': {'placeholder' : "Mot de passe de l'utilisateur"}}) }}
+{#                            {{ form_row(formUser.role, {'attr': {'placeholder' : "Rôle de profil de l'utilisateur"}}) }}#}
+                            
+                            <div>
+                                <label>Role</label></br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" value="1" id="inlineRadio1" name="ROLE">
+                                    <label class="form-check-label" for="inlineRadio1">Administrateur</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" value="2" id="inlineRadio2" name="ROLE">
+                                    <label class="form-check-label" for="inlineRadio2">Super Administrateur</label>
+                                </div>
+                            </div>    
+                        <div class="row-md-3 container-perso-bleu" style="margin: 25px 0px">
+                             <div class="row mb-3 container-perso-bleu" style="margin: 25px 0px">
+
+                            <div class="col-md-4 "> 
+                                {{ form_row(formUser.image, {'attr': {'placeholder' : "Photo de profil de l'utilisateur"}}) }}
+                            </div>
+                            
+                            <div class="col-md-8 ">
+                                {% if image != "" %}
+                                    <img src="{{ asset( image | imagine_filter('test')) }}" class="rounded float-right" alt="...">
+                                {% endif %}    
+                            </div>
+                               </div>
+   
+                         <button type="submit" class="btn btn-success">Enregistrer</button>
+                            {{ form_end(formUser)}} 
+                            
+    
+
+</main>
+            </div>
+{% endblock %}

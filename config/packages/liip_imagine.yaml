@@ -1,0 +1,15 @@
+liip_imagine:
+    driver: "gd"
+    filter_sets:
+        test:
+            jpeg_quality: 85
+            filters:
+              thumbnail: { size: [250, 250], mode: outbound}
+        bo_list:
+            jpeg_quality: 85
+            filters:
+              thumbnail: { size: [150, 150], mode: outbound}   
+        front_autopromo:
+            jpeg_quality: 100
+            filters:
+              thumbnail: { size: [1920, 850], mode: outbound}   

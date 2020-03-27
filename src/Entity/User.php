@@ -33,17 +33,32 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail($email): self
     {
         $this->email = $email;
 
@@ -55,7 +70,7 @@ class User implements UserInterface
      *
      * @see UserInterface
      */
-    public function getUsername(): string
+    public function getUsername()
     {
         return (string) $this->email;
     }
@@ -67,12 +82,12 @@ class User implements UserInterface
     {
            $roles = $this->roles;
     // guarantee every user at least has ROLE_USER
-    $roles = 'ROLE_USER';
+//    $roles = 'ROLE_USER';
 
     return array($roles);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles($roles): self
     {
         $this->roles = $roles;
 
@@ -82,12 +97,12 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword()
     {
         return (string) $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword($password): self
     {
         $this->password = $password;
 
@@ -109,5 +124,41 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    public function setNom($nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom($prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image): self
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

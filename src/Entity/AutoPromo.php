@@ -56,6 +56,11 @@ class AutoPromo
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $zone;
+
     public function getId(): int
     {
         return $this->id;
@@ -150,9 +155,21 @@ class AutoPromo
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage($image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getZone()
+    {
+        return $this->zone;
+    }
+
+    public function setZone($zone): self
+    {
+        $this->zone = $zone;
 
         return $this;
     }

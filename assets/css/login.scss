@@ -15,6 +15,24 @@ a:hover{color:#aaa; }
 div.logo{text-align: center; margin: 20px 20px 30px 20px; fill: #566375;}
 .head{padding:40px 0px 10px 0}
 .logo-active{fill: #44aacc !important;}
+.container-perso-bleu{
+  background-color: #c7dff9;
+  padding: 8px 15px;
+  border-radius: 4px;  
+}
+flex{
+    display: flex;
+}
+.btn-primary-black {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+.btn-primary-black:hover {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
 #formWrapper{
 	background: rgba(0,0,0,.2); 
 	width:100%; 
@@ -98,6 +116,3 @@ input[type="submit"].login:focus{outline: none;}
 
 
 @import "~bootstrap/scss/bootstrap";
-
-
-@charset "UTF-8";

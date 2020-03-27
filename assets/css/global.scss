@@ -8,6 +8,19 @@ body {
 
 
 @charset "UTF-8";
+
+.bouton-black {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+.bouton-black:hover {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+
 /*!
 * Start Bootstrap - SB Admin v6.0.0 (https://startbootstrap.com/templates/sb-admin)
 * Copyright 2013-2020 Start Bootstrap
@@ -80,6 +93,17 @@ body {
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
+}
+
+.bouton-black {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+.bouton-black:hover {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
 }
 
 hr {
@@ -212,6 +236,10 @@ img {
 svg {
   overflow: hidden;
   vertical-align: middle;
+}
+
+flex{
+    display: flex;
 }
 
 table {
@@ -1841,6 +1869,11 @@ pre code {
 .table-danger > td {
   background-color: #f5c6cb;
 }
+.container-perso-bleu{
+  background-color: #c7dff9;
+  padding: 8px 15px;
+  border-radius: 4px;  
+}
 .table-danger th,
 .table-danger td,
 .table-danger thead th,
@@ -2472,6 +2505,16 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #0069d9;
   border-color: #0062cc;
+}
+.bouton-black {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+.bouton-black:hover {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
