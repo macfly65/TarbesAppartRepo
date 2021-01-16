@@ -1,0 +1,43 @@
+{% extends 'base_BO.html.twig' %}
+
+{% block title %}Hello BoAutoPromoController!{% endblock %}
+{% form_theme formCatalogue 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <main>
+
+        <div class="container-fluid container-perso-bleu">
+            {% if idCatalogue != "" %}
+                <div class="row md-3" style="margin:30px 0px;text-align: center">
+                    <div class="col-md-6">
+                        <a class="page-link" style="border-radius:4px" href="{{ path('edit_catalogue',{id: idCatalogue}) }}">
+                            CONTENU
+                        </a></div>
+                    <div class="col-md-6"><a href="{{ path('edit_medias_catalogue',{id: idCatalogue}) }}" style="border-radius:4px" class="page-link">
+                            MEDIAS ASSOCIES
+                        </a></div>    
+                </div>
+            {% endif %}     
+
+
+            {{ form_start(formCatalogue)}}
+            {{ form_row(formCatalogue.reference, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formCatalogue.nom, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formCatalogue.categorieId, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formCatalogue.date, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formCatalogue.conditionnement, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formCatalogue.ingredients, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formCatalogue.isOnline, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formCatalogue.description, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+            {{ form_end(formCatalogue)}} 
+
+        </div>
+
+
+
+
+
+    </main>
+    {#            </div>#}
+{% endblock %}

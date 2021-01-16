@@ -1,0 +1,181 @@
+{% extends 'base_bo.html.twig' %}
+
+{% block title %}Hello AdminCatalogueController!{% endblock %}
+
+{% block body %}
+{#  CATEGORIES  #}
+ <div class="jumbotron" style="padding:15px 15px !important">
+     
+           <div class="row mb-3">
+                <div class="col-md-11"></div>   
+        <div class="col-6 col-md-1 themed-grid-col" style="text-align: center;">
+            <a href="{{ path('create_catalogue') }}">     
+                <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+            </a> 
+        </div>
+    </div>   
+     
+     
+     
+ <div class="col-md-12 alert alert-success" id="notification" style="display:none">Modification enregistrée !</div>      
+<div class="row mb-2">
+ 
+ <div class="col-md-3" style="border">
+<div class="card mb-3 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal" style="text-align:center">Catégorie</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">Toutes les catégories : </h1>
+       <ul id="sortable" data-id=""  class="connectedSortable"  style="list-style-type: none;margin-left: -25px;" >
+         {% for categ in catalogueCateg %}
+           <li class="ui-state-default" data-index="{{categ.id}}" data-position="{{categ.ordre}}" style="" >
+             <hr></hr>
+             <div class="row mb-3">
+                <div class="col-md-2">
+                    <img src="{{ asset('/Fichiers/autopromo/move.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">  
+                </div>
+                <div class="col-md-8">
+                {{categ.nom}}
+                </div>
+                <div class="col-md-1">
+                 <a id="target" href="{{ path('delete_categ_catalogue',{id: categ.id}) }}" role="button">
+                    <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="15" height="15">
+                 </a>
+                </div>
+             </div>
+         </li>
+         {%endfor%}
+        </ul>
+       
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary" onClick="addNewcateg();">Ajouter une catégorie</button>
+      </div>
+    </div>   
+ </div>
+ <div id="openModal" style="display: none;">       
+ <div id="dialogue" class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal" style="text-align:center">Nouvelle catégorie</h4>
+        <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15" style="cursor:pointer" onClick="$('#openModal').hide();">
+      </div>
+      <div class="card-body">
+          {{ form_start(formCateg)}}
+          {{ form_row(formCateg.nom, {'attr': {'placeholder' : "Nom de la catégorie"}}) }}
+         <button type="submit" class="btn btn-success">Enregistrer</button>
+          {{ form_end(formCateg)}}
+      </div>
+    </div>        
+ </div>  
+ <div class="col-md-2"></div>      
+      
+ 
+{# CATALOGUE #}
+ <div class="col-md-7" style="border">
+<div class="card mb-7 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal" style="text-align:center">Catégorie</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">Toutes les catégories : </h1>
+       <ul id="sortable" data-id=""  class="connectedSortable"  style="list-style-type: none;margin-left: -25px;" >
+         {% for catalogue in catalogues %}
+{#             {{ dump(catalogue) }}
+#}             
+           <li class="ui-state-default"  style="" >
+             <hr></hr>
+             <div class="row mb-6">
+                <div class="col-md-1">
+                    <img src="{{ asset('/Fichiers/autopromo/puce.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                </div>
+                <div class="col-md-3">
+                {{catalogue.date|date("Y-m-d") }}
+                </div>
+                <div class="col-md-3">
+                {{catalogue.nom}}
+                </div>
+                <div class="col-md-3">
+                {{catalogue.categorieId.nom}}
+                </div>
+                <div class="col-md-2">
+                 <a id="target" href="{{ path('edit_catalogue',{id: catalogue.id}) }}" role="button">
+                    <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">
+                 </a>
+                <a id="target" style="" href="{{ path('delete_catalogue',{id: catalogue.id}) }}" role="button">
+                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">    </a>
+                </div>
+             </div>
+         </li>
+         {%endfor%}
+        </ul>
+       
+       <nav>
+  <ul class="pagination">
+      {%if page > 0%}
+    <li class="page-item"><a class="page-link" href="{{ path('admin_catalogue',{page: page - 1}) }}">Page précédente</a></li>
+      {%endif%}
+
+    <li class="page-item"><a class="page-link" href="{{ path('admin_catalogue',{page: page + 1}) }}">Page suivante</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>   
+ </div>
+      
+      
+ </div>   
+ </div>   
+    
+{% endblock %}
+{% block javascripts %}
+ <script>
+$( document ).ready(function() {
+$('#sortable').sortable({
+    update: function (event, ui) {
+    $(this).children().each(function (index) {
+         if($(this).attr('data-position') != (index+1)){
+            $(this).attr('data-position', (index+1)).addClass('updated');
+         }
+    });
+    saveNewPositions();
+    }
+});
+});
+
+function saveNewPositions() {
+            var positions = [];
+            $('.updated').each(function () {
+               positions.push([$(this).attr('data-index'), $(this).attr('data-position')]);
+               $(this).removeClass('updated');
+            });
+
+            $.ajax({
+               url: 'catalogue',
+               method: 'POST',
+               dataType: 'text',
+               data: {
+                   update: 1,
+                   positions: positions
+               }, success: function (response) {
+                     $('#notification').show();
+                     $( "#notification" ).hide(4000);
+               }
+            });
+}
+
+
+function addNewcateg() {
+$('#openModal').show();
+    
+        $.ajax({
+               url: 'catalogue',
+               method: 'POST',
+               dataType: 'text',
+               data: {
+                   addCateg: 1,
+               }, success: function (response) {
+               }
+            });
+}
+
+  </script>
+{% endblock %}

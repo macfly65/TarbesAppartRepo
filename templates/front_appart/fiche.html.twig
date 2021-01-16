@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% set i = 0 %}
+{% block bandeau %}
+    <div class="site-blocks-cover overlay" style="height: calc(30vh);background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+    {% endblock %}
+    {% block bandeauTitle %}
+        <h1 class="mb-4 titre">Résidence {{appartement.residence.nom}}</h1>
+        <p class="mb-5 sousTitre">Apartement N°{{appartement.numero}}</p>
+    {% endblock %}
+    {% block body %}
+        <div class="site-section">
+            <div class="container" style="margin-bottom: 9vh;">
+                <div class="row firstBlock">
+                    <div class="col-md-6 text" style="padding:30px"><h2>Appartement N°{{appartement.numero}} </h2>
+                        <p class="mb-5">Résidence {{appartement.residence.nom}}.</p>
+                        <ul class="property-list-details mb-5">
+                            <li class="text-black">Property Name: <strong class="text-black">Marga Luxury Suite</strong></li>
+                            <li>Numéro : <strong>{{appartement.numero}}</strong></li>
+                            <li>Loyer : <strong>{{appartement.loyerEtudiant}}</strong></li>
+                            <li>Surface : <strong>{{appartement.surface}}</strong></li>
+                            <li>Etage : <strong>{{appartement.etage}}</strong></li>
+                            <li>Exposition : <strong>{{appartement.exposition}} </strong></li>
+                            <li>Type : <strong>{{appartement.type}}  </strong></li>
+                            <li>Date disponibilitée : {{appartement.dateDisponibilite |date("Y-m-d")}} <strong></strong></li>
+                        </ul>
+                        <p style="display: flex;justify-content: center;"> <a href="{{ path('reservation',{id: appartement.id}) }}" class="btn btn-primary px-4 py-3">Réserver</a></p>
+                    </div>
+                    {% for medias in media %}
+                        {% set i = i + 1 %}
+                        {%if i == 1%}
+                            <div class="col-md-6"  style="min-height:500px;padding-right: 0px;padding-left: 0px;background-position: 50% 50%;background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ medias.nomFichier) }} ')">
+                            {%endif%}
+                        {%endfor%}
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+            <div class="container">                
+    <h2>Description du logement</h2>           
+    <p>Située au 45 avenue d'Azereix (plan d'accès), en plein cœur de la zone universitaire Tarbaise, la Résidence Étudiante Oxygène se compose de 71 appartements neufs et moderne qui ouvrent droit à l’allocation logement, une ou deux pièces, entièrement meublés et équipés, offrant tous les services nécessaires aux étudiants : Vidéophone, accès internet gratuit dans chaque appartement, rangements multiples, lave linge et sèche linge individuel, accès par badge vigik… </p></br> <p>Vous apprécierez tout particulièrement ses lits en 140 a plateaux mobiles destinés à optimiser les surfaces des logements. Salle d’eau individuelle, kitchenette aménagée, salon, bureau, menuiserie aluminium double vitrage… Rien n’a été oublié pour vous permettre de passer le séjour le plus agréable possible.</p></br> <p>Cliquez sur l’onglet « Prestations » pour connaître l’ensemble des éléments mis à disposition dans chaque appartement et au sein de la résidence. Une résidence récente (construction 2010) et moderne, composée de 6 bâtiments avec une décoration soignée dans chaque appartement.</p></br> <p>Un service technique est également disponible et permet une réparation rapide d’éventuels désagréments (fuite d’eau, réparation d’une prise défectueuse…).</p></br>     
+            </div>
+                    
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
+                        <h2 class="mb-5">Galerie d'images</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt
+                            officia, error reiciendis ab quod?</p>
+                    </div>
+                </div>
+                <div class="row">
+
+                    {% for medias in media %}
+                        <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+                            <div class="team-member" onclick="openModal();
+                                    currentSlide(4)" >
+                                <img class="hover-shadow" src="{{ asset( '/upload_files/' ~ medias.nomFichier) |  imagine_filter('front_list')  }}" alt="Image" class="img-fluid">
+                            </div>
+                        </div>
+                    {% endfor %}    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal/Lightbox -->
+<div id="openModal" class="modal">
+    <img class="close cursor" src="{{ asset('/medias_admin/iconfinder_cross-24_103181.png' ) }}" alt="Fermer le catalogue de photo" title="Fermer le catalogue de photo" width="30px" height="30px" onclick="closeModal()">
+    <div class="openModal">
+        {% for medias in media %}
+            <div class="mySlides" style="display: flex;justify-content: center;max-height: 70vh;">
+                <img class="hover-shadow" src="{{ asset( '/upload_files/' ~ medias.nomFichier) }}" alt="Image" class="img-fluid">
+            </div>
+        {% endfor %}
+
+        <div><a style="color:white" class="prev" onclick="plusSlides(-1)"><b>Précédente</b></a></div>
+        <div><a style="color:white" class="next" onclick="plusSlides(1)"><b>Suivante</b></a></div>    
+
+        <div class="container" style="display: flex;justify-content: center;flex-wrap: wrap;">
+            {% set i = 0 %}
+            {% for medias in media %}   
+                {% set i = i + 1 %}
+
+                <div class="column" style="margin:10px">
+                    <img class="demo" src="{{ asset( '/upload_files/' ~ medias.nomFichier) |  imagine_filter('mini_appart') }}"  onclick="currentSlide({{i}})" alt="Image" class="img-fluid">
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+    <footer class="site-footer" style="background-color: #f8f9fa !important;margin-top: 160px;">  
+    {% endblock %}
+    {% block javascripts %}
+        <script src="{{ absolute_url((asset('/assets_admin_pages/modalMedias.js'))) }}"></script>
+    {% endblock %}

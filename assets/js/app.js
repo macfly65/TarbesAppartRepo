@@ -8,6 +8,25 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import '../css/global.scss';
 
+import '../css/animate.css';
+import '../css/aos.css';
+import '../css/app.css';
+import '../css/fl-bigmug-line.css';
+import '../css/magnific-popup.css';
+import '../css/mediaelementplayer.css';
+import '../css/owl.carousel.min.css';
+import '../css/owl.theme.default.min.css';
+import '../css/progress-bar.css';
+import '../css/style.css';
+
+import '../css/_site-base.scss';
+import '../css/_site-blocks.scss';
+import '../css/_site-navbar.scss';
+import '../css/style.scss';
+
+
+
+
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';
 // import $ from 'boostrap';
@@ -21,6 +40,26 @@ require('bootstrap');
  require('bootstrap/js/dist/tooltip');
  require('bootstrap/js/dist/popover');
 
-$(document).ready(function() {
-    $('[data-toggle="popover"]').popover();
-});
+
+function saveNewPositions() {
+            var positions = [];
+            $('.updated').each(function () {
+               positions.push([$(this).attr('data-index'), $(this).attr('data-position')]);
+               $(this).removeClass('updated');
+            });
+
+            $.ajax({
+               url: 'autopromo',
+               method: 'POST',
+               dataType: 'text',
+               data: {
+                   update: 1,
+                   positions: positions
+               }, success: function (response) {
+                     $('#notification').show();
+                     $( "#notification" ).hide(4000);
+               }
+            });
+}
+
+$(".alert").delay(4000).hide("slow");

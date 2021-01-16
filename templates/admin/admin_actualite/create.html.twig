@@ -1,0 +1,37 @@
+{% extends 'base_BO.html.twig' %}
+{% form_theme formActualite 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+   <h2 class="fileArianeBo"> <a href="{{ path('admin_actualite')}}">Actualité</a>{% if idActualite != "" %} &gt; {{ actualite.titre }} {%endif%}  </h2>
+    <main>
+        <div class="container-fluid container-perso-bleu">
+            {% if idActualite != "" %}
+                <div class="row md-3" style="margin:30px 0px;text-align: center">
+                    <div class="col-md-6">
+                        <a class="page-link" style="border-radius:4px" href="{{ path('edit_actualite',{id: idActualite}) }}">
+                            CONTENU
+                        </a></div>
+                    <div class="col-md-6"><a href="{{ path('edit_medias_actualite',{id: idActualite}) }}" style="border-radius:4px" class="page-link">
+                            MEDIAS ASSOCIES
+                        </a>
+                    </div>    
+                </div>
+            {% endif %}
+            
+            {{ form_start(formActualite)}}
+            {{ form_row(formActualite.titre, {'attr': {'placeholder' : "Référence"}}) }}
+            {{ form_row(formActualite.categorie, {'attr': {'placeholder' : "nom"}}) }}
+            {{ form_row(formActualite.date, {'attr': {'placeholder' : "Categorie"}}) }}
+            {{ form_row(formActualite.isValid, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
+            {{ form_row(formActualite.texte, {'attr': {'placeholder' : "Conditionnement"}}) }}
+
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+            {{ form_end(formActualite)}} 
+        </div>
+    </main>
+   <nav class="sticky-menu">
+        {% if idActualite != "" %}
+            <a class="sticky_vert sticky_oeil" href="{{ path('fiche_actualite', {id: idActualite} ) }}" target="_blank">Visualiser</a>
+        {%endif%}               
+    	<a class="sticky_bleu sticky_plus" href="{{ path('create_actualite') }}">Ajouter</a>
+   </nav>  
+{% endblock %}

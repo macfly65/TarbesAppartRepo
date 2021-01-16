@@ -1,0 +1,27 @@
+{% extends 'base_BO.html.twig' %}
+
+{% block title %}Hello BoAutoPromoController!{% endblock %}
+{% form_theme catalogueMedias 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+               <main>
+ <div class="container-fluid container-perso-bleu" style="margin-bottom: 20px">
+                            {{ form_start(catalogueMedias)}} 
+                             {{ form_row(catalogueMedias.nom_fichier, {'attr': {'placeholder' : "Image a uploadé"}}) }}
+
+                         <button type="submit" class="btn btn-success">Enregistrer</button>
+                            {{ form_end(catalogueMedias)}} 
+ </div>
+               <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="container-perso-bleu">
+                            {% for media in medias %}
+                                <div style="flex-direction: column;display: flex;align-items: center;">                 
+               <img src="{{ asset( media.nomFichier | imagine_filter('bo_list')) }}"  style="padding:15px 0px">
+               <a id="target" style="" href="{{ path('delete_one_media',{id: media.id} ) }}" role="button">
+               <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">    </a>
+                                </div>
+                            {% endfor %}
+               </div>                
+
+                            
+</main>
+{#            </div>#}
+{% endblock %}

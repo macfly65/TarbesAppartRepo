@@ -1,104 +1,163 @@
 {% extends 'base_bo.html.twig' %}
 
 {% block title %}Hello BoAutoPromoController!{% endblock %}
-
 {% block body %}
-    <div class="row mb-3">
-        <div class="col-md-11"></div>
-        <div class="col-6 col-md-1 themed-grid-col">
+    <div class="jumbotron" style="padding:15px 2px !important">
+            <div class="row mb-3">
+                <div class="col-md-11"></div>   
+        <div class="col-6 col-md-1 themed-grid-col" style="text-align: center;">
             <a href="{{ path('create_auto_promo') }}">     
                 <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
             </a> 
         </div>
     </div>    
-    <div class="jumbotron ">
+<div class="col-md-12 alert alert-success" id="notification" style="display:none">Modification enregistrée !</div>        
+        
         <div class="col-md-12"><h1 style="margin-bottom: 4vh;" class="display-4">Encart principal </h1></div>
+       <ul id="sortable" data-id=""  class="connectedSortable"  style="list-style-type: none;" >
         {% for autoPromo in autoPromoList %}
-            {% if autoPromo.statut == 1 and autoPromo.zone == 1 %}
-                <div class="row mb-3">
-                    <div class="col-md-3 flex">
-                        <img src="{{ asset( autoPromo.image | imagine_filter('bo_list')) }}" class="rounded float-right" alt="...">
+        {% if autoPromo.statut == 1 and autoPromo.zone == 1 %}
+        <li class="ui-state-default" data-index="{{autoPromo.id}}" data-position="{{autoPromo.ordre}}" style="" >
+            <hr></hr>     
+            <div class="row mb-3">
+                    <div class="col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
+                        <img src="{{ asset('/Fichiers/autopromo/move.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+                        <img src="{{ asset( 'upload_files/' ~ autoPromo.image) | imagine_filter('bo_list') }}"  class="rounded float-right" >
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2" style="display: flex;align-items: center;justify-content: center;">
+                    {% if autoPromo.statut == 1 %}
+                  <img src="{{ asset('/Fichiers/autopromo/puce.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%else%}
+                  <img src="{{ asset('/Fichiers/autopromo/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%endif%}
+                    </div>    
+                    <div class="col-md-2" style="display: flex;align-items: center;justify-content: center;">
                         <p>{{ autoPromo.titre }}</p>
                     </div>
-                    <div class="col-md-3">
-                        <p>{{ autoPromo.periode }}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>{{ autoPromo.statut }}</p>
-                        <div style="display: flex;flex-direction: column;justify-content: center;align-items: end;">
+                    <div class="col-md-3" style="display: flex;flex-direction: column;align-items: flex-end;justify-content: center;">
                             <a class="btn btn-primary btn-lg" href="{{ path('edit_auto_promo',{id: autoPromo.id}) }}" role="button">
                                 <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Supprimer autopromo" title="Suprimer autopromo" width="32" height="32">
                             </a>
                             <a id="target" style="margin-top:10px" class="btn btn-primary btn-lg" href="{{ path('delete_promo',{id: autoPromo.id}) }}" role="button">
-                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="32" height="32">                        </a>
-                        </div>
+                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="32" height="32">                </a>
                     </div>
                 </div>
-            {% endif %}        
+        </li>        
+            {% endif %}
         {% endfor %}   
+     </ul>
     </div>
 
-    <div class="jumbotron ">
+     <div class="jumbotron ">
         <div class="col-md-12"><h1 style="margin-bottom: 4vh;" class="display-4">Encart secondaire </h1></div>
+       <ul id="sortable2" data-id=""  class="connectedSortable"  style="list-style-type: none;" >
         {% for autoPromo in autoPromoList %}
-            {% if autoPromo.statut == 1 and autoPromo.zone == 1 %}
-                <div class="row mb-3">
-                    <div class="col-md-3 flex">
-                        <img src="{{ asset( autoPromo.image | imagine_filter('bo_list')) }}" class="rounded float-right" alt="...">
+        {% if autoPromo.statut == 1 and autoPromo.zone == 2 %}
+        <li class="ui-state-default" data-index="{{autoPromo.id}}" data-position="{{autoPromo.ordre}}" style="" >
+            <hr></hr>     
+            <div class="row mb-3">
+                    <div class="col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
+                        <img src="{{ asset('/Fichiers/autopromo/move.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+                        <img src="{{ asset( 'upload_files/' ~ autoPromo.image) | imagine_filter('bo_list') }}"  class="rounded float-right" >
+
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2" style="display: flex;align-items: center;justify-content: center;">
+                    {% if autoPromo.statut == 1 %}
+                  <img src="{{ asset('/Fichiers/autopromo/puce.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%else%}
+                  <img src="{{ asset('/Fichiers/autopromo/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%endif%}
+                    </div>    
+                  
+                    <div class="col-md-2" style="display: flex;align-items: center;justify-content: center;">
                         <p>{{ autoPromo.titre }}</p>
                     </div>
-                    <div class="col-md-3">
-                        <p>{{ autoPromo.periode }}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>{{ autoPromo.statut }}</p>
-
-                        <div style="display: flex;flex-direction: column;justify-content: center;align-items: end;">
+                    <div class="col-md-3" style="display: flex;flex-direction: column;align-items: flex-end;justify-content: center;">
                             <a class="btn btn-primary btn-lg" href="{{ path('edit_auto_promo',{id: autoPromo.id}) }}" role="button">
                                 <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Supprimer autopromo" title="Suprimer autopromo" width="32" height="32">
                             </a>
                             <a id="target" style="margin-top:10px" class="btn btn-primary btn-lg" href="{{ path('delete_promo',{id: autoPromo.id}) }}" role="button">
                                 <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="32" height="32">                        </a>
-                        </div>
-
                     </div>
                 </div>
+        </li>
+        
             {% endif %}        
         {% endfor %}   
+     </ul>
     </div>
+
 
     <div class="jumbotron ">
-        <div class="col-md-12"><h1 style="margin-bottom: 4vh;" class="display-4">Autopromo en hors ligne ! </h1></div>
+        <div class="col-md-12"><h1 style="margin-bottom: 4vh;" class="display-4">Hors ligne </h1></div>
+       <ul id="sortable3" data-id=""  class="connectedSortable"  style="list-style-type: none;" >
         {% for autoPromo in autoPromoList %}
-            {% if autoPromo.statut == 1 and autoPromo.zone == 2 %}
-                <div class="row mb-3">
-                    <div class="col-md-3 flex">
-                        <img src="{{ asset( autoPromo.image | imagine_filter('bo_list')) }}" class="rounded float-right" alt="...">
+        {% if autoPromo.statut == 2 %}
+        <li class="ui-state-default" data-index="{{autoPromo.id}}" data-position="{{autoPromo.ordre}}" style="" >
+          <hr></hr>     
+            <div class="row mb-3">
+                <div class="col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
+                    <img src="{{ asset('/Fichiers/autopromo/move.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+                    <img src="{{ asset( 'upload_files/' ~ autoPromo.image) | imagine_filter('bo_list') }}"  class="rounded float-right" >
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2" style="display: flex;align-items: center;justify-content: center;">
+                    {% if autoPromo.statut == 1 %}
+                  <img src="{{ asset('/Fichiers/autopromo/puce.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%else%}
+                  <img src="{{ asset('/Fichiers/autopromo/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%endif%}
+                    </div>    
+                    <div class="col-md-2" style="display: flex;align-items: center;justify-content: center;">
                         <p>{{ autoPromo.titre }}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>{{ autoPromo.periode }}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>{{ autoPromo.statut }}</p>
-
-                        <div style="display: flex;flex-direction: column;justify-content: center;align-items: end;">
+                    </div>    
+                    <div class="col-md-3" style="display: flex;flex-direction: column;align-items: flex-end;justify-content: center;">
                             <a class="btn btn-primary btn-lg" href="{{ path('edit_auto_promo',{id: autoPromo.id}) }}" role="button">
                                 <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Supprimer autopromo" title="Suprimer autopromo" width="32" height="32">
                             </a>
                             <a id="target" style="margin-top:10px" class="btn btn-primary btn-lg" href="{{ path('delete_promo',{id: autoPromo.id}) }}" role="button">
                                 <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="32" height="32">                        </a>
-                        </div>
-
                     </div>
                 </div>
+        </li>
             {% endif %}        
         {% endfor %}   
+     </ul>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+$( document ).ready(function() {
+$('#sortable, #sortable2, #sortable3').sortable({
+    update: function (event, ui) {
+    $(this).children().each(function (index) {
+         if($(this).attr('data-position') != (index+1)){
+            $(this).attr('data-position', (index+1)).addClass('updated');
+         }
+    });
+    saveNewPositions();
+    }
+});
+});
+
+function saveNewPositions() {
+            var positions = [];
+            $('.updated').each(function () {
+               positions.push([$(this).attr('data-index'), $(this).attr('data-position')]);
+               $(this).removeClass('updated');
+            });
+
+            $.ajax({
+               url: 'autopromo',
+               method: 'POST',
+               dataType: 'text',
+               data: {
+                   update: 1,
+                   positions: positions
+               }, success: function (response) {
+                     $('#notification').show();
+                     $( "#notification" ).hide(4000);
+               }
+            });
+}
+  </script>
 {% endblock %}

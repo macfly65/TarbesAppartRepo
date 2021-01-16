@@ -7,6 +7,27 @@ body{
   font-family:'HelveticaNeue','Arial', sans-serif;
 
 }
+#openModal{
+ display: none;   
+ position: fixed;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ left: 0;
+ background: rgba(0,0,0,0.8);
+ z-index: 99999;
+ opacity: 1;
+ transition: opacity 400ms ease-in;
+}
+#dialogue{
+ width: 50%;
+ position: relative;
+ margin: 5% auto;
+ padding: 0;
+ background: #fff;
+ max-height: 85%;
+ overflow: auto;
+}
 a{color:#58bff6;text-decoration: none;}
 a:hover{color:#aaa; }
 .pull-right{float: right;}

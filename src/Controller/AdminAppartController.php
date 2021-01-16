@@ -1,0 +1,214 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Appartement;
+use App\Entity\Residence;
+use App\Entity\AppartementMedias;
+use App\Repository\AppartementRepository;
+use App\Repository\ResidenceRepository;
+use App\Repository\AppartementMediasRepository;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Service\FlashNotificationAjax;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+
+class AdminAppartController extends AbstractController
+{
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager) {
+        $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @Route("/admin/appart", name="admin_appart")
+     */
+    public function index(AppartementRepository $appart)
+    {
+       $appartList = $appart->findAll();
+
+        return $this->render('admin/admin_appart/index.html.twig', [
+            'appartList' => $appartList,
+        ]);
+    }
+    
+    /**
+     * @Route("/admin/appart/create", name="create_appart")
+     */
+    public function form(Request $request) {
+        $appartement = new Appartement;
+        $form = $this->createFormBuilder($appartement)
+                ->add('residence', EntityType::class, [
+                    'class' => Residence::class,
+                    'choice_label' => 'nom'
+                ])
+                ->add('numero')
+                ->add('loyerEtudiant')
+                ->add('loyerHotelSemaine')
+                ->add('loyerHotelJour')
+                ->add('type')
+                ->add('surface')
+                ->add('etage')
+                ->add('exposition')
+                ->add('statut', ChoiceType::class, [
+                    'choices' => [
+                        'En ligne' => 1,
+                        'Hors ligne' => 2,
+                    ],
+                ])
+                ->add('disponibilite')
+                ->add('dateDisponibilite')
+                ->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($appartement);
+            $this->entityManager->flush();
+            return $this->redirectToRoute('admin_appart');
+        }
+
+        return $this->render('admin/admin_appart/create.html.twig', [
+                    'formAppart' => $form->createView(),
+                    'idCatalogue' => '',
+                    'idAppart' => ''
+        ]);
+    }
+    
+    /**
+     * @Route("/admin/appart/medias/{id}", name="edit_medias_appart")
+     */
+    public function addMedias($id, AppartementMediasRepository $medias, AppartementRepository $appartement, Request $request) {
+        $appartement = $appartement->find($id);
+        $medias = $medias->findBy(['appartement' => $id]);
+
+
+        
+        $appartementMedias = new AppartementMedias;
+        $form = $this->createFormBuilder($appartementMedias)
+                ->add('nomFichier', FileType::class, [
+                    'data_class' => null,
+                    'required' => false,
+                    'multiple' => true
+                ])
+                ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // $files est un tableau de fichier     
+            $files = $form['nomFichier']->getData();
+            
+            //on boucle dessus, on vas crer une ligne en bdd pour chaque fichier. 
+            foreach ($files as $file) {
+                $extension = $file->guessExtension();
+                $fileName = $file->getFilename();
+                $img = $fileName . '.' . $extension;
+
+                $appartementMedias = new AppartementMedias;
+                $appartementMedias->setNomFichier($img);
+                $appartementMedias->setAppartement($appartement);
+                $img2 = $appartementMedias->getNomFichier();
+                
+                $file->move($this->getParameter('upload_directory'), $img);
+
+                $this->entityManager->persist($appartementMedias);
+                $this->entityManager->flush();
+            }
+            return $this->redirectToRoute('edit_medias_appart', array('id' => $id ));
+        }
+
+        return $this->render('admin/admin_appart/addMedias.html.twig', [
+                    'appartMedias' => $form->createView(),
+                    'idAppart' => $id,
+                    'medias'=> $medias
+        ]);
+    }
+    
+    /**
+     * @Route("/admin/appart/edit/{id}", name="edit_appart")
+     */
+    public function editAppart($id, AppartementRepository $apparts, Request $request) {
+        $appart = $apparts->find($id);
+        $form = $this->createFormBuilder($appart)
+                ->add('residence', EntityType::class, [
+                    'class' => Residence::class,
+                    'choice_label' => 'nom'
+                ])
+                ->add('numero')
+                ->add('loyerEtudiant')
+                ->add('loyerHotelSemaine')
+                ->add('loyerHotelJour')
+                ->add('type')
+                ->add('surface')
+                ->add('etage')
+                ->add('exposition')
+                ->add('statut', ChoiceType::class, [
+                    'choices' => [
+                        'En ligne' => 1,
+                        'Hors ligne' => 2,
+                    ],
+                ])
+                ->add('disponibilite')
+                ->add('dateDisponibilite')
+                ->getForm();
+        
+          $form->handleRequest($request);
+        
+          if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($appart);
+            $this->entityManager->flush();
+        }
+
+        return $this->render('admin/admin_appart/create.html.twig', [
+                    'formAppart' => $form->createView(),
+                    'idAppart' => $id,
+                    'appart' => $appart,
+        ]);
+    }
+    
+     /** 
+     * @Route("/ajaxUpdateAlt", name="axUpdateAlt", options={"expose"=true})
+    */     
+    public function ajaxUpdateAlt(AppartementMediasRepository $appartementMedias, FlashNotificationAjax $flash) { 
+        //enregistrement des Alt des img
+        if(isset($_POST['postAlt'])){
+           $media = $appartementMedias->find($_POST['idImg']);
+           $media->setAlt($_POST['valAlt']);
+        
+           $this->entityManager->persist($media);
+           $this->entityManager->flush();
+        }
+          return new JsonResponse([
+            'status' => true,
+            'flashMessage' => $flash->notification('success', 'Enregistrement avec succès'),
+        ]);  
+   }
+   
+         /**
+     * @Route("/admin/appart/medias/delete/{id}", name="delete_one_media_appart")
+     */
+    public function deleteOneMediaAppart($id, AppartementMediasRepository $medias) {
+        $medias = $medias->find($id);
+                
+        $this->entityManager->remove($medias);
+        $this->entityManager->flush();
+        $appartement = $medias->getAppartement(); 
+        $appartementId = $appartement->getId(); 
+        
+        return $this->redirectToRoute('edit_medias_appart', array('id' => $appartementId ));
+    }
+   
+}

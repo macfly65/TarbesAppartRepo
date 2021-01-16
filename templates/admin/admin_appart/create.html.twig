@@ -1,0 +1,49 @@
+{% extends 'base_BO.html.twig' %}
+{% form_theme formAppart 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <main>
+
+        <div class="container-fluid container-perso-bleu">
+            {% if idAppart != "" %}
+              <h1 style="text-align: center;margin: 25px 0px 41px 0px;">Modification de l'appartement n°{{appart.statut}}</h1>
+                <div class="row md-3" style="margin:30px 0px;text-align: center">
+                    <div class="col-md-6">
+                        <a class="page-link" style="border-radius:4px" href="{{ path('edit_appart',{id: idAppart}) }}">
+                            CONTENU
+                        </a></div>
+                    <div class="col-md-6"><a href="{{ path('edit_medias_appart',{id: idAppart}) }}" style="border-radius:4px" class="page-link">
+                            MEDIAS ASSOCIES
+                        </a></div>    
+                </div>
+            {% else %}    
+                <h1 style="text-align: center;margin: 25px 0px 41px 0px;">Nouvel appartement</h1>
+            {%endif%}
+            <div class="row md-2">
+                <div class="col-md-6">
+            
+
+            {{ form_start(formAppart)}}
+            {{ form_row(formAppart.residence, {'attr': {'placeholder' : "Résidence"}}) }}
+            {{ form_row(formAppart.numero, {'attr': {'placeholder' : "Numéro de l'appartement"}}) }}
+            {{ form_row(formAppart.loyerEtudiant, {'attr': {'placeholder' : "Montant du loyer pour un etudiant"}}) }}
+            {{ form_row(formAppart.loyerHotelSemaine, {'attr': {'placeholder' : "Montant du loyer hotel/semaine"}}) }}
+            {{ form_row(formAppart.loyerHotelJour, {'attr': {'placeholder' : "Montant du loyer hotel/jour"}}) }}
+            {{ form_row(formAppart.type, {'attr': {'placeholder' : "Type de l'appartement"}}) }}
+
+            
+            </div>
+            <div class="col-md-6">
+                
+            {{ form_row(formAppart.surface, {'attr': {'placeholder' : "Surface de l'appartement"}}) }}
+            {{ form_row(formAppart.etage, {'attr': {'placeholder' : "Etage de l'appartement"}}) }}
+            {{ form_row(formAppart.exposition, {'attr': {'placeholder' : "Exposition de l'appartement"}}) }}
+            {{ form_row(formAppart.statut, {'attr': {'placeholder' : "Statut de l'appartement"}}) }}
+            {{ form_row(formAppart.disponibilite, {'attr': {'placeholder' : "Date de disponibilité"}}) }}
+            {{ form_row(formAppart.dateDisponibilite, {'attr': {'placeholder' : "Date et heure de disponibilité"}}) }}
+            </div>
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+            {{ form_end(formAppart)}} 
+            </div>
+        </div>
+    </main>
+{% endblock %}

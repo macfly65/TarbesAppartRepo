@@ -9,9 +9,7 @@
                             {{ form_row(formUser.nom, {'attr': {'placeholder' : "Nom de l'utilisateur"}}) }}
                             {{ form_row(formUser.prenom, {'attr': {'placeholder' : "Prénom de l'utilisateur"}}) }}
                             {{ form_row(formUser.email, {'attr': {'placeholder' : "E-mail de l'utilisateur"}}) }}
-                            {{ form_row(formUser.password, {'attr': {'placeholder' : "Mot de passe de l'utilisateur"}}) }}
-{#                            {{ form_row(formUser.role, {'attr': {'placeholder' : "Rôle de profil de l'utilisateur"}}) }}#}
-                            
+                            {{ form_row(formUser.password, {'attr': {'placeholder' : "Mot de passe de l'utilisateur"}}) }}                         
                             <div>
                                 <label>Role</label></br>
                                 <div class="form-check form-check-inline">
@@ -23,9 +21,8 @@
                                     <label class="form-check-label" for="inlineRadio2">Super Administrateur</label>
                                 </div>
                             </div>    
-                        <div class="row-md-3 container-perso-bleu" style="margin: 25px 0px">
-                             <div class="row mb-3 container-perso-bleu" style="margin: 25px 0px">
-
+ </div>                                                        
+                            <div class="row mb-3 container-perso-bleu" style="margin: 25px 0px">
                             <div class="col-md-4 "> 
                                 {{ form_row(formUser.image, {'attr': {'placeholder' : "Photo de profil de l'utilisateur"}}) }}
                             </div>
@@ -39,9 +36,6 @@
    
                          <button type="submit" class="btn btn-success">Enregistrer</button>
                             {{ form_end(formUser)}} 
-                            
-    
-
 </main>
             </div>
 {% endblock %}

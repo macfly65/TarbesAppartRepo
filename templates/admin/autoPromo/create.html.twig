@@ -7,31 +7,29 @@
 #}                <main>
  <div class="container-fluid container-perso-bleu">
                             {{ form_start(formPromo)}}
+                            {{ form_row(formPromo.zone, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
                             {{ form_row(formPromo.titre, {'attr': {'placeholder' : "Titre de l'autopromo"}}) }}
-                            {{ form_row(formPromo.periode, {'attr': {'placeholder' : "Periode de l'autopromo"}}) }}
-                            {{ form_row(formPromo.date_d, {'attr': {'placeholder' : "titre de l'autopromo"}}) }}
-                            {{ form_row(formPromo.date_f, {'attr': {'placeholder' : "titre de l'autopromo"}}) }}
+                            {{ form_row(formPromo.sousTitre, {'attr': {'placeholder' : "Titre de l'autopromo"}}) }}
+{#                            {{ form_row(formPromo.periode, {'attr': {'placeholder' : "Periode de l'autopromo"}}) }}#}
+                            {#{{ form_row(formPromo.date_d, {'attr': {'placeholder' : "titre de l'autopromo"}}) }}
+                            {{ form_row(formPromo.date_f, {'attr': {'placeholder' : "titre de l'autopromo"}}) }}#}
                             {{ form_row(formPromo.url, {'attr': {'placeholder' : "titre de l'autopromo"}}) }}
                             {{ form_row(formPromo.statut, {'attr': {'placeholder' : "Statut de l'autopromo"}}) }}
                             {{ form_row(formPromo.cible, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
-                            {{ form_row(formPromo.zone, {'attr': {'placeholder' : "Cible de l'autopromo"}}) }}
 </div>
 
 
 {#                        <div class="row-md-3 container-perso-bleu" style="margin: 25px 0px">#}
                              <div class="row mb-3 container-perso-bleu" style="margin: 25px 0px">
 
-                            <div class="col-md-4 "> 
+                            <div class="col-md-4 ">
                                 {{ form_row(formPromo.image, {'attr': {'placeholder' : "Image de l'autopromo"}}) }}
+
                             </div>
-                          
-                            
-                            
-                            
-                            <div class="col-md-8 ">
+                                 <div class="col-md-8 ">
                                 {% if image != "" %}
-                                    <img src="{{ asset( image | imagine_filter('test')) }}" class="rounded float-right" alt="...">
-                                {% endif %}    
+                                    <img src="{{ asset( 'upload_files/' ~ image) | imagine_filter('bo_list') }}"  class="rounded float-right"  style="padding:15px 0px">
+                                {% endif %}
                             </div>
                                </div>
    

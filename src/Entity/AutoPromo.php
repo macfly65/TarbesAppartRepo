@@ -42,12 +42,12 @@ class AutoPromo
     private $url;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $cible;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $statut;
 
@@ -60,6 +60,16 @@ class AutoPromo
      * @ORM\Column(type="integer", nullable=true)
      */
     private $zone;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $ordre;
+
+    /**
+     * @ORM\Column(type="string", length=400, nullable=true)
+     */
+    private $sousTitre;
 
     public function getId(): int
     {
@@ -131,7 +141,7 @@ class AutoPromo
         return $this->cible;
     }
 
-    public function setCible(string $cible): self
+    public function setCible($cible): self
     {
         $this->cible = $cible;
 
@@ -170,6 +180,30 @@ class AutoPromo
     public function setZone($zone): self
     {
         $this->zone = $zone;
+
+        return $this;
+    }
+
+    public function getOrdre(): ?int
+    {
+        return $this->ordre;
+    }
+
+    public function setOrdre(?int $ordre): self
+    {
+        $this->ordre = $ordre;
+
+        return $this;
+    }
+
+    public function getSousTitre(): ?string
+    {
+        return $this->sousTitre;
+    }
+
+    public function setSousTitre(?string $sousTitre): self
+    {
+        $this->sousTitre = $sousTitre;
 
         return $this;
     }

@@ -1,109 +1,345 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello bro !{% endblock %}
+{% block title %}Accueil Tarbes apartement !{% endblock %}
+{% block bandeau %}
+    <div class="site-blocks-cover overlay" style="background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_2.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+    {% endblock %}
+    {% block bandeauTitle %}
+        <h1 class="mb-4 titre">Excellent Space For Your Next Home</h1>
+        <p class="mb-5 sousTitre">1105 Madison Plaza Suite 120 Chesapeake, CA, California</p>
+        <p><a href="#" class="btn btn-primary px-5 py-3">Take a Tour</a></p>
 
-{% block body %}
-{% set firstImg = 0 %}    
-<main role="main">
+    {% endblock %}
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-{#    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>#}
-    <div class="carousel-inner" style="max-height: 850px" >
-                {% for autoPromo in autoPromoList %}
-                {% if autoPromo.statut == 1 and autoPromo.zone == 1 %}
-                {% set firstImg = firstImg +1 %}    
-   <div {% if firstImg == 1 %} class="carousel-item active" {%else%} class="carousel-item" {%endif%}>
-        <img src="{{ asset( autoPromo.image | imagine_filter('front_autopromo')) }}" width="100%" height="100%" class="rounded float-right" alt="...">
-      </div>
-                    {%endif%}
-                    {%endfor%}     
-     
+    {% block body %}
+        {% for autoPromo in autoPromoList %}
+            {% if autoPromo.statut == 1 and autoPromo.zone == 1 %}
+                <div class="container" style="margin-bottom: 9vh;">
+                    <div class="row firstBlock">
+                        <div class="col-md-6 text" style="padding:30px"><h2>{{autoPromo.titre}}</h2>
+                            <p class="mb-5">{{autoPromo.sousTitre}}</p>
+                            <ul class="property-list-details mb-5">
+                                <li class="text-black">Property Name: <strong class="text-black">Marga Luxury Suite</strong></li>
+                                <li>Room: <strong>2</strong></li>
+                                <li>Total Area: <strong>482 Square Feets</strong></li>
+                                <li>Category: <strong>Modern House</strong></li>
+                                <li>Lunch Date: Jan 20, 2019<strong></strong></li>
+                            </ul>
+                            <p>
+                                <a href="" class="btn btn-primary px-4 py-3">Get Details</a></p>
+                        </div>
+
+                        <div class="col-md-6"  style="min-height:500px;padding-right: 0px;padding-left: 0px;background-position: 50% 50%;background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')">
+
+
+                            {#                  <img src="{{ asset( 'upload_files/547727cc1b8f5e54a381032c9a5559e7.jpeg') }}" alt="Image" style="height: 100% !important"  class="img-fluid">
+                            #}              </div>
+                    </div>
+
+
+                    {#<div class="image" style="background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_1.jpg')"></div>
+                    <div class="text">
+                      <h2>Property Information</h2>
+                      <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis quae obcaecati doloribus distinctio, aliquam vero? Molestias, amet, eveniet.</p>
+                      <ul class="property-list-details mb-5">
+                        <li class="text-black">Property Name: <strong class="text-black">Marga Luxury Suite</strong></li>
+                        <li>Room: <strong>2</strong></li>
+                        <li>Total Area: <strong>482 Square Feets</strong></li>
+                        <li>Category: <strong>Modern House</strong></li>
+                        <li>Lunch Date: Jan 20, 2019<strong></strong></li>
+                      </ul>
+                      <p><a href="#" class="btn btn-primary px-4 py-3">Get Details</a></p>
+                    </div>#}
+                    {#      </div>#}
+                </div>
+            {% endif%}
+        {% endfor%}
+
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
+                        <h2 class="mb-5">Découvrez nos appartements</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt
+                            officia, error reiciendis ab quod?</p>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for appartement in appartements %}
+                        {% if appartement.statut == 1%}
+                            <div class="col-md-6 col-lg-3 fade-up" data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 10px">
+                                <a href="{{ path('fiche_appart',{id: appartement.id}) }}" class="unit-9">
+                                    {% for media in appartement.images.snapshot %}
+                                        {% if media.ordre == 1 %}
+                                            <div class="image" style="background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ media.nomFichier) }} ')"></div>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <div class="unit-9-content">
+                                        <h2>N°{{appartement.numero}}</h2>
+                                        <span>Loyer : {{appartement.loyerEtudiant}}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endif%}
+                    {% endfor %}
+                    <div class="col-md-12 text-center mt-5" data-aos="fade-up">
+                        <a href="{{ path('front_appart')}}" class="btn btn-primary">Voir tout les appartements</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto" data-aos="fade-up">
+                        <h2 class="mb-5">Apartments bientôt Disponible</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt officia, error reiciendis ab quod?</p>
+                    </div>
+                </div>
+
+
+
+                {#<div class="row md-2">
+                    <div class="col-md-6">
+                     <a href="#" class="col1 unit-9 no-height fade-up" data-aos="fade-up" data-aos-delay="100">
+                      <div class="image" style="background-image: url('https://127.0.0.1:8000/upload_files/img_2.jpg');"></div>
+                      <div class="unit-9-content">
+                        <h2>Baltimore Apartment</h2>
+                        <span>$600/night</span>
+                      </div>
+                    </a>
+                   </div>
+                    
+                    
+                    <div class="col-md-6">
+                       <div class="col-md-12">
+                           <a href="#" class="col2-row1 unit-9 no-height fade-up" data-aos="fade-up" data-aos-delay="200">
+                              <div class="image" style="background-image: url('https://127.0.0.1:8000/upload_files/img_3.jpg');"></div>
+                              <div class="unit-9-content">
+                                <h2>Austin Apartment</h2>
+                                <span>$290/night</span>
+                              </div>
+                            </a>
+                       </div>
+                       
+                        <div class="col-md-12">
+                          <a href="#" class="col2-row2 unit-9 no-height fade-up" data-aos="fade-up" data-aos-delay="300">
+                       <div class="image" style="background-image: url('https://127.0.0.1:8000/upload_files/img_1.jpg');"></div>
+                       <div class="unit-9-content">
+                         <h2>Atlanta Apartment</h2>
+                         <span>$1,290/night</span>
+                       </div>
+                     </a>
+                        </div> 
+                        
+                    </div>
+                    
+                </div>#}
+
+                <div class="site-block-retro " style="display:flex">
+
+                    {% set i = 0 %}
+                    {% for autoPromo in autoPromoList %}
+
+                        {% if autoPromo.statut == 1 and autoPromo.zone == 2%}
+                            {% set i = i + 1 %}
+                            {% if i == 1%}
+
+                                <a href="#" class="col1 unit-9 no-height" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="image" style="background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')"></div>
+                                    <div class="unit-9-content">
+                                        <h2>{{autoPromo.titre}}</h2>
+                                        <span>{{autoPromo.sousTitre}}</span>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+
+
+                    <div class="col2 ml-auto">
+                        {% set i = 0 %}
+                        {% for autoPromo in autoPromoList %}
+                            {% if autoPromo.statut == 1 and autoPromo.zone == 2 %}
+                                {% set i = i + 1 %}
+                                {% if i > 1 and i <= 3 %}
+
+                                    <a href="#" class="col2-row1 unit-9 no-height " data-aos="fade-up" data-aos-delay="200">
+                                        <div class="image" style="background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')"></div>
+                                        <div class="unit-9-content">
+                                            <h2>{{autoPromo.titre}}</h2>
+                                            <span>{{autoPromo.sousTitre}}</span>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="site-section bg-light" style="padding: 8em 0em;">
+            <div class="container">
+                <div class="row">
+                    <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto" data-aos="fade-up">
+                        <h2 class="mb-5">Actualités</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt officia, error reiciendis ab quod?</p>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for actualite in actualites %}
+
+                        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                            <a href="{{ path('fiche_actualite',{id: actualite.id}) }}">
+                                <img src="{{ asset( '/medias_front/actualite/' ~ actualite.actualiteMedias.snapshot[0].nomFichier) |  imagine_filter('front_list')  }}" alt="Image" style="width: 100%;" class="img-fluid">
+                            </a>
+
+                            <div class="p-4 bg-white">
+                                <span class="d-block text-secondary small text-uppercase">{{actualite.date|date("m/d/Y")}}</span>
+                                <h2 class="h5 text-black mb-3"><a href="single.html">{{actualite.titre}}</a></h2>
+                            </div>
+                        </div>
+                    {% endfor %}  
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div style="display:none">                                
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    <div>    
-  </div>
-    </div>
-    </div>
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-
-  <div class="container marketing">
-
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
-
-
-    <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
+    <div class="bg-primary" data-aos="fade">
+        <div class="container">
+            <div class="row">
+                <a href="#" class="col-2 text-center py-4 social-icon d-block"><span class="icon-facebook text-white"></span></a>
+                <a href="#" class="col-2 text-center py-4 social-icon d-block"><span class="icon-twitter text-white"></span></a>
+                <a href="#" class="col-2 text-center py-4 social-icon d-block"><span class="icon-instagram text-white"></span></a>
+                <a href="#" class="col-2 text-center py-4 social-icon d-block"><span class="icon-linkedin text-white"></span></a>
+                <a href="#" class="col-2 text-center py-4 social-icon d-block"><span class="icon-pinterest text-white"></span></a>
+                <a href="#" class="col-2 text-center py-4 social-icon d-block"><span class="icon-youtube text-white"></span></a>
+            </div>
+        </div>
     </div>
 
-    <hr class="featurette-divider">
 
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
 
-    <hr class="featurette-divider">
 
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-    <hr class="featurette-divider">
 
-  </div><!-- /.container -->
+    {% set firstImg = 0 %} 
+    {#{% set now =  "now"|date("m/d/Y")  %} 
+    <main role="main">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+       <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" style="max-height: 850px" >
+                    {% for autoPromo in autoPromoList %}
+                        
+                        
+                    {% if autoPromo.statut == 1 and autoPromo.zone == 1 %}
+                    {% set firstImg = firstImg +1 %}    
+       <div {% if firstImg == 1 %} class="carousel-item active" {%else%} class="carousel-item" {%endif%}>
+            <img src="{{ asset( autoPromo.image | imagine_filter('front_autopromo')) }}" width="100%" height="100%" class="rounded float-right" alt="...">
+          </div>
+                        {%endif%}
+                        {%endfor%}     
+         
+        </div>
+        <div style="display:none">                                
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+        <div>    
+      </div>
+        </div>
+        </div>
+    
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+    
+      <div class="container marketing">
+    
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <h2>Heading</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    
+    
+        <!-- START THE FEATURETTES -->
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+          </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+          </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+          </div>
+        </div>
+        <hr class="featurette-divider">
+    
+      </div><!-- /.container -->#}
 {% endblock %}
+{% block footer %}
+    <footer class="site-footer">  
+    {% endblock %}
+

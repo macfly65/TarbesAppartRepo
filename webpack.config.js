@@ -24,7 +24,10 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('app_bo', './assets/js/app_bo.js')
+    
     .addEntry('login', './assets/js/login.js')
+    .addEntry('appartement', './assets/js/appartement.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

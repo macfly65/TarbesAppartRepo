@@ -1,0 +1,60 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+<div class="row mb-3">
+        <div class="col-md-11"></div>
+        <div class="col-6 col-md-1 themed-grid-col">
+            <a href="{{ path('create_appart') }}">     
+                <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+            </a> 
+        </div>
+    </div>    
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Numéro</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Résidence</th>
+      <th scope="col">Type</th>
+      <th scope="col">Surface</th>
+      <th scope="col">Etage</th>
+      <th scope="col">Loyer</th>
+      <th scope="col">Disponibilité</th>
+      <th scope="col">Locataire actuel</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for appart in appartList %}
+      {% set i = 0 %}    
+      <tr>
+      <th scope="row">{{appart.numero}}</th>
+      <td>{% for medias in appart.images.snapshot %}
+          {% set i = i + 1 %}
+          {% if i == 1 %}
+      <img src="{{ asset('/upload_files/' ~ medias.nomFichier) | imagine_filter('mini_appart') }}" class="rounded float-right" alt="...">
+          {%endif%}
+          {%endfor%}
+      </td>
+      <td>{{appart.residence.nom}}</td>
+      <td>{{appart.Type}}</td>
+      <td>{{appart.surface}}</td>
+      <td>{{appart.etage}}</td>
+      <td>{{appart.loyerEtudiant}}</td>
+      <td>{{appart.disponibilite|date('Y-m-d') }} </td>
+      <td>      {% for locataire in appart.locataire.snapshot %}
+          {{locataire.nom}} {{locataire.prenom}}
+                {%endfor%}
+      </td>
+      <td>
+          <div style="display:flex;justify-content: flex-end;">
+            <a class="" href="{{ path('edit_appart',{id: appart.id}) }}" role="button">
+                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Mofifier l'utilisateur" title="Mofifier l'utilisateur" width="22" height="22">
+                            </a>
+          </div>                      
+      </td>
+    </tr>
+    {%endfor%}
+    
+</table>
+    
+{% endblock %}

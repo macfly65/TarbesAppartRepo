@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block bandeau %}
+    <div class="site-blocks-cover overlay" style="height: calc(30vh);background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+            {% endblock %}
+           {% block bandeauTitle %}
+            <h1 class="mb-4 titre">Contactez nous ! </h1>
+            <p class="mb-5 sousTitre">Résidence Évasion</p>
+{% endblock %}
+{% block body %}
+</div>
+    <div class="container">    
+      {% for message in app.flashes('notice') %}
+    <div class="alert alert-success" style="margin:25px 0px" role="alert">
+       {{ message }}
+    </div>
+      {% endfor %}  
+        
+        <div style="margin:25px 0px">
+        {{ form_start(formContact)}}
+           {{ form_row(formContact.nom, {'attr': {'placeholder' : "Nom"}}) }}
+           {{ form_row(formContact.prenom, {'attr': {'placeholder' : "Prénom"}}) }}
+           {{ form_row(formContact.contFrom, {'attr': {'placeholder' : "Email"}}) }}
+           {{ form_row(formContact.tel, {'attr': {'placeholder' : "Téléphone"}}) }}
+           {{ form_row(formContact.message, {'attr': {'placeholder' : "Message"}}) }}
+           <button type="submit" class="btn btn-success">Enregistrer</button>
+        {{ form_end(formContact)}} 
+        </div>
+    </div>
+{% block footer %}
+     <footer class="site-footer" style="background-color: #f8f9fa !important;margin-top: 160px;">  
+{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+        <script src="{{ absolute_url((asset('/assets_admin_pages/contact.js'))) }}"></script>
+{% endblock %}

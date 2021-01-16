@@ -1,0 +1,48 @@
+{% extends 'base_BO.html.twig' %}
+{% form_theme actualiteMedias 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+    {% if idactualite != "" %}
+        <h2 class="fileArianeBo"> <a href="{{ path('admin_actualite')}}">Actualité</a> &gt; {{ actualite.titre }}</h2>
+    {%endif%}   
+    <div class="col-md-12 alert alert-success" id="notification" style="display:none">Modification enregistrée !</div>      
+    <main>
+        <div class="container-fluid container-perso-bleu" style="margin-bottom: 20px">
+            {{ form_start(actualiteMedias)}} 
+            {{ form_row(actualiteMedias.nomFichier, {'attr': {'placeholder' : "Image a uploadé"}}) }}
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+            {{ form_end(actualiteMedias)}} 
+        </div>
+        {% if  medias != []  %}
+            <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="container-perso-bleu">
+                <ul id="sortable" data-id="" class="connectedSortable"  style="list-style-type: none;margin-left: -25px; display: contents" >
+                {% for media in medias %}
+                 <li class="" data-index="{{media.id}}" data-position="{{media.ordre}}" style="" >
+                    <div style="flex-direction: column;display: flex;align-items: center;">                 
+                        <img src="{{ asset('/medias_front/actualite/' ~ media.nomFichier) | imagine_filter('bo_list') }}"  style="padding:15px 0px">
+                         <form action="" method="post" id="test" class="form-example" data-id="{{media.id}}" >
+                        <div class="form-example">
+                            <label for="name">Alt : </label>
+                            <input type="text" class="postAlt" name="name" onchange="updateAlt({{media.id}}, $(this).val())" required value="{{media.alt}}">  
+                        </div>
+                        </form>
+                        <a id="target" style="" href="{{ path('delete_one_actu_media',{id: media.id} ) }}" role="button">
+                           <img src="{{ asset('/medias_admin/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">                        </a>                   
+                    </div>
+                 </li>
+                {% endfor %}
+               </ul>
+            </div>                
+        {%endif%}
+    </main>
+    <nav class="sticky-menu">
+        {% if idactualite != "" %}
+            <a class="sticky_vert sticky_oeil" href="{{ path('fiche_actualite', {id: idactualite} ) }}" target="_blank">Visualiser</a>
+        {%endif%}         
+        <a class="sticky_bleu sticky_plus" href="{{ path('create_actualite') }}">Ajouter</a>
+    </nav>  
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ absolute_url((asset('/assets_admin_pages/actualite.js'))) }}"></script>
+{% endblock %}

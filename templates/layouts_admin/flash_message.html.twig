@@ -1,0 +1,26 @@
+<script>
+    
+    function disableFlashMessage(){
+        
+        setTimeout(function() {
+
+            $("#flashMsg").children().each(function(){ 
+                 $(this).remove();
+            });     
+
+        }, 3000);          
+    }
+
+</script> 
+
+<div id="flashMsg">
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} alert-dismissible fade show">
+            {{ message }}
+            {% if message is defined %}<script> disableFlashMessage(); </script>{% endif %}
+        </div>
+    {% endfor %}
+{% endfor %}
+</div>
+

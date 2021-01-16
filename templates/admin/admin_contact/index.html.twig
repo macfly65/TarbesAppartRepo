@@ -1,0 +1,27 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+<h1>Messages reçu depuis le formulaire de contact :</h1>
+    
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date</th>
+      <th scope="col">Message</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for contact in contacts %}
+    <tr>
+      <td>{{contact.nom}}</td>
+      <td>{{contact.prenom}}</td>
+      <td>{{contact.contFrom}}</td>
+      <td>{{contact.date|date("Y-m-d")}}</td>
+      <td>{{contact.message}}</td>
+    </tr>
+    {%endfor%}
+{% endblock %}
+
+

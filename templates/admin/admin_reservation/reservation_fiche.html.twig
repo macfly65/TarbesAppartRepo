@@ -1,0 +1,72 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+<div style="display: flex;justify-content: flex-end;margin:10px">    
+<a href="{{ path('admin_valid_Reservation',{id: ficheReservation.id}) }}">
+    <button type="button"  class="btn btn-outline-success" style="margin:0px 10px">Valider la réservation</button>
+</a>
+<a href="{{ path('admin_anule_reservation',{id: ficheReservation.id}) }}">
+    <button type="button" class="btn btn-outline-danger" style="margin:0px 10px">Anuler la réservation</button>
+</a>
+</div>
+    {% for message in app.flashes('notice') %}
+    <div class="alert alert-success" style="margin:25px 0px" role="alert">
+       {{ message }}
+    </div>
+      {% endfor %}      
+<div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Informations</div>
+                <div class="card-body">
+                <div style="display: flex;justify-content: space-between;"><p>Statut de la réservation :</p><p>
+                        {% if ficheReservation.statut == 1 %}
+                        <img src="{{ asset('/medias_admin/puce.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                         Validé
+                        {% elseif ficheReservation.statut == 2 %}
+                        <img src="{{ asset('/medias_admin/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                         En attente 
+                        {% else %}
+                        <img src="{{ asset('/medias_admin/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                         Annulé
+                        {% endif %}
+                 </p>
+                </div>
+                <div style="display: flex;justify-content: space-between;"><p>Arrhes de réservation :</p><p>{{ficheReservation.caution}}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Date de la réservation :</p><p>{{ficheReservation.dateNaissancce|date("m/d/Y") }}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Numéro appartement :</p><p>{{ficheReservation.appartements.snapshot[0].numero}}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Loyer :</p><p>{{ficheReservation.loyer}}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Réduction  :</p><p>{{ficheReservation.reduction}}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Caution  :</p><p>{{ficheReservation.loyer}}</p></div>
+        </div>
+        </div>
+        </div>
+     
+              <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Informations Locataire</div>
+                <div class="card-body">
+                <div style="display: flex;justify-content: space-between;"><p>Locataire :</p><p>{{ficheReservation.civilite}} {{ficheReservation.nom}} {{ficheReservation.prenom}}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Statut du locataire :</p><p>
+                         {% if ficheReservation.statut == 1 %}
+                        <img src="{{ asset('/medias_admin/puce.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                         Validé
+                        {% elseif ficheReservation.statut == 2 %}
+                        <img src="{{ asset('/medias_admin/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                         En attente 
+                        {% else %}
+                        <img src="{{ asset('/medias_admin/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                         Annulé
+                        {% endif %}
+                 </p>
+                </div>
+                <div style="display: flex;justify-content: space-between;"><p>Revenu de la caution :</p><p>{{ficheReservation.revenuImposable }}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Numéro de l'appartement :</p><p>{{ficheReservation.appartements.snapshot[0].numero}}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Date d'arrivée :</p><p>{{ficheReservation.dateArivee|date("m/d/Y") }}</p></div>
+                <div style="display: flex;justify-content: space-between;"><p>Date de départ :</p><p>{{ficheReservation.dateDepart|date("m/d/Y")}}</p></div>
+        </div>
+        </div>
+        </div>
+  </div>
+{% endblock %}
+
+

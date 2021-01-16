@@ -49,29 +49,24 @@ class AdminUserController extends AbstractController
                         ->add('prenom')
                         ->add('email')    
                         ->add('password')    
-//                        ->add('role')
-                        ->add('image', FileType::class)  
+                        ->add('image', FileType::class, array('data_class' => null))  
                         ->getForm(); 
           
           $form->handleRequest($request);
           
           if($form->isSubmitted() && $form->isValid()){
-//             $promo->setDateD(new \DateTime());
-              
+             
+              //gestion du role 
               if(isset($_POST['ROLE']) && $_POST['ROLE'] == 1){
                 $user->setRoles("ROLE_ADMIN");
-                
               }elseif($_POST['ROLE'] == 2){
                $user->setRoles("ROLE_SUPER_ADMIN");  
               }
-              
-      
+
               //on encode le mot de passe
               $originPassword = $user->getPassword();
               $encoded = $encoder->encodePassword($user, $originPassword);
               $user->setPassword($encoded);
-              
-              
               
               //gestion de l'upload de l'image
               $file = $user->getImage();
@@ -79,7 +74,6 @@ class AdminUserController extends AbstractController
               $file->move($this->getParameter('upload_directory'), $fileName);
               $user->setImage($fileName);
               $file = $user->getImage(); 
-                          
               
              $this->entityManager->persist($user);
              $this->entityManager->flush();
@@ -93,9 +87,53 @@ class AdminUserController extends AbstractController
     ]);
     }
     
+    /**
+     * @Route("/admin/user/{id}", name="edit_user")
+     */
+    public function editUser($id , UserRepository $user, Request $request, UserPasswordEncoderInterface $encoder){
+            $user = $user->find($id);
+            $form = $this->createFormBuilder($user)
+                        ->add('nom')
+                        ->add('prenom')
+                        ->add('email')    
+                        ->add('password')    
+                        ->add('image', FileType::class, array('data_class' => null))  
+                        ->getForm(); 
+
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid()){  
+
+             //gestion du role 
+              if(isset($_POST['ROLE']) && $_POST['ROLE'] == 1){
+                $user->setRoles("ROLE_ADMIN");
+              }elseif($_POST['ROLE'] == 2){
+               $user->setRoles("ROLE_SUPER_ADMIN");  
+              }
+                
+              $originPassword = $user->getPassword();
+              $encoded = $encoder->encodePassword($user, $originPassword);
+              $user->setPassword($encoded);
+              
+                
+              //gestion de l'upload de l'image
+              $file = $user->getImage();
+              $fileName = md5(uniqid()).'.'.$file->guessExtension();
+              $file->move($this->getParameter('upload_directory'), $fileName);
+              $user->setImage($fileName);
+                
+             $this->entityManager->persist($user);
+             $this->entityManager->flush();
+          }
+          
+     return $this->render('admin/admin_user/create.html.twig',[
+        'formUser' => $form->createView(),
+        'image' => $user->getImage()
+    ]);   
+    }
     
             /**
-     * @Route("/admin/user/delete/{id}", name="delete_promo")
+     * @Route("/admin/user/delete/{id}", name="delete_user")
      */
     public function deletePromo($id , UserRepository $user){
             $user = $user->find($id);

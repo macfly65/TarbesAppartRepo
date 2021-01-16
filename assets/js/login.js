@@ -17,6 +17,35 @@ const $ = require('jquery');
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
 
+require('./aos');
+require('./circleaudioplayer');
+require('./main');
+require('./mediaelement-and-player.min');
+require('./owl.carousel.min');
+require('./player');
+require('./slick.min');
+
 // or you can include specific pieces
  require('bootstrap/js/dist/tooltip');
  require('bootstrap/js/dist/popover');
+
+function saveNewPositions() {
+            var positions = [];
+            $('.updated').each(function () {
+               positions.push([$(this).attr('data-index'), $(this).attr('data-position')]);
+               $(this).removeClass('updated');
+            });
+
+            $.ajax({
+               url: 'autopromo',
+               method: 'POST',
+               dataType: 'text',
+               data: {
+                   update: 1,
+                   positions: positions
+               }, success: function (response) {
+                     $('#notification').show();
+                     $( "#notification" ).hide(4000);
+               }
+            });
+}

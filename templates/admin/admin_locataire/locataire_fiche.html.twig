@@ -1,0 +1,119 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+{{ form_start(form)}}    
+<div class="row" style="margin-bottom: 20px">
+    <div class="col-md-6">
+    <h1>Locataire : <small style="color: grey">{{locataires.civilite}}{{locataires.nom}} {{locataires.prenom}}, appartement N°{{locataires.appartements.snapshot[0].numero}}</small></h1>
+  </div>
+  {% for message in app.flashes('notice') %}
+    <div class="alert alert-success" style="margin:25px 0px" role="alert">
+       {{ message }}
+    </div>
+      {% endfor %}  
+        
+    <div class="col-md-6"  style="margin-top: 15px;display: flex;justify-content: flex-end;align-items: center:">
+        <a href="{{ path('admin_valid_Reservation',{id: locataires.id}) }}">
+            <button type="button"  class="btn btn-outline-success" style="margin:0px 10px">Valider la réservation</button>
+        </a>
+        <a href="{{ path('admin_anule_reservation',{id: locataires.id}) }}">
+            <button type="button" class="btn btn-outline-danger" style="margin:0px 10px">Anuler la réservation</button>
+        </a>
+    </div>
+</div>
+
+
+    {% for message in app.flashes('notice') %}
+    <div class="alert alert-success" style="margin:25px 0px" role="alert">
+       {{ message }}
+    </div>
+      {% endfor %}      
+
+<div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Options</div>
+                <div class="card-body">
+                    {{ form_row(form.statut) }}
+{#                    {{ form_row(form.appartements) }}#}
+                    {{ form_row(form.loyer) }}
+                    {{ form_row(form.dateArivee) }}
+                    {{ form_row(form.dateDepart) }}
+                    {{ form_row(form.dateResiliation) }}
+{#                    {{ form_row(form.dateReservation ) }}#}
+                </div>
+            </div>
+        </div>
+     
+          <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Informations Locataire :</div>
+                <div class="card-body">
+                    {{ form_row(form.civilite)}}
+                    {{ form_row(form.dateNaissancce)}}
+                    {{ form_row(form.nom)}}
+                    {{ form_row(form.prenom) }}
+                    {{ form_row(form.adresse) }}
+                    {{ form_row(form.ville) }}
+                    {{ form_row(form.codePostal) }}
+                    {{ form_row(form.telephoneMobile) }}
+                    {{ form_row(form.etablissement) }}
+                    {{ form_row(form.immatriculationVehicule) }}
+                    {{ form_row(form.iban) }}
+                    {{ form_row(form.codeSWIFT) }}
+                </div>
+        </div>
+</div>
+</div>
+                
+                
+ <div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Informations parents / cautionneurs :</div>
+                <div class="card-body">
+                {{ form_row(form.nomCautionneur)}}
+                {{ form_row(form.prenomCautionneur)}}
+                {{ form_row(form.adresseCautionneur)}}
+                {{ form_row(form.villeCautionneur)}}
+                {{ form_row(form.codePostalCautionneur)}}
+                {{ form_row(form.telephoneCautionneur)}}
+                {{ form_row(form.email)}}
+                {{ form_row(form.revenuImposable)}}
+                </div>
+        </div>
+        </div>
+     
+          <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Historique :</div>
+                <div class="card-body">
+        </div>
+        </div>
+        </div>
+</div>               
+
+<div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Note sur le locataire :</div>
+                <div class="card-body">
+               
+        </div>
+        </div>
+        </div>
+          <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Quittance de loyer :</div>
+                <div class="card-body">
+        </div>
+        </div>
+        </div>
+    </div>    
+{#</div>#}
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+
+{{ form_end(form)}}
+                
+{% endblock %}
+
+

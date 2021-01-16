@@ -2,52 +2,188 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+                  
                     {{ encore_entry_link_tags('app') }}
-
         {% endblock %}
     </head>
     <body>
-    <header>
-             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-               <a class="navbar-brand" href="#">Carousel</a>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarCollapse">
-                 <ul class="navbar-nav mr-auto">
-                   <li class="nav-item active">
-                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                   </li>
-                   <li class="nav-item">
-                     <a class="nav-link" href="#">Link</a>
-                   </li>
-                   <li class="nav-item">
-                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                   </li>
-                 </ul>
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+            {% block bandeau %}
+            {% endblock %}
+
+         <div class="wrapper">
+            <nav cass="nav">
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
                </div>
-             </nav>
-    </header>    
-        {% block body %}
-            
-        {% endblock %}
+               <div class="logo">
+                  <h1 class="mb-0"><a href="{{ path('accueil') }}" class="text-white h2 mb-0"><strong>Apart<span class="text-primary">.</span></strong></a></h1>
+               </div>
+               <div class="menu">
+                   <ul>
+                   <div id="cross">
+                   <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">
+                   </div>
+                     <li><a href="{{ path('accueil') }}" >Accueil</a></li>
+                     <li><a href="#">A propos</a></li>
+                     <li><a href="{{ path('front_appart') }}">Appartements</a></li>
+                     <li><a href="{{ path('front_actualite') }}">Actualité</a></li>
+                     <li><a href="{{ path('front_contact') }}">Contact</a></li>
+                     <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                  </ul>
+               </div>
+            </nav>
+     
+      </div>
         
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }} 
-        {% endblock %}
-        <!-- FOOTER -->
-         <footer class="container">
-           <p class="float-right"><a href="#">Back to top</a></p>
-           <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-         </footer>
-       </main>        
-    </body>
+      <div style="height: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;text-align: center;">
+        <div>
+          <div>
+           {% block bandeauTitle %}
+           {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      {% block body %}
+      {% endblock %}
+                     
+    
+    {% block footer %}
+{#        HOME    <footer class="site-footer">  #}
+{#        Other    <footer class="site-footer" style="background-color: #f8f9fa !important;margin-top: 160px;">  #}
+      {% endblock %}
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mb-5">
+              <h3 class="footer-heading mb-4">À propos d'Évasasion</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
+            </div>
+            <div class="mb-5" style="top: 19px;position: relative;">
+              <h3 class="footer-heading mb-4">Abonnez vous </h3>
+              <form action="#" method="post" class="site-block-subscribe">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control border-secondary bg-transparent" placeholder="Entrez votre email"
+                    aria-label="Enter Email" aria-describedby="button-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary rounded-top-right-0" type="button" id="button-addon2">Abonnez vous</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">Navigation</h3>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <ul class="list-unstyled">
+                  <li><a href="{{ path('accueil') }}">Accueil</a></li>
+                  <li><a href="#">À propos</a></li>
+                  <li><a href="{{ path('front_appart') }}">Apartements</a></li>
+                  <li><a href="{{ path('front_actualite') }}">Actualité</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <ul class="list-unstyled">
+                  <li><a href="{{ path('front_contact') }}">Contact</a></li>
+                  <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                  <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">Suivez nous</h3>
+
+                <div>
+                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="mb-5">
+              <h3 class="footer-heading mb-4">Vidéo de présentation</h3>
+
+              <div class="block-16">
+                <figure>
+                  <img src="{{ asset('/upload_files/img_1_play.jpg' ) }}" alt="Image placeholder" onClick="$('#openModal').show();" class="img-fluid rounded">
+<a href="http://www.youtube.com/watch?v=qqXi8WmQ_WM" rel="prettyPhoto" title=""></a>
+                </figure>
+              </div>
+
+            </div>
+
+            
+
+          </div>
+          
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> Tout droit réservé | réalisé par BVS
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<div id="openModal">                
+<img src="{{ asset('/medias_admin/x-mark-128.png' ) }}" alt="Image placeholder" onClick="$('#openModal').hide();" style="top: -334px;position: relative;height: 25px;left: 10px;">
+<iframe src="https://player.vimeo.com/video/93951774?autoplay=1&color=f0d000&title=0&byline=0&portrait=0&badge=0"  class="video"  width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+
+  
+</body>     
 </html>
+   {% block javascripts %}
+        <script>
+          $( document ).ready(function() {
+             $(".menu-icon").on("click", function() {
+                  $("nav ul").toggleClass("showing");
+                  $("#cross").toggleClass("showingCross");
+                  $("nav").css("z-index","100");
+            });
+            
+            $("#cross").on("click", function() {
+                  $("nav ul").removeClass("showing");
+                  $("#cross").removeClass("showingCross");
+                  $("nav").removeClass("nav");
+            });
+           $("#openModal").on("click", function() {
+            $('#openModal').hide();   
+           });
+          });
+        </script>
+             <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+{#             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>#}
+        
+        
+            {{ encore_entry_script_tags('app') }}          
+   {% endblock %}

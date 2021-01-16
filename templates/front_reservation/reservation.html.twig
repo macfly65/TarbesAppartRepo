@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+{% block bandeau %}
+    <div class="site-blocks-cover overlay" style="height: calc(30vh);background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+            {% endblock %}
+           {% block bandeauTitle %}
+            <h1 class="mb-4 titre">Formulaire de réservation !</h1>
+            <p class="mb-5 sousTitre">Résidence Évasion</p>
+{% endblock %}
+{% block body %}
+</div>
+    <div class="container">    
+      {% for message in app.flashes('notice') %}
+    <div class="alert alert-success" style="margin:25px 0px" role="alert">
+       {{ message }}
+    </div>
+      {% endfor %}  
+        
+      
+      <div class="row">
+        
+        <div class="col-md-12 order-md-1">
+          <h4 style="margin: 50px 0px !important" class="mb-3">Merci de remplir ce formulaire de réservation : </h4>
+                   {{ form_start(form)}}
+
+          <div class="row">
+              <div class="col-md-4">
+           {{ form_row(form.nom, {'attr': {'placeholder' : "Nom"}}) }}
+            </div>
+            <div class="col-md-4">
+           {{ form_row(form.prenom, {'attr': {'placeholder' : "Prenom"}}) }}
+            </div>
+            <div class="col-md-4">
+           {{ form_row(form.civilite, {'attr': {'placeholder' : "Civilite"}}) }}
+            </div>
+          </div>
+
+
+            <div class="mb-3">
+              {{ form_row(form.email, {'attr': {'placeholder' : "Email"}}) }}
+            </div>
+
+            <div class="mb-3">
+           {{ form_row(form.telephoneMobile, {'attr': {'placeholder' : "Telephone"}}) }}
+            </div>
+
+            <div class="mb-3">
+           {{ form_row(form.dateNaissancce, {'attr': {'placeholder' : "Date de naissance"}}) }}
+            </div>
+
+            <div class="mb-3">
+               {{ form_row(form.adresse, {'attr': {'placeholder' : "Adresse"}}) }}
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+               {{ form_row(form.ville, {'attr': {'placeholder' : "Ville"}}) }}
+              </div>
+              <div class="col-md-4 mb-3">
+               {{ form_row(form.codePostal, {'attr': {'placeholder' : "Code Postal"}}) }} 
+              </div>
+              <div class="col-md-3 mb-3">
+                {{ form_row(form.revenuImposable, {'attr': {'placeholder' : "Revenu imposable"}}) }} 
+              </div>
+            </div>
+            <div class="mb-3">
+           {{ form_row(form.immatriculationVehicule, {'attr': {'placeholder' : "Immatriculation du véhicule"}}) }}
+            </div>
+            <div class="mb-3">
+           {{ form_row(form.dateArivee,  { attr:{ class:'js-datepicker' } }) }}
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            {{ form_end(form)}} 
+        </div>
+      </div>
+        </div>
+    </div>
+{% block footer %}
+     <footer class="site-footer" style="background-color: #f8f9fa !important;margin-top: 160px;">  
+{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.js-datepicker').datepicker({
+            format:'yyyy.MM.dd'
+        });
+    </script>
+            {{ encore_entry_script_tags('app') }}
+{% endblock %}

@@ -6,7 +6,7 @@
    <div class="row mb-3">
         <div class="col-md-11"></div>
         <div class="col-6 col-md-1 themed-grid-col">
-            <a href="{{ path('create_auto_promo') }}">     
+            <a href="{{ path('create_user') }}">     
                 <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
             </a> 
         </div>
@@ -14,7 +14,7 @@
     <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Identifiant</th>
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
       <th scope="col">Email</th>
@@ -25,16 +25,16 @@
       {% for user in userList %}
     <tr>
       <th scope="row">{{user.id}}</th>
-      <td>Mark</td>
-      <td>tony</td>
+      <td>{{user.nom}}</td>
+      <td>{{user.prenom}}</td>
       <td>{{user.email}}</td>
       <td>
           <div style="display:flex;justify-content: flex-end;">
-            <a class="btn bouton-black" href="" role="button">
-                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Supprimer autopromo" title="Suprimer autopromo" width="22" height="22">
+            <a class="btn bouton-black" href="{{ path('edit_user',{id: user.id}) }}" role="button">
+                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Mofifier l'utilisateur" title="Mofifier l'utilisateur" width="22" height="22">
                             </a>
-                            <a id="target" style="margin: 0px 10px;" class="btn bouton-black" href="" role="button">
-                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="22" height="22">                        </a>
+                            <a id="target" style="margin: 0px 10px;" class="btn bouton-black" href="{{ path('delete_user',{id: user.id}) }}" role="button">
+                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Suprimer l'utilisateur" title="Suprimer l'utilisateur" width="22" height="22">                        </a>
           </div>                      
       </td>
     </tr>

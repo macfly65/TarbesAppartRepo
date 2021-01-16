@@ -1,0 +1,56 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+    <div class="card mb-4">
+        <div class="card-header"><i class="fas fa-table mr-1"></i>Réservation</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>Statut</th>
+                            <th>Caution</th>
+                            <th>Nom / Prénom</th>
+                            <th>Appartement</th>
+                            <th>Date de réservation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <td>
+                        {% for reservation in reservations %}
+                        <tr>
+                            <td>{{reservation.id}}</td>
+                            <td>
+                            {% if reservation.statut == 3 %}
+                                <a href="{{ path('admin_reservation_fiche',{id: reservation.id}) }}" style="text-decoration: none;color: black;">
+                                <img src="/Fichiers/autopromo/puce_orange.png" style="margin: 0px 10px;top: -3px;position: relative;" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">
+                                    À valider </a>
+                            {% elseif reservation.statut == 2 %}
+                                <a href="{{ path('admin_reservation_fiche',{id: reservation.id}) }}" style="text-decoration: none;color: black;">
+                               <img src="/Fichiers/autopromo/puce_orange.png" style="margin: 0px 10px;top: -3px;position: relative;" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">
+                            En cours de validation 
+                                </a>
+                            {% else %}
+                                <a href="{{ path('admin_reservation_fiche',{id: reservation.id}) }}" style="text-decoration: none;color: black;">
+                               <img src="/Fichiers/autopromo/puce.png" style="margin: 0px 10px;top: -3px;position: relative;" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">
+                            Validé
+                                </a>
+                            {% endif %}
+                            
+                            </td>
+                            <td>{{reservation.typeCaution}}</td>
+                            <td>{{reservation.nom}} {{reservation.prenom}}</td>
+                            <td>{{reservation.appartements.snapshot[0].numero}}</td>
+                            <td>{{reservation.dateReservation|date('Y-m-d H:i') }}</td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

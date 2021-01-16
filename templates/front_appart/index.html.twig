@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% block bandeau %}
+    <div class="site-blocks-cover overlay" style="height: calc(30vh);background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+    {% endblock %}
+    {% block bandeauTitle %}
+        <h1 class="mb-4 titre">Les appartements</h1>
+        <p class="mb-5 sousTitre">Résidence Évasion</p>
+    {% endblock %}
+    {% block body %}
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
+                        <h2 class="mb-5">Nos appartement disponibles</h2>
+                        <p>Voici la liste des appartement disponible a ce jour, cliquez sur la photo afin de découvrir une description plus complete de l'appartement.</p>
+                    </div>
+                </div>
+                <div class="row" style="display: flex;justify-content: center;">
+                    {% for appartement in appartements %}
+                         {% if appartement.disponibilite|date("Y-m-d") <= date()|date("Y-m-d") and appartement.statut == 1 %}
+                        <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up" data-aos-delay="100">
+                            <a href="{{ path('fiche_appart',{id: appartement.id}) }}" class="unit-9">
+                                <div class="image">
+          <img style="height: 100%;" src="{{ asset( '/upload_files/' ~ appartement.images.snapshot[0].nomFichier) |  imagine_filter('front_list')  }}" alt="Image" class="">
+                                </div>
+                                <div class="unit-9-content">
+                                    <h2>Type : {{appartement.type}}</h2>
+                                    <span>Loyer : {{appartement.loyerEtudiant}} €</span>
+                                    <!-- <span>with Wendy Matos</span> -->
+                                </div>
+                            </a>
+                        </div>
+                       {% endif %}             
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+                {# BLOCK BIENTOT LIBRE #}
+          {# 
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto" data-aos="fade-up">
+                        <h2 class="mb-5">Prochainement libres !</h2>
+                        <p>Voici les appartement qui seront bientôt libre</p>
+                    </div>
+                </div>
+                <div class="site-block-retro d-block d-md-flex">
+                    {% set i = 0 %}   
+                    {% for appart in appartements %}
+                        {% set i = i + 1 %}
+                        {% if i == 1 %}
+                        {% if appart.disponibilite|date("Y-m-d") >= date()|date("Y-m-d") and appart.statut == 1 %}
+                                {{appart.disponibilite|date("Y-m-d")}}
+                        {% endif %}             
+
+                            <a href="{{ path('fiche_appart',{id: appart.id}) }}" class="col1 unit-9 no-height" data-aos="fade-up" data-aos-delay="100">
+                                <div class="image">
+         <img style="height: 100%;" src="{{ asset( '/upload_files/' ~ appart.images.snapshot[0].nomFichier) |  imagine_filter('front_list_appart_big')  }}" alt="Image" class="">
+                                </div>                <div class="unit-9-content">
+                                    <h2>{{appart.type}}</h2>
+                                    <span>{{appart.loyerEtudiant}}</span>
+                                </div>
+                            </a>
+                        {% endif %}
+                    {% endfor%}
+         <div class="col2 ml-auto">
+                        {% set i = 0 %}        
+                        {% for appart in appartementsBy3 %}
+                            {% set i = i + 1 %}
+                            {% if i == 2 or i == 3 %}    
+                                <a href="{{ path('fiche_appart',{id: appart.id}) }}" class="col2-row1 unit-9 no-height" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="image">
+       <img style="height: 100%;" src="{{ asset( '/upload_files/' ~ appart.images.snapshot[0].nomFichier) |  imagine_filter('front_list')  }}" alt="Image" class="">
+                                    </div>
+                                    <div class="unit-9-content">
+                                        <h2>{{appart.type}}</h2>
+                                        <span>{{appart.loyerEtudiant}}</span>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>#}
+
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block footer %}
+        <footer class="site-footer" style="background-color: #f8f9fa !important;margin-top: 160px;">  
+        {% endblock %}

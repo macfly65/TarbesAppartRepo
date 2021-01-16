@@ -1,0 +1,121 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+{#  CATEGORIES  #}
+ <div class="jumbotron" style="padding:15px 15px !important">
+ <div class="col-md-12 alert alert-success" id="notification" style="display:none">Modification enregistrée !</div>      
+<div class="row mb-2">
+ 
+ <div class="col-md-3" style="border">
+<div class="card mb-3 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal" style="text-align:center">Catégorie</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">Toutes les catégories : </h1>
+       <ul id="sortableCateg" data-id=""  class="connectedSortable"  style="list-style-type: none;margin-left: -25px;" >
+         {% for categ in actualiteCateg %}
+           <li class="" data-index="{{categ.id}}" data-pos="{{categ.ordre}}" style="" >
+             <hr></hr>
+             <div class="row mb-3">
+                <div class="col-md-2">
+                    <img src="{{ asset('/medias_admin/move.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">  
+                </div>
+                <div class="col-md-8">
+                {{categ.nom}}
+                </div>
+                <div class="col-md-1">
+                 <a id="target" href="{{ path('delete_categ_actualite',{id: categ.id}) }}" role="button">
+                    <img src="{{ asset('/medias_admin/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="15" height="15">
+                 </a>
+                </div>
+             </div>
+         </li>
+         {%endfor%}
+        </ul>
+       
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary" onClick="addNewcateg();">Ajouter une catégorie</button>
+      </div>
+    </div>   
+ </div>
+ <div id="openModal" style="display: none;">       
+ <div id="dialogue" class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal" style="text-align:center">Nouvelle catégorie</h4>
+        <img src="{{ asset('/medias_admin/iconfinder_cross-24_103181.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15" style="cursor:pointer" onClick="$('#openModal').hide();">
+      </div>
+      <div class="card-body">
+          {{ form_start(formCateg)}}
+          {{ form_row(formCateg.nom, {'attr': {'placeholder' : "Nom de la catégorie"}}) }}
+         <button type="submit" class="btn btn-success">Enregistrer</button>
+          {{ form_end(formCateg)}}
+      </div>
+    </div>        
+ </div>  
+ <div class="col-md-2"></div>      
+      
+ 
+{# actualite #}
+ <div class="col-md-7" style="border">
+<div class="card mb-7 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal" style="text-align:center">actualite</h4>
+      </div>
+      <div class="card-body">
+{#        <h1 class="card-title pricing-card-title">Toutes les catégories : </h1>#}
+       <ul id="sortable" data-id=""  class="connectedSortable"  style="list-style-type: none;margin-left: -25px;" >
+         {% for actualite in actualites %}
+{#             {{ dump(actualite) }}
+#}             
+           <li class=""  style="" >
+             <hr></hr>
+             <div class="row mb-6">
+                <div class="col-md-1">
+                    
+                    {% if actualite.isValid == 1 %}
+                    <img src="{{ asset('/medias_admin/puce.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%else%}
+                    <img src="{{ asset('/medias_admin/puce_orange.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="15" height="15">  
+                    {%endif%}    
+                </div>
+                <div class="col-md-3">
+                {{actualite.date|date("Y-m-d") }}
+                </div>
+                <div class="col-md-3">
+                {{actualite.titre}}
+                </div>
+                <div class="col-md-3">
+                {{actualite.categorie.nom}}
+                </div>
+                <div class="col-md-2">
+                 <a id="target" href="{{ path('edit_actualite',{id: actualite.id}) }}" role="button">
+                    <img src="{{ asset('/medias_admin/iconfinder_new-24_103173.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">
+                 </a>
+                <a id="target" style="" href="{{ path('delete_actualite',{id: actualite.id}) }}" role="button">
+                                <img src="{{ asset('/medias_admin/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">    </a>
+                </div>
+             </div>
+         </li>
+         {%endfor%}
+        </ul>
+       
+       <nav>
+  <ul class="pagination">
+      {%if page > 0%}
+    <li class="page-item"><a class="page-link" href="{{ path('admin_actualite',{page: page - 1}) }}">Page précédente</a></li>
+      {%endif%}
+
+    <li class="page-item"><a class="page-link" href="{{ path('admin_actualite',{page: page + 1}) }}">Page suivante</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>   
+ </div>
+ </div>   
+ </div> 
+   <nav class="sticky-menu">
+    	<a class="sticky_bleu sticky_plus" href="{{ path('create_actualite') }}">Ajouter</a>
+   </nav>  
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ absolute_url((asset('/assets_admin_pages/actualite.js'))) }}"></script>
+{% endblock %}

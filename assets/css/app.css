@@ -1,6 +1,319 @@
 body {
-    background-color: lightgray;
+    background-color: #fff;
 }
 flex{
     display: flex;
+}
+.titre{
+   font-size: 3rem; 
+}
+.sousTitre{
+   font-size: 2rem;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+
+
+
+/* The Close Button */
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hide the slides by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+}
+
+img.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
+img.hover-shadow {
+    transition: 0.3s;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#openModal{
+    display: none;   
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity: 1;
+    transition: opacity 400ms ease-in;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    font-family: "Helvetica Neue",sans-serif;
+    font-weight: lighter;
+}
+a:hover{
+    color:#d09d6e;
+}
+a{
+    color:#e4c4a8;
+}
+.titre{
+    position: relative;
+    opacity: 0.9;
+}
+.sousTitre{
+    position: relative;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+.video{
+    position: relative;
+    left: 25%;
+}
+header {
+    width: 100%;
+    height: 100vh;
+    background: url(https://wallpaper.wiki/wp-content/uploads/2017/05/wallpaper.wiki-Beautiful-Full-HD-Wallpaper-Download-Free-PIC-WPE0010098.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.content {
+    width: 94%;
+    margin: 4em auto;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+}
+
+.logo {
+    line-height: 60px;
+    position: absolute;
+    float: left;
+    margin: -8px 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+nav {
+    position: absolute;
+    width: 100%;
+    line-height: 60px;
+}
+
+nav ul {
+    line-height: 60px;
+    list-style: none;
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+}
+.showingCross{
+    display: block;
+    top: 0px;
+    position: absolute;
+    right: 25px;
+    margin: auto;
+}
+#cross{
+    display: none;   
+}
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 16px 24px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+nav ul li a:hover {
+    text-decoration: none;
+    color: #e3c4a8;
+    font-size: 16px;
+}
+
+.menu-icon {
+    line-height: 60px;
+    width: 100%;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 15px 24px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+}
+.firstBlock{
+    position: relative;
+    background: #fff;
+    margin-top: -100px;
+    box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+@media(max-width: 786px) {
+    #cross{
+        display: block;   
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+    }
+    .menu{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 300px;
+    }
+    .nav{
+        z-index: 100;
+        position:fixed;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        margin: -8px 20px;
+    }
+
+    nav ul {
+        max-height: 0px;
+        background: #fff;
+    }
+
+    nav.black ul {
+        background: #000;
+    }
+
+    .showing {
+        max-height: 426em;
+    }
+
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 24px;
+        text-align: center;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+    .site-blocks-cover h1{
+        color: #fff;
+        font-size: 4rem;
+        font-weight: 400;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+    .site-blocks-cover p{
+        color: #fff;
+        font-size: 2.5rem;
+        line-height: 1.5;
+    }
+    .firstBlock{
+        position: relative;
+        background: #fff;
+        margin-top: -40px;
+        box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.1);
+    }   
+    .video{
+        position: relative;
+        left: 0;
+        widht:100%;
+    }
+    
+    .titre{
+        font-size: 1.4em !important;
+        top: 60px;   
+    }
+    .sousTitre{
+        font-size: 1.1em !important;
+        top: 35px;
+    }
 }
