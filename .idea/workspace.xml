@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets_admin_pages/appartement.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload_files/hero_bg_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload_files/img_1_play.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload_files/toto1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/PropertySearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin_appart/disponibilite.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets_admin_pages/actualite.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets_admin_pages/actualite.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminActualiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminActualiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminAppartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminAppartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontContactController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Locataire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ReservationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReservationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AppartementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AppartementRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/MailerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/MailerService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accueil/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accueil/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_appart/addMedias.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_appart/addMedias.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_appart/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_appart/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_BO.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_BO.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front_actualite/fiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front_actualite/fiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front_actualite/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front_actualite/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front_appart/fiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front_appart/fiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front_appart/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front_appart/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front_contact/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front_contact/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front_reservation/reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front_reservation/reservation.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,33 +14,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/front_contact/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="96" selection-start-line="2" selection-start-column="96" selection-end-line="2" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/FrontContactController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Service/MailerService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="960">
@@ -81,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
+            <state relative-caret-position="960">
               <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
             </state>
           </provider>
@@ -90,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+            <state relative-caret-position="31">
+              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -314,8 +258,8 @@
       <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="714" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectView">
@@ -341,12 +285,6 @@
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="front_contact" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -452,16 +390,17 @@
       <workItem from="1615233707467" duration="725000" />
       <workItem from="1615235841357" duration="325000" />
       <workItem from="1615917764163" duration="919000" />
+      <workItem from="1615919047109" duration="655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64313000" />
+    <option name="totallyTimeSpent" value="64968000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.48354793" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.490701" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -476,7 +415,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.42213115" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.18915662" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.8457831" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -859,15 +798,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="960">
           <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+        <state relative-caret-position="31">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
         </state>
       </provider>
     </entry>
