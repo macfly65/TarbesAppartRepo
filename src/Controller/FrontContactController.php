@@ -23,6 +23,7 @@ class FrontContactController extends AbstractController
      */
     public function index(Request $request, MailerService $mailerService)
     {
+
         $contactHisto = new ContactHistorique;            
         $form = $this->createForm(ContactHistoriqueType::class, $contactHisto);
         $form->handleRequest($request);
@@ -42,7 +43,8 @@ class FrontContactController extends AbstractController
           'notice',
           ' Votre email a bien été envoyé.'
         );
- 
+
+            exit();
         return $this->redirectToRoute('front_contact');
         }
         

@@ -217,6 +217,7 @@ class AdminActualiteController extends AbstractController {
     */  
     public function axSortMediasActu (ActualiteMediasRepository $actualiteMedias, FlashNotificationAjax $flash, Request $request){
            if (isset($_POST['updateOrderMediasActu'])) {
+               //var_dump($_POST['positions']);
             foreach ($_POST['positions'] as $position) {
                 $index = $position[0];
                 $newPosition = $position[1];

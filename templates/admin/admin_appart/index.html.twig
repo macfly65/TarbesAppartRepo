@@ -7,7 +7,28 @@
                 <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
             </a> 
         </div>
-    </div>    
+    </div>
+
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.numAppart) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.residence) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Rechercher</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+
     <table class="table">
   <thead class="thead-dark">
     <tr>

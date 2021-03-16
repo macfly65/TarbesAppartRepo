@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\PropertySearch;
+use App\Form\PropertySearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -35,12 +37,27 @@ class AdminAppartController extends AbstractController
     /**
      * @Route("/admin/appart", name="admin_appart")
      */
-    public function index(AppartementRepository $appart)
+    public function index(AppartementRepository $appart, Request $request)
     {
-       $appartList = $appart->findAll();
+        $appartList = $appart->findAll();
+
+        // Gestion des filtres
+        $search = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $search);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if($_GET['numAppart'] != "" || $_GET['residence'] != "0") {
+                $searchResidence = $searchAppart = 0;
+           $searchAppart = $_GET['numAppart'];
+           $searchResidence = $_GET['residence'];
+           $appartList = $appart->findAppartAdmin($searchAppart,$searchResidence);
+             }
+        }
 
         return $this->render('admin/admin_appart/index.html.twig', [
             'appartList' => $appartList,
+            'form'=> $form->createView()
         ]);
     }
     
@@ -91,7 +108,7 @@ class AdminAppartController extends AbstractController
      */
     public function addMedias($id, AppartementMediasRepository $medias, AppartementRepository $appartement, Request $request) {
         $appartement = $appartement->find($id);
-        $medias = $medias->findBy(['appartement' => $id]);
+        $medias = $medias->findBy(['appartement' => $id],['ordre' => 'ASC']);
 
 
         
@@ -179,7 +196,7 @@ class AdminAppartController extends AbstractController
         ]);
     }
     
-     /** 
+    /**
      * @Route("/ajaxUpdateAlt", name="axUpdateAlt", options={"expose"=true})
     */     
     public function ajaxUpdateAlt(AppartementMediasRepository $appartementMedias, FlashNotificationAjax $flash) { 
@@ -196,9 +213,9 @@ class AdminAppartController extends AbstractController
             'flashMessage' => $flash->notification('success', 'Enregistrement avec succès'),
         ]);  
    }
-   
-         /**
-     * @Route("/admin/appart/medias/delete/{id}", name="delete_one_media_appart")
+
+    /**
+     * @Route("/admin/medias/delete/{id}", name="delete_one_media_appart")
      */
     public function deleteOneMediaAppart($id, AppartementMediasRepository $medias) {
         $medias = $medias->find($id);
@@ -210,5 +227,105 @@ class AdminAppartController extends AbstractController
         
         return $this->redirectToRoute('edit_medias_appart', array('id' => $appartementId ));
     }
-   
+    /**
+     * @Route("/admin/appart/disponibilite", name="admin_appart_dispo")
+     */
+    public function disponibilite(AppartementRepository $appart, Request $request)
+    {
+        $searchResidence = $searchAppart = 0;
+        $appartDispo = [];
+        $allAppart = $appart->findAll();
+
+
+        // Gestion des filtres
+        $search = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $search);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if($_GET['numAppart'] != "" || $_GET['residence'] != "0") {
+
+                //on vide le tableau de tout les apparts
+                $allAppart = [];
+
+                $searchResidence = $searchAppart = 0;
+                $searchAppart = $_GET['numAppart'];
+                $searchResidence = $_GET['residence'];
+                $searchAppart = $appart->findAppartAdmin($searchAppart,$searchResidence);
+
+                foreach ($searchAppart as $appartFinded){
+                    array_push($allAppart, $appartFinded);
+                }
+            }
+        }
+
+        // Récupération des appartement disponibles
+        $dateDay = date("Y-m-d", strtotime("+1 day"));
+        foreach ($allAppart as $appartement){
+            $dispoAppart = $appartement->getDisponibilite()->format('Y-m-d');
+            if($dispoAppart <= $dateDay){
+                array_push($appartDispo, $appartement);
+            }
+        }
+
+        return $this->render('admin/admin_appart/disponibilite.html.twig', [
+            'appartDispo' => $appartDispo,
+            'form'=> $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/ajaxSortMediasAppart", name="axSortMediasAppart")
+     * @param Request $request
+     */
+    public function axSortMediasAppart (AppartementMediasRepository $appartementMedias, FlashNotificationAjax $flash, Request $request){
+        if (isset($_POST['updateOrderMediasAppart'])) {
+           // var_dump($_POST['positions']);
+            foreach ($_POST['positions'] as $position) {
+                $index = $position[0];
+                $newPosition = $position[1];
+
+                var_dump($index);
+                var_dump($newPosition);
+                $appartMedia = $appartementMedias->find($index);
+                $appartMedia->setOrdre($newPosition);
+
+                $this->entityManager->persist($appartMedia);
+                $this->entityManager->flush();
+            }
+
+            return new JsonResponse([
+                'status' => true,
+                'flashMessage' => $flash->notification('success', 'Enregistrement avec succès'),
+            ]);
+        }
+        return new JsonResponse([
+            'status' => false,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/ajaxUpdateAltAppart", name="axUpdateAltAppart")
+     * @param Request $request
+     */
+    public function axUpdateAltAppart (AppartementMediasRepository $appartementMedias, FlashNotificationAjax $flash, Request $request){
+        //enregistrement des Alt des img
+        if(isset($_POST['postAlt'])){
+            $media = $appartementMedias->find($_POST['idImg']);
+            $media->setAlt($_POST['valAlt']);
+
+            $this->entityManager->persist($media);
+            $this->entityManager->flush();
+
+            return new JsonResponse([
+                'status' => true,
+                'flashMessage' => $flash->notification('success', 'Enregistrement avec succès'),
+            ]);
+        }
+        return new JsonResponse([
+            'status' => false,
+        ]);
+    }
+
 }

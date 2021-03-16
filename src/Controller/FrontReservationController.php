@@ -33,9 +33,9 @@ class FrontReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
         $locataire->setLoyer($appart->getLoyerEtudiant());    
         $locataire->addAppartement($appart);
-        $date = date("Y-m-d H:i:s");
-        
-        $locataire->setDateReservation($date);    
+        //$date = date("Y-m-d H:i:s");
+
+       // $locataire->setDateReservation($date);
             
         $this->entityManager->persist($locataire);
         $this->entityManager->flush();

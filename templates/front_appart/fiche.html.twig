@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% set i = 0 %}
 {% block bandeau %}
-    <div class="site-blocks-cover overlay" style="height: calc(30vh);background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+    <div class="site-blocks-cover overlay" style="height: calc(30vh);background-image: url('http://127.0.0.1:8000/upload_files/hero_bg_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
     {% endblock %}
     {% block bandeauTitle %}
         <h1 class="mb-4 titre">Résidence {{appartement.residence.nom}}</h1>
@@ -28,7 +28,7 @@
                     {% for medias in media %}
                         {% set i = i + 1 %}
                         {%if i == 1%}
-                            <div class="col-md-6"  style="min-height:500px;padding-right: 0px;padding-left: 0px;background-position: 50% 50%;background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ medias.nomFichier) }} ')">
+                            <div class="col-md-6"  style="min-height:500px;padding-right: 0px;padding-left: 0px;background-position: 50% 50%;background-image: url('{{asset('http://127.0.0.1:8000/upload_files/' ~ medias.nomFichier) }} ')">
                             {%endif%}
                         {%endfor%}
                     </div>

@@ -11,9 +11,11 @@
                             {{ form_end(appartMedias)}} 
  </div>
                <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="container-perso-bleu">
+                   <ul id="sortable" data-id="" class="connectedSortable"  style="list-style-type: none;margin-left: -25px; display: contents" >
                             {% for media in medias %}
-                                <div style="flex-direction: column;display: flex;align-items: center;">                 
-               <img src="{{ asset( 'upload_files/' ~ media.nomFichier) | imagine_filter('bo_list') }}"  style="padding:15px 0px">
+                       <li class="" data-index="{{media.id}}" data-position="{{media.ordre}}" style="" >
+                       <div style="flex-direction: column;display: flex;align-items: center;">
+                     <img src="{{ asset( 'upload_files/' ~ media.nomFichier) | imagine_filter('bo_list') }}"  style="padding:15px 0px">
                         <form action="" method="post" id="test" class="form-example" data-id="{{media.id}}" >
                         <div class="form-example">
                             <label for="name">Alt : </label>
@@ -23,33 +25,13 @@
                <a id="target" style="" href="{{ path('delete_one_media_appart',{id: media.id} ) }}" role="button">
                <img src="{{ asset('/Fichiers/autopromo/iconfinder_cross-24_103181.png' ) }}" alt="Modifier autopromo" title="Modifier autopromo" width="20" height="20">    </a>
                                 </div>
-                            {% endfor %}
-               </div>                
-
-                            
+                       </li>
+                       {% endfor %}
+                   </ul>
+               </div>
 </main>
 {% endblock %}
 {% block javascripts %}
-    <script>
-    function updateAlt(id, valueAlt) {
-            $.ajax({
-                url: '/../ajaxUpdateAlt',
-                method: 'POST',
-                dataType: 'text',
-                data: {
-                    postAlt: 1,
-                    idImg: id,
-                    valAlt: valueAlt
-                }, 
-                 success : function(){
-             $('#notification').show();
-             $( "#notification" ).hide(4000);
-        },
-        error : function(result, statut, erreur){
-            console.log('sortCategCatalogue > ERREUR AJAX');
-        }
-    });    
-}
-</script>
+        <script src="{{ absolute_url((asset('/assets_admin_pages/appartement.js'))) }}"></script>
 {#    {{ encore_entry_script_tags('appartement') }}#}
 {% endblock %}

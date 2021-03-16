@@ -98,6 +98,7 @@ function updateAlt(id, valueAlt) {
                positions.push([$(this).attr('data-index'), $(this).attr('data-position')]);
                $(this).removeClass('updated');
             });
+
             $.ajax({
                url: '../../ajaxSortMediasActu',
                method: 'POST',

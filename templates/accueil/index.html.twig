@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Accueil Tarbes apartement !{% endblock %}
 {% block bandeau %}
-    <div class="site-blocks-cover overlay" style="background-image: url('https://127.0.0.1:8000/upload_files/hero_bg_2.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+<div class="site-blocks-cover overlay"
+     style="background-image: url('{{asset('http://127.0.0.1:8000/upload_files/fe95c4a2bd9ad4ca95cfb0c40d91a176.jpeg') }} ')"
+     data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
     {% endblock %}
     {% block bandeauTitle %}
-        <h1 class="mb-4 titre">Excellent Space For Your Next Home</h1>
-        <p class="mb-5 sousTitre">1105 Madison Plaza Suite 120 Chesapeake, CA, California</p>
-        <p><a href="#" class="btn btn-primary px-5 py-3">Take a Tour</a></p>
+        <h1 class="mb-4 titre">Résidence étudiante</h1>
+        <p class="mb-5 sousTitre">Tarbes</p>
+        <p><a href="#" class="btn btn-primary px-5 py-3">Visiter un appartement</a></p>
 
     {% endblock %}
 
@@ -19,17 +19,16 @@
                         <div class="col-md-6 text" style="padding:30px"><h2>{{autoPromo.titre}}</h2>
                             <p class="mb-5">{{autoPromo.sousTitre}}</p>
                             <ul class="property-list-details mb-5">
-                                <li class="text-black">Property Name: <strong class="text-black">Marga Luxury Suite</strong></li>
-                                <li>Room: <strong>2</strong></li>
-                                <li>Total Area: <strong>482 Square Feets</strong></li>
-                                <li>Category: <strong>Modern House</strong></li>
-                                <li>Lunch Date: Jan 20, 2019<strong></strong></li>
+                                <li class="text-black">Nom de la résidence: <strong class="text-black">Oxygène</strong></li>
+                                <li>Chambre : <strong>72</strong></li>
+                                <li>Adresse : <strong>45 avenue d'Azereix</strong></li>
+                                <li>disponiblilité : Jan 20, 2021<strong></strong></li>
                             </ul>
                             <p>
-                                <a href="" class="btn btn-primary px-4 py-3">Get Details</a></p>
+                                <a href="" class="btn btn-primary px-4 py-3">Plus de détail</a></p>
                         </div>
 
-                        <div class="col-md-6"  style="min-height:500px;padding-right: 0px;padding-left: 0px;background-position: 50% 50%;background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')">
+                        <div class="col-md-6"  style="min-height:500px;padding-right: 0px;padding-left: 0px;background-position: 50% 50%;background-image: url('{{asset('http://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')">
 
 
                             {#                  <img src="{{ asset( 'upload_files/547727cc1b8f5e54a381032c9a5559e7.jpeg') }}" alt="Image" style="height: 100% !important"  class="img-fluid">
@@ -72,7 +71,7 @@
                                 <a href="{{ path('fiche_appart',{id: appartement.id}) }}" class="unit-9">
                                     {% for media in appartement.images.snapshot %}
                                         {% if media.ordre == 1 %}
-                                            <div class="image" style="background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ media.nomFichier) }} ')"></div>
+                                            <div class="image" style="background-image: url('{{asset('http://127.0.0.1:8000/upload_files/' ~ media.nomFichier) }} ')"></div>
                                         {% endif %}
                                     {% endfor %}
 
@@ -151,7 +150,7 @@
                             {% if i == 1%}
 
                                 <a href="#" class="col1 unit-9 no-height" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="image" style="background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')"></div>
+                                    <div class="image" style="background-image: url('{{asset('http://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')"></div>
                                     <div class="unit-9-content">
                                         <h2>{{autoPromo.titre}}</h2>
                                         <span>{{autoPromo.sousTitre}}</span>
@@ -171,7 +170,7 @@
                                 {% if i > 1 and i <= 3 %}
 
                                     <a href="#" class="col2-row1 unit-9 no-height " data-aos="fade-up" data-aos-delay="200">
-                                        <div class="image" style="background-image: url('{{asset('https://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')"></div>
+                                        <div class="image" style="background-image: url('{{asset('http://127.0.0.1:8000/upload_files/' ~ autoPromo.image) }} ')"></div>
                                         <div class="unit-9-content">
                                             <h2>{{autoPromo.titre}}</h2>
                                             <span>{{autoPromo.sousTitre}}</span>

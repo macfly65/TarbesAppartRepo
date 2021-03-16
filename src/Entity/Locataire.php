@@ -39,12 +39,12 @@ class Locataire
     private $caution;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateArivee;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateDepart;
 

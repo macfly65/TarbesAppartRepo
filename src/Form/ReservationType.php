@@ -33,7 +33,7 @@ class ReservationType extends AbstractType
                     ],
                 ])
             ->add('dateNaissancce', DateType::class, [
-                  'label'=>"Date d'arivée",
+                  'label'=>"Date de naissance",
                   'widget'=>'single_text',
                   'required'=>true,
                 ])

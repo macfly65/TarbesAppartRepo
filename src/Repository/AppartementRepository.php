@@ -18,7 +18,35 @@ class AppartementRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Appartement::class);
     }
-    
+
+    public function findAppartAdmin($numero, int $residence)
+    {
+        $qb = $this->createQueryBuilder('b');
+        if(!$numero == ""){
+            $qb->where('b.numero = :numero')->setParameter('numero', $numero);
+        }
+        if(!$residence == 0){
+            $qb->andWhere('b.residence = :residence')->setParameter('residence', $residence);
+        }
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
+    public function findAppartAdminDispo($numero, int $residence, $dateDay)
+    {
+        $qb = $this->createQueryBuilder('b');
+        if(!$numero == ""){
+            $qb->where('b.numero = :numero')->setParameter('numero', $numero);
+        }
+        if(!$residence == 0){
+            $qb->andWhere('b.residence = :residence')->setParameter('residence', $residence);
+        }
+        $qb->andWhere('b.disponibilite != :dateDay')->setParameter('dateDay', $dateDay);
+
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
        public function findAppartfront()
     {
         return $this->createQueryBuilder('b')
