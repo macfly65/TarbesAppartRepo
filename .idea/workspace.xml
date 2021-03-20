@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="" />
+    <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/aos.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/aoss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/progress-bar.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/progressbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app_bo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app_bo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,28 +24,42 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+            <state relative-caret-position="320">
+              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport.php">
+        <entry file="file://$PROJECT_DIR$/assets/js/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+            <state relative-caret-position="120">
+              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.env">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/app_bo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+            <state relative-caret-position="302">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,8 +157,14 @@
         <option value="$PROJECT_DIR$/src/Controller/FrontContactController.php" />
         <option value="$PROJECT_DIR$/src/Service/MailerService.php" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/assets/js/login.js" />
+        <option value="$PROJECT_DIR$/assets/js/app_bo.js" />
+        <option value="$PROJECT_DIR$/assets/js/app.js" />
       </list>
     </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -259,7 +289,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="714" />
+    <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectView">
@@ -267,37 +297,44 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="TarbesAppartRepo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TarbesAppartRepo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="TarbesAppartRepo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TarbesAppartRepo" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="TarbesAppartRepo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TarbesAppartRepo" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TarbesAppartRepo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TarbesAppartRepo" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/admin_appart" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -391,16 +428,19 @@
       <workItem from="1615235841357" duration="325000" />
       <workItem from="1615917764163" duration="919000" />
       <workItem from="1615919047109" duration="655000" />
+      <workItem from="1616228290287" duration="881000" />
+      <workItem from="1616229222587" duration="534000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64968000" />
+    <option name="totallyTimeSpent" value="66383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.490701" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24678111" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -415,7 +455,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.42213115" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.8457831" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.47228914" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -448,37 +488,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/front_actualite/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="78" column="54" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
-          <folding>
-            <element signature="e#99#197#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front_appart/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="96" selection-start-line="2" selection-start-column="96" selection-end-line="2" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/FrontReservationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/front_appart/fiche.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/front_reservation/reservation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -789,24 +798,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport.php" />
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
+        <state relative-caret-position="394">
           <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app_bo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -9,14 +9,14 @@
 import '../css/global.scss';
 
 import '../css/animate.css';
-import '../css/aos.css';
+import '../css/aoss.css';
 import '../css/app.css';
 import '../css/fl-bigmug-line.css';
 import '../css/magnific-popup.css';
 import '../css/mediaelementplayer.css';
 import '../css/owl.carousel.min.css';
 import '../css/owl.theme.default.min.css';
-import '../css/progress-bar.css';
+import '../css/progressbar.css';
 import '../css/style.css';
 
 import '../css/_site-base.scss';
