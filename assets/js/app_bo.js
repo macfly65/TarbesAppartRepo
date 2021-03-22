@@ -6,22 +6,22 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-//import '../css/global.scss';
+import '../css/global.scss';
 
-import '../css/animate.css';
-import '../css/aoss.css';
-import '../css/app.css';
-import '../css/fl-bigmug-line.css';
-import '../css/magnific-popup.css';
-import '../css/mediaelementplayer.css';
-import '../css/owl.carousel.min.css';
-import '../css/owl.theme.default.min.css';
-import '../css/progressbar.css';
-import '../css/style.css';
-import '../css/_site-base.scss';
-import '../css/_site-blocks.scss';
-import '../css/_site-navbar.scss';
-import '../css/style.scss';
+//import '../css/animate.css';
+//import '../css/aoss.css';
+//import '../css/app.css';
+//import '../css/fl-bigmug-line.css';
+//import '../css/magnific-popup.css';
+//import '../css/mediaelementplayer.css';
+//import '../css/owl.carousel.min.css';
+//import '../css/owl.theme.default.min.css';
+//import '../css/progressbar.css';
+//import '../css/style.css';
+//import '../css/_site-base.scss';
+//import '../css/_site-blocks.scss';
+//import '../css/_site-navbar.scss';
+//import '../css/style.scss';
 
 
 
@@ -35,29 +35,29 @@ const $ = require('jquery');
 require('bootstrap');
 
 // or you can include specific pieces
- require('bootstrap/js/dist/tooltip');
- require('bootstrap/js/dist/popover');
+require('bootstrap/js/dist/tooltip');
+require('bootstrap/js/dist/popover');
 
 
 function saveNewPositions() {
-            var positions = [];
-            $('.updated').each(function () {
-               positions.push([$(this).attr('data-index'), $(this).attr('data-position')]);
-               $(this).removeClass('updated');
-            });
+    var positions = [];
+    $('.updated').each(function () {
+        positions.push([$(this).attr('data-index'), $(this).attr('data-position')]);
+        $(this).removeClass('updated');
+    });
 
-            $.ajax({
-               url: 'autopromo',
-               method: 'POST',
-               dataType: 'text',
-               data: {
-                   update: 1,
-                   positions: positions
-               }, success: function (response) {
-                     $('#notification').show();
-                     $( "#notification" ).hide(4000);
-               }
-            });
+    $.ajax({
+        url: 'autopromo',
+        method: 'POST',
+        dataType: 'text',
+        data: {
+            update: 1,
+            positions: positions
+        }, success: function (response) {
+            $('#notification').show();
+            $( "#notification" ).hide(4000);
+        }
+    });
 }
 $(".alert").delay(4000).hide("slow");
 
@@ -66,16 +66,16 @@ $(".alert").delay(4000).hide("slow");
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
     */
-    (function($) {
+(function($) {
     "use strict";
 
     // Add active state to sidbar nav links
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-        $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
-            if (this.href === path) {
-                $(this).addClass("active");
-            }
-        });
+    $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+        if (this.href === path) {
+            $(this).addClass("active");
+        }
+    });
 
     // Toggle the side navigation
     $("#sidebarToggle").on("click", function(e) {
@@ -83,6 +83,4 @@ $(".alert").delay(4000).hide("slow");
         $("body").toggleClass("sb-sidenav-toggled");
     });
 })(jQuery);
-
-
 

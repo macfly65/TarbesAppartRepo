@@ -9,7 +9,6 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 /**
  * @method Appartement|null find($id, $lockMode = null, $lockVersion = null)
  * @method Appartement|null findOneBy(array $criteria, array $orderBy = null)
- * @method Appartement[]    findAll()
  * @method Appartement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class AppartementRepository extends ServiceEntityRepository
@@ -35,12 +34,7 @@ class AppartementRepository extends ServiceEntityRepository
     public function findAppartAdminDispo($numero, int $residence, $dateDay)
     {
         $qb = $this->createQueryBuilder('b');
-        if(!$numero == ""){
-            $qb->where('b.numero = :numero')->setParameter('numero', $numero);
-        }
-        if(!$residence == 0){
-            $qb->andWhere('b.residence = :residence')->setParameter('residence', $residence);
-        }
+
         $qb->andWhere('b.disponibilite != :dateDay')->setParameter('dateDay', $dateDay);
 
         $query = $qb->getQuery();
@@ -62,6 +56,11 @@ class AppartementRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function findAll()
+    {
+        return $this->findBy(array(), array('disponibilite' => 'ASC'));
     }
 
     // /**

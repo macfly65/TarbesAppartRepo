@@ -6,7 +6,7 @@ use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Form\DisponibiliteFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Appartement;
@@ -32,6 +32,8 @@ class AdminAppartController extends AbstractController
 
     public function __construct(EntityManagerInterface $entityManager) {
         $this->entityManager = $entityManager;
+        setlocale(LC_TIME, "fr_FR");
+
     }
 
     /**
@@ -109,8 +111,6 @@ class AdminAppartController extends AbstractController
     public function addMedias($id, AppartementMediasRepository $medias, AppartementRepository $appartement, Request $request) {
         $appartement = $appartement->find($id);
         $medias = $medias->findBy(['appartement' => $id],['ordre' => 'ASC']);
-
-
         
         $appartementMedias = new AppartementMedias;
         $form = $this->createFormBuilder($appartementMedias)
@@ -219,7 +219,7 @@ class AdminAppartController extends AbstractController
      */
     public function deleteOneMediaAppart($id, AppartementMediasRepository $medias) {
         $medias = $medias->find($id);
-                
+
         $this->entityManager->remove($medias);
         $this->entityManager->flush();
         $appartement = $medias->getAppartement(); 
@@ -230,34 +230,11 @@ class AdminAppartController extends AbstractController
     /**
      * @Route("/admin/appart/disponibilite", name="admin_appart_dispo")
      */
-    public function disponibilite(AppartementRepository $appart, Request $request)
+    public function disponibilite(AppartementRepository $appart, Request $request, \Swift_Mailer $mailer)
     {
         $searchResidence = $searchAppart = 0;
         $appartDispo = [];
         $allAppart = $appart->findAll();
-
-
-        // Gestion des filtres
-        $search = new PropertySearch();
-        $form = $this->createForm(PropertySearchType::class, $search);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            if($_GET['numAppart'] != "" || $_GET['residence'] != "0") {
-
-                //on vide le tableau de tout les apparts
-                $allAppart = [];
-
-                $searchResidence = $searchAppart = 0;
-                $searchAppart = $_GET['numAppart'];
-                $searchResidence = $_GET['residence'];
-                $searchAppart = $appart->findAppartAdmin($searchAppart,$searchResidence);
-
-                foreach ($searchAppart as $appartFinded){
-                    array_push($allAppart, $appartFinded);
-                }
-            }
-        }
 
         // Récupération des appartement disponibles
         $dateDay = date("Y-m-d", strtotime("+1 day"));
@@ -267,10 +244,35 @@ class AdminAppartController extends AbstractController
                 array_push($appartDispo, $appartement);
             }
         }
+        // Gestion des filtres
+        $form = $this->createForm(DisponibiliteFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $dispos = $form->getData();
+
+            $message = (new \Swift_Message('disponibilités'))
+                // On attribue l'expéditeur
+                ->setFrom($dispos['Email'])
+
+                // On attribue le destinataire
+                ->setTo('florent.bvs@gmail.com')
+
+                // On crée le texte avec la vue
+                ->setBody(
+                    $this->renderView(
+                        'layout_emails/disponibilite.html.twig', compact('dispos')
+                    ),
+                    'text/html'
+                );
+             $mailer->send($message);
+            $this->addFlash('message', 'Votre message a été transmis, nous vous répondrons dans les meilleurs délais.'); // Permet un message flash de renvoi
+        }
+
 
         return $this->render('admin/admin_appart/disponibilite.html.twig', [
             'appartDispo' => $appartDispo,
-            'form'=> $form->createView()
+            'disposForm' => $form->createView()
         ]);
     }
 

@@ -1,6 +1,8 @@
 {% extends 'base_BO.html.twig' %}
 {% block body %}
-<div class="row mb-3">
+    {% set dispoMonth = '' %}
+
+    <div class="row mb-3">
         <div class="col-md-11"></div>
         <div class="col-6 col-md-1 themed-grid-col">
             <a href="{{ path('create_appart') }}">     
@@ -9,23 +11,18 @@
         </div>
     </div>
 
-    <div class="jumbotron">
-        <div class="container">
-            {{ form_start(form) }}
-            <div class="form-row">
-                <div class="col">
-                    {{ form_row(form.numAppart) }}
-                </div>
-                <div class="col">
-                    {{ form_row(form.residence) }}
-                </div>
-                <div class="col">
-                    <button class="btn btn-primary">Rechercher</button>
-                </div>
-            </div>
-            {{ form_end(form) }}
-        </div>
+<div class="form-row">
+    <div class="col-md-3">
+        {{ form_start(disposForm)}}
+        {{ form_row(disposForm.Nom, {'attr': {'placeholder' : "nom"}}) }}
+        {{ form_row(disposForm.Email, {'attr': {'placeholder' : "email"}}) }}
+        {{ form_row(disposForm.Texte, {'attr': {'placeholder' : "texte"}}) }}
+        {{ form_row(disposForm.Arrhes, {'attr': {'placeholder' : "Arrhes"}}) }}
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        {{ form_end(disposForm)}}
     </div>
+
+<div class="col-md-9">
 
     <table class="table">
   <thead class="thead-dark">
@@ -43,14 +40,24 @@
     </tr>
   </thead>
   <tbody>
+
       {% for appart in appartDispo %}
-      {% set i = 0 %}    
-      <tr>
-      <th scope="row">{{appart.numero}}</th>
+      {% set i = 0 %}
+      {% set currentMonth = appart.disponibilite|date('F') %}
+
+{% if currentMonth != dispoMonth %}
+    {% set dispoMonth = currentMonth %}
+    <tr><td colspan="12" style="height:2px; width: 100%; background-color:#899caf;color: #ffffff;">{{ dispoMonth }} </td></tr>
+{%endif%}
+
+          <tr>
+              <th scope="row"> <a class="" href="{{ path('edit_appart',{id: appart.id}) }}" role="button">{{appart.numero}}</a></th>
       <td>{% for medias in appart.images.snapshot %}
           {% set i = i + 1 %}
           {% if i == 1 %}
-      <img src="{{ asset('/upload_files/' ~ medias.nomFichier) | imagine_filter('mini_appart') }}" class="rounded float-right" alt="...">
+          <a class="" href="{{ path('edit_appart',{id: appart.id}) }}" role="button">
+              <img src="{{ asset('/upload_files/' ~ medias.nomFichier) | imagine_filter('mini_appart') }}" class="rounded float-right" alt="...">
+          </a>
           {%endif%}
           {%endfor%}
       </td>
@@ -67,13 +74,14 @@
       <td>
           <div style="display:flex;justify-content: flex-end;">
             <a class="" href="{{ path('edit_appart',{id: appart.id}) }}" role="button">
-                                <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Mofifier l'utilisateur" title="Mofifier l'utilisateur" width="22" height="22">
-                            </a>
+             <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Mofifier l'utilisateur" title="Mofifier l'utilisateur" width="22" height="22">
+            </a>
           </div>                      
       </td>
     </tr>
     {%endfor%}
     
 </table>
-    
+</div>
+</div>
 {% endblock %}
