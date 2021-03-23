@@ -7,11 +7,16 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class DisponibiliteFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $roles = ['role1', 'role2', 'role3'];
+
         $builder
             ->add('Nom')
             ->add('Email', EmailType::class)
@@ -20,7 +25,6 @@ class DisponibiliteFormType extends AbstractType
                 'empty_data' => 'Default value'
             ))
             ->add('Arrhes')
-
         ;
     }
 

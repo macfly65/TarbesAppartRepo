@@ -10,16 +10,28 @@
             </a> 
         </div>
     </div>
+     {% set texte = "<p>Nos locations sont pour une année fixe elle débute au 1er juillet pour se terminer le 30 juin de l'année suivante et peuvent se renouveler par tacite reconduction.</p>
 
-<div class="form-row">
+    <p>Vous pouvez réserver dès aujourd'hui un logement dans nos résidences en versant 150 €uros d'arrhes.</p></br>
+
+    Vous ne prenez aucun risque en réservant préalablement.</p>
+
+    <p> En effet si vous échouez à vos examens ou si vous n'êtes pas admis dans l'établissement que vous souhaitez les arrhes de réservation  vous seront restitués en intégralité et ce jusqu'au début juillet 2021.
+
+        Ce principe de location vous permet de choisir un logement adapté à vos besoins sans engagement définitif de votre part. </p>
+
+    Pour de plus amples renseignements vous pouvez me joindre au 06.31.53.18.42
+
+    </p></br>" %}
+
+    <div class="form-row">
     <div class="col-md-3">
         {{ form_start(disposForm)}}
         {{ form_row(disposForm.Nom, {'attr': {'placeholder' : "nom"}}) }}
         {{ form_row(disposForm.Email, {'attr': {'placeholder' : "email"}}) }}
-        {{ form_row(disposForm.Texte, {'attr': {'placeholder' : "texte"}}) }}
+        {{ form_row(disposForm.Texte, {'value' : texte}) }}
         {{ form_row(disposForm.Arrhes, {'attr': {'placeholder' : "Arrhes"}}) }}
         <button type="submit" class="btn btn-success">Enregistrer</button>
-        {{ form_end(disposForm)}}
     </div>
 
 <div class="col-md-9">
@@ -27,7 +39,10 @@
     <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Numéro</th>
+        <th scope="col">
+            *
+        </th>
+        <th scope="col">Numéro</th>
       <th scope="col">Photo</th>
       <th scope="col">Résidence</th>
       <th scope="col">Type</th>
@@ -49,8 +64,9 @@
     {% set dispoMonth = currentMonth %}
     <tr><td colspan="12" style="height:2px; width: 100%; background-color:#899caf;color: #ffffff;">{{ dispoMonth }} </td></tr>
 {%endif%}
-
           <tr>
+              <td>  <input type="checkbox" id="" name="appart[]" value="{{ appart.id}}">
+              </td>
               <th scope="row"> <a class="" href="{{ path('edit_appart',{id: appart.id}) }}" role="button">{{appart.numero}}</a></th>
       <td>{% for medias in appart.images.snapshot %}
           {% set i = i + 1 %}
@@ -80,8 +96,8 @@
       </td>
     </tr>
     {%endfor%}
-    
-</table>
+      {{ form_end(disposForm)}}
+    </table>
 </div>
 </div>
 {% endblock %}

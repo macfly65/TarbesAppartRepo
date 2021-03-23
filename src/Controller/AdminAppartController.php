@@ -249,6 +249,7 @@ class AdminAppartController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $apparts = $_POST['appart'];
             $dispos = $form->getData();
 
             $message = (new \Swift_Message('disponibilités'))
@@ -261,8 +262,7 @@ class AdminAppartController extends AbstractController
                 // On crée le texte avec la vue
                 ->setBody(
                     $this->renderView(
-                        'layout_emails/disponibilite.html.twig', compact('dispos')
-                    ),
+                        'layout_emails/disponibilite.html.twig', compact('dispos','apparts')),
                     'text/html'
                 );
              $mailer->send($message);
