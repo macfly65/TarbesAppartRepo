@@ -33,21 +33,44 @@
     </style>
 </head>
 <body>
+{% set texteArrhes = "Nos locations sont pour une année fixe elle débute au 1er juillet pour se terminer le 30 juin de l'année suivante et peuvent se renouveler par tacite reconduction.
+
+    Vous pouvez réserver dès aujourd'hui un logement dans nos résidences en versant 150 €uros d'arrhes.
+
+    Vous ne prenez aucun risque en réservant préalablement.
+
+     En effet si vous échouez à vos examens ou si vous n'êtes pas admis dans l'établissement que vous souhaitez les arrhes de réservation  vous seront restitués en intégralité et ce jusqu'au début juillet 2021.
+
+     Ce principe de location vous permet de choisir un logement adapté à vos besoins sans engagement définitif de votre part.
+
+    Pour de plus amples renseignements vous pouvez me joindre au 06.31.53.18.42" %}
+
+{% set texteWithoutArrhes = "Nos locations sont pour une année fixe elle débute au 1er juillet pour se terminer le 30 juin de l'année suivante et peuvent se renouveler par tacite reconduction.
+
+    Pour de plus amples renseignements vous pouvez me joindre au 06.31.53.18.42" %}
+
+
+{% if  dispos.Arrhes == 1 %}
+    {% set texte = texteArrhes %}
+{% else %}
+    {% set texte = texteWithoutArrhes %}
+{% endif %}
+
 <table class="body-wrap">
     <tr>
         <td class="container">
-            <!-- Message start -->
             <table>
                 <tr>
                     <td align="center" class="masthead">
-                        <h1> Bonjour !</h1>
+                        <h1>Bonjour {{dispos.Nom}} </h1>
                     </td>
                 </tr>
                 <tr>
                     <td class="content">
-                        {{dispos.Texte}}                                 <h2>Voici les appartement disponible :</h2>
+                        {{texte}}
+                        <h2>Voici les appartement disponible :</h2>
                         {% for appart in apparts %}
-                            <a href="http://127.0.0.1:8000/appartement/fiche/{{ appart }}">Visitez la fiche de l'appartement N°{{ appart }}</a></br></br>
+                            <a href="http://127.0.0.1:8000/appartement/fiche/{{appart}}">Visitez la fiche de l'appartement N°{{ appart }}</a></br></br>
                         {% endfor %}
 
                     </td>
@@ -62,7 +85,6 @@
                 <tr>
                     <td class="content footer" align="center">
                         <p>Envoyé par <a href="#">Evasion</a>, 6500 Tarbes</p>
-                        <p><a href="mailto:">hello@company.com</a> | <a href="#">Unsubscribe</a></p>
                     </td>
                 </tr>
             </table>
@@ -70,4 +92,4 @@
     </tr>
 </table>
 </body>
-</html>l>
+</html>

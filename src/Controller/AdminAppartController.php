@@ -24,6 +24,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Service\FlashNotificationAjax;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class AdminAppartController extends AbstractController
@@ -248,7 +249,7 @@ class AdminAppartController extends AbstractController
         $form = $this->createForm(DisponibiliteFormType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && isset($_POST['appart'])) {
             $apparts = $_POST['appart'];
             $dispos = $form->getData();
 
@@ -266,7 +267,11 @@ class AdminAppartController extends AbstractController
                     'text/html'
                 );
              $mailer->send($message);
-            $this->addFlash('message', 'Votre message a été transmis, nous vous répondrons dans les meilleurs délais.'); // Permet un message flash de renvoi
+
+            $this->addFlash(
+                'notice',
+                'Votre message a été transmis !'
+            );            return $this->redirectToRoute('admin_appart_dispo');
         }
 
 

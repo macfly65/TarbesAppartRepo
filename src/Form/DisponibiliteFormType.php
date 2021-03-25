@@ -24,7 +24,10 @@ class DisponibiliteFormType extends AbstractType
                 'label' => 'Field',
                 'empty_data' => 'Default value'
             ))
-            ->add('Arrhes')
+            ->add('Arrhes', CheckboxType::class, [
+                'label'    => 'Arrhes de réservation ?',
+                'required' => false,
+            ]);
         ;
     }
 
