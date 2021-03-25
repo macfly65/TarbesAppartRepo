@@ -1,0 +1,54 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+    {% set texteArrhes = "Nos locations sont pour une année fixe elle débute au 1er juillet pour se terminer le 30 juin de l'année suivante et peuvent se renouveler par tacite reconduction.
+
+    Vous pouvez réserver dès aujourd'hui un logement dans nos résidences en versant 150 €uros d'arrhes.
+
+    Vous ne prenez aucun risque en réservant préalablement.
+
+     En effet si vous échouez à vos examens ou si vous n'êtes pas admis dans l'établissement que vous souhaitez les arrhes de réservation  vous seront restitués en intégralité et ce jusqu'au début juillet 2021.
+
+     Ce principe de location vous permet de choisir un logement adapté à vos besoins sans engagement définitif de votre part.
+
+    Pour de plus amples renseignements vous pouvez me joindre au 06.31.53.18.42" %}
+
+    {% set texteWithoutArrhes = "Nos locations sont pour une année fixe elle débute au 1er juillet pour se terminer le 30 juin de l'année suivante et peuvent se renouveler par tacite reconduction.
+
+
+    Pour de plus amples renseignements vous pouvez me joindre au 06.31.53.18.42" %}
+    {% set nom =  contacts.nom  %}
+    {% set email =  contacts.contFrom %}
+    <div class="row">
+        <div class="col-md-12">
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-success" style="margin:25px 0px" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+<a class="container-fluid">
+    <h1 class="mt-4">Message de {{ contacts.nom }} {{ contacts.prenom }}</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p class="mb-0">
+            {{ contacts.message }}
+            </p>
+        </div>
+    </div>
+    <div class="form-row card-body">
+        <div class="col-md-12">
+            {{ form_start(contactForm)}}
+            {{ form_row(contactForm.nom, {'value' : nom }) }}
+            {{ form_row(contactForm.contFrom,{'value' : email}) }}
+            {{ form_row(contactForm.message, {'value' : texteArrhes}) }}
+            <button type="submit" class="btn btn-success">Répondre</button>
+            {{ form_end(contactForm)}}
+        </div>
+    </div>
+   <a href="http://127.0.0.1:8000/admin/appart/disponibilite">Envoi des disponiblitées ?</a>
+</div>
+
+
+{% endblock %}

@@ -231,11 +231,11 @@ class AdminAppartController extends AbstractController
     /**
      * @Route("/admin/appart/disponibilite", name="admin_appart_dispo")
      */
-    public function disponibilite(AppartementRepository $appart, Request $request, \Swift_Mailer $mailer)
+    public function disponibilite(AppartementRepository $appartRepo, Request $request, \Swift_Mailer $mailer)
     {
         $searchResidence = $searchAppart = 0;
         $appartDispo = [];
-        $allAppart = $appart->findAll();
+        $allAppart = $appartRepo->findAll();
 
         // Récupération des appartement disponibles
         $dateDay = date("Y-m-d", strtotime("+1 day"));
@@ -245,12 +245,12 @@ class AdminAppartController extends AbstractController
                 array_push($appartDispo, $appartement);
             }
         }
-        // Gestion des filtres
         $form = $this->createForm(DisponibiliteFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid() && isset($_POST['appart'])) {
             $apparts = $_POST['appart'];
+
             $dispos = $form->getData();
 
             $message = (new \Swift_Message('disponibilités'))

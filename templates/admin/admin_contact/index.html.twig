@@ -10,9 +10,9 @@
       <th scope="col">Email</th>
       <th scope="col">Date</th>
       <th scope="col">Message</th>
+      <th scope="col"></th>
     </tr>
   </thead>
-  <tbody>
       {% for contact in contacts %}
     <tr>
       <td>{{contact.nom}}</td>
@@ -20,8 +20,15 @@
       <td>{{contact.contFrom}}</td>
       <td>{{contact.date|date("Y-m-d")}}</td>
       <td>{{contact.message}}</td>
+      <td>
+        <div style="display:flex;justify-content: flex-end;">
+          <a class="" href="{{ path('contactResp',{id: contact.id}) }}" role="button">
+            <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Répondre" title="Mofifier l'utilisateur" width="22" height="22">
+          </a>
+        </div>
+      </td>
     </tr>
     {%endfor%}
+    </table>
 {% endblock %}
-
 
