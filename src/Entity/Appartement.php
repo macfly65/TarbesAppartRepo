@@ -93,12 +93,18 @@ class Appartement
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\PT", mappedBy="appartement")
+     */
+    private $PTid;
+
 
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->locataire = new ArrayCollection();
+        $this->PTid = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -315,6 +321,37 @@ class Appartement
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PT[]
+     */
+    public function getPTid(): Collection
+    {
+        return $this->PTid;
+    }
+
+    public function addPTid(PT $pTid): self
+    {
+        if (!$this->PTid->contains($pTid)) {
+            $this->PTid[] = $pTid;
+            $pTid->setAppartement($this);
+        }
+
+        return $this;
+    }
+
+    public function removePTid(PT $pTid): self
+    {
+        if ($this->PTid->contains($pTid)) {
+            $this->PTid->removeElement($pTid);
+            // set the owning side to null (unless already changed)
+            if ($pTid->getAppartement() === $this) {
+                $pTid->setAppartement(null);
+            }
+        }
 
         return $this;
     }
