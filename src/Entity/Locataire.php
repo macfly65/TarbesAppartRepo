@@ -178,6 +178,21 @@ class Locataire
      */
     private $typeCaution;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $charge;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $parking;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $garage;
+
     public function __construct()
     {
         $this->appartements = new ArrayCollection();
@@ -582,6 +597,42 @@ class Locataire
     public function setTypeCaution(?string $typeCaution): self
     {
         $this->typeCaution = $typeCaution;
+
+        return $this;
+    }
+
+    public function getCharge(): ?int
+    {
+        return $this->charge;
+    }
+
+    public function setCharge(?int $charge): self
+    {
+        $this->charge = $charge;
+
+        return $this;
+    }
+
+    public function getParking(): ?int
+    {
+        return $this->parking;
+    }
+
+    public function setParking(?int $parking): self
+    {
+        $this->parking = $parking;
+
+        return $this;
+    }
+
+    public function getGarage(): ?int
+    {
+        return $this->garage;
+    }
+
+    public function setGarage(?int $garage): self
+    {
+        $this->garage = $garage;
 
         return $this;
     }

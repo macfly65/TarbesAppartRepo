@@ -1,0 +1,29 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+<div class="row mb-3">
+        <div class="col-md-11"></div>
+        <div class="col-6 col-md-1 themed-grid-col">
+            <a href="{{ path('create_appart') }}">     
+                <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+            </a> 
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.numAppart) }}
+                    {{ form_row(form.dateDebutQuitance) }}
+                    {{ form_row(form.dateFinQuitance) }}
+                    {{ form_row(form.datePaiement) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Rechercher</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
