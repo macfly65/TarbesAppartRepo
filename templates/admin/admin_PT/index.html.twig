@@ -1,0 +1,47 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+    <div class="row mb-3">
+        <div class="col-md-11"></div>
+        <div class="col-6 col-md-1 themed-grid-col">
+            <a href="{{ path('create_appart') }}">
+                <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+            </a>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Statut</th>
+            <th scope="col">Nom & Prénom</th>
+            <th scope="col">Appart</th>
+            <th scope="col">Résidence</th>
+            <th scope="col">Date dépot</th>
+            <th scope="col">Date envoi prestataire</th>
+            <th scope="col">Date vue prestataire</th>
+            <th scope="col">Date réalisation travaux</th>
+            <th scope="col">Date validation travaux</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for PT in PTlist %}
+            {{ dump(PT) }}
+
+            {% set i = 0 %}
+            <tr>
+                <th scope="row">{{PT.id}}</th>
+                <td>{{PT.statut}}</td>
+                </td>
+                <td>
+                    <div style="display:flex;justify-content: flex-end;">
+
+                    </div>
+                </td>
+            </tr>
+        {%endfor%}
+
+    </table>
+
+{% endblock %}

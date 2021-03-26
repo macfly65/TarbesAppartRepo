@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PrestataireRepository")
  */
-class Prestataire
+class prestataire
 {
     /**
      * @ORM\Id()
