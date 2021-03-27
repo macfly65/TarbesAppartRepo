@@ -37,8 +37,7 @@ class AdminLocataireController extends AbstractController
     public function ficheLocataire(LocataireRepository $locataire, $id, Request $request)
     {
         $locataires = $locataire->find($id);
-        
-        
+
         $form = $this->createForm(LocataireType::class, $locataires);
         $form->handleRequest($request);
 

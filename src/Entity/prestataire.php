@@ -24,7 +24,7 @@ class prestataire
     private $nom;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tel;
 
@@ -70,12 +70,12 @@ class prestataire
         return $this;
     }
 
-    public function getTel(): ?int
+    public function getTel()
     {
         return $this->tel;
     }
 
-    public function setTel(?int $tel): self
+    public function setTel($tel): self
     {
         $this->tel = $tel;
 

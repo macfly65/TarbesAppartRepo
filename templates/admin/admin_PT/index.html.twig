@@ -24,14 +24,27 @@
             <th scope="col">Date vue prestataire</th>
             <th scope="col">Date réalisation travaux</th>
             <th scope="col">Date validation travaux</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         {% for PT in PTlist %}
+
+            {%  if PT.statut == 1 %}
+                {% set statut = "Transféré au prestataire, en attente de lecture" %}
+            {%  elseif PT.statut == 2 %}
+                {% set statut = "Sélection du prestataire en attente" %}
+            {%  elseif PT.statut == 3 %}
+                {% set statut = "Travaux en cours" %}
+            {%  elseif PT.statut == 4 %}
+                {% set statut = "Travaux terminé" %}
+            {% endif %}
+
+
             <tr>
                 <th scope="row">{{PT.id}}</th>
-                <td>{{PT.statut}}</td>
-                <td>{{PT.prestataire.nom}}</td>
+                <td>{{statut}}</td>
+                <td>{{ PT.prestataire.nom }}</td>
                 <td>{{locataire.0.nom}} {{locataire.0.prenom}} </td>
                 <td>{{appart.numero}}</td>
                 <td>{{appart.residence.nom}}</td>
@@ -40,6 +53,13 @@
                 <td>{{PT.dateLecturePresta|date('Y-m-d') }}</td>
                 <td>{{PT.dateFinTravaux|date('Y-m-d') }}</td>
                 <td>{{PT.dateValidation|date('Y-m-d') }}</td>
+                <td>
+                    <div style="display:flex;justify-content: flex-end;">
+                        <a class="" href="{{ path('admin_edit_problème_technique',{id: PT.id}) }}" role="button">
+                            <img src="{{ asset('/Fichiers/autopromo/iconfinder_new-24_103173.png' ) }}" alt="Mofifier le PT" title="Mofifier le PT" width="22" height="22">
+                        </a>
+                    </div>
+                </td>
             </tr>
         {%endfor%}
 
