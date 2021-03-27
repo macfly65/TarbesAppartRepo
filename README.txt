@@ -5,4 +5,4 @@
     2_ Restructuration des onglet du BO, correctif BUGS sur la réservation en front
     
     
-    mailetjet token sms API : a201ce123deb4d768545d1f9a69563ec
+    mailetjet token sms API : 396c4ccd18224d3d89c829bbe02c7738
