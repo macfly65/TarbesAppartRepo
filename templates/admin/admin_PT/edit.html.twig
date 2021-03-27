@@ -1,0 +1,48 @@
+{% extends 'base_BO.html.twig' %}
+{% block body %}
+        {{ form_start(form)}}
+
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success" style="margin:25px 0px" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-xl-6">
+            <div class="card mb-6">
+                    <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Options</div>
+                    <div class="card-body">
+                        {{ form_row(form.statut) }}
+                        {{ form_row(form.comentLocataire) }}
+                        {{ form_row(form.comentGestionaireToLocataire) }}
+                        {{ form_row(form.comentGestionaireToPrestataire) }}
+                        {{ form_row(form.comentPresta) }}
+                        {{ form_row(form.prestataire) }}
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+            <div class="card mb-6">
+                    <div class="card-body">
+                        {{ form_row(form.appartement) }}
+                        {{ form_row(form.dateDemande) }}
+                        {{ form_row(form.dateLecturePresta) }}
+                        {{ form_row(form.dateFinTravaux) }}
+                        {{ form_row(form.dateValidation) }}
+                        {{ form_row(form.dateEnvoiPresta) }}
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
+                    </div>
+                    </div>
+                </div>
+
+        {{ form_end(form)}}
+
+    {% endblock %}
+
+
+
+
+
+

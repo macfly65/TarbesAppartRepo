@@ -43,6 +43,11 @@ class prestataire
      */
     private $PTid;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateEnvoiPresta;
+
     public function __construct()
     {
         $this->PTid = new ArrayCollection();
@@ -128,6 +133,18 @@ class prestataire
                 $pTid->setPrestataire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateEnvoiPresta(): ?\DateTimeInterface
+    {
+        return $this->dateEnvoiPresta;
+    }
+
+    public function setDateEnvoiPresta(?\DateTimeInterface $dateEnvoiPresta): self
+    {
+        $this->dateEnvoiPresta = $dateEnvoiPresta;
 
         return $this;
     }

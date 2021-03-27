@@ -3,8 +3,8 @@
     <div class="row mb-3">
         <div class="col-md-11"></div>
         <div class="col-6 col-md-1 themed-grid-col">
-            <a href="{{ path('create_appart') }}">
-                <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Nouvelle autopromo" title="Nouvelle autopromo" width="32" height="32">
+            <a href="{{ path('admin_edit_problème_technique') }}">
+                <img src="{{ asset('/Fichiers/autopromo/round-add-button_icon-icons.com_72595.png' ) }}" alt="Ajouté un problème technique" title="Ajouté un problème technique" width="32" height="32">
             </a>
         </div>
     </div>
@@ -15,6 +15,7 @@
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Statut</th>
+            <th scope="col">Prestataire</th>
             <th scope="col">Nom & Prénom</th>
             <th scope="col">Appart</th>
             <th scope="col">Résidence</th>
@@ -27,18 +28,18 @@
         </thead>
         <tbody>
         {% for PT in PTlist %}
-            {{ dump(PT) }}
-
-            {% set i = 0 %}
             <tr>
                 <th scope="row">{{PT.id}}</th>
                 <td>{{PT.statut}}</td>
-                </td>
-                <td>
-                    <div style="display:flex;justify-content: flex-end;">
-
-                    </div>
-                </td>
+                <td>{{PT.prestataire.nom}}</td>
+                <td>{{locataire.0.nom}} {{locataire.0.prenom}} </td>
+                <td>{{appart.numero}}</td>
+                <td>{{appart.residence.nom}}</td>
+                <td>{{PT.dateDemande|date('Y-m-d')}}</td>
+                <td>{{PT.dateEnvoiPresta|date('Y-m-d') }}</td>
+                <td>{{PT.dateLecturePresta|date('Y-m-d') }}</td>
+                <td>{{PT.dateFinTravaux|date('Y-m-d') }}</td>
+                <td>{{PT.dateValidation|date('Y-m-d') }}</td>
             </tr>
         {%endfor%}
 

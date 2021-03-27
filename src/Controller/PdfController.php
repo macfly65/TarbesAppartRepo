@@ -19,7 +19,7 @@ class PdfController extends AbstractController
 
 
     /**
-     * @Route("/admin/pdf", name="admin_pdf")
+     * @Route("/admin/quittance", name="admin_quittance")
      */
     public function index(AppartementRepository $appartRepo, Request $request)
     {
@@ -48,8 +48,6 @@ class PdfController extends AbstractController
      */
         public function generateQuittance($appart, $locataire, $data)
     {
-
-        setlocale(LC_ALL, 'fr_FR');
 
         $datedateDebutQuitance = date('d-m-y',$data['dateDebutQuitance']->getTimestamp());
         $datedateFinQuitance = date('d-m-y', $data['dateFinQuitance']->getTimestamp());
@@ -96,6 +94,11 @@ class PdfController extends AbstractController
 
         // Write file to the desired path
         file_put_contents($pdfFilepath, $output);
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream($pdfName, [
+            "Attachment" => true
+        ]);
 
         // Send some text response
         return new Response("The PDF file has been succesfully generated !");

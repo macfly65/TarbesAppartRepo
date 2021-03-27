@@ -71,6 +71,11 @@ class PT
      */
     private $appartement;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateEnvoiPresta;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -204,6 +209,18 @@ class PT
     public function setAppartement(?appartement $appartement): self
     {
         $this->appartement = $appartement;
+
+        return $this;
+    }
+
+    public function getDateEnvoiPresta(): ?\DateTimeInterface
+    {
+        return $this->dateEnvoiPresta;
+    }
+
+    public function setDateEnvoiPresta(?\DateTimeInterface $dateEnvoiPresta): self
+    {
+        $this->dateEnvoiPresta = $dateEnvoiPresta;
 
         return $this;
     }
