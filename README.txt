@@ -1,8 +1,8 @@
+    SMS API MAILJET :
+    Token : 396c4ccd18224d3d89c829bbe02c7738
 
-    1_ mise en place du drag en drop sur les photos des appartements.
-        Le drag en drop fonctione, en revanche, l'enregistrement de la positions des medias elle ne fonctionne pas.
+    API Google Agenda :
+    tuto :  https://www.youtube.com/watch?v=Q-498CAa1xE
+    commande a lancer : 1) cd vendor/google/apiclient/src
+                        2) php quickstart.php
 
-    2_ Restructuration des onglet du BO, correctif BUGS sur la réservation en front
-    
-    
-    mailetjet token sms API : 396c4ccd18224d3d89c829bbe02c7738
