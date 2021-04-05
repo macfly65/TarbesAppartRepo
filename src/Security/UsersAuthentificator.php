@@ -71,7 +71,6 @@ class UsersAuthentificator extends AbstractFormLoginAuthenticator implements Pas
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Email could not be found.');
         }
-
         return $user;
     }
 
@@ -93,8 +92,15 @@ class UsersAuthentificator extends AbstractFormLoginAuthenticator implements Pas
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
+        $userRole = $token->getUser()->getRoles();
 
-        return new RedirectResponse($this->urlGenerator->generate('admin'));
+        foreach ($userRole as $role){
+            if($role == 'ROLE_LOC'){
+                return new RedirectResponse($this->urlGenerator->generate('extranet'));
+            }elseif ($role == 'ROLE_ADMIN'){
+                return new RedirectResponse($this->urlGenerator->generate('admin'));
+            }
+        }
     }
 
     protected function getLoginUrl()
