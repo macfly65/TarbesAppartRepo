@@ -25,7 +25,8 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('app_bo', './assets/js/app_bo.js')
-    
+    .addEntry('app_extranet', './assets/js/app_extranet.js')
+
     .addEntry('login', './assets/js/login.js')
     .addEntry('appartement', './assets/js/appartement.js')
     //.addEntry('page1', './assets/js/page1.js')
