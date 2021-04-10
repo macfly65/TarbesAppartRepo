@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\LocataireRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Service\MailerService;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 
 class AdminReservationController extends AbstractController
@@ -46,15 +50,27 @@ class AdminReservationController extends AbstractController
      /**
      * @Route("/admin/reservation/validReservation/{id}", name="admin_valid_Reservation")
      */
-    public function validReservation($id, LocataireRepository $locataire, MailerService $mailerService)
+    public function validReservation($id, LocataireRepository $locataire, MailerService $mailerService, UserPasswordEncoderInterface $encoder)
     {
      $reservation = $locataire->find($id);
      $reservation->setStatut(1);
-     
-     $this->entityManager->persist($reservation);
+     $user = new User();
+
+        //on créer un mot de passe
+        $originPassword = uniqid();
+        $encoded = $encoder->encodePassword($user, $originPassword);
+        $user->setPassword($encoded);
+        $user->setNom($reservation->getNom());
+        $user->setPrenom($reservation->getPrenom());
+        $user->setRoles(["ROLE_LOC"]);
+        $user->setEmail($reservation->getEmail());
+        $user->setPasswordVerify($originPassword);
+
+        $this->entityManager->persist($user);
+        $this->entityManager->persist($reservation);
      $this->entityManager->flush();
 
-     $this->sendEmailLocataire($id, $locataire, $mailerService);
+     $this->sendEmailLocataire($id, $user, $locataire, $mailerService);
      
       $this->addFlash(
        'notice',
@@ -88,16 +104,16 @@ class AdminReservationController extends AbstractController
        /**
      * @Route("/sendEmailLocataire/{id}", name="admin_send_notification_reservation")
      */
-    public function sendEmailLocataire($id, $locataire, $mailerService)
+    public function sendEmailLocataire($id, $user, $locataire, $mailerService)
     {
      $locataire = $locataire->find($id);
-     $statutResa = $locataire->getStatut(); 
-     
-     if($statutResa == 1){   //résa validé
-        $mailerService->sendNotificationReservation($locataire);
+     $statutResa = $locataire->getStatut();
+        if($statutResa == 1){   //résa validé
+        $mailerService->sendNotificationReservation($locataire, $user);
      }else{             //résa annulé
-        $mailerService->sendNotificationReservation($locataire); 
+        $mailerService->sendNotificationReservation($locataire, $user);
      }
+
      return $this->redirectToRoute('admin_reservation_fiche', ["id" => $id]);
     }
 }
