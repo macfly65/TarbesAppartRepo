@@ -11,6 +11,8 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\DateTime;
 use App\Repository\AppartementRepository;
 use App\Service\GeneratePdf;
+use setasign\Fpdi\Fpdi;
+
 
 class ExtranetController extends AbstractController
 {
@@ -28,11 +30,11 @@ class ExtranetController extends AbstractController
     /**
      * @Route("/extranet", name="extranet")
      */
-    public function index(AppartementRepository $appartRepo, GeneratePdf $generatePdf)
+    public function index(GeneratePdf $generatePdf)
     {
         $user = $this->security->getUser();
 
-
+        //$generatePdf->test();
 
         return $this->render('extranet/index.html.twig', [
             'user' => $user,
@@ -111,4 +113,8 @@ class ExtranetController extends AbstractController
             'user' => $user,
         ]);
     }
+
+
    }
+
+

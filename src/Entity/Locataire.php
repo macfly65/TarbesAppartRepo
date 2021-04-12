@@ -195,13 +195,19 @@ class Locataire
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="locataire", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DocumentLocataire::class, mappedBy="locataire")
+     */
+    private $document;
 
     public function __construct()
     {
         $this->appartements = new ArrayCollection();
+        $this->document = new ArrayCollection();
     }
 
     public function getId():int
@@ -651,6 +657,36 @@ class Locataire
     public function setUser(user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DocumentLocataire[]
+     */
+    public function getDocument(): Collection
+    {
+        return $this->document;
+    }
+
+    public function addDocument(DocumentLocataire $document): self
+    {
+        if (!$this->document->contains($document)) {
+            $this->document[] = $document;
+            $document->setLocataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(DocumentLocataire $document): self
+    {
+        if ($this->document->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getLocataire() === $this) {
+                $document->setLocataire(null);
+            }
+        }
 
         return $this;
     }

@@ -57,21 +57,12 @@ class User implements UserInterface
      */
     private $passwordVerify;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DocumentsClient", mappedBy="clientUser", orphanRemoval=true)
-     */
-    private $documentsClients;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Locataire", mappedBy="user", cascade={"persist", "remove"})
      */
     private $locataire;
 
-    
-    public function __construct()
-    {
-        $this->documentsClients = new ArrayCollection();
-    }
 
     public function getId(): int
     {
@@ -195,37 +186,6 @@ class User implements UserInterface
     public function setPasswordVerify(?string $passwordVerify): self
     {
         $this->passwordVerify = $passwordVerify;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|DocumentsClient[]
-     */
-    public function getDocumentsClients(): Collection
-    {
-        return $this->documentsClients;
-    }
-
-    public function addDocumentsClient(DocumentsClient $documentsClient): self
-    {
-        if (!$this->documentsClients->contains($documentsClient)) {
-            $this->documentsClients[] = $documentsClient;
-            $documentsClient->setClientUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDocumentsClient(DocumentsClient $documentsClient): self
-    {
-        if ($this->documentsClients->contains($documentsClient)) {
-            $this->documentsClients->removeElement($documentsClient);
-            // set the owning side to null (unless already changed)
-            if ($documentsClient->getClientUser() === $this) {
-                $documentsClient->setClientUser(null);
-            }
-        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
     "license": "proprietary",
     "require": {
         "php": "^7.2.5",
+        "setasign/fpdf": "1.8.*",
+        "setasign/fpdi": "^2.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "dompdf/dompdf": "^1.0",

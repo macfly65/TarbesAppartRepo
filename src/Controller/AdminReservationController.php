@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\DocumentLocataire;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\LocataireRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Service\MailerService;
+use App\Service\GeneratePdf;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
@@ -50,27 +52,35 @@ class AdminReservationController extends AbstractController
      /**
      * @Route("/admin/reservation/validReservation/{id}", name="admin_valid_Reservation")
      */
-    public function validReservation($id, LocataireRepository $locataire, MailerService $mailerService, UserPasswordEncoderInterface $encoder)
+    public function validReservation($id, LocataireRepository $locataire, MailerService $mailerService, UserPasswordEncoderInterface $encoder, GeneratePdf $GeneratePdf)
     {
-     $reservation = $locataire->find($id);
-     $reservation->setStatut(1);
-     $user = new User();
+        $locataire = $locataire->find($id);
+        $user = new User();
+        $docLocataire = new documentLocataire ();
 
-        //on créer un mot de passe
         $originPassword = uniqid();
         $encoded = $encoder->encodePassword($user, $originPassword);
+
         $user->setPassword($encoded);
-        $user->setNom($reservation->getNom());
-        $user->setPrenom($reservation->getPrenom());
+        $user->setNom($locataire->getNom());
+        $user->setPrenom($locataire->getPrenom());
         $user->setRoles(["ROLE_LOC"]);
-        $user->setEmail($reservation->getEmail());
+        $user->setEmail($locataire->getEmail());
         $user->setPasswordVerify($originPassword);
-        $reservation->setUser($user);
+
+        $locataire->setUser($user);
+        $locataire->setStatut(1);
+
+        $docLocataire->setLocataire($locataire);
+        $docLocataire->setType('bail');
 
      $this->entityManager->persist($user);
-     $this->entityManager->persist($reservation);
+     $this->entityManager->persist($locataire);
+     $this->entityManager->persist($docLocataire);
      $this->entityManager->flush();
 
+        //on génère un bail
+     $GeneratePdf->generateBail($docLocataire->getId());
      $this->sendEmailLocataire($id, $user, $locataire, $mailerService);
      
       $this->addFlash(
@@ -107,7 +117,6 @@ class AdminReservationController extends AbstractController
      */
     public function sendEmailLocataire($id, $user, $locataire, $mailerService)
     {
-     $locataire = $locataire->find($id);
      $statutResa = $locataire->getStatut();
         if($statutResa == 1){   //résa validé
         $mailerService->sendNotificationReservation($locataire, $user);
@@ -117,4 +126,6 @@ class AdminReservationController extends AbstractController
 
      return $this->redirectToRoute('admin_reservation_fiche', ["id" => $id]);
     }
+
+
 }
