@@ -193,6 +193,12 @@ class Locataire
      */
     private $garage;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="locataire", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->appartements = new ArrayCollection();
@@ -633,6 +639,18 @@ class Locataire
     public function setGarage(?int $garage): self
     {
         $this->garage = $garage;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

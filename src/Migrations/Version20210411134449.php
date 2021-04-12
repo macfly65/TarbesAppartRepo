@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210326131344 extends AbstractMigration
+final class Version20210411134449 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,8 @@ final class Version20210326131344 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE locataire ADD parking INT DEFAULT NULL, ADD garage INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE locataire ADD CONSTRAINT FK_C47CF6EBA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_C47CF6EBA76ED395 ON locataire (user_id)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +31,7 @@ final class Version20210326131344 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE locataire DROP parking, DROP garage');
+        $this->addSql('ALTER TABLE locataire DROP FOREIGN KEY FK_C47CF6EBA76ED395');
+        $this->addSql('DROP INDEX UNIQ_C47CF6EBA76ED395 ON locataire');
     }
 }

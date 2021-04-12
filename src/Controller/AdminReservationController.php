@@ -65,9 +65,10 @@ class AdminReservationController extends AbstractController
         $user->setRoles(["ROLE_LOC"]);
         $user->setEmail($reservation->getEmail());
         $user->setPasswordVerify($originPassword);
+        $reservation->setUser($user);
 
-        $this->entityManager->persist($user);
-        $this->entityManager->persist($reservation);
+     $this->entityManager->persist($user);
+     $this->entityManager->persist($reservation);
      $this->entityManager->flush();
 
      $this->sendEmailLocataire($id, $user, $locataire, $mailerService);

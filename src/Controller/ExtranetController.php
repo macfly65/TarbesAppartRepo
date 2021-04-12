@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use FontLib\Table\Type\loca;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
-
+use Symfony\Component\Validator\Constraints\DateTime;
+use App\Repository\AppartementRepository;
+use App\Service\GeneratePdf;
 
 class ExtranetController extends AbstractController
 {
@@ -17,17 +22,93 @@ class ExtranetController extends AbstractController
         // Avoid calling getUser() in the constructor: auth may not
         // be complete yet. Instead, store the entire Security object.
         $this->security = $security;
+
     }
 
     /**
      * @Route("/extranet", name="extranet")
      */
-    public function index()
+    public function index(AppartementRepository $appartRepo, GeneratePdf $generatePdf)
     {
         $user = $this->security->getUser();
+
+
 
         return $this->render('extranet/index.html.twig', [
             'user' => $user,
         ]);
     }
-}
+
+
+    /**
+     * @Route("/extranet/getQuittance/{mois}", name="extranet_get_guittance")
+     */
+    public function generateQuittance($mois)
+    {
+        $user = $this->security->getUser();
+        $locataire = $user->getLocataire();
+        $appart = $locataire->getAppartements()->getValues();
+        $timeDeb = date('d/m/y h:m',strtotime("-$mois month"));
+        $timeEnd = date("d/m/y h:m", strtotime("-$mois month"));
+
+
+        $data['dateDebutQuitance'] = \DateTime::createFromFormat("d/m/Y H:i", $timeDeb);
+        $data['dateFinQuitance'] = \DateTime::createFromFormat("d/m/Y H:i",$timeEnd);
+        $data['datePaiement'] =  \DateTime::createFromFormat("d/m/Y H:i","11/01/2021 15:00");
+
+        $datedateDebutQuitance = date('d-m-y',$data['dateDebutQuitance']->getTimestamp());
+        $datedateFinQuitance = date('d-m-y', $data['dateFinQuitance']->getTimestamp());
+        $datePaiement = date('d-m-y', $data['datePaiement']->getTimestamp());
+        $today = date('d-m-y');
+
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->set('isRemoteEnabled',true);
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('admin/admin_pdf/quittance.html.twig', [
+            'title'  => "Welcome to our PDF Test",
+            'appart' => $appart,
+            'locataire' => $locataire,
+            'today' => $today,
+            'datePaiement' => $datePaiement,
+            'datedateFinQuitance' => $datedateFinQuitance,
+            'datedateDebutQuitance' => $datedateDebutQuitance,
+        ]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Store PDF Binary Data
+        $output = $dompdf->output();
+
+        // In this case, we want to write the file in the public directory
+        $publicDirectory = $this->getParameter('kernel.project_dir') . '/public/pdf/quittance';
+        $month = date('F',$data['dateDebutQuitance']->getTimestamp());
+        $pdfName = "quittance-".$locataire->getNom()."-".$month.'.pdf';
+        // e.g /var/www/project/public/mypdf.pdf
+        $pdfFilepath =  $publicDirectory . '/'.$pdfName;
+
+        // Write file to the desired path
+        file_put_contents($pdfFilepath, $output);
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream($pdfName, [
+            "Attachment" => true
+        ]);
+
+        return $this->render('extranet/index.html.twig', [
+            'user' => $user,
+        ]);
+    }
+   }

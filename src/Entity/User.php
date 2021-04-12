@@ -62,6 +62,11 @@ class User implements UserInterface
      */
     private $documentsClients;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Locataire", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $locataire;
+
     
     public function __construct()
     {
@@ -220,6 +225,23 @@ class User implements UserInterface
             if ($documentsClient->getClientUser() === $this) {
                 $documentsClient->setClientUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getLocataire(): ?Locataire
+    {
+        return $this->locataire;
+    }
+
+    public function setLocataire(Locataire $locataire): self
+    {
+        $this->locataire = $locataire;
+
+        // set the owning side of the relation if necessary
+        if ($locataire->getUser() !== $this) {
+            $locataire->setUser($this);
         }
 
         return $this;
