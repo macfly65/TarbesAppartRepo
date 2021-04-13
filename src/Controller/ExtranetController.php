@@ -30,10 +30,11 @@ class ExtranetController extends AbstractController
     /**
      * @Route("/extranet", name="extranet")
      */
-    public function index()
+    public function index(GeneratePdf $generatePdf)
     {
         $user = $this->security->getUser();
 
+        $generatePdf->generateAttestationCaf($user->getLocataire());
 
         return $this->render('extranet/index.html.twig', [
             'user' => $user,

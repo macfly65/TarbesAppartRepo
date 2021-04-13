@@ -158,7 +158,7 @@ class GeneratePdf
         // initiate FPDI
         $pdf = new Fpdi();
         // get document source
-        $doc = $this->params->get('kernel.project_dir') . '/public/pdf/bail/BAIL-EVASION.pdf';
+        $doc = $this->params->get('kernel.project_dir') . '/public/pdf/origin/BAIL-EVASION.pdf';
         $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
 
         // set the source file
@@ -637,12 +637,75 @@ class GeneratePdf
                 $pdf->Write(0, 'DB');
             }
         }
+
         //$pdf->Output();
 
         //register
         $fileName = $locataire->getId() . '-bail-habitation.pdf';
         $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/bail/' . $fileName);
     }
+
+    public function generateAttestationCaf($locataire)
+    {
+        // initiate FPDI
+        $pdf = new Fpdi();
+        // get document source
+        $doc = $this->params->get('kernel.project_dir') . '/public/pdf/origin/attestationCaf.pdf';
+        $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
+
+        // set the source file
+        $pdf->setSourceFile($doc);
+
+        // set the source file
+        $pageCount = $pdf->setSourceFile($doc);
+
+            $tplId = $pdf->importPage(1);
+
+            $pdf->AddPage();
+            $pdf->useTemplate($tplId, 0, 0, 200);
+            $appartement = $locataire->getAppartements()->toArray()[0];
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(30, 162);
+                $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(25, 190);
+                $pdf->Write(0, 'SCI EVASION, 5 rue de l\'eglise, 65390 Sarniguet');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(38, 198);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(30, 210);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(35, 218);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+
+
+        //$pdf->Output();
+
+        //register
+        $fileName = $locataire->getId() . '-attestation-caf.pdf';
+        $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/attestationCaf/' . $fileName);
+            }
+
+
+
+
 }
 
 
