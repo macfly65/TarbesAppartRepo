@@ -98,6 +98,21 @@ class Appartement
      */
     private $PTid;
 
+    /**
+     * @ORM\Column(type="string", length=400, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $meuble;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $charge;
+
 
 
     public function __construct()
@@ -352,6 +367,42 @@ class Appartement
                 $pTid->setAppartement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getMeuble(): ?string
+    {
+        return $this->meuble;
+    }
+
+    public function setMeuble(?string $meuble): self
+    {
+        $this->meuble = $meuble;
+
+        return $this;
+    }
+
+    public function getCharge(): ?int
+    {
+        return $this->charge;
+    }
+
+    public function setCharge(?int $charge): self
+    {
+        $this->charge = $charge;
 
         return $this;
     }

@@ -120,7 +120,7 @@
                             <div class="card">
                                 <!--begin::Header-->
                                 <div class="card-header" id="headingZero7">
-                                    <div class="card-title" data-toggle="collapse" data-target="#collapseZero7" aria-expanded="true" role="button">
+                                    <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseZero7" aria-expanded="true" role="button">
 																<span class="svg-icon svg-icon-primary">
 																	<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Navigation/Angle-double-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -137,10 +137,10 @@
                                 </div>
                                 <!--end::Header-->
                                 <!--begin::Body-->
-                                <div id="collapseZero7" class="collapse show" aria-labelledby="headingZero7" data-parent="#accordionExample7">
+                                <div id="collapseZero7" class="collapse" aria-labelledby="headingZero7" data-parent="#accordionExample7">
                                     <div class="card-body text-dark-50 font-size-lg pl-12">Liste de vos quittances de loyer à imprimer.
                                     </div>
-                                    <a class="nav-link" href="{{ path('extranet_get_guittance',{mois: 1}) }}">Bail d'habitation</a>
+                                    <a class="nav-link href="{{ asset('/pdf/bail/' ~ user.locataire.id ~ '-bail-habitation.pdf') }}" download="bail-habitation.pdf">Télécharger votre bail</a>
                                 </div>
                                 <!--end::Body-->
                             </div>
@@ -149,7 +149,7 @@
                             <div class="card">
                                 <!--begin::Header-->
                                 <div class="card-header" id="headingOne7">
-                                    <div class="card-title" data-toggle="collapse" data-target="#collapseOne7" aria-expanded="true" role="button">
+                                    <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseOne7" aria-expanded="true" role="button">
 																<span class="svg-icon svg-icon-primary">
 																	<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Navigation/Angle-double-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -166,7 +166,7 @@
                                 </div>
                                 <!--end::Header-->
                                 <!--begin::Body-->
-                                <div id="collapseOne7" class="collapse show" aria-labelledby="headingOne7" data-parent="#accordionExample7">
+                                <div id="collapseOne7" class="collapse" aria-labelledby="headingOne7" data-parent="#accordionExample7">
                                     <div class="card-body text-dark-50 font-size-lg pl-12">Liste de vos quittances de loyer à imprimer.
                                     </div>
                                     <a class="nav-link" href="{{ path('extranet_get_guittance',{mois: 1}) }}">Quittance du mois actuel</a>

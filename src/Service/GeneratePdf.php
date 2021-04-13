@@ -66,6 +66,7 @@ class GeneratePdf
             'datedateDebutQuitance' => $datedateDebutQuitance,
         ]);
 
+
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
 
@@ -97,9 +98,7 @@ class GeneratePdf
         return new Response("The PDF file has been succesfully generated !");
     }
 
-    /**
-     * @Route("/extranet/getBail", name="extranet_get_bail")
-     */
+
     public function getBail()
     {
         $user = $this->security->getUser();
@@ -154,12 +153,13 @@ class GeneratePdf
         return new Response("The PDF file has been succesfully generated !");
     }
 
-    public function generateBail($idDoc)
+    public function generateBail($locataire)
     {
         // initiate FPDI
         $pdf = new Fpdi();
         // get document source
         $doc = $this->params->get('kernel.project_dir') . '/public/pdf/bail/BAIL-EVASION.pdf';
+        $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
 
         // set the source file
         $pdf->setSourceFile($doc);
@@ -170,25 +170,477 @@ class GeneratePdf
         for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
             $tplId = $pdf->importPage($pageNo);
 
-        $pdf->AddPage();
+            $pdf->AddPage();
+            $pdf->useTemplate($tplId, 0, 0, 200);
+            $appartement = $locataire->getAppartements()->toArray()[0];
 
-        $pdf->useTemplate($tplId, 0, 0, 200);
+            if ($pageNo == 1) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(30, 162);
+                $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom());
 
-        // now write some text above the imported page
-        $pdf->SetFont('Helvetica', '', 10);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetXY(66, 39);
-        $pdf->Write(0, '1 rue Gabriel Faure, hall B Bis, 65 000 Tarbes');
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(25, 190);
+                $pdf->Write(0, 'SCI EVASION, 5 rue de l\'eglise, 65390 Sarniguet');
 
-        $pdf->SetFont('Helvetica', '', 10);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetXY(50, 48);
-        $pdf->Write(0, 'x');
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(38, 198);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(30, 210);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(35, 218);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 2) {
+
+                // now write some text above the imported page
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(67, 40);
+                $pdf->Write(0, $appartement->getAdresse());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(50, 48);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(106, 52);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(64, 56);
+                $pdf->Write(0, '1998');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(55, 60);
+                $pdf->Write(0, $appartement->getSurface());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(73, 64);
+                $pdf->Write(0, substr($appartement->getType(), -1));
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(100, 76);
+                $pdf->Write(0, 'cuisine equipe');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(106, 88);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(97.5, 100);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(25.5, 119.5);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(25.5, 133.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(25.5, 160.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(25.5, 191);
+                $pdf->Write(0, '___');
+
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(90, 223);
+                $pdf->Write(0, $locataire->getDateArivee()->format('d/m/y'));
+
+                if ($appartement->getMeuble() == 1) {
+                    $meuble = '1 ans';
+                } else {
+                    $meuble = '3 ans';
+                }
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(63, 230);
+                $pdf->Write(0, $meuble);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 3) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(71, 54);
+                $pdf->Write(0, $appartement->getLoyerEtudiant());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(85, 66.5);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(28, 74.5);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(84, 78.5);
+                $pdf->Write(0, '0 euros');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(28, 82.5);
+                $pdf->Write(0, '0 euros');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(78, 86.5);
+                $pdf->Write(0, '0 euros');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(26, 108.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(56, 129.5);
+                $pdf->Write(0, $locataire->getDateArivee()->format('d/m/y'));
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(87, 134);
+                $pdf->Write(0, 'REFERENCE IRL');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(100.5, 146);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 4) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(30, 13);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(164, 48);
+                $pdf->Write(0, $appartement->getCharge());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(110, 55);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(39.5, 77.3);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(161, 80);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(83, 89);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(68, 105);
+                $pdf->Write(0, 'Mensuelle');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(64.5, 109);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(70.5, 113);
+                $pdf->Write(0, 'Entre le 1er et le 5 du mois');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(70.5, 115);
+                $pdf->Write(0, '___');
+
+                $total = $appartement->getLoyerEtudiant() + $appartement->getCharge();
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(26, 124);
+                $pdf->Write(0, 'Loyer + charges = ' . $total);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(113, 156.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(97.5, 166.5);
+                $pdf->Write(0, 'x');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(78.5, 196.5);
+                $pdf->Write(0, 'Peinture, nettoyage ');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(131.5, 214.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(131.5, 214.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(44.5, 241.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 5) {
+                if ($appartement->getMeuble() == "meuble") {
+                    $caution = $appartement->getLoyerEtudiant() * 2 . 'euros';
+                } else {
+                    $caution = $appartement->getLoyerEtudiant() . 'euros';
+                }
+
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(129.5, 22);
+                $pdf->Write(0, $caution);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 6) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(102.5, 19);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(40.5, 32);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(155.5, 56);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(120.5, 73);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(72, 85.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(155.5, 106.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(119.5, 123.5);
+                $pdf->Write(0, '___');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 7) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 8) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 9) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(22, 28);
+                $pdf->Write(0, 'tralala');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(25, 157.5);
+                $pdf->Write(0, $locataire->getDateArivee()->format('d/m/y'));
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(110, 158);
+                $pdf->Write(0, 'Tarbes');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(26, 161.5);
+                $pdf->Write(0, '2');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(26, 191.5);
+                $pdf->Write(0, '2');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(90, 191.5);
+                $pdf->Write(0, '2');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(155, 191.5);
+                $pdf->Write(0, '2');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(26, 213.5);
+                $pdf->Write(0, '2');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(26, 217.5);
+                $pdf->Write(0, '2');
+
+                $pdf->Image($signature, 10, 185, 60, '', '', 'http://www.tcpdf.org', '', false, 300);
+
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 10) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 11) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 12) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 13) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 14) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 15) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 16) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 17) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 18) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 19) {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
+            if ($pageNo == 20) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(190, 276);
+                $pdf->Write(0, 'DB');
+            }
         }
         //$pdf->Output();
 
         //register
-        $fileName = $idDoc.'bail-habitation.pdf';
+        $fileName = $locataire->getId() . '-bail-habitation.pdf';
         $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/bail/' . $fileName);
     }
 }

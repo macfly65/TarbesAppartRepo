@@ -80,7 +80,7 @@ class AdminReservationController extends AbstractController
      $this->entityManager->flush();
 
         //on génère un bail
-     $GeneratePdf->generateBail($docLocataire->getId());
+     $GeneratePdf->generateBail($docLocataire->getId(), $locataire);
      $this->sendEmailLocataire($id, $user, $locataire, $mailerService);
      
       $this->addFlash(
