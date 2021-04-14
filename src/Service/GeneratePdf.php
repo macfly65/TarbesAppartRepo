@@ -7,6 +7,7 @@ namespace App\Service;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Mailjet\Resources;
+use setasign\Fpdi\FpdfTpl;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -561,7 +562,7 @@ class GeneratePdf
                 $pdf->SetXY(26, 217.5);
                 $pdf->Write(0, '2');
 
-                $pdf->Image($signature, 10, 185, 60, '', '', 'http://www.tcpdf.org', '', false, 300);
+                $pdf->Image($signature, 10, 185, 60, '', '', '', '', false, 300);
 
 
                 $pdf->SetFont('Helvetica', '', 10);
@@ -659,51 +660,127 @@ class GeneratePdf
         // set the source file
         $pageCount = $pdf->setSourceFile($doc);
 
-            $tplId = $pdf->importPage(1);
+        $tplId = $pdf->importPage(1);
 
-            $pdf->AddPage();
-            $pdf->useTemplate($tplId, 0, 0, 200);
-            $appartement = $locataire->getAppartements()->toArray()[0];
+        $pdf->AddPage();
+        $pdf->useTemplate($tplId, 0, 0, 200);
+        $appartement = $locataire->getAppartements()->toArray()[0];
+        $today = date('d m  Y');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(30, 162);
-                $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom());
+        $certificate = realpath('/var/www/xx/xx/cert/3ecs_sign.crt');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(25, 190);
-                $pdf->Write(0, 'SCI EVASION, 5 rue de l\'eglise, 65390 Sarniguet');
+        $info = array(
+            'Name' => '3ECS',
+            'Location' => 'xx',
+            'Reason' => 'Testing TCPDF',
+            'ContactInfo' => 'xx',
+        );
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(38, 198);
-                $pdf->Write(0, '___');
+        $pdf->setSign($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(30, 210);
-                $pdf->Write(0, '___');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(35, 218);
-                $pdf->Write(0, '___');
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(113, 38);
+        $pdf->Write(0, 'SCI EVASION');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(21, 43);
+        $pdf->Write(0, ' 8   7   9   0   7   8   2   6   9   0   0   0   1   3');
 
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(22, 49);
+        $pdf->Write(0, '5 rue de l\'eglise');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(35, 53);
+        $pdf->Write(0, '0   6   3    1    5   3    1   8    4    2');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(56, 59);
+        $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom());
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(48, 63);
+        $pdf->Write(0, $locataire->getDateArivee()->format('d  m  Y'));
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(129, 64);
+        $pdf->Write(0, '1 rue Gabriel Faure, 65000 Tarbes');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(94, 73.3);
+        $pdf->Write(0, 'X');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(78, 78);
+        $pdf->Write(0, $appartement->getSurface());
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(77.5, 83.4);
+        $pdf->Write(0, 'X');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(19, 98.5);
+        $pdf->Write(0, 'X');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(64, 99);
+        $pdf->Write(0, $appartement->getLoyerEtudiant());
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(118, 108.6);
+        $pdf->Write(0, 'X');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(118, 108.6);
+        $pdf->Write(0, 'X');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(74.7, 118.5);
+        $pdf->Write(0, 'X');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(96.7, 129);
+        $pdf->Write(0, $locataire->getDateArivee()->format('d  m  Y'));
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(31.5, 184);
+        $pdf->Write(0, 'X');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(20, 237.5);
+        $pdf->Write(0, 'Tarbes');
+
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(70, 237);
+        $pdf->Write(0, $today);
+
+        $pdf->Image($signature, 145, 233, 40, '', '', '', '', false, 300);
 
         //$pdf->Output();
-
         //register
         $fileName = $locataire->getId() . '-attestation-caf.pdf';
         $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/attestationCaf/' . $fileName);
-            }
-
-
+    }
 
 
 }
