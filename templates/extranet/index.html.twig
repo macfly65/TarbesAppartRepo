@@ -5,8 +5,9 @@
         <div class="row">
             <div class="col-lg-4">
                 <!--begin::Callout-->
+                <a href="{{ path('extranetFAQ') }}" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">
                 <div class="card card-custom wave wave-animate-slow wave-primary mb-8 mb-lg-0">
-                    <div class="card-body">
+                        <div class="card-body">
                         <div class="d-flex align-items-center p-5">
                             <!--begin::Icon-->
                             <div class="mr-6">
@@ -30,18 +31,19 @@
                             <!--end::Icon-->
                             <!--begin::Content-->
                             <div class="d-flex flex-column">
-                                <a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Pour
-                                    commencer</a>
+                               Pour commencer
                                 <div class="text-dark-75">Base FAQ Questions</div>
                             </div>
+
                             <!--end::Content-->
                         </div>
                     </div>
-                </div>
+                </div></a>
                 <!--end::Callout-->
             </div>
             <div class="col-lg-4">
                 <!--begin::Callout-->
+                <a href="{{ path('extranetTutoriel') }}" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">
                 <div class="card card-custom wave wave-animate-slow wave-danger mb-8 mb-lg-0">
                     <div class="card-body">
                         <div class="d-flex align-items-center p-5">
@@ -67,17 +69,19 @@
                             <!--end::Icon-->
                             <!--begin::Content-->
                             <div class="d-flex flex-column">
-                                <a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Tutoriels</a>
+                                Tutoriels
                                 <div class="text-dark-75"></div>
                             </div>
                             <!--end::Content-->
                         </div>
                     </div>
                 </div>
+                </a>
                 <!--end::Callout-->
             </div>
             <div class="col-lg-4">
                 <!--begin::Callout-->
+                <a href="{{ path('extranetContact') }}" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">
                 <div class="card card-custom wave wave-animate-slow wave-success mb-8 mb-lg-0">
                     <div class="card-body">
                         <div class="d-flex align-items-center p-5">
@@ -102,13 +106,14 @@
                             <!--end::Icon-->
                             <!--begin::Content-->
                             <div class="d-flex flex-column">
-                                <a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Contact</a>
-                                <div class="text-dark-75">Complete Knowledgebase</div>
+                                Contact
+                                {#<div class="text-dark-75">Complete Knowledgebase</div>#}
                             </div>
                             <!--end::Content-->
                         </div>
                     </div>
                 </div>
+                </a>
                 <!--end::Callout-->
             </div>
         </div>
@@ -166,8 +171,7 @@
                                     <!--begin::Body-->
                                     <div id="collapseZero7" class="collapse" aria-labelledby="headingZero7"
                                          data-parent="#accordionExample7">
-                                        <div class="card-body text-dark-50 font-size-lg pl-12">Liste de vos quittances
-                                            de loyer à imprimer.
+                                        <div class="card-body text-dark-50 font-size-lg pl-12">Télécharger votre bail d'habitation
                                             <a class="nav-link"
                                                href="{{ asset('/pdf/bail/' ~ user.locataire.id ~ '-bail-habitation.pdf') }}"
                                                download="bail-habitation.pdf">Télécharger votre bail</a>
@@ -209,7 +213,7 @@
                                     <div id="collapseOne7" class="collapse" aria-labelledby="headingOne7"
                                          data-parent="#accordionExample7">
                                         <div class="card-body text-dark-50 font-size-lg pl-12">Liste de vos quittances
-                                            de loyer à imprimer.
+                                            de loyer à télécharger.
                                             <a class="nav-link" href="{{ path('extranet_get_guittance',{mois: 1}) }}">Quittance
                                                 du mois actuel</a>
                                             <a class="nav-link" href="{{ path('extranet_get_guittance',{mois: 2}) }}">Quittance

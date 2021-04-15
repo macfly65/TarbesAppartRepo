@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\ContactHistorique;
+use App\Form\ContactHistoriqueType;
+use App\Service\MailerService;
+use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use FontLib\Table\Type\loca;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -16,15 +21,15 @@ use setasign\Fpdi\Fpdi;
 
 class ExtranetController extends AbstractController
 {
-
     private $security;
+    private $entityManager;
 
-    public function __construct(Security $security)
+    public function __construct(Security $security, EntityManagerInterface $entityManager)
     {
         // Avoid calling getUser() in the constructor: auth may not
         // be complete yet. Instead, store the entire Security object.
         $this->security = $security;
-
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -34,14 +39,81 @@ class ExtranetController extends AbstractController
     {
         $user = $this->security->getUser();
 
-        $generatePdf->generateAttestationCaf($user->getLocataire());
+        //$generatePdf->generateBail($user->getLocataire());
 
         return $this->render('extranet/index.html.twig', [
             'user' => $user,
         ]);
     }
 
+    /**
+     * @Route("/extranet/tutoriel", name="extranetTutoriel")
+     */
+    public function tutoriel()
+    {
+        $user = $this->security->getUser();
 
+
+        return $this->render('extranet/tutoriel.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/extranet/FAQ", name="extranetFAQ")
+     */
+    public function FAQ()
+    {
+        $user = $this->security->getUser();
+
+
+        return $this->render('extranet/FAQ.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/extranet/contact", name="extranetContact")
+     */
+    public function contact(Request $request, MailerService $mailerService)
+    {
+        $user = $this->security->getUser();
+
+        $contactHisto = new ContactHistorique;
+        $form = $this->createForm(ContactHistoriqueType::class, $contactHisto);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($contactHisto);
+            $this->entityManager->flush();
+
+            // on récupère les données du formulaire
+            $formData = $form->getData();
+
+            //envoi du mail
+            $mailerService->send($formData);
+
+            $this->addFlash(
+                'notice',
+                ' Votre email a bien été envoyé.'
+            );
+
+            return $this->redirectToRoute('extranetContact');
+        }
+
+        return $this->render('extranet/contact.html.twig', [
+            'user' => $user,
+            'formContact' => $form->createView()
+        ]);
+
+
+    }
+
+
+
+
+    //sytème generation quittance de loyer a revoir
+    // a deplacer dans le service Generate Pdf
     /**
      * @Route("/extranet/getQuittance/{mois}", name="extranet_get_guittance")
      */

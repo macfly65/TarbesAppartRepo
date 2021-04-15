@@ -161,6 +161,8 @@ class GeneratePdf
         // get document source
         $doc = $this->params->get('kernel.project_dir') . '/public/pdf/origin/BAIL-EVASION.pdf';
         $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
+        $signatureTampon = $this->params->get('kernel.project_dir') . '/public/pdf/signature/parafDidier.jpg';
+
 
         // set the source file
         $pdf->setSourceFile($doc);
@@ -201,10 +203,7 @@ class GeneratePdf
                 $pdf->SetXY(35, 218);
                 $pdf->Write(0, '___');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 2) {
 
@@ -274,7 +273,6 @@ class GeneratePdf
                 $pdf->SetXY(25.5, 191);
                 $pdf->Write(0, '___');
 
-
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
                 $pdf->SetXY(90, 223);
@@ -291,10 +289,7 @@ class GeneratePdf
                 $pdf->SetXY(63, 230);
                 $pdf->Write(0, $meuble);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 3) {
                 $pdf->SetFont('Helvetica', '', 10);
@@ -347,10 +342,7 @@ class GeneratePdf
                 $pdf->SetXY(100.5, 146);
                 $pdf->Write(0, 'x');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 4) {
                 $pdf->SetFont('Helvetica', '', 10);
@@ -440,10 +432,7 @@ class GeneratePdf
                 $pdf->SetXY(44.5, 241.5);
                 $pdf->Write(0, '___');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 5) {
                 if ($appartement->getMeuble() == "meuble") {
@@ -452,16 +441,12 @@ class GeneratePdf
                     $caution = $appartement->getLoyerEtudiant() . 'euros';
                 }
 
-
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
                 $pdf->SetXY(129.5, 22);
                 $pdf->Write(0, $caution);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 6) {
                 $pdf->SetFont('Helvetica', '', 10);
@@ -499,22 +484,13 @@ class GeneratePdf
                 $pdf->SetXY(119.5, 123.5);
                 $pdf->Write(0, '___');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 7) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 8) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 9) {
                 $pdf->SetFont('Helvetica', '', 10);
@@ -537,10 +513,7 @@ class GeneratePdf
                 $pdf->SetXY(26, 161.5);
                 $pdf->Write(0, '2');
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(26, 191.5);
-                $pdf->Write(0, '2');
+                $pdf->Image($signature, 19, 185.5, 55, '', '', '', '', false, 300);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
@@ -549,7 +522,7 @@ class GeneratePdf
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(155, 191.5);
+                $pdf->SetXY(160, 191.5);
                 $pdf->Write(0, '2');
 
                 $pdf->SetFont('Helvetica', '', 10);
@@ -561,81 +534,39 @@ class GeneratePdf
                 $pdf->SetTextColor(0, 0, 0);
                 $pdf->SetXY(26, 217.5);
                 $pdf->Write(0, '2');
-
-                $pdf->Image($signature, 10, 185, 60, '', '', '', '', false, 300);
-
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
             }
             if ($pageNo == 10) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 11) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 12) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 13) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 14) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 15) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 16) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 17) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 18) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 19) {
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 20) {
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(190, 276);
-                $pdf->Write(0, 'DB');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
         }
 
@@ -666,18 +597,6 @@ class GeneratePdf
         $pdf->useTemplate($tplId, 0, 0, 200);
         $appartement = $locataire->getAppartements()->toArray()[0];
         $today = date('d m  Y');
-
-        $certificate = realpath('/var/www/xx/xx/cert/3ecs_sign.crt');
-
-        $info = array(
-            'Name' => '3ECS',
-            'Location' => 'xx',
-            'Reason' => 'Testing TCPDF',
-            'ContactInfo' => 'xx',
-        );
-
-        $pdf->setSign($certificate, $certificate, 'tcpdfdemo', '', 2, $info);
-
 
         $pdf->SetFont('Helvetica', '', 10);
         $pdf->SetTextColor(0, 0, 0);
