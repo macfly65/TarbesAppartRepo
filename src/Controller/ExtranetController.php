@@ -45,8 +45,6 @@ class ExtranetController extends AbstractController
 
         $generatePdf->generateBail($user->getLocataire());
 
-
-
         return $this->render('extranet/index.html.twig', [
             'user' => $user,
         ]);

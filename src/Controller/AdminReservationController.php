@@ -85,6 +85,11 @@ class AdminReservationController extends AbstractController
         //on génère un bail + attestation Caf
         $GeneratePdf->generateBail($locataire);
         $GeneratePdf->generateAttestationCaf($locataire);
+        if($locataire->getParking() != ""){
+            $GeneratePdf->generateBailParking($locataire);
+        };
+
+
         $this->sendEmailLocataire($id, $user, $locataire, $mailerService);
 
         $this->addFlash(

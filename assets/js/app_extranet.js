@@ -22,6 +22,7 @@ import '../js/BO/scripts.bundle';
 import '../js/BO/fullcalendar.bundle';
 import '../js/BO/gmaps';
 import '../js/BO/widgets';
+import '../js/BO/signaturePad';
 
 
 

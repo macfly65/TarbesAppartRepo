@@ -2,26 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/js/BO/login-general.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdf/origin/BAIL-EVASION-NM.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdf/origin/BAIL-PARKING.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/extranet/layout de base/login-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/extranet/sign.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/BO/signaturePad.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/BO/scripts.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/BO/scripts.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app_bo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app_bo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app_extranet.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app_extranet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/attestationCaf/16-attestation-caf.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/attestationCaf/16-attestation-caf.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/attestationCaf/21-attestation-caf.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/attestationCaf/21-attestation-caf.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/pdf/bail/16-bail-habitation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/bail/16-bail-habitation.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pdf/quittance/quittance-jean-March.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/quittance/quittance-jean-March.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/bail/21-bail-habitation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/bail/21-bail-habitation.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/bail/22-bail-habitation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/bail/22-bail-habitation.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminReservationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ExtranetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ExtranetController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Locataire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ContactHistoriqueType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactHistoriqueType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/GeneratePdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/GeneratePdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/MailerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/MailerService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base_extranet.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_extranet.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extranet/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extranet/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extranet/sign.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extranet/sign.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,43 +30,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base_extranet.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24960">
-              <caret line="1664" column="30" selection-start-line="1664" selection-end-line="1665" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/ContactHistoriqueType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-              <folding>
-                <element signature="e#28#61#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/ReservationType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-              <folding>
-                <element signature="e#28#53#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="405">
+              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
               <folding>
                 <element signature="e#34#67#0#PHP" expanded="true" />
               </folding>
@@ -82,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Service/GeneratePdf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="1097" column="37" selection-start-line="1097" selection-start-column="37" selection-end-line="1097" selection-end-column="37" />
+            <state relative-caret-position="618">
+              <caret line="832" column="109" selection-start-line="832" selection-start-column="109" selection-end-line="832" selection-end-column="109" />
             </state>
           </provider>
         </entry>
@@ -91,29 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4740">
-              <caret line="318" column="37" selection-start-line="318" selection-start-column="20" selection-end-line="318" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/AdminActualiteController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2520">
-              <caret line="182" column="25" selection-start-line="182" selection-end-line="183" />
-              <folding>
-                <element signature="e#34#84#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets_admin_pages/actualite.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="102" column="45" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="45" />
+            <state relative-caret-position="4305">
+              <caret line="289" column="40" selection-start-line="289" selection-start-column="40" selection-end-line="289" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -121,17 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/extranet/sign.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2835">
-              <caret line="189" column="14" selection-start-line="189" selection-start-column="14" selection-end-line="189" selection-end-column="14" />
+            <state relative-caret-position="195">
+              <caret line="24" column="24" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -147,23 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lis</find>
-      <find>body</find>
-      <find>aside aside-left aside-fixed d-flex flex-column flex-row-auto</find>
-      <find>kt_header</find>
-      <find>header header-fixed</find>
-      <find>sticky-toolbar nav flex-column pl-2 pr-2 pt-3 pb-3 mt-4</find>
-      <find>d-flex align-items-center justify-content-between p-4</find>
-      <find>ask</find>
-      <find>it wor</find>
-      <find>base</find>
-      <find>submit</find>
-      <find>&lt;form</find>
-      <find>textT</find>
-      <find>form</find>
-      <find>}</find>
-      <find>swall</find>
-      <find>ooks like there are some err</find>
       <find>kt_login_signin_submit</find>
       <find>javascr</find>
       <find>validation</find>
@@ -171,19 +86,38 @@
       <find>kt_wr</find>
       <find>kt_wrap</find>
       <find>toto</find>
-      <find>ax</find>
-      <find>axUpdateAltActu</find>
       <find>axSortMediasActu</find>
       <find>png</find>
       <find>date</find>
       <find>tralala</find>
+      <find>get</find>
+      <find>ge</find>
+      <find>$signatureTampon</find>
+      <find>$apparte</find>
+      <find>ajax</find>
+      <find>onC</find>
+      <find>eAltActu</find>
+      <find>Actu</find>
+      <find>ajaxUpdateAltActu</find>
+      <find>oncl</find>
+      <find>axUpdateAltActu</find>
+      <find>ax</find>
+      <find>on</find>
+      <find>pdateAltActu</find>
+      <find>win</find>
+      <find>window</find>
+      <find>char</find>
+      <find>soit</find>
+      <find>totalLoyerProrata</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/templates</dir>
       <dir>$PROJECT_DIR$/src/Form</dir>
+      <dir>$PROJECT_DIR$/templates/admin</dir>
+      <dir>$PROJECT_DIR$/templates</dir>
+      <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/src/Controller</dir>
     </dirStrings>
   </component>
@@ -193,12 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Entity/User.php" />
-        <option value="$PROJECT_DIR$/src/Controller/AdminAutoPromoController.php" />
-        <option value="$PROJECT_DIR$/templates/admin/autoPromo/create.html.twig" />
-        <option value="$PROJECT_DIR$/templates/admin/autoPromo/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/front_actualite/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/front_actualite/fiche.html.twig" />
         <option value="$PROJECT_DIR$/templates/front_appart/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/front_contact/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/front_appart/fiche.html.twig" />
@@ -223,10 +151,8 @@
         <option value="$PROJECT_DIR$/templates/admin/admin_appart/disponibilite.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/AdminAppartController.php" />
         <option value="$PROJECT_DIR$/templates/layout_emails/disponibilite.html.twig" />
-        <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/DisponibiliteFormType.php" />
         <option value="$PROJECT_DIR$/templates/base_BO.html.twig" />
-        <option value="$PROJECT_DIR$/assets/js/app_bo.js" />
         <option value="$PROJECT_DIR$/templates/extranet/tutoriel.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/FrontContactController.php" />
         <option value="$PROJECT_DIR$/templates/extranet/feedback.html" />
@@ -240,8 +166,16 @@
         <option value="$PROJECT_DIR$/templates/extranet/contact.html.twig" />
         <option value="$PROJECT_DIR$/assets/js/BO/scripts.bundle.js" />
         <option value="$PROJECT_DIR$/public/assets_admin_pages/actualite.js" />
+        <option value="$PROJECT_DIR$/src/Controller/AdminReservationController.php" />
+        <option value="$PROJECT_DIR$/templates/admin/admin_actualite/create.html.twig" />
+        <option value="$PROJECT_DIR$/templates/admin/autoPromo/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/assets/js/BO/service.js" />
         <option value="$PROJECT_DIR$/templates/extranet/sign.html.twig" />
+        <option value="$PROJECT_DIR$/assets/js/app_extranet.js" />
+        <option value="$PROJECT_DIR$/assets/js/app_bo.js" />
         <option value="$PROJECT_DIR$/templates/base_extranet.html.twig" />
+        <option value="$PROJECT_DIR$/assets/js/BO/signaturePad.js" />
         <option value="$PROJECT_DIR$/src/Controller/ExtranetController.php" />
         <option value="$PROJECT_DIR$/src/Service/GeneratePdf.php" />
       </list>
@@ -396,17 +330,16 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="370" />
-    <option name="y" value="23" />
-    <option name="width" value="1070" />
-    <option name="height" value="798" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -417,26 +350,40 @@
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="pdf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="pdf" type="462c0819:PsiDirectoryNode" />
-              <item name="origin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -448,18 +395,18 @@
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/pdf/origin" />
-      <recent name="$PROJECT_DIR$/templates/extranet/layout de base" />
-      <recent name="$PROJECT_DIR$/public/pdf/signature" />
-      <recent name="$PROJECT_DIR$/public/upload_files" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/extranet" />
       <recent name="$PROJECT_DIR$/assets/js/BO" />
       <recent name="$PROJECT_DIR$/templates/extranet/layout de base" />
       <recent name="$PROJECT_DIR$/public/pdf/signature" />
       <recent name="$PROJECT_DIR$/templates/layout_emails" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/pdf/origin" />
+      <recent name="$PROJECT_DIR$/templates/extranet/layout de base" />
+      <recent name="$PROJECT_DIR$/public/pdf/signature" />
+      <recent name="$PROJECT_DIR$/public/upload_files" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -590,16 +537,26 @@
       <workItem from="1618771919524" duration="1669000" />
       <workItem from="1618773731016" duration="811000" />
       <workItem from="1618941795596" duration="990000" />
+      <workItem from="1618943883968" duration="969000" />
+      <workItem from="1618946194961" duration="1552000" />
+      <workItem from="1618948027589" duration="1115000" />
+      <workItem from="1618954558142" duration="777000" />
+      <workItem from="1618956093792" duration="270000" />
+      <workItem from="1618956383623" duration="1824000" />
+      <workItem from="1618958562450" duration="1764000" />
+      <workItem from="1618960634067" duration="1790000" />
+      <workItem from="1618962444073" duration="377000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117013000" />
+    <option name="totallyTimeSpent" value="127451000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="370" y="23" width="1070" height="798" extended-state="1" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.43677044" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24391988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -613,8 +570,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.42213115" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.2875354" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5028612" side_tool="true" weight="0.5048193" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49713877" weight="0.5048193" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -647,99 +604,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/ActualiteType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/CommentaireActualiteType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/LocataireType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-          <folding>
-            <element signature="e#28#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/ActualiteCategsType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/ActualiteMediasType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding>
-            <element signature="e#28#59#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/test/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/disponibilite.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app_bo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout_emails/disponibilite.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#266#294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/DisponibiliteFormType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -944,10 +808,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base_extranet.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Form/ReservationType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24960">
-          <caret line="1664" column="30" selection-start-line="1664" selection-end-line="1665" />
+        <state relative-caret-position="90">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <element signature="e#28#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets_admin_pages/actualite.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="753">
+          <caret line="102" column="45" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -961,20 +835,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/ReservationType.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminReservationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state relative-caret-position="1185">
+          <caret line="88" column="32" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_actualite/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_actualite/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-611">
+          <caret line="35" column="79" selection-start-line="35" selection-start-column="79" selection-end-line="35" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/addMedias.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/autoPromo/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminActualiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="233" column="89" selection-start-line="233" selection-start-column="89" selection-end-line="233" selection-end-column="89" />
           <folding>
-            <element signature="e#28#53#0#PHP" expanded="true" />
+            <element signature="e#34#84#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/autoPromo/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-106">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_actualite/addMedias.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="98" lean-forward="true" selection-start-line="19" selection-start-column="98" selection-end-line="19" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="61" column="15" lean-forward="true" selection-start-line="50" selection-start-column="12" selection-end-line="61" selection-end-column="15" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#266#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app_bo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#266#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app_extranet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="21" selection-start-line="24" selection-end-line="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/BO/signaturePad.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base_extranet.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="1664" column="113" selection-start-line="1664" selection-start-column="113" selection-end-line="1664" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Appartement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="371" column="5" lean-forward="true" selection-start-line="371" selection-start-column="5" selection-end-line="371" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="405">
+          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
           <folding>
             <element signature="e#34#67#0#PHP" expanded="true" />
           </folding>
@@ -983,46 +958,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4740">
-          <caret line="318" column="37" selection-start-line="318" selection-start-column="20" selection-end-line="318" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/AdminActualiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2520">
-          <caret line="182" column="25" selection-start-line="182" selection-end-line="183" />
-          <folding>
-            <element signature="e#34#84#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets_admin_pages/actualite.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="102" column="45" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="45" />
+        <state relative-caret-position="4305">
+          <caret line="289" column="40" selection-start-line="289" selection-start-column="40" selection-end-line="289" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/extranet/sign.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="189" column="14" selection-start-line="189" selection-start-column="14" selection-end-line="189" selection-end-column="14" />
+        <state relative-caret-position="195">
+          <caret line="24" column="24" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/GeneratePdf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="1097" column="37" selection-start-line="1097" selection-start-column="37" selection-end-line="1097" selection-end-column="37" />
+        <state relative-caret-position="618">
+          <caret line="832" column="109" selection-start-line="832" selection-start-column="109" selection-end-line="832" selection-end-column="109" />
         </state>
       </provider>
     </entry>
