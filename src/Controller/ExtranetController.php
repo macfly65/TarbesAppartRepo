@@ -3,13 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\ContactHistorique;
+use App\Repository\LocataireRepository;
 use App\Form\ContactHistoriqueType;
+use App\Repository\AppartementMediasRepository;
+use App\Service\FlashNotificationAjax;
 use App\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use FontLib\Table\Type\loca;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
@@ -39,7 +43,9 @@ class ExtranetController extends AbstractController
     {
         $user = $this->security->getUser();
 
-        //$generatePdf->generateBail($user->getLocataire());
+        $generatePdf->generateBail($user->getLocataire());
+
+
 
         return $this->render('extranet/index.html.twig', [
             'user' => $user,
@@ -78,12 +84,12 @@ class ExtranetController extends AbstractController
     public function contact(Request $request, MailerService $mailerService)
     {
         $user = $this->security->getUser();
-
         $contactHisto = new ContactHistorique;
         $form = $this->createForm(ContactHistoriqueType::class, $contactHisto);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $this->entityManager->persist($contactHisto);
             $this->entityManager->flush();
 
@@ -102,13 +108,45 @@ class ExtranetController extends AbstractController
         }
 
         return $this->render('extranet/contact.html.twig', [
+            'formContact' => $form->createView(),
             'user' => $user,
-            'formContact' => $form->createView()
         ]);
-
-
     }
 
+    /**
+     * @Route("/extranet/sign", name="extranetSign")
+     */
+    public function sign()
+    {
+        $user = $this->security->getUser();
+
+
+
+
+        return $this->render('extranet/sign.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/extranet/ajaxgetSign", name="axgetSign", options={"expose"=true})
+     */
+    public function ajaxGetSign(LocataireRepository $locataireRepository, Request $request) {
+
+        if(isset($_POST['dataSign'])) {
+            $dataSign = $_POST['dataSign'];
+            $locataire = $locataireRepository->find('16');
+            // $locataire->setSign($_POST['valAlt']);
+             $locataire->setSign($dataSign);
+
+            $this->entityManager->persist($locataire);
+            $this->entityManager->flush();
+        }
+
+            return new JsonResponse([
+            'status' => true,
+        ]);
+    }
 
 
 

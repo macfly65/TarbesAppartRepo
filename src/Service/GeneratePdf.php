@@ -158,11 +158,14 @@ class GeneratePdf
     {
         // initiate FPDI
         $pdf = new Fpdi();
-        // get document source
+        $appartement = $locataire->getAppartements()->toArray()[0];
+
+        if($appartement->getMeuble() == 'meuble'){
+
+            // get document source
         $doc = $this->params->get('kernel.project_dir') . '/public/pdf/origin/BAIL-EVASION.pdf';
         $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
         $signatureTampon = $this->params->get('kernel.project_dir') . '/public/pdf/signature/parafDidier.jpg';
-
 
         // set the source file
         $pdf->setSourceFile($doc);
@@ -175,7 +178,6 @@ class GeneratePdf
 
             $pdf->AddPage();
             $pdf->useTemplate($tplId, 0, 0, 200);
-            $appartement = $locataire->getAppartements()->toArray()[0];
 
             if ($pageNo == 1) {
                 $pdf->SetFont('Helvetica', '', 10);
@@ -496,7 +498,22 @@ class GeneratePdf
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
                 $pdf->SetXY(22, 28);
-                $pdf->Write(0, 'tralala');
+                $pdf->Write(0, 'Detecteur de fumée en place');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(22, 33);
+                $pdf->Write(0, 'Les chauffages de type "Zibro" ou "Buta Thermix" sont formellement interdit. ');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(22, 38);
+                $pdf->Write(0, 'Si le locataire passe outre cette interdiction et venait a les utiliser, il serait');
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(22, 43);
+                $pdf->Write(0, 'seul responsable des desordres ocasionnes du logement par ce type de chauffage (moisissures, etc ...)');
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
@@ -569,12 +586,390 @@ class GeneratePdf
                 $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
         }
+            //$pdf->Output();
 
-        //$pdf->Output();
+            //register
+            $fileName = $locataire->getId() . '-bail-habitation.pdf';
+            $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/bail/' . $fileName);
+        }else {
+            // get document source
+            $doc = $this->params->get('kernel.project_dir') . '/public/pdf/origin/BAIL-EVASION-NM.pdf';
+            $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
+            $signatureTampon = $this->params->get('kernel.project_dir') . '/public/pdf/signature/parafDidier.jpg';
 
-        //register
-        $fileName = $locataire->getId() . '-bail-habitation.pdf';
-        $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/bail/' . $fileName);
+            // set the source file
+            $pdf->setSourceFile($doc);
+
+            // set the source file
+            $pageCount = $pdf->setSourceFile($doc);
+
+            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                $tplId = $pdf->importPage($pageNo);
+
+                $pdf->AddPage();
+                $pdf->useTemplate($tplId, 0, 0, 200);
+
+                if ($pageNo == 1) {
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(30, 161);
+                    $pdf->Write(0, 'SCI EVASION, 5 rue de l\'eglise, 65390 Sarniguet');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(30, 209);
+                    $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom().' nee le ' . $locataire->getDateNaissancce()->format('d/m/y') . ' domicilie au '. $locataire->getAdresse() .', '. $locataire->getVille() .' '. $locataire->getCodePostal() );
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(35, 216);
+                    $pdf->Write(0, '___________________________________________________');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(35, 224);
+                    $pdf->Write(0, '___________________________________________________');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(35, 232);
+                    $pdf->Write(0, '___________________________________________________');
+
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 2) {
+
+                    // now write some text above the imported page
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(67, 38);
+                    $pdf->Write(0, $appartement->getAdresse() . ' Appartement numero ' . $appartement->getNumero());
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(50, 47);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(75, 51);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(64, 54);
+                    $pdf->Write(0, '1991');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(55, 58);
+                    $pdf->Write(0, $appartement->getSurface());
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(73, 62);
+                    $pdf->Write(0, substr($appartement->getType(), -1));
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(100, 74);
+                    $pdf->Write(0, 'Cuisine equipe sans electromenager');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(25, 78);
+                    $pdf->Write(0, 'salle de bain avec baignoire');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(83, 87);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(25, 91);
+                    $pdf->Write(0, 'Radiateur electriques');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(25, 115);
+                    $pdf->Write(0, 'Cumulus');
+
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(97, 111.5);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(25.5, 154);
+                    $pdf->Write(0, 'Place de parking');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(25.5, 185);
+                    $pdf->Write(0, 'Hall d\'entree, ascenceur, escalier.');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(25.5, 212);
+                    $pdf->Write(0, 'Antenne collective.');
+
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(88.5, 243);
+                    $pdf->Write(0, $locataire->getDateArivee()->format('d/m/y'));
+
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(62.5, 250);
+                    $pdf->Write(0, '3 ans, trois ans');
+
+
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 3) {
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(70, 78.5);
+                    $pdf->Write(0, $appartement->getLoyerEtudiant().' euros');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(99.5, 90);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(42, 98.5);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(60, 184);
+                    $pdf->Write(0, '15 avril');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(90, 188.5);
+                    $pdf->Write(0, '1 er trimestre 2021,  130,69');
+
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 4) {
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(107.2, 17.2);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(28, 41);
+                    $pdf->Write(0, 'Les charges seront calcule pour l\'eau selon le releve du compteur individuel pour le menage,');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(28, 45);
+                    $pdf->Write(0, 'les espaces vert et la minuterie selon le releve de propriete fourni par les services fiscaux ');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(28, 49);
+                    $pdf->Write(0, 'ainsi que la taxe d\'ordure menagere');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(168, 65);
+                    $pdf->Write(0, '65 euros');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(28, 78.5);
+                    $pdf->Write(0, 'soixante cinq euros');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(70, 146.5);
+                    $pdf->Write(0, 'Mensuelle');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(45, 150.5);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(63, 149.5);
+                    $pdf->Write(0, '_____________');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(73, 154);
+                    $pdf->Write(0, 'Entre le 1 er et le 10 du mois');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(28, 166.5);
+                    $pdf->Write(0, 'Arrive le 19 Avril : 176 euros (loyer) 23,83 euros (charges) 11 jours, soit 199,83 euros');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(79, 234.5);
+                    $pdf->Write(0, 'Au cours des mois ecoules le logement a ete remis en etat; peinture');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(29, 238.5);
+                    $pdf->Write(0, 'flexible de douche, pommeau, lunette wc, mecanisme.');
+
+
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 5) {
+                    if ($appartement->getMeuble() == "meuble") {
+                        $caution = $appartement->getLoyerEtudiant() * 2 . 'euros';
+                    } else {
+                        $caution = $appartement->getLoyerEtudiant() . 'euros';
+                    }
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(165.5, 61);
+                    $pdf->Write(0, $caution);
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(25, 66);
+                    $pdf->Write(0, 'quatre cent quatre vingt euros');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(21, 137);
+                    $pdf->Write(0, 'x');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(21, 144);
+                    $pdf->Write(0, '_______________________________________________________________________________________');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(21, 148);
+                    $pdf->Write(0, '_______________________________________________________________________________________');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(21, 152);
+                    $pdf->Write(0, '_______________________________________________________________________________________');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(21, 156);
+                    $pdf->Write(0, '____________________________________________');
+
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 6) {
+
+
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 7) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 8) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 9) {
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(22, 29);
+                    $pdf->Write(0, 'Detecteur de fumee en place. Les chauffages de type "Zibro" ou "Buta Thermix" sont formellement interdit. ');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(22, 34);
+                    $pdf->Write(0, 'Si le locataire passe outre cette interdiction et venait a les utiliser, il serait');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(22, 40);
+                    $pdf->Write(0, 'seul responsable des desordres ocasionnes du logement par ce type de chauffage (moisissures, etc ...)');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(27, 161.5);
+                    $pdf->Write(0, $locataire->getDateArivee()->format('d/m/y'));
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(27, 166.5);
+                    $pdf->Write(0, '2');
+
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(110, 161);
+                    $pdf->Write(0, 'Tarbes');
+
+
+                    $pdf->Image($signature, 19, 185.5, 55, '', '', '', '', false, 300);
+
+
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(26, 231.5);
+                    $pdf->Write(0, '8');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(26, 235.5);
+                    $pdf->Write(0, '0');
+                }
+                if ($pageNo == 10) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 11) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 12) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 13) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 14) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 15) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 16) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 17) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 18) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 19) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+                if ($pageNo == 20) {
+                    $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+                }
+            }
+            //register
+            $fileName = $locataire->getId() . '-bail-habitation.pdf';
+            $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/bail/' . $fileName);
+        }
     }
 
     public function generateAttestationCaf($locataire)
@@ -701,7 +1096,11 @@ class GeneratePdf
         $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/attestationCaf/' . $fileName);
     }
 
+    public function getBailParking(){
+
+    }
 
 }
+
 
 

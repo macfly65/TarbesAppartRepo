@@ -28,6 +28,7 @@ class MailerService {
      */
     public function send($formData)
     {
+
       //envoi du mail
       $message = (new \Swift_Message('Tarbes Appart'))
               ->setFrom('florent.bvs@gmail.com')
@@ -36,7 +37,8 @@ class MailerService {
       $message->setBody($this->renderer->render('layout_emails/contact.html.twig', [
           'img_bg1'  => $img_bg1,
           'formData' => $formData]), 'text/html');
-        var_dump($this->mailer->send($message));
+        $this->mailer->send($message);
+
 
     }
     

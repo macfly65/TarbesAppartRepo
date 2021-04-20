@@ -204,6 +204,11 @@ class Locataire
      */
     private $document;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sign;
+
     public function __construct()
     {
         $this->appartements = new ArrayCollection();
@@ -687,6 +692,18 @@ class Locataire
                 $document->setLocataire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSign(): ?string
+    {
+        return $this->sign;
+    }
+
+    public function setSign(?string $sign): self
+    {
+        $this->sign = $sign;
 
         return $this;
     }

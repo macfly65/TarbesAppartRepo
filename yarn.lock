@@ -6036,6 +6036,11 @@
   "resolved" "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.2.tgz"
   "version" "3.0.2"
 
+"signature_pad@*":
+  "integrity" "sha512-cOf2NhVuTiuNqe2X/ycEmizvCDXk0DoemhsEpnkcGnA4kS5iJYTCqZ9As7tFBbsch45Q1EdX61833+6sjJ8rrw=="
+  "resolved" "https://registry.npmjs.org/signature_pad/-/signature_pad-3.0.0-beta.4.tgz"
+  "version" "3.0.0-beta.4"
+
 "simple-swizzle@^0.2.2":
   "integrity" "sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo="
   "resolved" "https://registry.npmjs.org/simple-swizzle/-/simple-swizzle-0.2.2.tgz"
