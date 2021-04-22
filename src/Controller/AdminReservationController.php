@@ -82,9 +82,9 @@ class AdminReservationController extends AbstractController
         $this->entityManager->persist($attestationCaf);
         $this->entityManager->flush();
 
-        //on génère un bail + attestation Caf
         $GeneratePdf->generateBail($locataire);
         $GeneratePdf->generateAttestationCaf($locataire);
+        $GeneratePdf->generateAttestationRemiseCle($locataire);
         if($locataire->getParking() != ""){
             $GeneratePdf->generateBailParking($locataire);
         };

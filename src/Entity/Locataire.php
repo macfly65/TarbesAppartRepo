@@ -209,6 +209,16 @@ class Locataire
      */
     private $sign;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numCleIntratone;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numCleAppart;
+
     public function __construct()
     {
         $this->appartements = new ArrayCollection();
@@ -704,6 +714,32 @@ class Locataire
     public function setSign(?string $sign): self
     {
         $this->sign = $sign;
+
+        return $this;
+    }
+
+
+
+    public function getNumCleIntratone(): ?int
+    {
+        return $this->numCleIntratone;
+    }
+
+    public function setNumCleIntratone(?int $numCleIntratone): self
+    {
+        $this->numCleIntratone = $numCleIntratone;
+
+        return $this;
+    }
+
+    public function getNumCleAppart(): ?int
+    {
+        return $this->numCleAppart;
+    }
+
+    public function setNumCleAppart(?int $numCleAppart): self
+    {
+        $this->numCleAppart = $numCleAppart;
 
         return $this;
     }

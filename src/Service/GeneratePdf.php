@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Service;
-
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -18,7 +16,6 @@ class GeneratePdf
     private $mailer;
     private $templating;
     private $params;
-
 
     public function __construct(\Swift_Mailer $mailer, \Twig\Environment $templating, ParameterBagInterface $params)
     {
@@ -99,6 +96,70 @@ class GeneratePdf
         return new Response("The PDF file has been succesfully generated !");
     }
 
+    public function generateAttestationRemiseCle($locataire)
+    {
+
+        $pdf = new Fpdi();
+        $appartement = $locataire->getAppartements()->getValues();
+
+
+        // get document source
+        $doc = $this->params->get('kernel.project_dir') . '/public/pdf/origin/attestation-remise-cle.pdf';
+        $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
+        $signatureTampon = $this->params->get('kernel.project_dir') . '/public/pdf/signature/parafDidier.jpg';
+
+        // set the source file
+        $pdf->setSourceFile($doc);
+
+        // set the source file
+        $pageCount = $pdf->setSourceFile($doc);
+
+
+        for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+            $tplId = $pdf->importPage($pageNo);
+
+            $pdf->AddPage();
+            $pdf->useTemplate($tplId, 0, 0, 200);
+
+            if ($pageNo == 1) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(65, 94);
+                $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(155, 99.5);
+                $pdf->Write(0, $appartement[0]->getNumero());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(65, 104);
+                $pdf->Write(0, $locataire->getDateArivee()->format('d      m       Y'));
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(100, 113.5);
+                $pdf->Write(0, $locataire->getnumCleAppart());
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(130, 123.5);
+                $pdf->Write(0, $locataire->getnumCleIntratone());
+
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(130, 199.5);
+                $pdf->Write(0, 'Le ' . $locataire->getDateArivee()->format('d/m/Y'));
+
+
+                $pdf->Image($signature, 60, 205, 55, '', '', '', '', false, 300);
+            }
+        }
+        $fileName = $locataire->getId() . '-attestation-remise-cle.pdf';
+        $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/attestationRemiseCle/' . $fileName);
+    }
 
     public function getBail()
     {

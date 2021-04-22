@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/js/BO/signaturePad.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pdf/origin/attestation-remise-cle.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app_bo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app_bo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app_extranet.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app_extranet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pdf/attestationCaf/16-attestation-caf.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/attestationCaf/16-attestation-caf.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pdf/attestationCaf/21-attestation-caf.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/attestationCaf/21-attestation-caf.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pdf/bail/16-bail-habitation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/bail/16-bail-habitation.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pdf/bail/21-bail-habitation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/bail/21-bail-habitation.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/attestationCaf/22-attestation-caf.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/attestationCaf/22-attestation-caf.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/pdf/bail/22-bail-habitation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/bail/22-bail-habitation.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminReservationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ExtranetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ExtranetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Locataire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210411134449.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210412221552.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210413200753.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210413202047.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210413203437.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210417105616.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/GeneratePdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/GeneratePdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_extranet.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_extranet.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extranet/sign.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extranet/sign.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extranet/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extranet/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+            <state relative-caret-position="243">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
               <folding>
                 <element signature="e#34#67#0#PHP" expanded="true" />
               </folding>
@@ -42,10 +42,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/AdminReservationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="86" column="61" selection-start-line="86" selection-start-column="61" selection-end-line="86" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/extranet/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="304" column="88" selection-start-line="304" selection-start-column="68" selection-end-line="304" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/GeneratePdf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="832" column="109" selection-start-line="832" selection-start-column="109" selection-end-line="832" selection-end-column="109" />
+            <state relative-caret-position="260">
+              <caret line="158" column="9" selection-start-line="158" selection-start-column="9" selection-end-line="158" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -53,17 +71,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4305">
-              <caret line="289" column="40" selection-start-line="289" selection-start-column="40" selection-end-line="289" selection-end-column="40" />
+            <state relative-caret-position="157">
+              <caret line="210" selection-start-line="210" selection-end-line="210" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/extranet/sign.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Repository/LocataireRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="24" column="24" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="24" />
+            <state relative-caret-position="384">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -79,13 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>kt_login_signin_submit</find>
-      <find>javascr</find>
-      <find>validation</find>
-      <find>swal</find>
-      <find>kt_wr</find>
-      <find>kt_wrap</find>
-      <find>toto</find>
       <find>axSortMediasActu</find>
       <find>png</find>
       <find>date</find>
@@ -109,6 +120,13 @@
       <find>char</find>
       <find>soit</find>
       <find>totalLoyerProrata</find>
+      <find>caf</find>
+      <find>au</find>
+      <find>outp</find>
+      <find>forma</find>
+      <find>$numCleAppart</find>
+      <find>numCle</find>
+      <find>numCl</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -132,7 +150,6 @@
         <option value="$PROJECT_DIR$/templates/front_appart/fiche.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/FrontReservationController.php" />
         <option value="$PROJECT_DIR$/src/Form/ReservationType.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
         <option value="$PROJECT_DIR$/templates/front_reservation/reservation.html.twig" />
         <option value="$PROJECT_DIR$/README.txt" />
         <option value="$PROJECT_DIR$/templates/admin/admin_actualite/addMedias.html.twig" />
@@ -158,7 +175,6 @@
         <option value="$PROJECT_DIR$/templates/extranet/feedback.html" />
         <option value="$PROJECT_DIR$/templates/extranet/layout de base/faq-3.html" />
         <option value="$PROJECT_DIR$/templates/extranet/FAQ.html.twig" />
-        <option value="$PROJECT_DIR$/templates/extranet/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/ContactHistoriqueType.php" />
         <option value="$PROJECT_DIR$/templates/extranet/layout de base/login-1.html" />
         <option value="$PROJECT_DIR$/assets/js/BO/login-general.js" />
@@ -166,7 +182,6 @@
         <option value="$PROJECT_DIR$/templates/extranet/contact.html.twig" />
         <option value="$PROJECT_DIR$/assets/js/BO/scripts.bundle.js" />
         <option value="$PROJECT_DIR$/public/assets_admin_pages/actualite.js" />
-        <option value="$PROJECT_DIR$/src/Controller/AdminReservationController.php" />
         <option value="$PROJECT_DIR$/templates/admin/admin_actualite/create.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin/autoPromo/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
@@ -176,8 +191,11 @@
         <option value="$PROJECT_DIR$/assets/js/app_bo.js" />
         <option value="$PROJECT_DIR$/templates/base_extranet.html.twig" />
         <option value="$PROJECT_DIR$/assets/js/BO/signaturePad.js" />
-        <option value="$PROJECT_DIR$/src/Controller/ExtranetController.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
+        <option value="$PROJECT_DIR$/templates/extranet/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Service/GeneratePdf.php" />
+        <option value="$PROJECT_DIR$/src/Controller/ExtranetController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/AdminReservationController.php" />
       </list>
     </option>
   </component>
@@ -330,16 +348,16 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="797" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -350,40 +368,19 @@
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -545,23 +542,26 @@
       <workItem from="1618956383623" duration="1824000" />
       <workItem from="1618958562450" duration="1764000" />
       <workItem from="1618960634067" duration="1790000" />
-      <workItem from="1618962444073" duration="377000" />
+      <workItem from="1618962444073" duration="616000" />
+      <workItem from="1619075404937" duration="1333000" />
+      <workItem from="1619077213457" duration="1838000" />
+      <workItem from="1619079235456" duration="1210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127451000" />
+    <option name="totallyTimeSpent" value="132071000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24391988" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2546495" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32765958" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -571,7 +571,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5028612" side_tool="true" weight="0.5048193" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49713877" weight="0.5048193" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49713877" visible="true" weight="0.3460993" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -604,16 +604,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Form/DisponibiliteFormType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#28#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/setasign/fpdi/src/FpdiTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -684,13 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="120" column="22" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/extranet/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3625">
-          <caret line="402" column="14" selection-start-line="402" selection-start-column="13" selection-end-line="402" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -835,13 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/AdminReservationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="88" column="32" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/admin_actualite/create.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -946,23 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-          <folding>
-            <element signature="e#34#67#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4305">
-          <caret line="289" column="40" selection-start-line="289" selection-start-column="40" selection-end-line="289" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/extranet/sign.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -970,10 +929,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/LocataireRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="210" selection-start-line="210" selection-end-line="210" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/extranet/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="304" column="88" selection-start-line="304" selection-start-column="68" selection-end-line="304" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/GeneratePdf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="832" column="109" selection-start-line="832" selection-start-column="109" selection-end-line="832" selection-end-column="109" />
+        <state relative-caret-position="260">
+          <caret line="158" column="9" selection-start-line="158" selection-start-column="9" selection-end-line="158" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="e#34#67#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminReservationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="86" column="61" selection-start-line="86" selection-start-column="61" selection-end-line="86" selection-end-column="61" />
         </state>
       </provider>
     </entry>
