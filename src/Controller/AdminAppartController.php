@@ -25,16 +25,19 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Service\FlashNotificationAjax;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Security;
+
 
 
 class AdminAppartController extends AbstractController
 {
     private $entityManager;
+    private $security;
 
-    public function __construct(EntityManagerInterface $entityManager) {
+
+    public function __construct(Security $security, EntityManagerInterface $entityManager) {
         $this->entityManager = $entityManager;
-        setlocale(LC_TIME, "fr_FR");
-
+        $this->security = $security;
     }
 
     /**
@@ -281,6 +284,21 @@ class AdminAppartController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/appart/edl/{id}", name="etat_des_lieux")
+     */
+    public function etatDesLieux($id, AppartementRepository $apparts, Request $request) {
+        $appart = $apparts->find($id);
+        $user = $this->security->getUser();
+
+
+
+        return $this->render('admin/admin_appart/etatDesLieux.html.twig', [
+            'idAppart' => $id,
+            'appart' => $appart,
+            'user' => $user
+        ]);
+    }
 
     /**
      * @Route("/admin/ajaxSortMediasAppart", name="axSortMediasAppart")

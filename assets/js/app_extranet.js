@@ -5,29 +5,8 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-// any CSS you import will output into a single css file (app.css in this case)
-//import '../css/global.scss';
-import '../css/BO/fullcalendar.bundle.css';
-import '../css/BO/style.bundle.css';
-import '../css/BO/plugins.bundle.css';
-import '../css/BO/prismjs.bundle.css';
-import '../css/BO/base/light.css';
-import '../css/BO/brand/dark.css';
-import '../css/BO/light.css';
-import '../css/BO/dark.css';
-
-import '../js/BO/plugins.bundle';
-import '../js/BO/prismjs.bundle';
-import '../js/BO/scripts.bundle';
-import '../js/BO/fullcalendar.bundle';
-import '../js/BO/gmaps';
-import '../js/BO/widgets';
-import '../js/BO/signaturePad';
-
-
-
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
+//import $ from 'jquery';
 // import $ from 'boostrap';
 
 const $ = require('jquery');
@@ -38,6 +17,32 @@ require('bootstrap');
 // or you can include specific pieces
 require('bootstrap/js/dist/tooltip');
 require('bootstrap/js/dist/popover');
+
+
+
+// any CSS you import will output into a single css file (app.css in this case)
+//import '../css/global.scss';
+
+import '../css/BO/wizard-2.css';
+import '../css/BO/plugins.bundle.css';
+import '../css/BO/prismjs.bundle.css';
+import '../css/BO/style.bundle.css';
+import '../css/BO/light.css';
+import '../css/BO/dark.css';
+import '../css/BO/brand/dark.css';
+import '../css/BO/base/light.css';
+
+import '../css/BO/fullcalendar.bundle.css';
+
+import '../js/BO/plugins.bundle';
+import '../js/BO/prismjs.bundle';
+import '../js/BO/scripts.bundle';
+import '../js/BO/wizard-2';
+
+import '../js/BO/fullcalendar.bundle';
+import '../js/BO/gmaps';
+import '../js/BO/widgets';
+import '../js/BO/signaturePad';
 
 
 function saveNewPositions() {

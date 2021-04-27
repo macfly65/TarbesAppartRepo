@@ -11611,7 +11611,7 @@ var __webpack_exports__ = {};
   !*** ./webpack/scripts.demo1.js ***!
   \**********************************/
 // Keenthemes' plugins
-window.KTUtil = __webpack_require__(/*! @/src/js/components/util.js */ "../demo1/src/js/components/util.js");
+window.KTUtil = __webpack_require__(/*! @/src/js/components/util.js */ "components/util.js");
 window.KTApp = __webpack_require__(/*! @/src/js/components/app.js */ "../demo1/src/js/components/app.js");
 window.KTCard = __webpack_require__(/*! @/src/js/components/card.js */ "../demo1/src/js/components/card.js");
 window.KTCookie = __webpack_require__(/*! @/src/js/components/cookie.js */ "../demo1/src/js/components/cookie.js");
@@ -11621,8 +11621,8 @@ window.KTImageInput = __webpack_require__(/*! @/src/js/components/image-input.js
 window.KTMenu = __webpack_require__(/*! @/src/js/components/menu.js */ "../demo1/src/js/components/menu.js");
 window.KTOffcanvas = __webpack_require__(/*! @/src/js/components/offcanvas.js */ "../demo1/src/js/components/offcanvas.js");
 window.KTScrolltop = __webpack_require__(/*! @/src/js/components/scrolltop.js */ "../demo1/src/js/components/scrolltop.js");
-window.KTToggle = __webpack_require__(/*! @/src/js/components/toggle.js */ "../demo1/src/js/components/toggle.js");
-window.KTWizard = __webpack_require__(/*! @/src/js/components/wizard.js */ "../demo1/src/js/components/wizard.js");
+window.KTToggle = __webpack_require__(/*! @/src/js/components/toggle.js */ "components/toggle.js");
+window.KTWizard = __webpack_require__(/*! @/src/js/components/wizard.js */ "components/wizard.js");
 __webpack_require__(/*! @/src/js/components/datatable/core.datatable.js */ "../demo1/src/js/components/datatable/core.datatable.js");
 __webpack_require__(/*! @/src/js/components/datatable/datatable.checkbox.js */ "../demo1/src/js/components/datatable/datatable.checkbox.js");
 __webpack_require__(/*! @/src/js/components/datatable/datatable.rtl.js */ "../demo1/src/js/components/datatable/datatable.rtl.js");
