@@ -245,7 +245,7 @@ class GeneratePdf
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(30, 162);
-                    $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom());
+                    $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom() . ' nee le ' . $locataire->getDateNaissancce()->format('d/m/y') . ' domicilie au ' . $locataire->getAdresse() . ', ' . $locataire->getVille() . ' ' . $locataire->getCodePostal());
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
@@ -374,17 +374,17 @@ class GeneratePdf
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(84, 78.5);
-                    $pdf->Write(0, '0 euros');
+                    $pdf->Write(0, '___');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(28, 82.5);
-                    $pdf->Write(0, '0 euros');
+                    $pdf->Write(0, '___');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(78, 86.5);
-                    $pdf->Write(0, '0 euros');
+                    $pdf->Write(0, '__');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
@@ -394,12 +394,12 @@ class GeneratePdf
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(56, 129.5);
-                    $pdf->Write(0, $locataire->getDateArivee()->format('d/m/y'));
+                    $pdf->Write(0, '15 avril 2021');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(87, 134);
-                    $pdf->Write(0, 'REFERENCE IRL');
+                    $pdf->Write(0, '130,69');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
@@ -499,7 +499,7 @@ class GeneratePdf
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(26, 124);
-                    $pdf->Write(0, 'Arrive le '. $locataire->getDateArivee()->format('d/m/y') .' : '.$totalLoyerProrata .' euros (loyer) '. $totalChargeProrata .' euros (charges) '.$nbrJoursLocation.' jours, soit '.$total.' euros');
+                    $pdf->Write(0, 'Arrive le '. $locataire->getDateArivee()->format('d/m/y') .' : 480 euros (loyer) '. $totalChargeProrata .' euros (charges) '.$nbrJoursLocation.' jours, soit '.$total.' euros');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
@@ -513,8 +513,13 @@ class GeneratePdf
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetXY(78.5, 196.5);
-                    $pdf->Write(0, 'Peinture, nettoyage ');
+                    $pdf->SetXY(79, 196.5);
+                    $pdf->Write(0, 'Au cours des mois ecoules le logement a ete remis en etat; peinture');
+
+                    $pdf->SetFont('Helvetica', '', 10);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetXY(29, 200.5);
+                    $pdf->Write(0, 'flexible de douche, pommeau, lunette wc, mecanisme.');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
@@ -595,7 +600,7 @@ class GeneratePdf
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetXY(22, 28);
-                    $pdf->Write(0, 'Detecteur de fumée en place');
+                    $pdf->Write(0, 'Detecteur de fumee en place');
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
@@ -629,25 +634,7 @@ class GeneratePdf
 
                     $pdf->Image($signature, 19, 185.5, 55, '', '', '', '', false, 300);
 
-                    $pdf->SetFont('Helvetica', '', 10);
-                    $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetXY(90, 191.5);
-                    $pdf->Write(0, '2');
 
-                    $pdf->SetFont('Helvetica', '', 10);
-                    $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetXY(160, 191.5);
-                    $pdf->Write(0, '2');
-
-                    $pdf->SetFont('Helvetica', '', 10);
-                    $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetXY(26, 213.5);
-                    $pdf->Write(0, '2');
-
-                    $pdf->SetFont('Helvetica', '', 10);
-                    $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetXY(26, 217.5);
-                    $pdf->Write(0, '2');
                 }
                 if ($pageNo == 10) {
                     $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);

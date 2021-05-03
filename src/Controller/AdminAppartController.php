@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Edl;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
+use App\Repository\EdlRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\DisponibiliteFormType;
+use App\Form\EdlFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Appartement;
@@ -287,15 +290,24 @@ class AdminAppartController extends AbstractController
     /**
      * @Route("/admin/appart/edl/{id}", name="etat_des_lieux")
      */
-    public function etatDesLieux($id, AppartementRepository $apparts, Request $request) {
+    public function etatDesLieux($id, AppartementRepository $apparts, EdlRepository $edl, Request $request) {
         $appart = $apparts->find($id);
         $user = $this->security->getUser();
 
 
+        // Gestion des filtres
+        $edl = new Edl();
+        $form = $this->createForm(EdlFormType::class, $edl);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
 
         return $this->render('admin/admin_appart/etatDesLieux.html.twig', [
             'idAppart' => $id,
             'appart' => $appart,
+            'form'=> $form->createView(),
             'user' => $user
         ]);
     }

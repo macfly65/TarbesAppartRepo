@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "babel-loader": "^8.1.0",
+    "bootstrap-icons": "^1.4.1",
     "signature_pad": "*"
   }
 }
