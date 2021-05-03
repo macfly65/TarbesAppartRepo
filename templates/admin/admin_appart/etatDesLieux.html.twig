@@ -97,7 +97,7 @@
 																</span>
                                                     </div>
                                                     <div class="wizard-label">
-                                                        <h3 class="wizard-title" style="margin-bottom: -0.5rem;" >Salle de bain</h3>
+                                                        <h3 class="wizard-title" style="margin-bottom: -0.5rem;" >Couloir</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,7 +120,7 @@
 																</span>
                                                     </div>
                                                     <div class="wizard-label">
-                                                        <h3 class="wizard-title" style="margin-bottom: -0.5rem;" >Couloir</h3>
+                                                        <h3 class="wizard-title" style="margin-bottom: -0.5rem;" >Salle de bain</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,7 +250,7 @@
 
                                                  <!--begin: Wizard Step 1-->
                                                     <div class="pb-5" id="wizardForm1" data-wizard-type="step-content" data-wizard-state="current">
-                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center;">Sonette / Interphone <span class="oi oi-arrow-thick-right"></span></h4>
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center;">Sonette / Interphone A<span class="oi oi-arrow-thick-right"></span></h4>
                                                         <div class="my-custom-class-for-errors">
                                                             {{ form_errors(form) }}
                                                         </div>
@@ -479,7 +479,7 @@
                                                                 <button type="button" id="state51" elementId="element11" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
                                                                 <button type="button" id="state52" elementId="element11" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Bon état</button>
                                                                 <button type="button" id="state53" elementId="element11" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
-                                                                <button type="button" id="state53" elementId="element11" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state54" elementId="element11" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
                                                                 <button type="button" id="state55" elementId="element11" value="5" class="btn btn-outline-warning"  onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
                                                             </div>
                                                         </div>
@@ -492,326 +492,647 @@
                                                     </div>
                                                     <!--end: Wizard Step 1 - slide 10 -->
 
+               <!--  slide Wizard -->
                                                     <!--begin: Wizard Step 1 - slide 11 // ce slide permet juste de changer de form wizzard-->
                                                     <div class="pb-5" id="wizardForm1Slide11" data-wizard-type="step-content" data-wizard-id="11">
                                                     </div>
 
-
+                <!--  SEJOUR -->
                                                     <!--begin: Wizard Step 2-->
-                                                    <div class="pb-5" id="wizardForm2" data-wizard-type="step-content">
-                                                        <h4 class="mb-10 font-weight-bold text-dark">Setup Your Current Location</h4>
-                                                        <div class="row">
-                                                            <div class="col-xl-6">
-                                                                <!--begin::Input-->
-                                                                <div class="form-group">
-                                                                    <label>Address Line 1</label>
-                                                                    <input type="text" class="form-control form-control-solid form-control-lg" name="address1" placeholder="Address Line 1" value="Address Line 1" />
-                                                                    <span class="form-text text-muted">Please enter your Address.</span>
-                                                                </div>
-                                                                <!--end::Input-->
-                                                            </div>
-                                                            <div class="col-xl-6">
-                                                                <!--begin::Input-->
-                                                                <div class="form-group">
-                                                                    <label>Address Line 2</label>
-                                                                    <input type="text" class="form-control form-control-solid form-control-lg" name="address2" placeholder="Address Line 2" value="Address Line 2" />
-                                                                    <span class="form-text text-muted">Please enter your Address.</span>
-                                                                </div>
-                                                                <!--end::Input-->
+                                                    <div class="pb-5" id="wizardForm2" data-wizard-type="step-content" data-wizard-state="done">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center;">Porte/Serrurerie B<span class="oi oi-arrow-thick-right"></span></h4>
+                                                        <div class="my-custom-class-for-errors">
+                                                            {{ form_errors(form) }}
+                                                        </div>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state56" elementId="element12" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state57" elementId="element12" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state58" elementId="element12" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state59" elementId="element12" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state60" elementId="element12" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-xl-6">
-                                                                <!--begin::Input-->
-                                                                <div class="form-group">
-                                                                    <label>Postcode</label>
-                                                                    <input type="text" class="form-control form-control-solid form-control-lg" name="postcode" placeholder="Postcode" value="3000" />
-                                                                    <span class="form-text text-muted">Please enter your Postcode.</span>
-                                                                </div>
-                                                                <!--end::Input-->
-                                                            </div>
-                                                            <div class="col-xl-6">
-                                                                <!--begin::Input-->
-                                                                <div class="form-group">
-                                                                    <label>City</label>
-                                                                    <input type="text" class="form-control form-control-solid form-control-lg" name="city" placeholder="City" value="Melbourne" />
-                                                                    <span class="form-text text-muted">Please enter your City.</span>
-                                                                </div>
-                                                                <!--end::Input-->
-                                                            </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_porte_serrurerie, {'attr': {'class': 'element12', 'data-btn-id': '12'}})  }}
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-xl-6">
-                                                                <!--begin::Input-->
-                                                                <div class="form-group">
-                                                                    <label>State</label>
-                                                                    <input type="text" class="form-control form-control-solid form-control-lg" name="state" placeholder="State" value="VIC" />
-                                                                    <span class="form-text text-muted">Please enter your State.</span>
-                                                                </div>
-                                                                <!--end::Input-->
-                                                            </div>
-                                                            <div class="col-xl-6">
-                                                                <!--begin::Select-->
-                                                                <div class="form-group">
-                                                                    <label>Country</label>
-                                                                    <select name="country" class="form-control form-control-solid form-control-lg">
-                                                                        <option value="">Select</option>
-                                                                        <option value="AF">Afghanistan</option>
-                                                                        <option value="AX">Åland Islands</option>
-                                                                        <option value="AL">Albania</option>
-                                                                        <option value="DZ">Algeria</option>
-                                                                        <option value="AS">American Samoa</option>
-                                                                        <option value="AD">Andorra</option>
-                                                                        <option value="AO">Angola</option>
-                                                                        <option value="AI">Anguilla</option>
-                                                                        <option value="AQ">Antarctica</option>
-                                                                        <option value="AG">Antigua and Barbuda</option>
-                                                                        <option value="AR">Argentina</option>
-                                                                        <option value="AM">Armenia</option>
-                                                                        <option value="AW">Aruba</option>
-                                                                        <option value="AU" selected="selected">Australia</option>
-                                                                        <option value="AT">Austria</option>
-                                                                        <option value="AZ">Azerbaijan</option>
-                                                                        <option value="BS">Bahamas</option>
-                                                                        <option value="BH">Bahrain</option>
-                                                                        <option value="BD">Bangladesh</option>
-                                                                        <option value="BB">Barbados</option>
-                                                                        <option value="BY">Belarus</option>
-                                                                        <option value="BE">Belgium</option>
-                                                                        <option value="BZ">Belize</option>
-                                                                        <option value="BJ">Benin</option>
-                                                                        <option value="BM">Bermuda</option>
-                                                                        <option value="BT">Bhutan</option>
-                                                                        <option value="BO">Bolivia, Plurinational State of</option>
-                                                                        <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-                                                                        <option value="BA">Bosnia and Herzegovina</option>
-                                                                        <option value="BW">Botswana</option>
-                                                                        <option value="BV">Bouvet Island</option>
-                                                                        <option value="BR">Brazil</option>
-                                                                        <option value="IO">British Indian Ocean Territory</option>
-                                                                        <option value="BN">Brunei Darussalam</option>
-                                                                        <option value="BG">Bulgaria</option>
-                                                                        <option value="BF">Burkina Faso</option>
-                                                                        <option value="BI">Burundi</option>
-                                                                        <option value="KH">Cambodia</option>
-                                                                        <option value="CM">Cameroon</option>
-                                                                        <option value="CA">Canada</option>
-                                                                        <option value="CV">Cape Verde</option>
-                                                                        <option value="KY">Cayman Islands</option>
-                                                                        <option value="CF">Central African Republic</option>
-                                                                        <option value="TD">Chad</option>
-                                                                        <option value="CL">Chile</option>
-                                                                        <option value="CN">China</option>
-                                                                        <option value="CX">Christmas Island</option>
-                                                                        <option value="CC">Cocos (Keeling) Islands</option>
-                                                                        <option value="CO">Colombia</option>
-                                                                        <option value="KM">Comoros</option>
-                                                                        <option value="CG">Congo</option>
-                                                                        <option value="CD">Congo, the Democratic Republic of the</option>
-                                                                        <option value="CK">Cook Islands</option>
-                                                                        <option value="CR">Costa Rica</option>
-                                                                        <option value="CI">Côte d'Ivoire</option>
-                                                                        <option value="HR">Croatia</option>
-                                                                        <option value="CU">Cuba</option>
-                                                                        <option value="CW">Curaçao</option>
-                                                                        <option value="CY">Cyprus</option>
-                                                                        <option value="CZ">Czech Republic</option>
-                                                                        <option value="DK">Denmark</option>
-                                                                        <option value="DJ">Djibouti</option>
-                                                                        <option value="DM">Dominica</option>
-                                                                        <option value="DO">Dominican Republic</option>
-                                                                        <option value="EC">Ecuador</option>
-                                                                        <option value="EG">Egypt</option>
-                                                                        <option value="SV">El Salvador</option>
-                                                                        <option value="GQ">Equatorial Guinea</option>
-                                                                        <option value="ER">Eritrea</option>
-                                                                        <option value="EE">Estonia</option>
-                                                                        <option value="ET">Ethiopia</option>
-                                                                        <option value="FK">Falkland Islands (Malvinas)</option>
-                                                                        <option value="FO">Faroe Islands</option>
-                                                                        <option value="FJ">Fiji</option>
-                                                                        <option value="FI">Finland</option>
-                                                                        <option value="FR">France</option>
-                                                                        <option value="GF">French Guiana</option>
-                                                                        <option value="PF">French Polynesia</option>
-                                                                        <option value="TF">French Southern Territories</option>
-                                                                        <option value="GA">Gabon</option>
-                                                                        <option value="GM">Gambia</option>
-                                                                        <option value="GE">Georgia</option>
-                                                                        <option value="DE">Germany</option>
-                                                                        <option value="GH">Ghana</option>
-                                                                        <option value="GI">Gibraltar</option>
-                                                                        <option value="GR">Greece</option>
-                                                                        <option value="GL">Greenland</option>
-                                                                        <option value="GD">Grenada</option>
-                                                                        <option value="GP">Guadeloupe</option>
-                                                                        <option value="GU">Guam</option>
-                                                                        <option value="GT">Guatemala</option>
-                                                                        <option value="GG">Guernsey</option>
-                                                                        <option value="GN">Guinea</option>
-                                                                        <option value="GW">Guinea-Bissau</option>
-                                                                        <option value="GY">Guyana</option>
-                                                                        <option value="HT">Haiti</option>
-                                                                        <option value="HM">Heard Island and McDonald Islands</option>
-                                                                        <option value="VA">Holy See (Vatican City State)</option>
-                                                                        <option value="HN">Honduras</option>
-                                                                        <option value="HK">Hong Kong</option>
-                                                                        <option value="HU">Hungary</option>
-                                                                        <option value="IS">Iceland</option>
-                                                                        <option value="IN">India</option>
-                                                                        <option value="ID">Indonesia</option>
-                                                                        <option value="IR">Iran, Islamic Republic of</option>
-                                                                        <option value="IQ">Iraq</option>
-                                                                        <option value="IE">Ireland</option>
-                                                                        <option value="IM">Isle of Man</option>
-                                                                        <option value="IL">Israel</option>
-                                                                        <option value="IT">Italy</option>
-                                                                        <option value="JM">Jamaica</option>
-                                                                        <option value="JP">Japan</option>
-                                                                        <option value="JE">Jersey</option>
-                                                                        <option value="JO">Jordan</option>
-                                                                        <option value="KZ">Kazakhstan</option>
-                                                                        <option value="KE">Kenya</option>
-                                                                        <option value="KI">Kiribati</option>
-                                                                        <option value="KP">Korea, Democratic People's Republic of</option>
-                                                                        <option value="KR">Korea, Republic of</option>
-                                                                        <option value="KW">Kuwait</option>
-                                                                        <option value="KG">Kyrgyzstan</option>
-                                                                        <option value="LA">Lao People's Democratic Republic</option>
-                                                                        <option value="LV">Latvia</option>
-                                                                        <option value="LB">Lebanon</option>
-                                                                        <option value="LS">Lesotho</option>
-                                                                        <option value="LR">Liberia</option>
-                                                                        <option value="LY">Libya</option>
-                                                                        <option value="LI">Liechtenstein</option>
-                                                                        <option value="LT">Lithuania</option>
-                                                                        <option value="LU">Luxembourg</option>
-                                                                        <option value="MO">Macao</option>
-                                                                        <option value="MK">Macedonia, the former Yugoslav Republic of</option>
-                                                                        <option value="MG">Madagascar</option>
-                                                                        <option value="MW">Malawi</option>
-                                                                        <option value="MY">Malaysia</option>
-                                                                        <option value="MV">Maldives</option>
-                                                                        <option value="ML">Mali</option>
-                                                                        <option value="MT">Malta</option>
-                                                                        <option value="MH">Marshall Islands</option>
-                                                                        <option value="MQ">Martinique</option>
-                                                                        <option value="MR">Mauritania</option>
-                                                                        <option value="MU">Mauritius</option>
-                                                                        <option value="YT">Mayotte</option>
-                                                                        <option value="MX">Mexico</option>
-                                                                        <option value="FM">Micronesia, Federated States of</option>
-                                                                        <option value="MD">Moldova, Republic of</option>
-                                                                        <option value="MC">Monaco</option>
-                                                                        <option value="MN">Mongolia</option>
-                                                                        <option value="ME">Montenegro</option>
-                                                                        <option value="MS">Montserrat</option>
-                                                                        <option value="MA">Morocco</option>
-                                                                        <option value="MZ">Mozambique</option>
-                                                                        <option value="MM">Myanmar</option>
-                                                                        <option value="NA">Namibia</option>
-                                                                        <option value="NR">Nauru</option>
-                                                                        <option value="NP">Nepal</option>
-                                                                        <option value="NL">Netherlands</option>
-                                                                        <option value="NC">New Caledonia</option>
-                                                                        <option value="NZ">New Zealand</option>
-                                                                        <option value="NI">Nicaragua</option>
-                                                                        <option value="NE">Niger</option>
-                                                                        <option value="NG">Nigeria</option>
-                                                                        <option value="NU">Niue</option>
-                                                                        <option value="NF">Norfolk Island</option>
-                                                                        <option value="MP">Northern Mariana Islands</option>
-                                                                        <option value="NO">Norway</option>
-                                                                        <option value="OM">Oman</option>
-                                                                        <option value="PK">Pakistan</option>
-                                                                        <option value="PW">Palau</option>
-                                                                        <option value="PS">Palestinian Territory, Occupied</option>
-                                                                        <option value="PA">Panama</option>
-                                                                        <option value="PG">Papua New Guinea</option>
-                                                                        <option value="PY">Paraguay</option>
-                                                                        <option value="PE">Peru</option>
-                                                                        <option value="PH">Philippines</option>
-                                                                        <option value="PN">Pitcairn</option>
-                                                                        <option value="PL">Poland</option>
-                                                                        <option value="PT">Portugal</option>
-                                                                        <option value="PR">Puerto Rico</option>
-                                                                        <option value="QA">Qatar</option>
-                                                                        <option value="RE">Réunion</option>
-                                                                        <option value="RO">Romania</option>
-                                                                        <option value="RU">Russian Federation</option>
-                                                                        <option value="RW">Rwanda</option>
-                                                                        <option value="BL">Saint Barthélemy</option>
-                                                                        <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
-                                                                        <option value="KN">Saint Kitts and Nevis</option>
-                                                                        <option value="LC">Saint Lucia</option>
-                                                                        <option value="MF">Saint Martin (French part)</option>
-                                                                        <option value="PM">Saint Pierre and Miquelon</option>
-                                                                        <option value="VC">Saint Vincent and the Grenadines</option>
-                                                                        <option value="WS">Samoa</option>
-                                                                        <option value="SM">San Marino</option>
-                                                                        <option value="ST">Sao Tome and Principe</option>
-                                                                        <option value="SA">Saudi Arabia</option>
-                                                                        <option value="SN">Senegal</option>
-                                                                        <option value="RS">Serbia</option>
-                                                                        <option value="SC">Seychelles</option>
-                                                                        <option value="SL">Sierra Leone</option>
-                                                                        <option value="SG">Singapore</option>
-                                                                        <option value="SX">Sint Maarten (Dutch part)</option>
-                                                                        <option value="SK">Slovakia</option>
-                                                                        <option value="SI">Slovenia</option>
-                                                                        <option value="SB">Solomon Islands</option>
-                                                                        <option value="SO">Somalia</option>
-                                                                        <option value="ZA">South Africa</option>
-                                                                        <option value="GS">South Georgia and the South Sandwich Islands</option>
-                                                                        <option value="SS">South Sudan</option>
-                                                                        <option value="ES">Spain</option>
-                                                                        <option value="LK">Sri Lanka</option>
-                                                                        <option value="SD">Sudan</option>
-                                                                        <option value="SR">Suriname</option>
-                                                                        <option value="SJ">Svalbard and Jan Mayen</option>
-                                                                        <option value="SZ">Swaziland</option>
-                                                                        <option value="SE">Sweden</option>
-                                                                        <option value="CH">Switzerland</option>
-                                                                        <option value="SY">Syrian Arab Republic</option>
-                                                                        <option value="TW">Taiwan, Province of China</option>
-                                                                        <option value="TJ">Tajikistan</option>
-                                                                        <option value="TZ">Tanzania, United Republic of</option>
-                                                                        <option value="TH">Thailand</option>
-                                                                        <option value="TL">Timor-Leste</option>
-                                                                        <option value="TG">Togo</option>
-                                                                        <option value="TK">Tokelau</option>
-                                                                        <option value="TO">Tonga</option>
-                                                                        <option value="TT">Trinidad and Tobago</option>
-                                                                        <option value="TN">Tunisia</option>
-                                                                        <option value="TR">Turkey</option>
-                                                                        <option value="TM">Turkmenistan</option>
-                                                                        <option value="TC">Turks and Caicos Islands</option>
-                                                                        <option value="TV">Tuvalu</option>
-                                                                        <option value="UG">Uganda</option>
-                                                                        <option value="UA">Ukraine</option>
-                                                                        <option value="AE">United Arab Emirates</option>
-                                                                        <option value="GB">United Kingdom</option>
-                                                                        <option value="US">United States</option>
-                                                                        <option value="UM">United States Minor Outlying Islands</option>
-                                                                        <option value="UY">Uruguay</option>
-                                                                        <option value="UZ">Uzbekistan</option>
-                                                                        <option value="VU">Vanuatu</option>
-                                                                        <option value="VE">Venezuela, Bolivarian Republic of</option>
-                                                                        <option value="VN">Viet Nam</option>
-                                                                        <option value="VG">Virgin Islands, British</option>
-                                                                        <option value="VI">Virgin Islands, U.S.</option>
-                                                                        <option value="WF">Wallis and Futuna</option>
-                                                                        <option value="EH">Western Sahara</option>
-                                                                        <option value="YE">Yemen</option>
-                                                                        <option value="ZM">Zambia</option>
-                                                                        <option value="ZW">Zimbabwe</option>
-                                                                    </select>
-                                                                </div>
-                                                                <!--end::Input-->
-                                                            </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_porte_serrurerie_com, { 'label': 'Nom' }) }}
                                                         </div>
                                                     </div>
                                                     <!--end: Wizard Step 2-->
+
+                                                    <!--begin: Wizard Step 2 - slide 12-->
+                                                    <div class="pb-5" id="wizardForm2Slide12" data-wizard-type="step-content" data-wizard-id="12">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Plafond <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state61" elementId="element13" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state62" elementId="element13" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state63" elementId="element13" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state64" elementId="element13" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state65" elementId="element13" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_plafond, {'attr': {'class': 'element13', 'data-btn-id': '13'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_plafond_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 12 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 13-->
+                                                    <div class="pb-5" id="wizardForm2Slide13" data-wizard-type="step-content" data-wizard-id="13">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Revêtements muraux <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state66" elementId="element14" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state67" elementId="element14" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state68" elementId="element14" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state69" elementId="element14" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state70" elementId="element14" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_revetement_muraux, {'attr': {'class': 'element14', 'data-btn-id': '14'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_revetement_muraux_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 13 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 14-->
+                                                    <div class="pb-5" id="wizardForm2Slide14" data-wizard-type="step-content" data-wizard-id="14">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Plinthes<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state71" elementId="element15" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state72" elementId="element15" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state73" elementId="element15" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state74" elementId="element15" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state75" elementId="element15" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_plinthes, {'attr': {'class': 'element15', 'data-btn-id': '15'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_plinthes_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 14 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 15-->
+                                                    <div class="pb-5" id="wizardForm2Slide15" data-wizard-type="step-content" data-wizard-id="15">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Sol<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state76" elementId="element16" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state77" elementId="element16" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state78" elementId="element16" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state79" elementId="element16" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state80" elementId="element16" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_sol, {'attr': {'class': 'element16', 'data-btn-id': '16'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_sol_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 15 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 16-->
+                                                    <div class="pb-5" id="wizardForm2Slide16" data-wizard-type="step-content" data-wizard-id="16">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Luminaire <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state81" elementId="element17" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state82" elementId="element17" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state83" elementId="element17" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state84" elementId="element17" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state85" elementId="element17" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_luminaire, {'attr': {'class': 'element17', 'data-btn-id': '17'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_luminaire_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 16 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 17-->
+                                                    <div class="pb-5" id="wizardForm2Slide17" data-wizard-type="step-content" data-wizard-id="17">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Intérupteur/prise <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state86" elementId="element18" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state87" elementId="element18" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state88" elementId="element18" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state89" elementId="element18" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state90" elementId="element18" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_interupt_prise, {'attr': {'class': 'element18', 'data-btn-id': '18'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_interupt_prise_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 17 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 18-->
+                                                    <div class="pb-5" id="wizardForm2Slide18" data-wizard-type="step-content" data-wizard-id="18">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Fenêtre <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state91" elementId="element19" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state92" elementId="element19" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state93" elementId="element19" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state94" elementId="element19" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state95" elementId="element19" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_fenetre, {'attr': {'class': 'element19', 'data-btn-id': '19'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_fenetre_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 18 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 19-->
+                                                    <div class="pb-5" id="wizardForm2Slide19" data-wizard-type="step-content" data-wizard-id="19">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Volet<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state96" elementId="element20" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state97" elementId="element20" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state98" elementId="element20" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state99" elementId="element20" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state100" elementId="element20" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_volet, {'attr': {'class': 'element20', 'data-btn-id': '20'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_volet_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 19 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 20-->
+                                                    <div class="pb-5" id="wizardForm2Slide20" data-wizard-type="step-content" data-wizard-id="20">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Meubles cuisine bas<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state101" elementId="element21" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state102" elementId="element21" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state103" elementId="element21" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state104" elementId="element21" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state105" elementId="element21" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_meuble_cuisine_bas, {'attr': {'class': 'element21', 'data-btn-id': '21'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_meuble_cuisine_bas_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 20 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 21-->
+                                                    <div class="pb-5" id="wizardForm2Slide20" data-wizard-type="step-content" data-wizard-id="21">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Meubles cuisine haut<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state106" elementId="element22" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state107" elementId="element22" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state108" elementId="element22" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state109" elementId="element22" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state110" elementId="element22" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_meuble_cuisine_haut, {'attr': {'class': 'element22', 'data-btn-id': '22'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_meuble_cuisine_haut_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 21 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 22-->
+                                                    <div class="pb-5" id="wizardForm2Slide21" data-wizard-type="step-content" data-wizard-id="22">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Faience<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state111" elementId="element23" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state112" elementId="element23" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state113" elementId="element23" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state114" elementId="element23" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state115" elementId="element23" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_faience, {'attr': {'class': 'element23', 'data-btn-id': '23'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_faience_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 22 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 23-->
+                                                    <div class="pb-5" id="wizardForm2Slide23" data-wizard-type="step-content" data-wizard-id="23">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Paillasse<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state111" elementId="element24" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state112" elementId="element24" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state113" elementId="element24" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state114" elementId="element24" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state115" elementId="element24" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_paillasse, {'attr': {'class': 'element24', 'data-btn-id': '24'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_paillasse_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 23 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 24-->
+                                                    <div class="pb-5" id="wizardForm2Slide24" data-wizard-type="step-content" data-wizard-id="24">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Evier<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state116" elementId="element25" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state117" elementId="element25" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state118" elementId="element25" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state119" elementId="element25" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state120" elementId="element25" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_evier, {'attr': {'class': 'element25', 'data-btn-id': '25'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_evier_com, { 'label': 'Evier' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 24  -->
+
+                                                    <!--begin: Wizard Step 2 - slide 25 -->
+                                                    <div class="pb-5" id="wizardForm2Slide25" data-wizard-type="step-content" data-wizard-id="25">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Robinetterie<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state121" elementId="element26" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state122" elementId="element26" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state123" elementId="element26" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state124" elementId="element26" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state125" elementId="element26" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_robinetterie, {'attr': {'class': 'element26', 'data-btn-id': '26'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_robinetterie_com, { 'label': 'Robinetterie' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 25  -->
+
+                                                    <!--begin: Wizard Step 2 - slide 26-->
+                                                    <div class="pb-5" id="wizardForm2Slide26" data-wizard-type="step-content" data-wizard-id="26">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">VMC <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state126" elementId="element27" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state127" elementId="element27" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state128" elementId="element27" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state129" elementId="element27" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state130" elementId="element27" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_vmc, {'attr': {'class': 'element27', 'data-btn-id': '27'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_vmc_com, { 'label': 'VMC' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 26 -->
+
+
+                                                    <!--begin: Wizard Step 2 - slide 27-->
+                                                    <div class="pb-5" id="wizardForm2Slide27" data-wizard-type="step-content" data-wizard-id="27">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Table de cuisson<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state131" elementId="element28" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state132" elementId="element28" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state133" elementId="element28" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state134" elementId="element28" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state135" elementId="element28" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_table_cuisson, {'attr': {'class': 'element28', 'data-btn-id': '28'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_table_cuisson_com, { 'label': 'Table de cuisson' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 27 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 28-->
+                                                    <div class="pb-5" id="wizardForm2Slide28" data-wizard-type="step-content" data-wizard-id="28">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Frigo<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state136" elementId="element29" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state137" elementId="element29" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state138" elementId="element29" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state139" elementId="element29" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state140" elementId="element29" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_frigo, {'attr': {'class': 'element29', 'data-btn-id': '29'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_frigo_com, { 'label': 'Frigo' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 28 -->
+
+                                                    <!--begin: Wizard Step 2 - slide 29-->
+                                                    <div class="pb-5" id="wizardForm2Slide29" data-wizard-type="step-content" data-wizard-id="29">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Hotte aspirante <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state141" elementId="element30" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state142" elementId="element30" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state143" elementId="element30" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state144" elementId="element30" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state145" elementId="element30" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_hotte, {'attr': {'class': 'element30', 'data-btn-id': '30'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.sejour_hotte_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 2 - slide 29 -->
+    <!-- Slide Wizard -->
+
+                                                    <div class="pb-5" id="wizardForm3Slide30" data-wizard-type="step-content" data-wizard-id="30">
+                                                    </div>
+
+    <!-- COULOIR -->
+
+                                                    <!--begin: Wizard Step 3-->
+                                                    <div class="pb-5" id="wizardForm3" data-wizard-type="step-content" data-wizard-state="done">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center;">Porte / Serurrerie C<span class="oi oi-arrow-thick-right"></span></h4>
+                                                        <div class="my-custom-class-for-errors">
+                                                            {{ form_errors(form) }}
+                                                        </div>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state151" elementId="element32" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state152" elementId="element32" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state153" elementId="element32" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state154" elementId="element32" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state155" elementId="element32" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_porte_serrurerie, {'attr': {'class': 'element32', 'data-btn-id': '32'}})  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_porte_serrurerie_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 1-->
+
+                                                    <!--begin: Wizard Step 3 - slide 32-->
+                                                    <div class="pb-5" id="wizardForm3Slide32" data-wizard-type="step-content" data-wizard-id="32">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Plafond<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state156" elementId="element33" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state157" elementId="element33" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state158" elementId="element33" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state159" elementId="element33" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state160" elementId="element33" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_plafond, {'attr': {'class': 'element33', 'data-btn-id': '33'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_plafond_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 32 -->
+
+                                                    <!--begin: Wizard Step 3 - slide 33-->
+                                                    <div class="pb-5" id="wizardForm3Slide33" data-wizard-type="step-content" data-wizard-id="33">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Revetement muraux <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state161" elementId="element34" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state162" elementId="element34" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state163" elementId="element34" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state164" elementId="element34" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state165" elementId="element34" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>wc_plafond
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_revetement_muraux, {'attr': {'class': 'element34', 'data-btn-id': '34'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_revetement_muraux_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 32 -->
+
+                                                    <!--begin: Wizard Step 3 - slide 33-->
+                                                    <div class="pb-5" id="wizardForm3Slide34" data-wizard-type="step-content" data-wizard-id="34">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Plinthes<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state166" elementId="element35" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state167" elementId="element35" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state168" elementId="element35" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state169" elementId="element35" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state170" elementId="element35" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>wc_plafond
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_plinthes, {'attr': {'class': 'element35', 'data-btn-id': '35'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_plinthes_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 33 -->
+
+                                                    <!--begin: Wizard Step 3 - slide 34-->
+                                                    <div class="pb-5" id="wizardForm3Slide35" data-wizard-type="step-content" data-wizard-id="35">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Sol<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state171" elementId="element36" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state172" elementId="element36" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state173" elementId="element36" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state174" elementId="element36" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state175" elementId="element36" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>wc_plafond
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_sol, {'attr': {'class': 'element36', 'data-btn-id': '36'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_sol_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 34 -->
+
+                                                    <!--begin: Wizard Step 3 - slide 35-->
+                                                    <div class="pb-5" id="wizardForm3Slide36" data-wizard-type="step-content" data-wizard-id="36">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Luminaire<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state176" elementId="element37" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state177" elementId="element37" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state178" elementId="element37" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state179" elementId="element37" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state180" elementId="element37" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>wc_plafond
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_luminaire, {'attr': {'class': 'element37', 'data-btn-id': '37'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_luminaire_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 35 -->
+
+                                                    <!--begin: Wizard Step 3 - slide 36-->
+                                                    <div class="pb-5" id="wizardForm3Slide37" data-wizard-type="step-content" data-wizard-id="37">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Intérupteur / prise <span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state181" elementId="element38" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state182" elementId="element38" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state183" elementId="element38" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state184" elementId="element38" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state185" elementId="element38" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>wc_plafond
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_interupt_prise, {'attr': {'class': 'element38', 'data-btn-id': '38'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_interupt_prise_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 36 -->
+
+                                                    <!--begin: Wizard Step 3 - slide 37-->
+                                                    <div class="pb-5" id="wizardForm3Slide38" data-wizard-type="step-content" data-wizard-id="38">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Fenêtre<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state186" elementId="element39" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state187" elementId="element39" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state188" elementId="element39" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state189" elementId="element39" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state190" elementId="element39" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>wc_plafond
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_fenetre, {'attr': {'class': 'element39', 'data-btn-id': '39'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_fenetre_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 37 -->
+
+                                                    <!--begin: Wizard Step 3 - slide 38-->
+                                                    <div class="pb-5" id="wizardForm3Slide38" data-wizard-type="step-content" data-wizard-id="38">
+                                                        <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Volet<span class="oi oi-arrow-thick-right"></span>
+                                                        </h4>
+                                                        <div class="row" style="padding: 40px 0px;">
+                                                            <div class="col" style="display: flex;justify-content: space-evenly;">
+                                                                <button type="button" id="state191" elementId="element40" value="1" class="btn btn-outline-success" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))"> Etat neuf</button>
+                                                                <button type="button" id="state192" elementId="element40" value="2" class="btn btn-outline-primary" onClick="choiceState(this.id, this.value , $(this).attr('elementId'))">Bon état</button>
+                                                                <button type="button" id="state193" elementId="element40" value="3" class="btn btn-outline-secondary" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat d'usage</button>
+                                                                <button type="button" id="state194" elementId="element40" value="4" class="btn btn-outline-danger" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Mauvais état </button>
+                                                                <button type="button" id="state195" elementId="element40" value="5" class="btn btn-outline-warning" onClick="choiceState(this.id, this.value, $(this).attr('elementId'))">Etat dégradé</button>
+                                                            </div>
+                                                        </div>wc_plafond
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_volet, {'attr': {'class': 'element40', 'data-btn-id': '40'} })  }}
+                                                        </div>
+                                                        <div class="col" id="some-custom-id">
+                                                            {{ form_row(form.couloir_volet_com, { 'label': 'Nom' }) }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end: Wizard Step 3 - slide 38 -->
+
+
+          <!-- Salle de Bain -->
+                                                    <div class="pb-5" id="wizardForm4Slide39" data-wizard-type="step-content" data-wizard-id="39">
+                                                    </div>
+
+
+                                                    <!--end: Wizard Step 2-->
+
                                                     <!--begin: Wizard Step 3-->
                                                     <div class="pb-5" id="wizardForm3" data-wizard-type="step-content">
                                                         <h4 class="mb-10 font-weight-bold text-dark">Select your Services</h4>
@@ -2913,7 +3234,20 @@ function formNextSlide(){
         idSlideNext = 1;
         return;
     }
-
+    if ($('#wizardForm2').attr("data-wizard-state") === "current") {
+        $('#wizardForm2').attr('data-wizard-state', 'done');
+        $('#wizardForm2Slide12').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+    if ($('#wizardForm3').attr("data-wizard-state") === "current") {
+        $('#wizardForm3').attr('data-wizard-state', 'done');
+        $('#wizardForm3Slide32').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
 
    idSlidePrecedent = parseInt($('.pb-5[data-wizard-state="current"]').attr('data-wizard-id'));
    idSlideNext = idSlidePrecedent + 1;
@@ -2921,7 +3255,7 @@ function formNextSlide(){
     $('.pb-5[data-wizard-id='+idSlideNext+']').attr('data-wizard-state', 'current');
     $('.pb-5[data-wizard-id='+idSlidePrecedent+']').attr('data-wizard-state', 'done');
 
-
+//si on est sur le slide 11 on cache la formulaire 1 au profit du 2
     if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm1Slide11"){
         // form a afficher
         $('#wizard-step2').attr('data-wizard-state', 'current');
@@ -2931,6 +3265,19 @@ function formNextSlide(){
         $('#wizardForm1').attr('data-wizard-state', 'done');
         return;
     }
+
+    //si on est sur le slide 31 on cache la formulaire 2 au profit du 3
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm3Slide30"){
+        // form a afficher
+        $('#wizard-step3').attr('data-wizard-state', 'current');
+        $('#wizardForm3').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step2').attr('data-wizard-state', 'done');
+        $('#wizardForm2').attr('data-wizard-state', 'done');
+        return;
+    }
+
+
 
     //on recupere l'id du prochain element et on ajoute la classe active au btn actuel
     var state = $('.element'+idSlideNext++).attr("data-btn-id");

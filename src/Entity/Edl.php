@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EdlRepository;
 use Doctrine\ORM\Mapping as ORM;
+use http\Encoding\Stream\Inflate;
 
 /**
  * @ORM\Entity(repositoryClass=EdlRepository::class)
@@ -465,7 +466,7 @@ class Edl
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $wc_jointsÂ_com;
+    private $wc_joints_com;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -675,7 +676,7 @@ class Edl
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $ch2_fenetreÂ_com;
+    private $ch2_fenetre_com;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -797,6 +798,326 @@ class Edl
      */
     private $ch3_volet_com;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_sonette_interphone;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_porte_serrurerie;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_porte_serrurerie_com;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_sonette_interphone_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_plafond;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_plafond_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_revetement_muraux;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_revetement_muraux_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_plinthes;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_plinthes_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_sol;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_sol_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_luminaire;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_luminaire_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_interupt_prise;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_interupt_prise_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_placard;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_placard_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_fenetre;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_fenetre_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_volet;
+
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_faience;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_faience_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_paillasse;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_paillasse_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_evier;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_evier_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_robinetterie;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_robinetterie_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_vmc;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_vmc_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_table_cuisson;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_table_cuisson_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_frigo;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_frigo_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_hotte;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_hotte_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_reglette_lumineuse;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_reglette_lumineuse_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_radiateur;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_radiateur_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_meuble_cuisine_bas;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_meuble_cuisine_bas_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sejour_meuble_cuisine_haut;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_meuble_cuisine_haut_com;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sejour_volet_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_porte_serrurerie;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_porte_serrurerie_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_plafond;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_plafond_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_revetement_muraux;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_revetement_muraux_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_plinthes;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_plinthes_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_sol;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_sol_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_luminaire;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_luminaire_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_interupt_prise;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_interupt_prise_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_fenetre;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_fenetre_com;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couloir_volet;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $couloir_volet_com;
 
 
     public function getId(): ?int
@@ -857,9 +1178,9 @@ class Edl
         return $this->entree_plafond;
     }
 
-    public function setEntreePlafond(?int $entrï¿½ee_plafond): self
+    public function setEntreePlafond(?int $entree_plafond): self
     {
-        $this->entree_plafond = $entrï¿½ee_plafond;
+        $this->entree_plafond = $entree_plafond;
 
         return $this;
     }
@@ -1872,14 +2193,14 @@ class Edl
         return $this;
     }
 
-    public function getWcJointsÂCom(): ?string
+    public function getWcJointsCom(): ?string
     {
-        return $this->wc_jointsÂ_com;
+        return $this->wc_joints_com;
     }
 
-    public function setWcJointsÂCom(?string $wc_jointsÂ_com): self
+    public function setWcJointsCom(?string $wc_joints_com): self
     {
-        $this->wc_jointsÂ_com = $wc_jointsÂ_com;
+        $this->wc_joints_com = $wc_joints_com;
 
         return $this;
     }
@@ -2376,14 +2697,14 @@ class Edl
         return $this;
     }
 
-    public function getCh2FenetreÂCom(): ?string
+    public function getCh2FenetreCom(): ?string
     {
-        return $this->ch2_fenetreÂ_com;
+        return $this->ch2_fenetre_com;
     }
 
-    public function setCh2FenetreÂCom(?string $ch2_fenetreÂ_com): self
+    public function setCh2FenetreCom(?string $ch2_fenetre_com): self
     {
-        $this->ch2_fenetreÂ_com = $ch2_fenetreÂ_com;
+        $this->ch2_fenetre_com = $ch2_fenetre_com;
 
         return $this;
     }
@@ -2672,6 +2993,774 @@ class Edl
     public function setCh3VoletCom(?string $ch3_volet_com): self
     {
         $this->ch3_volet_com = $ch3_volet_com;
+
+        return $this;
+    }
+
+    public function getSejourSonetteInterphone(): ?int
+    {
+        return $this->sejour_sonette_interphone;
+    }
+
+    public function setSejourSonetteInterphone(?int $sejour_sonette_interphone): self
+    {
+        $this->sejour_sonette_interphone = $sejour_sonette_interphone;
+
+        return $this;
+    }
+
+    public function getSejourPorteSerrurerie(): ?int
+    {
+        return $this->sejour_porte_serrurerie;
+    }
+
+    public function setSejourPorteSerrurerie(?int $sejour_porte_serrurerie): self
+    {
+        $this->sejour_porte_serrurerie = $sejour_porte_serrurerie;
+
+        return $this;
+    }
+
+    public function getSejourPorteSerrurerieCom(): ?string
+    {
+        return $this->sejour_porte_serrurerie_com;
+    }
+
+    public function setSejourPorteSerrurerieCom(?string $sejour_porte_serrurerie_com): self
+    {
+        $this->sejour_porte_serrurerie_com = $sejour_porte_serrurerie_com;
+
+        return $this;
+    }
+
+    public function getSejourSonetteInterphoneCom(): ?string
+    {
+        return $this->sejour_sonette_interphone_com;
+    }
+
+    public function setSejourSonetteInterphoneCom(?string $sejour_sonette_interphone_com): self
+    {
+        $this->sejour_sonette_interphone_com = $sejour_sonette_interphone_com;
+
+        return $this;
+    }
+
+    public function getSejourPlafond(): ?int
+    {
+        return $this->sejour_plafond;
+    }
+
+    public function setSejourPlafond(?int $sejour_plafond): self
+    {
+        $this->sejour_plafond = $sejour_plafond;
+
+        return $this;
+    }
+
+    public function getSejourPlafondCom(): ?string
+    {
+        return $this->sejour_plafond_com;
+    }
+
+    public function setSejourPlafondCom(?string $sejour_plafond_com): self
+    {
+        $this->sejour_plafond_com = $sejour_plafond_com;
+
+        return $this;
+    }
+
+    public function getSejourRevetementMuraux(): ?int
+    {
+        return $this->sejour_revetement_muraux;
+    }
+
+    public function setSejourRevetementMuraux(?int $sejour_revetement_muraux): self
+    {
+        $this->sejour_revetement_muraux = $sejour_revetement_muraux;
+
+        return $this;
+    }
+
+    public function getSejourRevetementMurauxCom(): ?string
+    {
+        return $this->sejour_revetement_muraux_com;
+    }
+
+    public function setSejourRevetementMurauxCom(?string $sejour_revetement_muraux_com): self
+    {
+        $this->sejour_revetement_muraux_com = $sejour_revetement_muraux_com;
+
+        return $this;
+    }
+
+    public function getSejourPlinthes(): ?int
+    {
+        return $this->sejour_plinthes;
+    }
+
+    public function setSejourPlinthes(?int $sejour_plinthes): self
+    {
+        $this->sejour_plinthes = $sejour_plinthes;
+
+        return $this;
+    }
+
+    public function getSejourPlinthesCom(): ?string
+    {
+        return $this->sejour_plinthes_com;
+    }
+
+    public function setSejourPlinthesCom(?string $sejour_plinthes_com): self
+    {
+        $this->sejour_plinthes_com = $sejour_plinthes_com;
+
+        return $this;
+    }
+
+    public function getSejourSol(): ?int
+    {
+        return $this->sejour_sol;
+    }
+
+    public function setSejourSol(?int $sejour_sol): self
+    {
+        $this->sejour_sol = $sejour_sol;
+
+        return $this;
+    }
+
+    public function getSejourSolCom(): ?string
+    {
+        return $this->sejour_sol_com;
+    }
+
+    public function setSejourSolCom(?string $sejour_sol_com): self
+    {
+        $this->sejour_sol_com = $sejour_sol_com;
+
+        return $this;
+    }
+
+    public function getSejourLuminaire(): ?int
+    {
+        return $this->sejour_luminaire;
+    }
+
+    public function setSejourLuminaire(?int $sejour_luminaire): self
+    {
+        $this->sejour_luminaire = $sejour_luminaire;
+
+        return $this;
+    }
+
+    public function getSejourLuminaireCom(): ?string
+    {
+        return $this->sejour_luminaire_com;
+    }
+
+    public function setSejourLuminaireCom(?string $sejour_luminaire_com): self
+    {
+        $this->sejour_luminaire_com = $sejour_luminaire_com;
+
+        return $this;
+    }
+
+    public function getSejourInteruptPrise(): ?int
+    {
+        return $this->sejour_interupt_prise;
+    }
+
+    public function setSejourInteruptPrise(?int $sejour_interupt_prise): self
+    {
+        $this->sejour_interupt_prise = $sejour_interupt_prise;
+
+        return $this;
+    }
+
+    public function getSejourInteruptPriseCom(): ?string
+    {
+        return $this->sejour_interupt_prise_com;
+    }
+
+    public function setSejourInteruptPriseCom(?string $sejour_interupt_prise_com): self
+    {
+        $this->sejour_interupt_prise_com = $sejour_interupt_prise_com;
+
+        return $this;
+    }
+
+    public function getSejourPlacard(): ?int
+    {
+        return $this->sejour_placard;
+    }
+
+    public function setSejourPlacard(?int $sejour_placard): self
+    {
+        $this->sejour_placard = $sejour_placard;
+
+        return $this;
+    }
+
+    public function getSejourPlacardCom(): ?string
+    {
+        return $this->sejour_placard_com;
+    }
+
+    public function setSejourPlacardCom(?string $sejour_placard_com): self
+    {
+        $this->sejour_placard_com = $sejour_placard_com;
+
+        return $this;
+    }
+
+    public function getSejourFenetre(): ?int
+    {
+        return $this->sejour_fenetre;
+    }
+
+    public function setSejourFenetre(?int $sejour_fenetre): self
+    {
+        $this->sejour_fenetre = $sejour_fenetre;
+
+        return $this;
+    }
+
+    public function getSejourFenetreCom(): ?string
+    {
+        return $this->sejour_fenetre_com;
+    }
+
+    public function setSejourFenetreCom(?string $sejour_fenetre_com): self
+    {
+        $this->sejour_fenetre_com = $sejour_fenetre_com;
+
+        return $this;
+    }
+
+    public function getSejourVolet(): ?int
+    {
+        return $this->sejour_volet;
+    }
+
+    public function setSejourVolet(?int $sejour_volet): self
+    {
+        $this->sejour_volet = $sejour_volet;
+
+        return $this;
+    }
+
+    public function getSejourFaience(): ?int
+    {
+        return $this->sejour_faience;
+    }
+
+    public function setSejourFaience(?int $sejour_faience): self
+    {
+        $this->sejour_faience = $sejour_faience;
+
+        return $this;
+    }
+
+    public function getSejourFaienceCom(): ?string
+    {
+        return $this->sejour_faience_com;
+    }
+
+    public function setSejourFaienceCom(?string $sejour_faience_com): self
+    {
+        $this->sejour_faience_com = $sejour_faience_com;
+
+        return $this;
+    }
+
+    public function getSejourPaillasse(): ?int
+    {
+        return $this->sejour_paillasse;
+    }
+
+    public function setSejourPaillasse(?int $sejour_paillasse): self
+    {
+        $this->sejour_paillasse = $sejour_paillasse;
+
+        return $this;
+    }
+
+    public function getSejourPaillasseCom(): ?string
+    {
+        return $this->sejour_paillasse_com;
+    }
+
+    public function setSejourPaillasseCom(?string $sejour_paillasse_com): self
+    {
+        $this->sejour_paillasse_com = $sejour_paillasse_com;
+
+        return $this;
+    }
+
+    public function getSejourEvier(): ?int
+    {
+        return $this->sejour_evier;
+    }
+
+    public function setSejourEvier(?int $sejour_evier): self
+    {
+        $this->sejour_evier = $sejour_evier;
+
+        return $this;
+    }
+
+    public function getSejourEvierCom(): ?string
+    {
+        return $this->sejour_evier_com;
+    }
+
+    public function setSejourEvierCom(?string $sejour_evier_com): self
+    {
+        $this->sejour_evier_com = $sejour_evier_com;
+
+        return $this;
+    }
+
+    public function getSejourRobinetterie(): ?int
+    {
+        return $this->sejour_robinetterie;
+    }
+
+    public function setSejourRobinetterie(?int $sejour_robinetterie): self
+    {
+        $this->sejour_robinetterie = $sejour_robinetterie;
+
+        return $this;
+    }
+
+    public function getSejourRobinetterieCom(): ?string
+    {
+        return $this->sejour_robinetterie_com;
+    }
+
+    public function setSejourRobinetterieCom(?string $sejour_robinetterie_com): self
+    {
+        $this->sejour_robinetterie_com = $sejour_robinetterie_com;
+
+        return $this;
+    }
+
+    public function getSejourVmc(): ?int
+    {
+        return $this->sejour_vmc;
+    }
+
+    public function setSejourVmc(?int $sejour_vmc): self
+    {
+        $this->sejour_vmc = $sejour_vmc;
+
+        return $this;
+    }
+
+    public function getSejourVmcCom(): ?string
+    {
+        return $this->sejour_vmc_com;
+    }
+
+    public function setSejourVmcCom(?string $sejour_vmc_com): self
+    {
+        $this->sejour_vmc_com = $sejour_vmc_com;
+
+        return $this;
+    }
+
+    public function getSejourTableCuisson(): ?int
+    {
+        return $this->sejour_table_cuisson;
+    }
+
+    public function setSejourTableCuisson(?int $sejour_table_cuisson): self
+    {
+        $this->sejour_table_cuisson = $sejour_table_cuisson;
+
+        return $this;
+    }
+
+    public function getSejourTableCuissonCom(): ?string
+    {
+        return $this->sejour_table_cuisson_com;
+    }
+
+    public function setSejourTableCuissonCom(?string $sejour_table_cuisson_com): self
+    {
+        $this->sejour_table_cuisson_com = $sejour_table_cuisson_com;
+
+        return $this;
+    }
+
+    public function getSejourFrigo(): ?int
+    {
+        return $this->sejour_frigo;
+    }
+
+    public function setSejourFrigo(?int $sejour_frigo): self
+    {
+        $this->sejour_frigo = $sejour_frigo;
+
+        return $this;
+    }
+
+    public function getSejourFrigoCom(): ?string
+    {
+        return $this->sejour_frigo_com;
+    }
+
+    public function setSejourFrigoCom(?string $sejour_frigo_com): self
+    {
+        $this->sejour_frigo_com = $sejour_frigo_com;
+
+        return $this;
+    }
+
+    public function getSejourHotte(): ?int
+    {
+        return $this->sejour_hotte;
+    }
+
+    public function setSejourHotte(?int $sejour_hotte): self
+    {
+        $this->sejour_hotte = $sejour_hotte;
+
+        return $this;
+    }
+
+    public function getSejourHotteCom(): ?string
+    {
+        return $this->sejour_hotte_com;
+    }
+
+    public function setSejourHotteCom(?string $sejour_hotte_com): self
+    {
+        $this->sejour_hotte_com = $sejour_hotte_com;
+
+        return $this;
+    }
+
+    public function getSejourRegletteLumineuse(): ?int
+    {
+        return $this->sejour_reglette_lumineuse;
+    }
+
+    public function setSejourRegletteLumineuse(?int $sejour_reglette_lumineuse): self
+    {
+        $this->sejour_reglette_lumineuse = $sejour_reglette_lumineuse;
+
+        return $this;
+    }
+
+    public function getSejourRegletteLumineuseCom(): ?string
+    {
+        return $this->sejour_reglette_lumineuse_com;
+    }
+
+    public function setSejourRegletteLumineuseCom(?string $sejour_reglette_lumineuse_com): self
+    {
+        $this->sejour_reglette_lumineuse_com = $sejour_reglette_lumineuse_com;
+
+        return $this;
+    }
+
+    public function getSejourRadiateur(): ?int
+    {
+        return $this->sejour_radiateur;
+    }
+
+    public function setSejourRadiateur(?int $sejour_radiateur): self
+    {
+        $this->sejour_radiateur = $sejour_radiateur;
+
+        return $this;
+    }
+
+    public function getSejourRadiateurCom(): ?string
+    {
+        return $this->sejour_radiateur_com;
+    }
+
+    public function setSejourRadiateurCom(?string $sejour_radiateur_com): self
+    {
+        $this->sejour_radiateur_com = $sejour_radiateur_com;
+
+        return $this;
+    }
+
+    public function getSejourMeubleCuisineBas(): ?int
+    {
+        return $this->sejour_meuble_cuisine_bas;
+    }
+
+    public function setSejourMeubleCuisineBas(?int $sejour_meuble_cuisine_bas): self
+    {
+        $this->sejour_meuble_cuisine_bas = $sejour_meuble_cuisine_bas;
+
+        return $this;
+    }
+
+    public function getSejourMeubleCuisineBasCom(): ?string
+    {
+        return $this->sejour_meuble_cuisine_bas_com;
+    }
+
+    public function setSejourMeubleCuisineBasCom(?string $sejour_meuble_cuisine_bas_com): self
+    {
+        $this->sejour_meuble_cuisine_bas_com = $sejour_meuble_cuisine_bas_com;
+
+        return $this;
+    }
+
+    public function getSejourMeubleCuisineHaut(): ?int
+    {
+        return $this->sejour_meuble_cuisine_haut;
+    }
+
+    public function setSejourMeubleCuisineHaut(?int $sejour_meuble_cuisine_haut): self
+    {
+        $this->sejour_meuble_cuisine_haut = $sejour_meuble_cuisine_haut;
+
+        return $this;
+    }
+
+    public function getSejourMeubleCuisineHautCom(): ?string
+    {
+        return $this->sejour_meuble_cuisine_haut_com;
+    }
+
+    public function setSejourMeubleCuisineHautCom(?string $sejour_meuble_cuisine_haut_com): self
+    {
+        $this->sejour_meuble_cuisine_haut_com = $sejour_meuble_cuisine_haut_com;
+
+        return $this;
+    }
+
+    public function getSejourVoletCom(): ?string
+    {
+        return $this->sejour_volet_com;
+    }
+
+    public function setSejourVoletCom(?string $sejour_volet_com): self
+    {
+        $this->sejour_volet_com = $sejour_volet_com;
+
+        return $this;
+    }
+
+    public function getCouloirPorteSerrurerie(): ?int
+    {
+        return $this->couloir_porte_serrurerie;
+    }
+
+    public function setCouloirPorteSerrurerie(?int $couloir_porte_serrurerie): self
+    {
+        $this->couloir_porte_serrurerie = $couloir_porte_serrurerie;
+
+        return $this;
+    }
+
+    public function getCouloirPorteSerrurerieCom(): ?string
+    {
+        return $this->couloir_porte_serrurerie_com;
+    }
+
+    public function setCouloirPorteSerrurerieCom(?string $couloir_porte_serrurerie_com): self
+    {
+        $this->couloir_porte_serrurerie_com = $couloir_porte_serrurerie_com;
+
+        return $this;
+    }
+
+    public function getCouloirPlafond(): ?int
+    {
+        return $this->couloir_plafond;
+    }
+
+    public function setCouloirPlafond(?int $couloir_plafond): self
+    {
+        $this->couloir_plafond = $couloir_plafond;
+
+        return $this;
+    }
+
+    public function getCouloirPlafondCom(): ?string
+    {
+        return $this->couloir_plafond_com;
+    }
+
+    public function setCouloirPlafondCom(?string $couloir_plafond_com): self
+    {
+        $this->couloir_plafond_com = $couloir_plafond_com;
+
+        return $this;
+    }
+
+    public function getCouloirRevetementMuraux(): ?int
+    {
+        return $this->couloir_revetement_muraux;
+    }
+
+    public function setCouloirRevetementMuraux(?int $couloir_revetement_muraux): self
+    {
+        $this->couloir_revetement_muraux = $couloir_revetement_muraux;
+
+        return $this;
+    }
+
+    public function getCouloirRevetementMurauxCom(): ?string
+    {
+        return $this->couloir_revetement_muraux_com;
+    }
+
+    public function setCouloirRevetementMurauxCom(?string $couloir_revetement_muraux_com): self
+    {
+        $this->couloir_revetement_muraux_com = $couloir_revetement_muraux_com;
+
+        return $this;
+    }
+
+    public function getCouloirPlinthes(): ?int
+    {
+        return $this->couloir_plinthes;
+    }
+
+    public function setCouloirPlinthes(?int $couloir_plinthes): self
+    {
+        $this->couloir_plinthes = $couloir_plinthes;
+
+        return $this;
+    }
+
+    public function getCouloirPlinthesCom(): ?string
+    {
+        return $this->couloir_plinthes_com;
+    }
+
+    public function setCouloirPlinthesCom(?string $couloir_plinthes_com): self
+    {
+        $this->couloir_plinthes_com = $couloir_plinthes_com;
+
+        return $this;
+    }
+
+    public function getCouloirSol(): ?int
+    {
+        return $this->couloir_sol;
+    }
+
+    public function setCouloirSol(?int $couloir_sol): self
+    {
+        $this->couloir_sol = $couloir_sol;
+
+        return $this;
+    }
+
+    public function getCouloirSolCom(): ?string
+    {
+        return $this->couloir_sol_com;
+    }
+
+    public function setCouloirSolCom(?string $couloir_sol_com): self
+    {
+        $this->couloir_sol_com = $couloir_sol_com;
+
+        return $this;
+    }
+
+    public function getCouloirLuminaire(): ?int
+    {
+        return $this->couloir_luminaire;
+    }
+
+    public function setCouloirLuminaire(?int $couloir_luminaire): self
+    {
+        $this->couloir_luminaire = $couloir_luminaire;
+
+        return $this;
+    }
+
+    public function getCouloirLuminaireCom(): ?string
+    {
+        return $this->couloir_luminaire_com;
+    }
+
+    public function setCouloirLuminaireCom(?string $couloir_luminaire_com): self
+    {
+        $this->couloir_luminaire_com = $couloir_luminaire_com;
+
+        return $this;
+    }
+
+    public function getCouloirInteruptPrise(): ?int
+    {
+        return $this->couloir_interupt_prise;
+    }
+
+    public function setCouloirInteruptPrise(?int $couloir_interupt_prise): self
+    {
+        $this->couloir_interupt_prise = $couloir_interupt_prise;
+
+        return $this;
+    }
+
+    public function getCouloirInteruptPriseCom(): ?string
+    {
+        return $this->couloir_interupt_prise_com;
+    }
+
+    public function setCouloirInteruptPriseCo(?string $couloir_interupt_prise_com): self
+    {
+        $this->couloir_interupt_prise_com = $couloir_interupt_prise_com;
+
+        return $this;
+    }
+
+    public function getCouloirFenetre(): ?int
+    {
+        return $this->couloir_fenetre;
+    }
+
+    public function setCouloirFenetre(?int $couloir_fenetre): self
+    {
+        $this->couloir_fenetre = $couloir_fenetre;
+
+        return $this;
+    }
+
+    public function getCouloirFenetreCom(): ?string
+    {
+        return $this->couloir_fenetre_com;
+    }
+
+    public function setCouloirFenetreCom(?string $couloir_fenetre_com): self
+    {
+        $this->couloir_fenetre_com = $couloir_fenetre_com;
+
+        return $this;
+    }
+
+    public function getCouloirVolet(): ?int
+    {
+        return $this->couloir_volet;
+    }
+
+    public function setCouloirVolet(?int $couloir_volet): self
+    {
+        $this->couloir_volet = $couloir_volet;
+
+        return $this;
+    }
+
+    public function getCouloirVoletCom(): ?string
+    {
+        return $this->couloir_volet_com;
+    }
+
+    public function setCouloirVoletï¿½Com(?string $couloir_volet_com): self
+    {
+        $this->couloir_volet_com = $couloir_volet_com;
 
         return $this;
     }

@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Edl;
 use App\Entity\PropertySearch;
+use App\Form\EdlFormType;
 use App\Form\PropertySearchType;
 use App\Repository\EdlRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\DisponibiliteFormType;
-use App\Form\EdlFormType;
+use App\Form\EdlFormTypeOld;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Appartement;
