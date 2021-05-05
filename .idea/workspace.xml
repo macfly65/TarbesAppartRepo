@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminAppartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminAppartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Edl.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Edl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EdlFormType_old.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210422081544.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20210425124325.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EdlFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EdlFormType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +32,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="1128" column="28" selection-start-line="1128" selection-start-column="28" selection-end-line="1128" selection-end-column="28" />
+            <state relative-caret-position="175">
+              <caret line="2520" column="90" selection-start-line="2520" selection-start-column="90" selection-end-line="2520" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Form/EdlFormType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2505">
+              <caret line="170" selection-start-line="170" selection-end-line="170" />
             </state>
           </provider>
         </entry>
@@ -53,18 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>salle de b</find>
-      <find>form1</find>
-      <find>wizardForm2Slide12</find>
-      <find>sdb_volet</find>
-      <find>wc_porte_serrurerie</find>
-      <find>fenetre?</find>
-      <find>fenetre?_</find>
-      <find>�</find>
-      <find>getSejourFenetreCom</find>
-      <find>$sejour_fenetre_com</find>
-      <find>$ch2_fenetre_com</find>
-      <find>wc_joints_com</find>
       <find>getSejourPorteSerrurerieCom</find>
       <find>sejour_port</find>
       <find>sejour_porte_serrurerie</find>
@@ -83,6 +76,18 @@
       <find>wizardForm3Slide31</find>
       <find>wizardForm3Slide32</find>
       <find>Couloir</find>
+      <find>wizardForm4Slide39</find>
+      <find>wizardForm3Slide</find>
+      <find>sdb_volet</find>
+      <find>wizardForm5Slide59</find>
+      <find>wizardForm4Slide40</find>
+      <find>couloi</find>
+      <find>wizardForm4Slide</find>
+      <find>ch1_revetements_muraux</find>
+      <find>Sejour_sonette_interphone</find>
+      <find>wizardForm6Slide68</find>
+      <find>wizardForm8Slide90</find>
+      <find>wizardForm5</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -149,8 +154,8 @@
         <option value="$PROJECT_DIR$/src/Controller/AdminAppartController.php" />
         <option value="$PROJECT_DIR$/src/Migrations/Version20210503222225.php" />
         <option value="$PROJECT_DIR$/src/Migrations/Version20210503223713.php" />
-        <option value="$PROJECT_DIR$/src/Form/EdlFormType.php" />
         <option value="$PROJECT_DIR$/src/Entity/Edl.php" />
+        <option value="$PROJECT_DIR$/src/Form/EdlFormType.php" />
         <option value="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig" />
       </list>
     </option>
@@ -313,6 +318,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -324,12 +330,6 @@
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="pdf" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
@@ -352,7 +352,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -575,18 +574,28 @@
       <workItem from="1620076892918" duration="1791000" />
       <workItem from="1620078702355" duration="1789000" />
       <workItem from="1620080511509" duration="1784000" />
-      <workItem from="1620082320037" duration="1574000" />
+      <workItem from="1620082320037" duration="1685000" />
+      <workItem from="1620084146061" duration="37000" />
+      <workItem from="1620127390718" duration="1791000" />
+      <workItem from="1620156092625" duration="1698000" />
+      <workItem from="1620164035439" duration="1790000" />
+      <workItem from="1620165853114" duration="1787000" />
+      <workItem from="1620167663272" duration="1004000" />
+      <workItem from="1620211297794" duration="1474000" />
+      <workItem from="1620249155715" duration="1787000" />
+      <workItem from="1620250965116" duration="1789000" />
+      <workItem from="1620252774745" duration="51000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208762000" />
+    <option name="totallyTimeSpent" value="222081000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23462088" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2360515" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -935,13 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/EdlFormType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="233" column="32" selection-start-line="233" selection-start-column="32" selection-end-line="233" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminAppartController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4110">
@@ -952,10 +954,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/EdlFormType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2505">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="1128" column="28" selection-start-line="1128" selection-start-column="28" selection-end-line="1128" selection-end-column="28" />
+        <state relative-caret-position="175">
+          <caret line="2520" column="90" selection-start-line="2520" selection-start-column="90" selection-end-line="2520" selection-end-column="90" />
         </state>
       </provider>
     </entry>
