@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="2520" column="90" selection-start-line="2520" selection-start-column="90" selection-end-line="2520" selection-end-column="90" />
+            <state relative-caret-position="110">
+              <caret line="2557" selection-start-line="2557" selection-end-line="2557" />
             </state>
           </provider>
         </entry>
@@ -41,8 +41,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Form/EdlFormType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2505">
-              <caret line="170" selection-start-line="170" selection-end-line="170" />
+            <state relative-caret-position="3210">
+              <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
+              <folding>
+                <element signature="e#28#47#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,29 +61,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getSejourPorteSerrurerieCom</find>
-      <find>sejour_port</find>
-      <find>sejour_porte_serrurerie</find>
-      <find>sejour_volet_com</find>
-      <find>ù</find>
-      <find>couloir_luminaire_com</find>
-      <find>ch2_fenetre</find>
-      <find>wc_joints</find>
-      <find>?</find>
-      <find>couloir_porte_serrurerie_co</find>
-      <find>couloir_porte_serrurerie</find>
-      <find>salle</find>
-      <find>couloir_volet</find>
-      <find>wizardForm3</find>
-      <find>wizard-step2</find>
-      <find>wizardForm3Slide31</find>
-      <find>wizardForm3Slide32</find>
-      <find>Couloir</find>
-      <find>wizardForm4Slide39</find>
-      <find>wizardForm3Slide</find>
-      <find>sdb_volet</find>
       <find>wizardForm5Slide59</find>
-      <find>wizardForm4Slide40</find>
       <find>couloi</find>
       <find>wizardForm4Slide</find>
       <find>ch1_revetements_muraux</find>
@@ -88,6 +69,28 @@
       <find>wizardForm6Slide68</find>
       <find>wizardForm8Slide90</find>
       <find>wizardForm5</find>
+      <find>lavabo</find>
+      <find>sejour_pla</find>
+      <find>sdb_vol</find>
+      <find>sejour_ra</find>
+      <find>wc_vol</find>
+      <find>wizardForm4Slide40</find>
+      <find>wizardForm3Slide30</find>
+      <find>wizard-step4</find>
+      <find>choiceWizardStep</find>
+      <find>step4</find>
+      <find>wizardForm5Sl</find>
+      <find>wizard-step'</find>
+      <find>wizard-step</find>
+      <find>wizardForm</find>
+      <find>wizardForm2</find>
+      <find>wizardForm3</find>
+      <find>wizardForm4</find>
+      <find>wizardForm8</find>
+      <find>state111</find>
+      <find>271</find>
+      <find>state271</find>
+      <find>state38</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -330,6 +333,19 @@
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="pdf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="pdf" type="462c0819:PsiDirectoryNode" />
+              <item name="origin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
@@ -584,18 +600,23 @@
       <workItem from="1620211297794" duration="1474000" />
       <workItem from="1620249155715" duration="1787000" />
       <workItem from="1620250965116" duration="1789000" />
-      <workItem from="1620252774745" duration="51000" />
+      <workItem from="1620252774745" duration="512000" />
+      <workItem from="1620324867209" duration="1592000" />
+      <workItem from="1620326701281" duration="1166000" />
+      <workItem from="1620338016081" duration="1522000" />
+      <workItem from="1620339827288" duration="1768000" />
+      <workItem from="1620341638899" duration="743000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222081000" />
+    <option name="totallyTimeSpent" value="229333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2360515" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -610,7 +631,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5028612" side_tool="true" weight="0.5048193" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49713877" weight="0.32409638" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49713877" visible="true" weight="0.32409638" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -956,15 +977,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/EdlFormType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2505">
-          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        <state relative-caret-position="3210">
+          <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
+          <folding>
+            <element signature="e#28#47#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="2520" column="90" selection-start-line="2520" selection-start-column="90" selection-end-line="2520" selection-end-column="90" />
+        <state relative-caret-position="110">
+          <caret line="2557" selection-start-line="2557" selection-end-line="2557" />
         </state>
       </provider>
     </entry>
