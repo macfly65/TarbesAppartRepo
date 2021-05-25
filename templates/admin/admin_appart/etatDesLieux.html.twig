@@ -38,7 +38,7 @@
                                     <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                                         <!--begin::Wizard Step 1 Nav-->
                                         <div class="wizard-steps">
-                                            <div class="wizard-step" data-wizard-type="step" data-wizard-state="current" onclick="choiceWizardStep(1)">
+                                            <div class="wizard-step" id="wizard-step1" data-wizard-type="step" data-wizard-state="current" onclick="choiceWizardStep(1)">
                                                 <div class="wizard-wrapper">
                                                     <div class="wizard-icon">
 																<span class="svg-icon svg-icon-2x">
@@ -1555,7 +1555,7 @@
                                                     </div>
 
                                                     <!--begin: Wizard Step 5 - slide 59-->
-                                                    <div class="pb-5" id="wizardForm5" data-wizard-type="step-content" data-wizard-id="59">
+                                                    <div class="pb-5" id="wizardForm5" data-wizard-type="step-content" >
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Porte / serrurerie E<span class="oi oi-arrow-thick-right"></span>
                                                         </h4>
                                                         <div class="row" style="padding: 40px 0px;">
@@ -1782,7 +1782,7 @@
                                                     </div>
 
                                                     <!--begin: Wizard Step 6 - slide 68-->
-                                                    <div class="pb-5" id="wizardForm6" data-wizard-type="step-content" data-wizard-id="68">
+                                                    <div class="pb-5" id="wizardForm6" data-wizard-type="step-content" >
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Porte serrurerie F<span class="oi oi-arrow-thick-right"></span>
                                                         </h4>
                                                         <div class="row" style="padding: 40px 0px;">
@@ -2026,11 +2026,11 @@
                                                     <!--end: Wizard Step 6 - slide 78 -->
 
    <!-- Chambre N°2 -->
-                                                    <div class="pb-5" id="wizardForm7Slide79" data-wizard-type="step-content" data-wizard-id="79">
+                                                    <div class="pb-5"   id="wizardForm7Slide79" data-wizard-type="step-content" data-wizard-id="79">
                                                     </div>
 
                                                     <!--begin: Wizard Step 7 - slide 79-->
-                                                    <div class="pb-5" id="wizardForm7" data-wizard-type="step-content" data-wizard-id="79">
+                                                    <div class="pb-5" id="wizardForm7" data-wizard-type="step-content" >
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Porte serrurerie F<span class="oi oi-arrow-thick-right"></span>
                                                         </h4>
                                                         <div class="row" style="padding: 40px 0px;">
@@ -2252,7 +2252,7 @@
                                                     <!--end: Wizard Step 7 - slide 88 -->
 
                                                     <!--begin: Wizard Step 7 - slide 89 -->
-                                                    <div class="pb-5" id="wizardForm6Slide89" data-wizard-type="step-content" data-wizard-id="89">
+                                                    <div class="pb-5" id="wizardForm7Slide89" data-wizard-type="step-content" data-wizard-id="89">
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Radiateur<span class="oi oi-arrow-thick-right"></span>
                                                         </h4>
                                                         <div class="row" style="padding: 40px 0px;">
@@ -2278,7 +2278,7 @@
                                                     </div>
 
                                                     <!--begin: Wizard Step 8 - slide 90-->
-                                                    <div class="pb-5" id="wizardForm8" data-wizard-type="step-content" data-wizard-id="90">
+                                                    <div class="pb-5" id="wizardForm8" data-wizard-type="step-content">
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Porte serrurerie F<span class="oi oi-arrow-thick-right"></span>
                                                         </h4>
                                                         <div class="row" style="padding: 40px 0px;">
@@ -2412,7 +2412,7 @@
                                                     <!--end: Wizard Step 8 - slide 95 -->
 
                                                     <!--begin: Wizard Step 8 - slide 96 -->
-                                                    <div class="pb-5" id="wizardForm6Slide96" data-wizard-type="step-content" data-wizard-id="96">
+                                                    <div class="pb-5" id="wizardForm8Slide96" data-wizard-type="step-content" data-wizard-id="96">
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center">Intérupteur / prise<span class="oi oi-arrow-thick-right"></span>
                                                         </h4>
                                                         <div class="row" style="padding: 40px 0px;">
@@ -2590,7 +2590,7 @@
 
 
 function wizzardEdl() {
-    if ($('#wizardForm1').attr("data-wizard-state") === "current") {
+    if ($('#wizardForm1').attr("data-wizard-state") == "current") {
         // form a afficher
         $('#wizard-step2').attr('data-wizard-state', 'current');
         $('#wizardForm2').attr('data-wizard-state', 'current');
@@ -2669,6 +2669,8 @@ function formNextSlide(){
     }
     if ($('#wizardForm2').attr("data-wizard-state") === "current") {
         $('#wizardForm2').attr('data-wizard-state', 'done');
+       // $('#wizard-step2').attr('data-wizard-state', 'done');
+
         $('#wizardForm2Slide12').attr('data-wizard-state', 'current');
         idSlidePrecedent = 0;
         idSlideNext = 1;
@@ -2690,7 +2692,39 @@ function formNextSlide(){
     }
     if ($('#wizardForm5').attr("data-wizard-state") === "current") {
         $('#wizardForm5').attr('data-wizard-state', 'done');
-        $('#wizardForm5Slide59').attr('data-wizard-state', 'current');
+        $('#wizardForm5Slide60').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm5').attr("data-wizard-state") === "current") {
+        $('#wizardForm5').attr('data-wizard-state', 'done');
+        $('#wizardForm5Slide60').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm6').attr("data-wizard-state") === "current") {
+        $('#wizardForm6').attr('data-wizard-state', 'done');
+        $('#wizardForm6Slide69').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm7').attr("data-wizard-state") === "current") {
+        $('#wizardForm7').attr('data-wizard-state', 'done');
+        $('#wizardForm7Slide80').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm8').attr("data-wizard-state") === "current") {
+        $('#wizardForm8').attr('data-wizard-state', 'done');
+        $('#wizardForm8Slide91').attr('data-wizard-state', 'current');
         idSlidePrecedent = 0;
         idSlideNext = 1;
         return;
@@ -2782,19 +2816,18 @@ function formNextSlide(){
         $('#btnNext').hide();
     }
 
-
         //on recupere l'id du prochain element et on ajoute la classe active au btn actuel
     var state = $('.element'+idSlideNext++).attr("data-btn-id");
     $('#'+ state).addClass("active")
-
 }
 
 function formPrecedentSlide() {
-    if ($('#wizardForm1Slide1').attr("data-wizard-state") === "current") {
-        $('#wizardForm1').attr('data-wizard-state', 'current');
-        $('#wizardForm1Slide1').attr('data-wizard-state', 'done');
-        return;
-    }
+
+  //  if ($('#wizardForm1Slide1').attr("data-wizard-state") === "current") {
+  //      $('#wizardForm1').attr('data-wizard-state', 'current');
+  //      $('#wizardForm1Slide1').attr('data-wizard-state', 'done');
+  //      return;
+  //  }
 
     idSlidePrecedent = parseInt($('.pb-5[data-wizard-state="current"]').attr('data-wizard-id'));
     idSlideNext = idSlidePrecedent - 1;
@@ -2805,10 +2838,142 @@ function formPrecedentSlide() {
     //on recupere l'id du prochain element et on ajoute la classe active au btn actuel
     var state = $('.element'+idSlideNext).attr("data-btn-id");
     $('#'+ state).addClass("active")
+
+
+    //Gestion du form 2
+    if ($('#wizardForm2').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm1Slide10').attr('data-wizard-state', 'current');
+        $('#wizard-step1').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step2').attr('data-wizard-state', 'done');
+        $('#wizardForm2').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm2Slide12').attr("data-wizard-state") === "current") {
+        $('#wizardForm2').attr('data-wizard-state', 'current');
+        $('#wizardForm2Slide12').attr('data-wizard-state', 'done');
+        return;
+
+    }
+
+    //Gestion du form 3
+    if ($('#wizardForm3').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm2Slide29').attr('data-wizard-state', 'current');
+        $('#wizard-step2').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step3').attr('data-wizard-state', 'done');
+        $('#wizardForm3').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm3Slide32').attr("data-wizard-state") === "current") {
+        $('#wizardForm3').attr('data-wizard-state', 'current');
+        $('#wizardForm3Slide32').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 4
+    if ($('#wizardForm4').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm3Slide39').attr('data-wizard-state', 'current');
+        $('#wizard-step3').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step4').attr('data-wizard-state', 'done');
+        $('#wizardForm4').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm4Slide41').attr("data-wizard-state") === "current") {
+        $('#wizardForm4').attr('data-wizard-state', 'current');
+        $('#wizardForm4Slide41').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 5
+    if ($('#wizardForm5').attr("data-wizard-state") == "current") {
+
+        // form a afficher
+        $('#wizardForm4Slide58').attr('data-wizard-state', 'current');
+        $('#wizard-step4').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step5').attr('data-wizard-state', 'done');
+        $('#wizardForm5').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm5Slide60').attr("data-wizard-state") === "current") {
+        $('#wizardForm5').attr('data-wizard-state', 'current');
+        $('#wizardForm5Slide60').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 6
+    if ($('#wizardForm6').attr("data-wizard-state") == "current") {
+        console.log('here 6');
+
+        // form a afficher
+        $('#wizardForm5Slide67').attr('data-wizard-state', 'current');
+        $('#wizard-step5').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step6').attr('data-wizard-state', 'done');
+        $('#wizardForm6').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm6Slide69').attr("data-wizard-state") === "current") {
+        $('#wizardForm6').attr('data-wizard-state', 'current');
+        $('#wizardForm6Slide69').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 7
+    if ($('#wizardForm7').attr("data-wizard-state") == "current") {
+        console.log('here');
+        // form a afficher
+        $('#wizardForm6Slide78').attr('data-wizard-state', 'current');
+        $('#wizard-step6').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step7').attr('data-wizard-state', 'done');
+        $('#wizardForm7').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm7Slide80').attr("data-wizard-state") === "current") {
+        $('#wizardForm7').attr('data-wizard-state', 'current');
+        $('#wizardForm7Slide80').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 8
+    if ($('#wizardForm8').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm7Slide89').attr('data-wizard-state', 'current');
+        $('#wizard-step7').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step8').attr('data-wizard-state', 'done');
+        $('#wizardForm8').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm8Slide90').attr("data-wizard-state") === "current") {
+        $('#wizardForm8').attr('data-wizard-state', 'current');
+        $('#wizardForm8Slide90').attr('data-wizard-state', 'done');
+        return;
+    }
+
 }
 
 </script>
-
 {% endblock %}
 <!--end::Body-->
 </html>
