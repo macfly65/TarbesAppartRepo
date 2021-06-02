@@ -229,8 +229,8 @@
                                         <div class="row">
                                             <div class="offset-xxl-0 col-xxl-12" style="height: 100%">
                                                 <div style="display: flex;justify-content: space-between;flex-wrap: nowrap;margin: 0px 0px 20px;">
-                                                    <a id="btnPrecedent" class="btn btn-light-primary font-weight-bold "  aria-expanded="false" onclick="formPrecedentSlide()">
-                                                         <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-19-122603/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Left-2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <a id="btnPrecedent" class="btn btn-light-primary font-weight-bold " style="cursor:none;background-color: transparent;color: transparent;" aria-expanded="false" onclick="formPrecedentSlide()">
+                                                         <span style="display:none;" class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-19-122603/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Left-2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <polygon points="0 0 24 0 24 24 0 24"/>
         <rect fill="#000000" opacity="0.3" transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) " x="14" y="7" width="2" height="10" rx="1"/>
@@ -245,11 +245,10 @@
         <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997) "/>
     </g>
 </svg><!--end::Svg Icon--></span></a></div>
-                                                <form class="form" id="kt_form">
                                                     {{ form_start(form)}}
 
                                                  <!--begin: Wizard Step 1-->
-                                                    <div class="pb-5" id="wizardForm1" data-wizard-type="step-content" data-wizard-state="current">
+                                                    <div class="pb-5" id="wizardForm1" data-wizard-type="step-content" data-wizard-state="current" >
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center;">Sonette / Interphone A<span class="oi oi-arrow-thick-right"></span></h4>
                                                         <div class="my-custom-class-for-errors">
                                                             {{ form_errors(form) }}
@@ -2526,13 +2525,11 @@
                                                             <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
                                                         </div>
                                                         <div>
-                                                            <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button>
-                                                            <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"  onclick="wizzardEdl()" data-wizard-type="action-next">Next</button>
+                                                            <button class="btn btn-light-primary font-weight-bold" type="submit" value="Submit">Submit</button>
                                                         </div>
                                                     </div>
                                                     <!--end: Wizard Actions-->
                                                     {{ form_end(form) }}
-                                                </form>
                                             </div>
                                             <!--end: Wizard-->
                                         </div>
@@ -2568,6 +2565,43 @@
     {{ encore_entry_script_tags('app_extranet') }}
 
 <script>
+    $( document ).ready(function() {
+        //permet d'afficher l'etat du premier élément
+        $thisState =  $(".element1").val();
+        $("[elementId='element1'][value='1']").addClass('active')
+    });
+
+
+
+    function getCurrentElement(){
+    var current = $("div").find(`[data-wizard-state='current']`);
+    var idSlide = current[1].id;
+
+    var idWizzard =  "";
+
+        if(idSlide == 'wizardForm1'){
+            idWizzard = 0;
+        }else if(idSlide == 'wizardForm2') {
+            idWizzard = 10;
+        } else if(idSlide == 'wizardForm3') {
+            idWizzard = 29;
+        }else if(idSlide == 'wizardForm4') {
+            idWizzard = 39;
+        }else if(idSlide == 'wizardForm5') {
+            idWizzard = 58;
+        }else if(idSlide == 'wizardForm6') {
+            idWizzard = 67;
+        }else if(idSlide == 'wizardForm7') {
+            idWizzard = 78;
+        }else if(idSlide == 'wizardForm8') {
+            idWizzard = 89;
+        }else{
+            var idWizzard = $("#"+idSlide).data('wizard-id');
+        }
+
+    return idWizzard;
+    }
+
     function choiceState(thisButton, val, element){
         //remove old btn activ
         $( '.active').removeClass( "active" )
@@ -2660,6 +2694,27 @@ function wizzardEdl() {
 }
 
 function formNextSlide(){
+   var i = getCurrentElement();
+
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm1"){
+        $('#btnPrecedent > span').show();
+        $('#btnPrecedent').on( "click", formPrecedentSlide );
+        $('#btnPrecedent').css("color", "#3699FF");
+        $('#btnPrecedent').css("background-color", "#E1F0FF");
+        $('#btnPrecedent').css("cursor", "pointer");
+    }
+
+
+    // Permet d'afficher l'état de l'élément en cour
+    //get id element
+    id = i + 2;
+    var classElement = '.element'+id;    //ok
+    // get val element
+    var thisVal =  $(classElement).val();  //ok
+    var elementId = 'element'+id;
+    $('[elementId="'+ elementId +'"][value="'+ thisVal +'"]').addClass('active');
+
+
     if ($('#wizardForm1').attr("data-wizard-state") === "current") {
         $('#wizardForm1').attr('data-wizard-state', 'done');
         $('#wizardForm1Slide1').attr('data-wizard-state', 'current');
@@ -2822,12 +2877,23 @@ function formNextSlide(){
 }
 
 function formPrecedentSlide() {
+    var i = getCurrentElement();
+    i--;
 
-  //  if ($('#wizardForm1Slide1').attr("data-wizard-state") === "current") {
-  //      $('#wizardForm1').attr('data-wizard-state', 'current');
-  //      $('#wizardForm1Slide1').attr('data-wizard-state', 'done');
-  //      return;
-  //  }
+    //on cache le bouton "precedent" si on precede jusqu'au premier slide
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm1Slide1"){
+        $('#btnPrecedent').prop("onclick", null).off("click");
+        $('#btnPrecedent > span').remove();
+        $('#btnPrecedent').css("color", "transparent");
+        $('#btnPrecedent').css("background-color", "transparent");
+        $('#btnPrecedent').css("cursor", "none");
+    }
+
+    if ($('#wizardForm1Slide1').attr("data-wizard-state") === "current") {
+        $('#wizardForm1').attr('data-wizard-state', 'current');
+        $('#wizardForm1Slide1').attr('data-wizard-state', 'done');
+        return;
+    }
 
     idSlidePrecedent = parseInt($('.pb-5[data-wizard-state="current"]').attr('data-wizard-id'));
     idSlideNext = idSlidePrecedent - 1;

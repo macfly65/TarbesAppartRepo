@@ -113,6 +113,11 @@ class Appartement
      */
     private $charge;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Edl::class, mappedBy="appartement")
+     */
+    private $edl;
+
 
 
     public function __construct()
@@ -120,6 +125,7 @@ class Appartement
         $this->images = new ArrayCollection();
         $this->locataire = new ArrayCollection();
         $this->PTid = new ArrayCollection();
+        $this->edl = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -403,6 +409,36 @@ class Appartement
     public function setCharge(?int $charge): self
     {
         $this->charge = $charge;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Edl[]
+     */
+    public function getEdl(): Collection
+    {
+        return $this->edl;
+    }
+
+    public function addEdl(Edl $edl): self
+    {
+        if (!$this->edl->contains($edl)) {
+            $this->edl[] = $edl;
+            $edl->setAppartement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEdl(Edl $edl): self
+    {
+        if ($this->edl->removeElement($edl)) {
+            // set the owning side to null (unless already changed)
+            if ($edl->getAppartement() === $this) {
+                $edl->setAppartement(null);
+            }
+        }
 
         return $this;
     }

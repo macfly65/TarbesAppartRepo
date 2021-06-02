@@ -2,11 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\Appartement;
 use App\Entity\Edl;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
 
 
 class EdlFormType extends AbstractType
@@ -216,6 +220,7 @@ class EdlFormType extends AbstractType
             ->add('couloir_fenetre_com')
             ->add('couloir_volet', HiddenType::class)
             ->add('couloir_volet_com')
+
         ;
     }
 

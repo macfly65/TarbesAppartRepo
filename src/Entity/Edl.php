@@ -409,7 +409,7 @@ class Edl
     private $wc_radiateur_com;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $wc_cuvette_mecanisme;
 
@@ -1118,6 +1118,16 @@ class Edl
      * @ORM\Column(type="text", nullable=true)
      */
     private $couloir_volet_com;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Appartement::class, inversedBy="edl")
+     */
+    private $appartement;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date;
 
 
     public function getId(): ?int
@@ -3761,6 +3771,30 @@ class Edl
     public function setCouloirVolet�Com(?string $couloir_volet_com): self
     {
         $this->couloir_volet_com = $couloir_volet_com;
+
+        return $this;
+    }
+
+    public function getAppartement(): ?Appartement
+    {
+        return $this->appartement;
+    }
+
+    public function setAppartement(?Appartement $appartement): self
+    {
+        $this->appartement = $appartement;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

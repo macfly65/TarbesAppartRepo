@@ -296,13 +296,28 @@ class AdminAppartController extends AbstractController
         $user = $this->security->getUser();
 
 
-        // Gestion des filtres
-        $edl = new Edl();
+        if(empty($appart->getEdl()->toArray())){
+            //nouvel état des lieux
+            $edl = new Edl();
+
+        }else{
+            //on réouvre le précédent état des lieux pour venir le modifier
+            $edl = $edl->findOneBy(array('appartement' => $id ),array('date' => 'DESC'));
+
+        }
+
         $form = $this->createForm(EdlFormType::class, $edl);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new \DateTime('@'.strtotime('now'));
 
+            $edl->setAppartement($appart);
+            $edl->setDate($date);
+
+            $this->entityManager->persist($edl);
+            $this->entityManager->flush();
+            return $this->redirectToRoute('admin_appart');
         }
 
         return $this->render('admin/admin_appart/etatDesLieux.html.twig', [
