@@ -44,7 +44,10 @@ class ExtranetController extends AbstractController
         $user = $this->security->getUser();
 
 
-        $generatePdf->generateBail($user->getLocataire());
+       // $generatePdf->generateBail($user->getLocataire());
+       // $generatePdf->generateBailParking($user->getLocataire());
+       // $generatePdf->generateEDL($user->getLocataire());
+
 
         return $this->render('extranet/index.html.twig', [
             'user' => $user,

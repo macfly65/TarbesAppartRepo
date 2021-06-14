@@ -7,6 +7,8 @@ use App\Entity\PropertySearch;
 use App\Form\EdlFormType;
 use App\Form\PropertySearchType;
 use App\Repository\EdlRepository;
+use App\Repository\LocataireRepository;
+use App\Service\GeneratePdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\DisponibiliteFormType;
@@ -291,19 +293,16 @@ class AdminAppartController extends AbstractController
     /**
      * @Route("/admin/appart/edl/{id}", name="etat_des_lieux")
      */
-    public function etatDesLieux($id, AppartementRepository $apparts, EdlRepository $edl, Request $request) {
+    public function etatDesLieux($id, AppartementRepository $apparts, EdlRepository $edl, Request $request, GeneratePdf $GeneratePdf) {
         $appart = $apparts->find($id);
         $user = $this->security->getUser();
-
 
         if(empty($appart->getEdl()->toArray())){
             //nouvel état des lieux
             $edl = new Edl();
-
         }else{
             //on réouvre le précédent état des lieux pour venir le modifier
             $edl = $edl->findOneBy(array('appartement' => $id ),array('date' => 'DESC'));
-
         }
 
         $form = $this->createForm(EdlFormType::class, $edl);
@@ -314,6 +313,10 @@ class AdminAppartController extends AbstractController
 
             $edl->setAppartement($appart);
             $edl->setDate($date);
+
+            $dataEDL = $form->getData();
+
+            $GeneratePdf->generateEDL($dataEDL);
 
             $this->entityManager->persist($edl);
             $this->entityManager->flush();
@@ -378,6 +381,25 @@ class AdminAppartController extends AbstractController
         }
         return new JsonResponse([
             'status' => false,
+        ]);
+    }
+    /**
+     * @Route("/extranet/ajaxgetSign", name="axgetSign", options={"expose"=true})
+     */
+    public function ajaxGetSign(LocataireRepository $locataireRepository, Request $request) {
+
+        if(isset($_POST['dataSign'])) {
+            $dataSign = $_POST['dataSign'];
+            $locataire = $locataireRepository->find('16');
+            // $locataire->setSign($_POST['valAlt']);
+            $locataire->setSign($dataSign);
+
+            $this->entityManager->persist($locataire);
+            $this->entityManager->flush();
+        }
+
+        return new JsonResponse([
+            'status' => true,
         ]);
     }
 

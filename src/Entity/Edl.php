@@ -1129,6 +1129,41 @@ class Edl
      */
     private $date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Locataire::class, inversedBy="edls")
+     */
+    private $locataire;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $releveEau;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $releveElec;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cleBal;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $clePortail;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cleAppart;
+
 
     public function getId(): ?int
     {
@@ -3795,6 +3830,90 @@ class Edl
     public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getLocataire(): ?Locataire
+    {
+        return $this->locataire;
+    }
+
+    public function setLocataire(?Locataire $locataire): self
+    {
+        $this->locataire = $locataire;
+
+        return $this;
+    }
+
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function setType(?int $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getReleveEau(): ?int
+    {
+        return $this->releveEau;
+    }
+
+    public function setReleveEau(?int $releveEau): self
+    {
+        $this->releveEau = $releveEau;
+
+        return $this;
+    }
+
+    public function getReleveElec(): ?int
+    {
+        return $this->releveElec;
+    }
+
+    public function setReleveElec(?int $releveElec): self
+    {
+        $this->releveElec = $releveElec;
+
+        return $this;
+    }
+
+    public function getCleBal(): ?int
+    {
+        return $this->cleBal;
+    }
+
+    public function setCleBal(?int $cleBal): self
+    {
+        $this->cleBal = $cleBal;
+
+        return $this;
+    }
+
+    public function getClePortail(): ?int
+    {
+        return $this->clePortail;
+    }
+
+    public function setClePortail(int $clePortail): self
+    {
+        $this->clePortail = $clePortail;
+
+        return $this;
+    }
+
+    public function getCleAppart(): ?int
+    {
+        return $this->cleAppart;
+    }
+
+    public function setCleAppart(?int $cleAppart): self
+    {
+        $this->cleAppart = $cleAppart;
 
         return $this;
     }

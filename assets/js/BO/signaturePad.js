@@ -1,5 +1,4 @@
 var canvas = document.getElementById('signature-pad');
-console.log('toto');
 
 // Adjust canvas coordinate space taking into account pixel ratio,
 // to make it look crisp on mobile devices.

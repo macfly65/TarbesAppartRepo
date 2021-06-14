@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Appartement;
 use App\Entity\Edl;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -18,6 +19,21 @@ class EdlFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
+           // ->add('type', ChoiceType::class, [
+           //     'choices' => [
+           //         'Etat des lieux d\'entrée' => 1,
+          //          'Etat des lieux de sortie' => 2,
+           //     ],
+           //  ])
+
+
+            ->add('releveEau')
+            ->add('releveElec')
+            ->add('cleBAL')
+            ->add('cleAppart')
+            ->add('clePortail')
+
             ->add('entree_sonette_interphone', HiddenType::class)
             ->add('entree_sonette_interphone_com')
             ->add('entree_porte_serrurerie', HiddenType::class)

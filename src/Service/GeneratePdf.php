@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use setasign\Fpdi\Fpdi;
+use setasign\Fpdi\PDF_Rotate;
 
 class GeneratePdf
 {
@@ -440,6 +441,10 @@ class GeneratePdf
 
                     // Total Due //
                     $total = $totalLoyerProrata + $totalChargeProrata;
+
+
+                    //loyer + charges
+                    $loyerEtCharges = $appartement->getLoyerEtudiant() + $appartement->getCharge();
 
                     /////////////////////////////////  Fin  Calcul des prix  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                     /////////////////////////////////////////////////////////////////////////////////////////
@@ -874,6 +879,8 @@ class GeneratePdf
                     $longeurChaineCharge = strlen($totalChargeProrata)-5;
                     $totalChargeProrata = substr("$totalChargeProrata",0, -$longeurChaineCharge);
 
+                    $loyerEtCharges = $appartement->getLoyerEtudiant() + $appartement->getCharge();
+
                     // Total Due //
                     $total = $totalLoyerProrata + $totalChargeProrata;
 
@@ -907,7 +914,7 @@ class GeneratePdf
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetXY(28, 78.5);
+                    $pdf->SetXY(28, 70.5);
                     $pdf->Write(0, 'soixante cinq euros');
 
                     $pdf->SetFont('Helvetica', '', 10);
@@ -930,10 +937,23 @@ class GeneratePdf
                     $pdf->SetXY(73, 154);
                     $pdf->Write(0, 'Entre le 1 er et le 10 du mois');
 
-                    $pdf->SetFont('Helvetica', '', 10);
-                    $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetXY(28, 166.5);
-                    $pdf->Write(0, 'Arrive le '. $locataire->getDateArivee()->format('d/m/y') .' : '. $totalLoyerProrata .' euros (loyer) '. $totalChargeProrata .' euros (charges) '.$nbrJoursLocation.' jours, soit '.$total.' euros');
+
+
+                    if($locataire->getDateArivee()->format('Y-m-d') != date('Y-m-01')){
+
+                        $pdf->SetFont('Helvetica', '', 10);
+                        $pdf->SetTextColor(0, 0, 0);
+                        $pdf->SetXY(28, 166.5);
+                        // $pdf->Write(0, 'Arrive le '. $locataire->getDateArivee()->format('d/m/y') .' : '. $totalLoyerProrata .' euros (loyer) '. $totalChargeProrata .' euros (charges) '.$nbrJoursLocation.' jours, soit '.$total.' euros');
+                         $pdf->Write(0, 'Arrive le '. $locataire->getDateArivee()->format('Y-m-d') . '==' . date('Y-m-01'));
+
+                    }else{
+
+                        $pdf->SetFont('Helvetica', '', 10);
+                        $pdf->SetTextColor(0, 0, 0);
+                        $pdf->SetXY(28, 166.5);
+                        $pdf->Write(0, '' . $appartement->getLoyerEtudiant() .' + ' . $appartement->getCharge() . " = " . $loyerEtCharges . ' euros');
+                    }
 
                     $pdf->SetFont('Helvetica', '', 10);
                     $pdf->SetTextColor(0, 0, 0);
@@ -1239,114 +1259,129 @@ class GeneratePdf
             if ($pageNo == 1) {
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(30, 162);
+                $pdf->SetXY(20, 34);
                 $pdf->Write(0, $locataire->getNom() . ' ' . $locataire->getPrenom());
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(25, 190);
-                $pdf->Write(0, 'SCI EVASION, 5 rue de l\'eglise, 65390 Sarniguet');
+                $pdf->SetXY(100, 34);
+                $pdf->Write(0, $locataire->getDateNaissancce()->format('d-m-Y'));
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(38, 198);
-                $pdf->Write(0, '___');
+                $pdf->SetXY(145, 34);
+                $pdf->Write(0, '---');
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(30, 210);
-                $pdf->Write(0, '___');
+                $pdf->SetXY(27, 41);
+                $pdf->Write(0, $locataire->getVille());
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(35, 218);
-                $pdf->Write(0, '___');
+                $pdf->SetXY(13, 58);
+                $pdf->Write(0, '________________________________________________________________________________________' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(13, 64);
+                $pdf->Write(0, '________________________________________________________________________________________' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(13, 71);
+                $pdf->Write(0, '________________________________________________________________________________________' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(13, 81.5);
+                $pdf->Write(0, '________________________________________________________________________________________' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(13, 88);
+                $pdf->Write(0, '________________________________________________________________________________________' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(13, 95);
+                $pdf->Write(0, '________________________________________________________________________________________' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(135, 120);
+                $pdf->Write(0, '_____' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(100, 125);
+                $pdf->Write(0, 'Tarbes' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(165, 125);
+                $pdf->Write(0, 'Gabriel' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(20, 130);
+                $pdf->Write(0, 'Faure' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(73, 130);
+                $pdf->Write(0, '1' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(73, 130);
+                $pdf->Write(0, '1' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(104, 146);
+                $pdf->Write(0, '12' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(154, 146);
+                $pdf->Write(0, $locataire->getDateArivee()->format('d-m-Y'));
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(43, 150);
+                $pdf->Write(0, '___' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(147, 176);
+                $pdf->Write(0, '30 euros,' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(17, 181);
+                $pdf->Write(0, 'trente' );
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->SetXY(29, 186);
+                $pdf->Write(0, '1 er' );
 
                 $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
             if ($pageNo == 2) {
 
-                // now write some text above the imported page
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(67, 40);
-                $pdf->Write(0, $appartement->getAdresse());
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+            }
+            if ($pageNo == 3) {
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(50, 48);
-                $pdf->Write(0, 'x');
+                $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
+            }
+            if ($pageNo == 4) {
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(106, 52);
-                $pdf->Write(0, 'x');
+                $pdf->Image($signature, 35, 242, 55, '', '', '', '', false, 300);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(64, 56);
-                $pdf->Write(0, '1998');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(55, 60);
-                $pdf->Write(0, $appartement->getSurface());
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(73, 64);
-                $pdf->Write(0, substr($appartement->getType(), -1));
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(100, 76);
-                $pdf->Write(0, 'cuisine equipe');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(106, 88);
-                $pdf->Write(0, 'x');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(97.5, 100);
-                $pdf->Write(0, 'x');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(25.5, 119.5);
-                $pdf->Write(0, 'x');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(25.5, 133.5);
-                $pdf->Write(0, '___');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(25.5, 160.5);
-                $pdf->Write(0, '___');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(25.5, 191);
-                $pdf->Write(0, '___');
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(90, 223);
-                $pdf->Write(0, $locataire->getDateArivee()->format('d/m/y'));
-
-                if ($appartement->getMeuble() == 1) {
-                    $meuble = '1 ans';
-                } else {
-                    $meuble = '3 ans';
-                }
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetXY(63, 230);
-                $pdf->Write(0, $meuble);
 
                 $pdf->Image($signatureTampon, 193, 284, 10, '', '', '', '', false, 300);
             }
@@ -1354,6 +1389,1135 @@ class GeneratePdf
 
         $fileName = $locataire->getId() . '-bail-parking.pdf';
         $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/bail/' . $fileName);
+    }
+
+    public function generateEDL($dataEDL){
+        $pdf = new Fpdi();
+
+        //$pdf = new PDF_Rotate('P','mm',array(225.37,261.719));
+        $pdf = new PDF_Rotate();
+
+
+        // get document source
+        $doc = $this->params->get('kernel.project_dir') . '/public/pdf/origin/ETAT-DES-LIEUX.pdf';
+        $signature = $this->params->get('kernel.project_dir') . '/public/pdf/signature/signDidier.jpg';
+        $signatureTampon = $this->params->get('kernel.project_dir') . '/public/pdf/signature/parafDidier.jpg';
+
+        // set the source file
+        $pdf->setSourceFile($doc);
+
+        // set the source file
+        $pageCount = $pdf->setSourceFile($doc);
+
+
+        for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+            $tplId = $pdf->importPage($pageNo);
+
+            $pdf->AddPage();
+            $pdf->useTemplate($tplId, 0, 0);
+
+            if ($pageNo == 1) {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(55,80,"Example of rotated text",90);
+                $pdf->Write(0, $dataEDL->getEntreeSonetteInterphone() . ' ' . $dataEDL->getEntreeSonetteInterphone());
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 1, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);            }
+
+            if ($pageNo == 2) {
+
+                //Etat
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(43, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                //Comment
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(43, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(53, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(53, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(73, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(73, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(94, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(94, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(104, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(104, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(115, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(115, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(125, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(125, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(137, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(137, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(147, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(147, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(157, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(157, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 2, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == 3) {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(50, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(50, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(60, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(60, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(70, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(70, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(80, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(80, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(90, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(90, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(100, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(100, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(111, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(111, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(121, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(121, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(132, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(132, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 3, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == '4') {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(48, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(48, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(58, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(58, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(68, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(68, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(78, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(78, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(88, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(88, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(98, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(98, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(109, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(109, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(119, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(119, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(130, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(130, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(140, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(140, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(150, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(150, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(160, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(160, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 4, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == '5') {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(43, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(43, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(53, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(53, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 5, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+            }
+            if ($pageNo == '6') {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 6, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == '7') {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(137, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(137, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 7, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+            }
+            if ($pageNo == '8') {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(43, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(43, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(53, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(53, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(76, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(76, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(86, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(86, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(96, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(96, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(158, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(158, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(168, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(168, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(178, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(178, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 8, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == '9') {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 9, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == '10') {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 10, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == '11') {
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(41, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(61, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 11, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+
+            }
+            if ($pageNo == '12') {
+                // 1 ere ligne
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(58, 35, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(58, 103, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(58, 166, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(58, 233, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                // 2 eme ligne
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(76, 35, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(76, 103, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(76, 166, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(76, 233, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                //pager
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 27, 12, 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(194, 22, 12, 90);
+
+                $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
+            }
+        }
+
+        $fileName = $dataEDL->getEntreeSonetteInterphone() . '-etat-des-lieux.pdf';
+        $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/etat-des-lieux/' . $fileName);
     }
 }
 

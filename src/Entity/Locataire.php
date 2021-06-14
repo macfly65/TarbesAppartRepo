@@ -219,10 +219,16 @@ class Locataire
      */
     private $numCleAppart;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Edl::class, mappedBy="locataire")
+     */
+    private $edls;
+
     public function __construct()
     {
         $this->appartements = new ArrayCollection();
         $this->document = new ArrayCollection();
+        $this->edls = new ArrayCollection();
     }
 
     public function getId():int
@@ -740,6 +746,36 @@ class Locataire
     public function setNumCleAppart(?int $numCleAppart): self
     {
         $this->numCleAppart = $numCleAppart;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Edl[]
+     */
+    public function getEdls(): Collection
+    {
+        return $this->edls;
+    }
+
+    public function addEdl(Edl $edl): self
+    {
+        if (!$this->edls->contains($edl)) {
+            $this->edls[] = $edl;
+            $edl->setLocataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEdl(Edl $edl): self
+    {
+        if ($this->edls->removeElement($edl)) {
+            // set the owning side to null (unless already changed)
+            if ($edl->getLocataire() === $this) {
+                $edl->setLocataire(null);
+            }
+        }
 
         return $this;
     }

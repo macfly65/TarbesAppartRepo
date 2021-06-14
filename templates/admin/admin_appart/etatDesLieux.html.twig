@@ -170,7 +170,7 @@
                                                 </div>
                                             </div>
                                             <!--end::Wizard Step 6 Nav-->
-                                            {% if appart.type == "T2" or appart.type == "T3" %}
+                                            {% if appart.type == "T3" %}
                                             <!--begin::Wizard Step 7 Nav-->
                                             <div class="wizard-step" id="wizard-step7" data-wizard-type="step" onclick="choiceWizardStep(7)" >
                                                 <div class="wizard-wrapper">
@@ -194,7 +194,7 @@
                                             </div>
                                             {% endif %}
                                             <!--end::Wizard Step 7 Nav-->
-                                            {% if appart.type == "T3" %}
+                                            {% if appart.type == "T4" %}
                                             <!--begin::Wizard Step 8 Nav-->
                                             <div class="wizard-step" id="wizard-step8" data-wizard-type="step" onclick="choiceWizardStep(8)" >
                                                 <div class="wizard-wrapper">
@@ -218,6 +218,28 @@
                                             </div>
                                             <!--end::Wizard Step 8 Nav-->
                                             {% endif %}
+                                            <!--begin::Wizard Step 9 Nav SIGN -->
+                                            <div class="wizard-step" id="wizard-step9" data-wizard-type="step" onclick="choiceWizardStep(9)" >
+                                                <div class="wizard-wrapper">
+                                                    <div class="wizard-icon">
+																<span class="svg-icon svg-icon-2x">
+																	<!--begin::Svg Icon | path:assets/media/svg/icons/General/Like.svg-->
+																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																			<rect x="0" y="0" width="24" height="24" />
+																			<path d="M9,10 L9,19 L10.1525987,19.3841996 C11.3761964,19.7920655 12.6575468,20 13.9473319,20 L17.5405883,20 C18.9706314,20 20.2018758,18.990621 20.4823303,17.5883484 L21.231529,13.8423552 C21.5564648,12.217676 20.5028146,10.6372006 18.8781353,10.3122648 C18.6189212,10.260422 18.353992,10.2430672 18.0902299,10.2606513 L14.5,10.5 L14.8641964,6.49383981 C14.9326895,5.74041495 14.3774427,5.07411874 13.6240179,5.00562558 C13.5827848,5.00187712 13.5414031,5 13.5,5 L13.5,5 C12.5694044,5 11.7070439,5.48826024 11.2282564,6.28623939 L9,10 Z" fill="#000000" />
+																			<rect fill="#000000" opacity="0.3" x="2" y="9" width="5" height="11" rx="1" />
+																		</g>
+																	</svg>
+                                                                    <!--end::Svg Icon-->
+																</span>
+                                                    </div>
+                                                    <div class="wizard-label">
+                                                        <h3 class="wizard-title" style="margin-bottom: -0.5rem;" >Signature</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end::Wizard Step 8 Nav-->
 
                                         </div>
                                     </div>
@@ -246,7 +268,6 @@
     </g>
 </svg><!--end::Svg Icon--></span></a></div>
                                                     {{ form_start(form)}}
-
                                                  <!--begin: Wizard Step 1-->
                                                     <div class="pb-5" id="wizardForm1" data-wizard-type="step-content" data-wizard-state="current" >
                                                         <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center;">Sonette / Interphone A<span class="oi oi-arrow-thick-right"></span></h4>
@@ -2021,6 +2042,7 @@
                                                         <div class="col" id="some-custom-id">
                                                             {{ form_row(form.ch1_volet_com, { 'label': 'Nom' }) }}
                                                         </div>
+                                                        <span id="endFormEdl"></span>
                                                     </div>
                                                     <!--end: Wizard Step 6 - slide 78 -->
 
@@ -2269,6 +2291,7 @@
                                                         <div class="col" id="some-custom-id">
                                                             {{ form_row(form.ch2_volet_com, { 'label': 'Nom' }) }}
                                                         </div>
+                                                        <span id="endFormEdl"></span>
                                                     </div>
                                                     <!--end: Wizard Step 7 - slide 89 -->
 
@@ -2517,15 +2540,58 @@
                                                         <div class="col" id="some-custom-id">
                                                             {{ form_row(form.ch3_volet_com, { 'label': 'Nom' }) }}
                                                         </div>
+                                                        <span id="endFormEdl"></span>
                                                     </div>
                                                     <!--end: Wizard Step 8 - slide 100 -->
+
+                                                <!--begin: Wizard Step 9-->
+                                                <div class="pb-5" id="wizardForm9" data-wizard-type="step-content" data-wizard-state="done">
+                                                    <h4 class="mb-10 font-weight-bold text-dark" style="text-align: center;">Signature<span class="oi oi-arrow-thick-right"></span></h4>
+                                                    <div class="my-custom-class-for-errors">
+                                                        {{ form_errors(form) }}
+                                                    </div>
+                                                    <div class="wrapper" style="  position: relative;
+  width: 400px;
+  height: 200px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;">
+                                                        <canvas id="signature-pad" class="signature-pad" style="  position: absolute;
+  left: 0;
+  top: 0;
+  width:400px;
+  height:200px;
+  background-color: white;" width=400 height=200></canvas>
+                                                    </div>
+
+                                                    <button id="sendSign">Save as PNG !!!</button>
+                                                    <button id="clear">Clear</button>
+                                                    <div class="col" id="some-custom-id">
+                                                        {{ form_row(form.cleAppart, {'attr': {'class': 'element12', 'data-btn-id': '12'}})  }}
+                                                    </div>
+                                                    <div class="col" id="some-custom-id">
+                                                        {{ form_row(form.clePortail, { 'label': 'clePortail' }) }}
+                                                    </div>
+                                                    <div class="col" id="some-custom-id">
+                                                        {{ form_row(form.cleBAL, { 'label': 'cleBAL' }) }}
+                                                    </div>
+                                                    <div class="col" id="some-custom-id">
+                                                        {{ form_row(form.releveEau, { 'label': 'cleBAL' }) }}
+                                                    </div>
+                                                    <div class="col" id="some-custom-id">
+                                                        {{ form_row(form.releveElec, { 'label': 'cleBAL' }) }}
+                                                    </div>
+                                                </div>
+                                                <!--end: Wizard Step 2-->
+
                                                     <!--begin: Wizard Actions-->
                                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                                         <div class="mr-2">
                                                             <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
                                                         </div>
                                                         <div>
-                                                            <button class="btn btn-light-primary font-weight-bold" type="submit" value="Submit">Submit</button>
+                                                            <button class="btn btn-light-primary font-weight-bold" type="submit" value="Submit">Envoyer</button>
                                                         </div>
                                                     </div>
                                                     <!--end: Wizard Actions-->
@@ -2565,6 +2631,7 @@
     {{ encore_entry_script_tags('app_extranet') }}
 
 <script>
+
     $( document ).ready(function() {
         //permet d'afficher l'etat du premier élément
         $thisState =  $(".element1").val();
@@ -2689,6 +2756,15 @@ function wizzardEdl() {
         // form a cacher
         $('#wizard-step7').attr('data-wizard-state', 'done');
         $('#wizardForm7').attr('data-wizard-state', 'done');
+        return;
+    }
+    if ($('#wizardForm8').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step9').attr('data-wizard-state', 'current');
+        $('#wizardForm9').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step8').attr('data-wizard-state', 'done');
+        $('#wizardForm8').attr('data-wizard-state', 'done');
         return;
     }
 }
@@ -2848,28 +2924,49 @@ function formNextSlide(){
 
     //si on est sur le slide 68 on cache la formulaire 5 au profit du 6
     if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm7Slide79"){
-        // form a afficher
-        $('#wizard-step7').attr('data-wizard-state', 'current');
-        $('#wizardForm7').attr('data-wizard-state', 'current');
-        // form a cacher
-        $('#wizard-step6').attr('data-wizard-state', 'done');
-        $('#wizardForm6').attr('data-wizard-state', 'done');
-        return;
+        if ($('#wizard-step7').length > 0) {
+            // form a afficher
+            $('#wizard-step7').attr('data-wizard-state', 'current');
+            $('#wizardForm7').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step6').attr('data-wizard-state', 'done');
+            $('#wizardForm6').attr('data-wizard-state', 'done');
+            return;
+        }else{
+            $('#wizard-step9').attr('data-wizard-state', 'current');
+            $('#wizardForm9').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step6').attr('data-wizard-state', 'done');
+            $('#wizardForm6').attr('data-wizard-state', 'done');
+        }
     }
 
     //si on est sur le slide 68 on cache la formulaire 6 au profit du 7
     if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm8Slide90"){
-        // form a afficher
-        $('#wizard-step8').attr('data-wizard-state', 'current');
-        $('#wizardForm8').attr('data-wizard-state', 'current');
-        // form a cacher
-        $('#wizard-step7').attr('data-wizard-state', 'done');
-        $('#wizardForm7').attr('data-wizard-state', 'done');
-        return;
+        if ($('#wizard-step8').length > 0) {
+            // form a afficher
+            $('#wizard-step8').attr('data-wizard-state', 'current');
+            $('#wizardForm8').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step7').attr('data-wizard-state', 'done');
+            $('#wizardForm7').attr('data-wizard-state', 'done');
+            return;
+        }else{
+            $('#wizard-step9').attr('data-wizard-state', 'current');
+            $('#wizardForm9').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step6').attr('data-wizard-state', 'done');
+            $('#wizardForm6').attr('data-wizard-state', 'done');
+        }
     }
     if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm8Slide100"){
-        $('#btnNext').hide();
-    }
+        // form a afficher
+        $('#wizard-step9').attr('data-wizard-state', 'current');
+        $('#wizardForm9').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step8').attr('data-wizard-state', 'done');
+        $('#wizardForm8').attr('data-wizard-state', 'done');
+        return;    }
 
         //on recupere l'id du prochain element et on ajoute la classe active au btn actuel
     var state = $('.element'+idSlideNext++).attr("data-btn-id");
@@ -2982,8 +3079,6 @@ function formPrecedentSlide() {
 
     //Gestion du form 6
     if ($('#wizardForm6').attr("data-wizard-state") == "current") {
-        console.log('here 6');
-
         // form a afficher
         $('#wizardForm5Slide67').attr('data-wizard-state', 'current');
         $('#wizard-step5').attr('data-wizard-state', 'current');
@@ -3002,8 +3097,7 @@ function formPrecedentSlide() {
 
     //Gestion du form 7
     if ($('#wizardForm7').attr("data-wizard-state") == "current") {
-        console.log('here');
-        // form a afficher
+            // form a afficher
         $('#wizardForm6Slide78').attr('data-wizard-state', 'current');
         $('#wizard-step6').attr('data-wizard-state', 'current');
 
@@ -3038,6 +3132,42 @@ function formPrecedentSlide() {
     }
 
 }
+
+    var canvas = document.getElementById('signature-pad');
+
+    // Adjust canvas coordinate space taking into account pixel ratio,
+    // to make it look crisp on mobile devices.
+    // This also causes canvas to be cleared.
+    function resizeCanvas() {
+        // When zoomed out to less than 100%, for some very strange reason,
+        // some browsers report devicePixelRatio as less than 1
+        // and only part of the canvas is cleared then.
+        var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+    }
+
+    window.onresize = resizeCanvas;
+    resizeCanvas();
+
+    var signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgb(255, 255, 255)' // necessary for saving image as JPEG; can be removed is only saving as PNG or SVG
+    });
+
+    document.getElementById('sendSign').addEventListener('click', function () {
+        var data = signaturePad.toDataURL('image/png');
+        $.ajax({
+            url: '/extranet/ajaxgetSign',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                dataSign: data,
+            }, success: function (response) {
+            }
+        });
+        console.log(data);
+    });
 
 </script>
 {% endblock %}
