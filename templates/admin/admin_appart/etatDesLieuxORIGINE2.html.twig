@@ -1,6 +1,23 @@
-{% extends 'base_extranet.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<!--begin::Head-->
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+    <title>Wizard 2 | Keenthemes</title>
+    <meta name="description" content="Wizard examples" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
-{% block body %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app_extranet') }}
+    {% endblock %}
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 <!--begin::Main-->
 <div class="d-flex flex-column flex-root">
     <!--begin::Page-->
@@ -2533,25 +2550,12 @@
                                                     <div class="my-custom-class-for-errors">
                                                         {{ form_errors(form) }}
                                                     </div>
-
-                                                    <div class="wrapper" style="  position: relative;
-  width: 400px;
-  height: 200px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;">
-                                                        <canvas id="signature-pad" class="signature-pad" style="  position: absolute;
-  left: 0;
-  top: 0;
-  width:400px;
-  height:200px;
-  background-color: white;" width=400 height=200></canvas>
+                                                    <div class="wrapper" style="  position: relative;width: 400px;height: 200px;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;">
+                                                        <canvas id="signature-pad" class="signature-pad" style="  position: absolute;left: 0;top: 0;width:400px;height:200px;background-color: white;" width=400 height=200></canvas>
                                                     </div>
 
                                                     <button id="sendSign">Save as PNG !!!</button>
                                                     <button id="clear">Clear</button>
-
                                                     <div class="col" id="some-custom-id">
                                                         {{ form_row(form.cleAppart, {'attr': {'class': 'element12', 'data-btn-id': '12'}})  }}
                                                     </div>
@@ -2603,4 +2607,521 @@
     <!--end::Page-->
 </div>
 <!--end::Main-->
+
+<!--end::Demo Panel-->
+<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+<!--begin::Global Config(global config for global JS scripts)-->
+<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+<!--end::Global Config-->
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+</body>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app_extranet') }}
+
+<script>
+
+    $( document ).ready(function() {
+        //permet d'afficher l'etat du premier élément
+        $thisState =  $(".element1").val();
+        $("[elementId='element1'][value='1']").addClass('active')
+    });
+
+
+
+    function getCurrentElement(){
+    var current = $("div").find(`[data-wizard-state='current']`);
+    var idSlide = current[1].id;
+
+    var idWizzard =  "";
+
+        if(idSlide == 'wizardForm1'){
+            idWizzard = 0;
+        }else if(idSlide == 'wizardForm2') {
+            idWizzard = 10;
+        } else if(idSlide == 'wizardForm3') {
+            idWizzard = 29;
+        }else if(idSlide == 'wizardForm4') {
+            idWizzard = 39;
+        }else if(idSlide == 'wizardForm5') {
+            idWizzard = 58;
+        }else if(idSlide == 'wizardForm6') {
+            idWizzard = 67;
+        }else if(idSlide == 'wizardForm7') {
+            idWizzard = 78;
+        }else if(idSlide == 'wizardForm8') {
+            idWizzard = 89;
+        }else{
+            var idWizzard = $("#"+idSlide).data('wizard-id');
+        }
+
+    return idWizzard;
+    }
+
+    function choiceState(thisButton, val, element){
+        //remove old btn activ
+        $( '.active').removeClass( "active" )
+
+        //add class active to thisBtn
+        $('#'+ thisButton).addClass("active")
+
+        //add value to field hidden and id of the btn
+        $('.'+ element).val(val);
+        $('.'+ element).attr('data-btn-id', thisButton);
+    }
+
+    function choiceWizardStep(id){
+        //on retire la visibilité du précédent slide
+        $("div").find(`[data-wizard-state='current']`).attr('data-wizard-state', 'done');
+
+        $('#wizard-step' + id).attr('data-wizard-state', 'current');
+        $('#wizardForm' + id).attr('data-wizard-state', 'current');
+    }
+
+
+function wizzardEdl() {
+    if ($('#wizardForm1').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizard-step2').attr('data-wizard-state', 'current');
+        $('#wizardForm2').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step1').attr('data-wizard-state', 'done');
+        $('#wizardForm1').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm2').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step3').attr('data-wizard-state', 'current');
+        $('#wizardForm3').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step2').attr('data-wizard-state', 'done');
+        $('#wizardForm2').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm3').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step4').attr('data-wizard-state', 'current');
+        $('#wizardForm4').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step3').attr('data-wizard-state', 'done');
+        $('#wizardForm3').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm4').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step5').attr('data-wizard-state', 'current');
+        $('#wizardForm5').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step4').attr('data-wizard-state', 'done');
+        $('#wizardForm4').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm5').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step6').attr('data-wizard-state', 'current');
+        $('#wizardForm6').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step5').attr('data-wizard-state', 'done');
+        $('#wizardForm5').attr('data-wizard-state', 'done');
+        return;
+    }
+    if ($('#wizardForm6').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step7').attr('data-wizard-state', 'current');
+        $('#wizardForm7').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step6').attr('data-wizard-state', 'done');
+        $('#wizardForm6').attr('data-wizard-state', 'done');
+        return;
+    }
+    if ($('#wizardForm7').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step8').attr('data-wizard-state', 'current');
+        $('#wizardForm8').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step7').attr('data-wizard-state', 'done');
+        $('#wizardForm7').attr('data-wizard-state', 'done');
+        return;
+    }
+    if ($('#wizardForm8').attr("data-wizard-state") === "current") {
+        // form a afficher
+        $('#wizard-step9').attr('data-wizard-state', 'current');
+        $('#wizardForm9').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step8').attr('data-wizard-state', 'done');
+        $('#wizardForm8').attr('data-wizard-state', 'done');
+        return;
+    }
+}
+
+function formNextSlide(){
+   var i = getCurrentElement();
+
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm1"){
+        $('#btnPrecedent > span').show();
+        $('#btnPrecedent').on( "click", formPrecedentSlide );
+        $('#btnPrecedent').css("color", "#3699FF");
+        $('#btnPrecedent').css("background-color", "#E1F0FF");
+        $('#btnPrecedent').css("cursor", "pointer");
+    }
+
+
+    // Permet d'afficher l'état de l'élément en cour
+    //get id element
+    id = i + 2;
+    var classElement = '.element'+id;    //ok
+    // get val element
+    var thisVal =  $(classElement).val();  //ok
+    var elementId = 'element'+id;
+    $('[elementId="'+ elementId +'"][value="'+ thisVal +'"]').addClass('active');
+
+
+    if ($('#wizardForm1').attr("data-wizard-state") === "current") {
+        $('#wizardForm1').attr('data-wizard-state', 'done');
+        $('#wizardForm1Slide1').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+    if ($('#wizardForm2').attr("data-wizard-state") === "current") {
+        $('#wizardForm2').attr('data-wizard-state', 'done');
+       // $('#wizard-step2').attr('data-wizard-state', 'done');
+
+        $('#wizardForm2Slide12').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+    if ($('#wizardForm3').attr("data-wizard-state") === "current") {
+        $('#wizardForm3').attr('data-wizard-state', 'done');
+        $('#wizardForm3Slide32').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+    if ($('#wizardForm4').attr("data-wizard-state") === "current") {
+        $('#wizardForm4').attr('data-wizard-state', 'done');
+        $('#wizardForm4Slide41').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+    if ($('#wizardForm5').attr("data-wizard-state") === "current") {
+        $('#wizardForm5').attr('data-wizard-state', 'done');
+        $('#wizardForm5Slide60').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm5').attr("data-wizard-state") === "current") {
+        $('#wizardForm5').attr('data-wizard-state', 'done');
+        $('#wizardForm5Slide60').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm6').attr("data-wizard-state") === "current") {
+        $('#wizardForm6').attr('data-wizard-state', 'done');
+        $('#wizardForm6Slide69').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm7').attr("data-wizard-state") === "current") {
+        $('#wizardForm7').attr('data-wizard-state', 'done');
+        $('#wizardForm7Slide80').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+    if ($('#wizardForm8').attr("data-wizard-state") === "current") {
+        $('#wizardForm8').attr('data-wizard-state', 'done');
+        $('#wizardForm8Slide91').attr('data-wizard-state', 'current');
+        idSlidePrecedent = 0;
+        idSlideNext = 1;
+        return;
+    }
+
+   idSlidePrecedent = parseInt($('.pb-5[data-wizard-state="current"]').attr('data-wizard-id'));
+   idSlideNext = idSlidePrecedent + 1;
+
+    $('.pb-5[data-wizard-id='+idSlideNext+']').attr('data-wizard-state', 'current');
+    $('.pb-5[data-wizard-id='+idSlidePrecedent+']').attr('data-wizard-state', 'done');
+
+//si on est sur le slide 11 on cache la formulaire 1 au profit du 2
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm1Slide11"){
+        // form a afficher
+        $('#wizard-step2').attr('data-wizard-state', 'current');
+        $('#wizardForm2').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step1').attr('data-wizard-state', 'done');
+        $('#wizardForm1').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //si on est sur le slide 31 on cache la formulaire 2 au profit du 3
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm3Slide30"){
+        // form a afficher
+        $('#wizard-step3').attr('data-wizard-state', 'current');
+        $('#wizardForm3').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step2').attr('data-wizard-state', 'done');
+        $('#wizardForm2').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //si on est sur le slide 40 on cache la formulaire 3 au profit du 4
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm4Slide40"){
+        // form a afficher
+        $('#wizard-step4').attr('data-wizard-state', 'current');
+        $('#wizardForm4').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step3').attr('data-wizard-state', 'done');
+        $('#wizardForm3').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //si on est sur le slide 59 on cache la formulaire 4 au profit du 5
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm5Slide59"){
+        // form a afficher
+        $('#wizard-step5').attr('data-wizard-state', 'current');
+        $('#wizardForm5').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step4').attr('data-wizard-state', 'done');
+        $('#wizardForm4').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //si on est sur le slide 68 on cache la formulaire 5 au profit du 6
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm6Slide68"){
+        // form a afficher
+        $('#wizard-step6').attr('data-wizard-state', 'current');
+        $('#wizardForm6').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step5').attr('data-wizard-state', 'done');
+        $('#wizardForm5').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //si on est sur le slide 68 on cache la formulaire 5 au profit du 6
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm7Slide79"){
+        if ($('#wizard-step7').length > 0) {
+            // form a afficher
+            $('#wizard-step7').attr('data-wizard-state', 'current');
+            $('#wizardForm7').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step6').attr('data-wizard-state', 'done');
+            $('#wizardForm6').attr('data-wizard-state', 'done');
+            return;
+        }else{
+            $('#wizard-step9').attr('data-wizard-state', 'current');
+            $('#wizardForm9').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step6').attr('data-wizard-state', 'done');
+            $('#wizardForm6').attr('data-wizard-state', 'done');
+        }
+    }
+
+    //si on est sur le slide 68 on cache la formulaire 6 au profit du 7
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm8Slide90"){
+        if ($('#wizard-step8').length > 0) {
+            // form a afficher
+            $('#wizard-step8').attr('data-wizard-state', 'current');
+            $('#wizardForm8').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step7').attr('data-wizard-state', 'done');
+            $('#wizardForm7').attr('data-wizard-state', 'done');
+            return;
+        }else{
+            $('#wizard-step9').attr('data-wizard-state', 'current');
+            $('#wizardForm9').attr('data-wizard-state', 'current');
+            // form a cacher
+            $('#wizard-step6').attr('data-wizard-state', 'done');
+            $('#wizardForm6').attr('data-wizard-state', 'done');
+        }
+    }
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm8Slide100"){
+        // form a afficher
+        $('#wizard-step9').attr('data-wizard-state', 'current');
+        $('#wizardForm9').attr('data-wizard-state', 'current');
+        // form a cacher
+        $('#wizard-step8').attr('data-wizard-state', 'done');
+        $('#wizardForm8').attr('data-wizard-state', 'done');
+        return;    }
+
+        //on recupere l'id du prochain element et on ajoute la classe active au btn actuel
+    var state = $('.element'+idSlideNext++).attr("data-btn-id");
+    $('#'+ state).addClass("active")
+}
+
+function formPrecedentSlide() {
+    var i = getCurrentElement();
+    i--;
+
+    //on cache le bouton "precedent" si on precede jusqu'au premier slide
+    if ($('.pb-5[data-wizard-state="current"]').attr('id') == "wizardForm1Slide1"){
+        $('#btnPrecedent').prop("onclick", null).off("click");
+        $('#btnPrecedent > span').remove();
+        $('#btnPrecedent').css("color", "transparent");
+        $('#btnPrecedent').css("background-color", "transparent");
+        $('#btnPrecedent').css("cursor", "none");
+    }
+
+    if ($('#wizardForm1Slide1').attr("data-wizard-state") === "current") {
+        $('#wizardForm1').attr('data-wizard-state', 'current');
+        $('#wizardForm1Slide1').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    idSlidePrecedent = parseInt($('.pb-5[data-wizard-state="current"]').attr('data-wizard-id'));
+    idSlideNext = idSlidePrecedent - 1;
+
+    $('.pb-5[data-wizard-id='+idSlideNext+']').attr('data-wizard-state', 'current');
+    $('.pb-5[data-wizard-id='+idSlidePrecedent+']').attr('data-wizard-state', 'done');
+
+    //on recupere l'id du prochain element et on ajoute la classe active au btn actuel
+    var state = $('.element'+idSlideNext).attr("data-btn-id");
+    $('#'+ state).addClass("active")
+
+
+    //Gestion du form 2
+    if ($('#wizardForm2').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm1Slide10').attr('data-wizard-state', 'current');
+        $('#wizard-step1').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step2').attr('data-wizard-state', 'done');
+        $('#wizardForm2').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm2Slide12').attr("data-wizard-state") === "current") {
+        $('#wizardForm2').attr('data-wizard-state', 'current');
+        $('#wizardForm2Slide12').attr('data-wizard-state', 'done');
+        return;
+
+    }
+
+    //Gestion du form 3
+    if ($('#wizardForm3').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm2Slide29').attr('data-wizard-state', 'current');
+        $('#wizard-step2').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step3').attr('data-wizard-state', 'done');
+        $('#wizardForm3').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm3Slide32').attr("data-wizard-state") === "current") {
+        $('#wizardForm3').attr('data-wizard-state', 'current');
+        $('#wizardForm3Slide32').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 4
+    if ($('#wizardForm4').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm3Slide39').attr('data-wizard-state', 'current');
+        $('#wizard-step3').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step4').attr('data-wizard-state', 'done');
+        $('#wizardForm4').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm4Slide41').attr("data-wizard-state") === "current") {
+        $('#wizardForm4').attr('data-wizard-state', 'current');
+        $('#wizardForm4Slide41').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 5
+    if ($('#wizardForm5').attr("data-wizard-state") == "current") {
+
+        // form a afficher
+        $('#wizardForm4Slide58').attr('data-wizard-state', 'current');
+        $('#wizard-step4').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step5').attr('data-wizard-state', 'done');
+        $('#wizardForm5').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm5Slide60').attr("data-wizard-state") === "current") {
+        $('#wizardForm5').attr('data-wizard-state', 'current');
+        $('#wizardForm5Slide60').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 6
+    if ($('#wizardForm6').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm5Slide67').attr('data-wizard-state', 'current');
+        $('#wizard-step5').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step6').attr('data-wizard-state', 'done');
+        $('#wizardForm6').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm6Slide69').attr("data-wizard-state") === "current") {
+        $('#wizardForm6').attr('data-wizard-state', 'current');
+        $('#wizardForm6Slide69').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 7
+    if ($('#wizardForm7').attr("data-wizard-state") == "current") {
+            // form a afficher
+        $('#wizardForm6Slide78').attr('data-wizard-state', 'current');
+        $('#wizard-step6').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step7').attr('data-wizard-state', 'done');
+        $('#wizardForm7').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm7Slide80').attr("data-wizard-state") === "current") {
+        $('#wizardForm7').attr('data-wizard-state', 'current');
+        $('#wizardForm7Slide80').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    //Gestion du form 8
+    if ($('#wizardForm8').attr("data-wizard-state") == "current") {
+        // form a afficher
+        $('#wizardForm7Slide89').attr('data-wizard-state', 'current');
+        $('#wizard-step7').attr('data-wizard-state', 'current');
+
+        // form a cacher
+        $('#wizard-step8').attr('data-wizard-state', 'done');
+        $('#wizardForm8').attr('data-wizard-state', 'done');
+        return;
+    }
+
+    if ($('#wizardForm8Slide90').attr("data-wizard-state") === "current") {
+        $('#wizardForm8').attr('data-wizard-state', 'current');
+        $('#wizardForm8Slide90').attr('data-wizard-state', 'done');
+        return;
+    }
+
+}
+</script>
 {% endblock %}
+<!--end::Body-->
+</html>

@@ -384,7 +384,7 @@ class AdminAppartController extends AbstractController
         ]);
     }
     /**
-     * @Route("/extranet/ajaxgetSign", name="axgetSign", options={"expose"=true})
+     * @Route("/admin/appart/edl/{id}", name="axgetSign", options={"expose"=true})
      */
     public function ajaxGetSign(LocataireRepository $locataireRepository, Request $request) {
 

@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0654ea91-b58c-4c31-813c-6b846c68f03f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/js/edl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieuxORIGINE2.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/BO/signaturePad.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/BO/signaturePad.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pdf/origin/ETAT-DES-LIEUX.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdf/origin/ETAT-DES-LIEUX.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app_bo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app_bo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app_extranet.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app_extranet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/etat-des-lieux/-etat-des-lieux.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/etat-des-lieux/1-attestation-remise-cle.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/etat-des-lieux/1-etat-des-lieux.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/etat-des-lieux/2-attestation-remise-cle.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/etat-des-lieux/2-etat-des-lieux.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdf/etat-des-lieux/5-etat-des-lieux.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminAppartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminAppartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ExtranetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ExtranetController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Edl.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Edl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Locataire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EdlFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EdlFormType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/GeneratePdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/GeneratePdf.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base_extranet.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_extranet.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extranet/sign.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extranet/sign.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,87 +31,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Edl.php">
+        <entry file="file://$PROJECT_DIR$/src/Controller/AdminAppartController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17370">
-              <caret line="1160" selection-start-line="1160" selection-end-line="1160" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4260">
-              <caret line="286" column="33" selection-start-line="286" selection-start-column="33" selection-end-line="286" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1635">
-              <caret line="127" column="43" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="43" />
+            <state relative-caret-position="3930">
+              <caret line="291" selection-start-line="291" selection-end-line="291" />
               <folding>
-                <element signature="e#34#67#0#PHP" expanded="true" />
+                <element signature="e#34#53#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/extranet/sign.html.twig">
+        <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+            <state relative-caret-position="36960">
+              <caret line="2464" column="56" selection-start-line="2464" selection-start-column="56" selection-end-line="2464" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Service/GeneratePdf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="3134" column="30" lean-forward="true" selection-start-line="3134" selection-start-column="30" selection-end-line="3134" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/BO/signaturePad.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/signature_pad/src/signature_pad.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/ReservationType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="33" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/EdlFormType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="157">
+              <caret line="1476" column="37" selection-start-line="1476" selection-start-column="37" selection-end-line="1476" selection-end-column="37" />
               <folding>
-                <element signature="e#28#55#0#PHP" expanded="true" />
+                <element signature="e#31#49#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,17 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>naissan</find>
-      <find>getdateA</find>
-      <find>euros</find>
-      <find>tampon</find>
-      <find>bail</find>
-      <find>rotated</find>
-      <find>$dataEDL</find>
-      <find>$signature</find>
-      <find>locatai</find>
-      <find>loca</find>
-      <find>if</find>
       <find>type</find>
       <find>clePort</find>
       <find>choice</find>
@@ -149,9 +90,20 @@
       <find>t2</find>
       <find>t2&quot;</find>
       <find>&quot;T4&quot;</find>
-      <find>sign</find>
       <find>signaturePad</find>
       <find>SignaturePad</find>
+      <find>&lt;body</find>
+      <find>&lt;/body</find>
+      <find>signature-pad</find>
+      <find>pad</find>
+      <find>s</find>
+      <find>body</find>
+      <find>java</find>
+      <find>sign</find>
+      <find>$signature</find>
+      <find>edl</find>
+      <find>148</find>
+      <find>TEE</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -171,11 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/assets/js/login.js" />
-        <option value="$PROJECT_DIR$/assets/js/app.js" />
-        <option value="$PROJECT_DIR$/src/Repository/ActualiteRepository.php" />
-        <option value="$PROJECT_DIR$/src/Repository/AppartementRepository.php" />
         <option value="$PROJECT_DIR$/templates/admin/admin_appart/disponibilite.html.twig" />
         <option value="$PROJECT_DIR$/templates/layout_emails/disponibilite.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/DisponibiliteFormType.php" />
@@ -195,17 +142,13 @@
         <option value="$PROJECT_DIR$/templates/admin/autoPromo/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/assets/js/BO/service.js" />
-        <option value="$PROJECT_DIR$/templates/extranet/sign.html.twig" />
-        <option value="$PROJECT_DIR$/assets/js/app_bo.js" />
         <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
         <option value="$PROJECT_DIR$/templates/extranet/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/AdminReservationController.php" />
         <option value="$PROJECT_DIR$/templates/admin/admin_appart/create.html.twig" />
-        <option value="$PROJECT_DIR$/templates/base_extranet.html.twig" />
         <option value="$PROJECT_DIR$/templates/extranet/layout de base/wizard-2.html" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/assets/js/BO/scripts.bundle.js" />
-        <option value="$PROJECT_DIR$/assets/js/app_extranet.js" />
         <option value="$PROJECT_DIR$/assets/js/BO/plugins.bundle.js" />
         <option value="$PROJECT_DIR$/src/Migrations/Version20210503213854.php" />
         <option value="$PROJECT_DIR$/src/Migrations/Version20210503214551.php" />
@@ -216,12 +159,21 @@
         <option value="$PROJECT_DIR$/vendor/setasign/fpdi/src/Fpdi.php" />
         <option value="$PROJECT_DIR$/vendor/setasign/fpdi/src/PDF_Rotate.php" />
         <option value="$PROJECT_DIR$/src/Controller/ExtranetController.php" />
-        <option value="$PROJECT_DIR$/src/Service/GeneratePdf.php" />
         <option value="$PROJECT_DIR$/src/Entity/Edl.php" />
         <option value="$PROJECT_DIR$/src/Form/EdlFormType.php" />
-        <option value="$PROJECT_DIR$/src/Controller/AdminAppartController.php" />
+        <option value="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieuxTurfu.html.twig" />
         <option value="$PROJECT_DIR$/assets/js/BO/signaturePad.js" />
+        <option value="$PROJECT_DIR$/assets/js/BO/edl.js" />
+        <option value="$PROJECT_DIR$/assets/js/edl.js" />
+        <option value="$PROJECT_DIR$/templates/admin/admin_appart/addMedias.html.twig" />
+        <option value="$PROJECT_DIR$/public/assets_admin_pages/edl.js" />
+        <option value="$PROJECT_DIR$/assets/js/app_bo.js" />
+        <option value="$PROJECT_DIR$/assets/js/app_extranet.js" />
+        <option value="$PROJECT_DIR$/src/Controller/AdminAppartController.php" />
+        <option value="$PROJECT_DIR$/templates/base_extranet.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig" />
+        <option value="$PROJECT_DIR$/templates/extranet/sign.html.twig" />
+        <option value="$PROJECT_DIR$/src/Service/GeneratePdf.php" />
       </list>
     </option>
   </component>
@@ -383,6 +335,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -393,19 +346,70 @@
             <path>
               <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
               <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="pdf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="pdf" type="462c0819:PsiDirectoryNode" />
+              <item name="etat-des-lieux" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="pdf" type="462c0819:PsiDirectoryNode" />
+              <item name="origin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="pdf" type="462c0819:PsiDirectoryNode" />
+              <item name="signature" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="admin_appart" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tarbesAppart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tarbesAppart" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="admin_pdf" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/admin_appart" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets_admin_pages" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -413,16 +417,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets_admin_pages" />
       <recent name="$PROJECT_DIR$/templates/admin/admin_appart" />
       <recent name="$PROJECT_DIR$/assets/js" />
       <recent name="$PROJECT_DIR$/assets/js/BO/components" />
       <recent name="$PROJECT_DIR$/assets/js/BO" />
-      <recent name="$PROJECT_DIR$/assets/css/BO" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/pdf/signature" />
+      <recent name="$PROJECT_DIR$/assets/js" />
       <recent name="$PROJECT_DIR$/public/pdf/origin" />
       <recent name="$PROJECT_DIR$/templates/extranet/layout de base" />
-      <recent name="$PROJECT_DIR$/public/pdf/signature" />
       <recent name="$PROJECT_DIR$/public/upload_files" />
     </key>
   </component>
@@ -687,24 +692,32 @@
       <workItem from="1623612603583" duration="1782000" />
       <workItem from="1623614463696" duration="1728000" />
       <workItem from="1623616274008" duration="609000" />
-      <workItem from="1623640642369" duration="499000" />
+      <workItem from="1623640642369" duration="1513000" />
+      <workItem from="1623642452752" duration="1639000" />
+      <workItem from="1623644289276" duration="1681000" />
+      <workItem from="1623646155434" duration="1755000" />
+      <workItem from="1623647964528" duration="1694000" />
+      <workItem from="1623650640087" duration="1536000" />
+      <workItem from="1624094702449" duration="1245000" />
+      <workItem from="1624096512341" duration="1790000" />
+      <workItem from="1624098320295" duration="1801000" />
+      <workItem from="1624100147697" duration="105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="294998000" />
+    <option name="totallyTimeSpent" value="309258000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25965664" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.116595134" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32650602" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49928468" weight="0.32650602" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -713,8 +726,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50429183" side_tool="true" weight="0.3120482" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49570817" visible="true" weight="0.3120482" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.37108433" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49427754" visible="true" weight="0.31686747" />
+      <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -747,77 +761,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/BO/components/toggle.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/extranet/layout de base/wizard-2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111375">
-          <caret line="7425" column="14" selection-start-line="7425" selection-start-column="14" selection-end-line="7425" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/BO/wizard-2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/demo1/src/js/vendors/plugins/bootstrap-markdown.init.js" />
-    <entry file="file://$PROJECT_DIR$/assets/js/demo1/src/js/pages/crud/forms/editors/quill.js" />
-    <entry file="file://$PROJECT_DIR$/assets/js/demo1/src/js/vendors/plugins/bootstrap-datepicker.init.js" />
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="17899" column="3" lean-forward="true" selection-start-line="17899" selection-start-column="3" selection-end-line="17899" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/demo1/dist/assets/plugins/global/plugins.bundle.js" />
-    <entry file="file://$PROJECT_DIR$/assets/js/BO/scripts.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="11613" column="3" selection-start-line="11613" selection-start-column="3" selection-end-line="11613" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/BO/plugins.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/extranet/layout de base/empty-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3427" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/extranet/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="308" column="38" selection-start-line="308" selection-start-column="38" selection-end-line="308" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminAutoPromoController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -829,13 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="739">
           <caret line="293" column="49" selection-start-line="293" selection-end-line="294" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base_extranet.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="1663" selection-start-line="1663" selection-end-line="1665" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -860,20 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="24" column="882" selection-start-line="24" selection-start-column="882" selection-end-line="24" selection-end-column="882" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/disponibilite.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="79" column="14" lean-forward="true" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="28" column="44" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -963,33 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/GeneratePdf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21195">
-          <caret line="1421" column="44" selection-start-line="1421" selection-start-column="44" selection-end-line="1421" selection-end-column="44" />
-          <folding>
-            <element signature="e#31#49#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app_bo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/AdminAppartController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5385">
-          <caret line="388" column="51" selection-start-line="388" selection-start-column="32" selection-end-line="388" selection-end-column="51" />
-          <folding>
-            <element signature="e#34#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Edl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17370">
@@ -1004,27 +899,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
+    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="127" column="43" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="43" />
+        <state>
           <folding>
-            <element signature="e#34#67#0#PHP" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/extranet/sign.html.twig">
+    <entry file="file://$PROJECT_DIR$/public/build/app_bo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+        <state relative-caret-position="57">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app_extranet.js">
+    <entry file="file://$PROJECT_DIR$/public/build/app_extranet.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/app_extranet.js">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="75">
+          <caret line="367" column="29" selection-start-line="367" selection-start-column="28" selection-end-line="367" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/signature_pad/src/signature_pad.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        <state relative-caret-position="555">
+          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/extranet/tutoriel.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/BO/gmaps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/BO/widgets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1035,6 +957,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-536" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/disponibilite.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="115" column="11" selection-start-line="115" selection-start-column="3" selection-end-line="115" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/edl.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="44" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieuxORIGINE2.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="3124" column="14" selection-start-line="2618" selection-start-column="1" selection-end-line="3124" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets_admin_pages/edl.js" />
+    <entry file="file://$PROJECT_DIR$/assets/js/app_bo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="e#266#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/addMedias.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" selection-start-line="34" selection-end-line="35" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app_extranet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="44" column="2" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#718#750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/BO/signaturePad.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -1055,24 +1042,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/signature_pad/src/signature_pad.ts">
+    <entry file="file://$PROJECT_DIR$/src/Controller/ExtranetController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        <state relative-caret-position="111">
+          <caret line="132" column="4" lean-forward="true" selection-start-line="132" selection-start-column="4" selection-end-line="150" selection-end-column="5" />
+          <folding>
+            <element signature="e#34#67#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/BO/signaturePad.js">
+    <entry file="file://$PROJECT_DIR$/templates/admin/admin_pdf/quittance.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        <state relative-caret-position="243">
+          <caret line="24" column="219" selection-start-line="24" selection-start-column="219" selection-end-line="24" selection-end-column="219" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base_extranet.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="1128" column="12" lean-forward="true" selection-start-line="1128" selection-start-column="12" selection-end-line="1128" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/extranet/sign.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/pdf/signature/signDidier.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminAppartController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3930">
+          <caret line="291" selection-start-line="291" selection-end-line="291" />
+          <folding>
+            <element signature="e#34#53#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/admin_appart/etatDesLieux.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="3134" column="30" lean-forward="true" selection-start-line="3134" selection-start-column="30" selection-end-line="3134" selection-end-column="30" />
+        <state relative-caret-position="36960">
+          <caret line="2464" column="56" selection-start-line="2464" selection-start-column="56" selection-end-line="2464" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/GeneratePdf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="1476" column="37" selection-start-line="1476" selection-start-column="37" selection-end-line="1476" selection-end-column="37" />
+          <folding>
+            <element signature="e#31#49#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

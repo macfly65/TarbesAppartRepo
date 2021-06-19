@@ -42,8 +42,7 @@ import '../js/BO/wizard-2';
 import '../js/BO/fullcalendar.bundle';
 import '../js/BO/gmaps';
 import '../js/BO/widgets';
-import '../js/BO/signaturePad';
-
+//import '../js/BO/signaturePad';
 
 function saveNewPositions() {
     var positions = [];
