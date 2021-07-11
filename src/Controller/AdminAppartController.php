@@ -309,6 +309,7 @@ class AdminAppartController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $date = new \DateTime('@'.strtotime('now'));
 
             $edl->setAppartement($appart);
@@ -316,7 +317,7 @@ class AdminAppartController extends AbstractController
 
             $dataEDL = $form->getData();
 
-            $GeneratePdf->generateEDL($dataEDL);
+            $GeneratePdf->generateEDL($dataEDL, $edl);
 
             $this->entityManager->persist($edl);
             $this->entityManager->flush();

@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Repository\EdlRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Mailjet\Resources;
@@ -1391,7 +1392,7 @@ class GeneratePdf
         $pdf->Output('F', $this->params->get('kernel.project_dir') . '/public/pdf/bail/' . $fileName);
     }
 
-    public function generateEDL($dataEDL){
+    public function generateEDL($dataEDL,  $edl){
         $pdf = new Fpdi();
 
         //$pdf = new PDF_Rotate('P','mm',array(225.37,261.719));
@@ -1417,13 +1418,15 @@ class GeneratePdf
             $pdf->useTemplate($tplId, 0, 0);
 
             if ($pageNo == 1) {
+
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
                 $pdf->RotatedText(14, 286, 'X', 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(14, 220, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(14, 220, 'Etat dégradé', 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
@@ -1474,12 +1477,6 @@ class GeneratePdf
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(158, 125, 'X', 90);
-
-
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
                 $pdf->RotatedText(105, 284, 'X', 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
@@ -1489,6 +1486,18 @@ class GeneratePdf
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
                 $pdf->RotatedText(115, 284, 'X', 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(159, 127, 'X', 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(178, 140, 'Cumulus', 90);
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(178, 247, 'Electrique', 90);
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);
@@ -1507,100 +1516,225 @@ class GeneratePdf
                 //Etat
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(43, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                if ($edl->getEntreeSonetteInterphone() == 1){
+                    $pdf->RotatedText(43, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeSonetteInterphone() == 2){
+                    $pdf->RotatedText(43, 229, 'BE', 90);
+                } elseif ($edl->getEntreeSonetteInterphone() == 3){
+                    $pdf->RotatedText(43, 229, 'EU', 90);
+                } elseif ($edl->getEntreeSonetteInterphone() == 4){
+                    $pdf->RotatedText(43, 229, 'ME', 90);
+                } elseif ($edl->getEntreeSonetteInterphone() == 5){
+                    $pdf->RotatedText(43, 229, 'ED', 90);
+                }
 
                 //Comment
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(43, 214, 'Commentaire', 90);
+                $pdf->RotatedText(43, 214, $edl->getEntreeSonetteInterphoneCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(53, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+
+                if ($edl->getEntreePorteSerrurerie() == 1){
+                    $pdf->RotatedText(53, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreePorteSerrurerie() == 2){
+                    $pdf->RotatedText(53, 229, 'BE', 90);
+                } elseif ($edl->getEntreePorteSerrurerie() == 3){
+                    $pdf->RotatedText(53, 229, 'EU', 90);
+                } elseif ($edl->getEntreePorteSerrurerie() == 4){
+                    $pdf->RotatedText(53, 229, 'ME', 90);
+                } elseif ($edl->getEntreePorteSerrurerie() == 5){
+                    $pdf->RotatedText(53, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(53, 214, 'Commentaire', 90);
+                $pdf->RotatedText(53, 214, $edl->getEntreePorteSerrurerieCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(63, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getEntreePlafond() == 1){
+                    $pdf->RotatedText(63, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreePlafond() == 2){
+                    $pdf->RotatedText(63, 229, 'BE', 90);
+                } elseif ($edl->getEntreePlafond() == 3){
+                    $pdf->RotatedText(63, 229, 'EU', 90);
+                } elseif ($edl->getEntreePlafond() == 4){
+                    $pdf->RotatedText(63, 229, 'ME', 90);
+                } elseif ($edl->getEntreePlafond() == 5){
+                    $pdf->RotatedText(63, 229, 'ED', 90);
+                }
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 214, $edl->getEntreePlafondCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(63, 214, 'Commentaire', 90);
+                if ($edl->getEntreeRevetementsMuraux() == 1){
+                    $pdf->RotatedText(73, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeRevetementsMuraux() == 2){
+                    $pdf->RotatedText(73, 229, 'BE', 90);
+                } elseif ($edl->getEntreeRevetementsMuraux() == 3){
+                    $pdf->RotatedText(73, 229, 'EU', 90);
+                } elseif ($edl->getEntreeRevetementsMuraux() == 4){
+                    $pdf->RotatedText(73, 229, 'ME', 90);
+                } elseif ($edl->getEntreeRevetementsMuraux() == 5){
+                    $pdf->RotatedText(73, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(73, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(73, 214, $edl->getEntreeRevetementsMurauxCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(73, 214, 'Commentaire', 90);
+                if ($edl->getEntreePlinthes() == 1){
+                    $pdf->RotatedText(84, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreePlinthes() == 2){
+                    $pdf->RotatedText(84, 229, 'BE', 90);
+                } elseif ($edl->getEntreePlinthes() == 3){
+                    $pdf->RotatedText(84, 229, 'EU', 90);
+                } elseif ($edl->getEntreePlinthes() == 4){
+                    $pdf->RotatedText(84, 229, 'ME', 90);
+                } elseif ($edl->getEntreePlinthes() == 5){
+                    $pdf->RotatedText(84, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(84, 214, $edl->getEntreePlinthesCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+
+                if ($edl->getEntreeSol() == 1){
+                    $pdf->RotatedText(94, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeSol() == 2){
+                    $pdf->RotatedText(94, 229, 'BE', 90);
+                } elseif ($edl->getEntreeSol() == 3){
+                    $pdf->RotatedText(94, 229, 'EU', 90);
+                } elseif ($edl->getEntreeSol() == 4){
+                    $pdf->RotatedText(94, 229, 'ME', 90);
+                } elseif ($edl->getEntreeSol() == 5){
+                    $pdf->RotatedText(94, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(94, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(94, 214, $edl->getEntreeSol(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(94, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getEntreeLuminaire() == 1){
+                    $pdf->RotatedText(104, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeLuminaire() == 2){
+                    $pdf->RotatedText(104, 229, 'BE', 90);
+                } elseif ($edl->getEntreeLuminaire() == 3){
+                    $pdf->RotatedText(104, 229, 'EU', 90);
+                } elseif ($edl->getEntreeLuminaire() == 4){
+                    $pdf->RotatedText(104, 229, 'ME', 90);
+                } elseif ($edl->getEntreeLuminaire() == 5){
+                    $pdf->RotatedText(104, 229, 'ED', 90);
+                }
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(104, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(104, 214, $edl->getEntreeLuminaireCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(104, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getEntreeInteruptPrise() == 1){
+                    $pdf->RotatedText(115, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeInteruptPrise() == 2){
+                    $pdf->RotatedText(115, 229, 'BE', 90);
+                } elseif ($edl->getEntreeInteruptPrise() == 3){
+                    $pdf->RotatedText(115, 229, 'EU', 90);
+                } elseif ($edl->getEntreeInteruptPrise() == 4){
+                    $pdf->RotatedText(115, 229, 'ME', 90);
+                } elseif ($edl->getEntreeInteruptPrise() == 5){
+                    $pdf->RotatedText(115, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(115, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(115, 214, $edl->getEntreeInteruptPriseCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(115, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getEntreePlacard() == 1){
+                    $pdf->RotatedText(125, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreePlacard() == 2){
+                    $pdf->RotatedText(125, 229, 'BE', 90);
+                } elseif ($edl->getEntreePlacard() == 3){
+                    $pdf->RotatedText(125, 229, 'EU', 90);
+                } elseif ($edl->getEntreePlacard() == 4){
+                    $pdf->RotatedText(125, 229, 'ME', 90);
+                } elseif ($edl->getEntreePlacard() == 5){
+                    $pdf->RotatedText(125, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(125, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(125, 214, $edl->getEntreePlacard(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(125, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getEntreeFenetre() == 1){
+                    $pdf->RotatedText(137, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeFenetre() == 2){
+                    $pdf->RotatedText(137, 229, 'BE', 90);
+                } elseif ($edl->getEntreeFenetre() == 3){
+                    $pdf->RotatedText(137, 229, 'EU', 90);
+                } elseif ($edl->getEntreeFenetre() == 4){
+                    $pdf->RotatedText(137, 229, 'ME', 90);
+                } elseif ($edl->getEntreeFenetre() == 5){
+                    $pdf->RotatedText(137, 229, 'ED', 90);
+                }
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(137, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(137, 214, $edl->getEntreeFenetreCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(137, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getEntreeVolet() == 1){
+                    $pdf->RotatedText(147, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeVolet() == 2){
+                    $pdf->RotatedText(147, 229, 'BE', 90);
+                } elseif ($edl->getEntreeVolet() == 3){
+                    $pdf->RotatedText(147, 229, 'EU', 90);
+                } elseif ($edl->getEntreeVolet() == 4){
+                    $pdf->RotatedText(147, 229, 'ME', 90);
+                } elseif ($edl->getEntreeVolet() == 5){
+                    $pdf->RotatedText(147, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(147, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(147, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(147, 214, $edl->getEntreeVoletCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
                 $pdf->RotatedText(157, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getEntreeVolet() == 1){
+                    $pdf->RotatedText(157, 229, 'ETNF', 90);
+                } elseif ($edl->getEntreeVolet() == 2){
+                    $pdf->RotatedText(157, 229, 'BE', 90);
+                } elseif ($edl->getEntreeVolet() == 3){
+                    $pdf->RotatedText(157, 229, 'EU', 90);
+                } elseif ($edl->getEntreeVolet() == 4){
+                    $pdf->RotatedText(157, 229, 'ME', 90);
+                } elseif ($edl->getEntreeVolet() == 5){
+                    $pdf->RotatedText(157, 229, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(157, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(157, 214, $edl->getEntreeVoletCom(), 90);
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);
@@ -1614,79 +1748,181 @@ class GeneratePdf
                 $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
 
             }
+
+            // SEJOUR / CUISINE N°1
+
             if ($pageNo == 3) {
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(50, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourFaience() == 1){
+                    $pdf->RotatedText(50, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourFaience() == 2){
+                    $pdf->RotatedText(50, 224, 'BE', 90);
+                } elseif ($edl->getSejourFaience() == 3){
+                    $pdf->RotatedText(50, 224, 'EU', 90);
+                } elseif ($edl->getSejourFaience() == 4){
+                    $pdf->RotatedText(50, 224, 'ME', 90);
+                } elseif ($edl->getSejourFaience() == 5){
+                    $pdf->RotatedText(50, 224, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(50, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(50, 214, $edl->getSejourFaienceCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(60, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourPaillasse() == 1){
+                    $pdf->RotatedText(60, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourPaillasse() == 2){
+                    $pdf->RotatedText(60, 224, 'BE', 90);
+                } elseif ($edl->getSejourPaillasse() == 3){
+                    $pdf->RotatedText(60, 224, 'EU', 90);
+                } elseif ($edl->getSejourPaillasse() == 4){
+                    $pdf->RotatedText(60, 224, 'ME', 90);
+                } elseif ($edl->getSejourPaillasse() == 5){
+                    $pdf->RotatedText(60, 224, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(60, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(60, 214, $edl->getSejourPaillasseCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(70, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourEvier() == 1){
+                    $pdf->RotatedText(70, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourEvier() == 2){
+                    $pdf->RotatedText(70, 224, 'BE', 90);
+                } elseif ($edl->getSejourEvier() == 3){
+                    $pdf->RotatedText(70, 224, 'EU', 90);
+                } elseif ($edl->getSejourEvier() == 4){
+                    $pdf->RotatedText(70, 224, 'ME', 90);
+                } elseif ($edl->getSejourEvier() == 5){
+                    $pdf->RotatedText(70, 224, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(70, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(70, 214, $edl->getSejourEvierCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(80, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourRobinetterie() == 1){
+                    $pdf->RotatedText(80, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourRobinetterie() == 2){
+                    $pdf->RotatedText(80, 224, 'BE', 90);
+                } elseif ($edl->getSejourRobinetterie() == 3){
+                    $pdf->RotatedText(80, 224, 'EU', 90);
+                } elseif ($edl->getSejourRobinetterie() == 4){
+                    $pdf->RotatedText(80, 224, 'ME', 90);
+                } elseif ($edl->getSejourRobinetterie() == 5){
+                    $pdf->RotatedText(80, 224, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(80, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(80, 214, $edl->getSejourRobinetterieCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(90, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourVmc() == 1){
+                    $pdf->RotatedText(90, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourVmc() == 2){
+                    $pdf->RotatedText(90, 224, 'BE', 90);
+                } elseif ($edl->getSejourVmc() == 3){
+                    $pdf->RotatedText(90, 224, 'EU', 90);
+                } elseif ($edl->getSejourVmc() == 4){
+                    $pdf->RotatedText(90, 224, 'ME', 90);
+                } elseif ($edl->getSejourVmc() == 5){
+                    $pdf->RotatedText(90, 224, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(90, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(90, 214, $dataEDL->getSejourVmcCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(100, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourTableCuisson() == 1){
+                    $pdf->RotatedText(  100, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourTableCuisson() == 2){
+                    $pdf->RotatedText(100, 224, 'BE', 90);
+                } elseif ($edl->getSejourTableCuisson() == 3){
+                    $pdf->RotatedText(100, 224, 'EU', 90);
+                } elseif ($edl->getSejourTableCuisson() == 4){
+                    $pdf->RotatedText(100, 224, 'ME', 90);
+                } elseif ($edl->getSejourTableCuisson() == 5){
+                    $pdf->RotatedText(100, 224, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(100, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(100, 214, $edl->getSejourTableCuissonCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(111, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourFrigo() == 1){
+                    $pdf->RotatedText(  111, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourFrigo() == 2){
+                    $pdf->RotatedText(111, 224, 'BE', 90);
+                } elseif ($edl->getSejourFrigo() == 3){
+                    $pdf->RotatedText(111, 224, 'EU', 90);
+                } elseif ($edl->getSejourFrigo() == 4){
+                    $pdf->RotatedText(111, 224, 'ME', 90);
+                } elseif ($edl->getSejourFrigo() == 5){
+                    $pdf->RotatedText(111, 224, 'ED', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(111, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(111, 214, $edl->getSejourFrigoCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(121, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourHotte() == 1){
+                    $pdf->RotatedText(  121, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourHotte() == 2){
+                    $pdf->RotatedText(121, 224, 'BE', 90);
+                } elseif ($edl->getSejourHotte() == 3){
+                    $pdf->RotatedText(121, 224, 'EU', 90);
+                } elseif ($edl->getSejourHotte() == 4){
+                    $pdf->RotatedText(121, 224, 'ME', 90);
+                } elseif ($edl->getSejourHotte() == 5){
+                    $pdf->RotatedText(121, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(121, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(121, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(121, 214, $dataEDL->getSejourHotteCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(132, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSejourRegletteLumineuse() == 1){
+                    $pdf->RotatedText(  132, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourRegletteLumineuse() == 2){
+                    $pdf->RotatedText(132, 224, 'BE', 90);
+                } elseif ($edl->getSejourRegletteLumineuse() == 3){
+                    $pdf->RotatedText(132, 224, 'EU', 90);
+                } elseif ($edl->getSejourRegletteLumineuse() == 4){
+                    $pdf->RotatedText(132, 224, 'ME', 90);
+                } elseif ($edl->getSejourRegletteLumineuse() == 5){
+                    $pdf->RotatedText(132, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(132, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(132, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(132, 214, $dataEDL->getSejourRegletteLumineuseCom(), 90);
+
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);
@@ -1700,103 +1936,266 @@ class GeneratePdf
                 $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
 
             }
+
+            // SEJOUR / CUISINE N°2
             if ($pageNo == '4') {
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(48, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(48, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourPorteSerrurerie() == 1){
+                    $pdf->RotatedText(  48, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourPorteSerrurerie() == 2){
+                    $pdf->RotatedText(48, 224, 'BE', 90);
+                } elseif ($edl->getSejourPorteSerrurerie() == 3){
+                    $pdf->RotatedText(48, 224, 'EU', 90);
+                } elseif ($edl->getSejourPorteSerrurerie() == 4){
+                    $pdf->RotatedText(48, 224, 'ME', 90);
+                } elseif ($edl->getSejourPorteSerrurerie() == 5){
+                    $pdf->RotatedText(48, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(48, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(58, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(48, 214, $dataEDL->getSejourPorteSerrurerieCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(58, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourPlafond() == 1){
+                    $pdf->RotatedText(  58, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourPlafond() == 2){
+                    $pdf->RotatedText(58, 224, 'BE', 90);
+                } elseif ($edl->getSejourPlafond() == 3){
+                    $pdf->RotatedText(58, 224, 'EU', 90);
+                } elseif ($edl->getSejourPlafond() == 4){
+                    $pdf->RotatedText(58, 224, 'ME', 90);
+                } elseif ($edl->getSejourPlafond() == 5){
+                    $pdf->RotatedText(58, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(58, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(68, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(58, 214, $dataEDL->getSejourPlafondCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(68, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourRevetementMuraux() == 1){
+                    $pdf->RotatedText(  68, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourRevetementMuraux() == 2){
+                    $pdf->RotatedText(68, 224, 'BE', 90);
+                } elseif ($edl->getSejourRevetementMuraux() == 3){
+                    $pdf->RotatedText(68, 224, 'EU', 90);
+                } elseif ($edl->getSejourRevetementMuraux() == 4){
+                    $pdf->RotatedText(68, 224, 'ME', 90);
+                } elseif ($edl->getSejourRevetementMuraux() == 5){
+                    $pdf->RotatedText(68, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(68, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(78, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(68, 214, $dataEDL->getSejourRevetementMurauxCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(78, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourPlinthes() == 1){
+                    $pdf->RotatedText(  78, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourPlinthes() == 2){
+                    $pdf->RotatedText(78, 224, 'BE', 90);
+                } elseif ($edl->getSejourPlinthes() == 3){
+                    $pdf->RotatedText(78, 224, 'EU', 90);
+                } elseif ($edl->getSejourPlinthes() == 4){
+                    $pdf->RotatedText(78, 224, 'ME', 90);
+                } elseif ($edl->getSejourPlinthes() == 5){
+                    $pdf->RotatedText(78, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(78, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(88, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(78, 214, $dataEDL->getSejourPlinthesCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(88, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourSol() == 1){
+                    $pdf->RotatedText(  88, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourSol() == 2){
+                    $pdf->RotatedText(88, 224, 'BE', 90);
+                } elseif ($edl->getSejourSol() == 3){
+                    $pdf->RotatedText(88, 224, 'EU', 90);
+                } elseif ($edl->getSejourSol() == 4){
+                    $pdf->RotatedText(88, 224, 'ME', 90);
+                } elseif ($edl->getSejourSol() == 5){
+                    $pdf->RotatedText(88, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(88, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(98, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(88, 214, $dataEDL->getSejourSolCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(98, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourLuminaire() == 1){
+                    $pdf->RotatedText(  98, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourLuminaire() == 2){
+                    $pdf->RotatedText(98, 224, 'BE', 90);
+                } elseif ($edl->getSejourLuminaire() == 3){
+                    $pdf->RotatedText(98, 224, 'EU', 90);
+                } elseif ($edl->getSejourLuminaire() == 4){
+                    $pdf->RotatedText(98, 224, 'ME', 90);
+                } elseif ($edl->getSejourLuminaire() == 5){
+                    $pdf->RotatedText(98, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(98, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(109, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(98, 214, $dataEDL->getSejourLuminaireCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(109, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourInteruptPrise() == 1){
+                    $pdf->RotatedText(  109, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourInteruptPrise() == 2){
+                    $pdf->RotatedText(109, 224, 'BE', 90);
+                } elseif ($edl->getSejourInteruptPrise() == 3){
+                    $pdf->RotatedText(109, 224, 'EU', 90);
+                } elseif ($edl->getSejourInteruptPrise() == 4){
+                    $pdf->RotatedText(109, 224, 'ME', 90);
+                } elseif ($edl->getSejourInteruptPrise() == 5){
+                    $pdf->RotatedText(109, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(109, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(119, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(109, 214, $dataEDL->getSejourInteruptPriseCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(119, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourRadiateur() == 1){
+                    $pdf->RotatedText(  119, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourRadiateur() == 2){
+                    $pdf->RotatedText(119, 224, 'BE', 90);
+                } elseif ($edl->getSejourRadiateur() == 3){
+                    $pdf->RotatedText(119, 224, 'EU', 90);
+                } elseif ($edl->getSejourRadiateur() == 4){
+                    $pdf->RotatedText(119, 224, 'ME', 90);
+                } elseif ($edl->getSejourRadiateur() == 5){
+                    $pdf->RotatedText(119, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(119, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(130, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(119, 214, $dataEDL->getSejourRadiateurCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(130, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourFenetre() == 1){
+                    $pdf->RotatedText(  130, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourFenetre() == 2){
+                    $pdf->RotatedText(130, 224, 'BE', 90);
+                } elseif ($edl->getSejourFenetre() == 3){
+                    $pdf->RotatedText(130, 224, 'EU', 90);
+                } elseif ($edl->getSejourFenetre() == 4){
+                    $pdf->RotatedText(130, 224, 'ME', 90);
+                } elseif ($edl->getSejourFenetre() == 5){
+                    $pdf->RotatedText(130, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(130, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(140, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(130, 214, $dataEDL->getSejourFenetreCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(140, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourVolet() == 1){
+                    $pdf->RotatedText(  140, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourVolet() == 2){
+                    $pdf->RotatedText(140, 224, 'BE', 90);
+                } elseif ($edl->getSejourVolet() == 3){
+                    $pdf->RotatedText(140, 224, 'EU', 90);
+                } elseif ($edl->getSejourVolet() == 4){
+                    $pdf->RotatedText(140, 224, 'ME', 90);
+                } elseif ($edl->getSejourVolet() == 5){
+                    $pdf->RotatedText(140, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(140, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(150, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(140, 214, $dataEDL->getSejourVoletCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(150, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourMeubleCuisineBas() == 1){
+                    $pdf->RotatedText(  150, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourMeubleCuisineBas() == 2){
+                    $pdf->RotatedText(150, 224, 'BE', 90);
+                } elseif ($edl->getSejourMeubleCuisineBas() == 3){
+                    $pdf->RotatedText(150, 224, 'EU', 90);
+                } elseif ($edl->getSejourMeubleCuisineBas() == 4){
+                    $pdf->RotatedText(150, 224, 'ME', 90);
+                } elseif ($edl->getSejourMeubleCuisineBas() == 5){
+                    $pdf->RotatedText(150, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(150, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(160, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(150, 214, $dataEDL->getSejourMeubleCuisineBasCom(), 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(160, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSejourMeubleCuisineHaut() == 1){
+                    $pdf->RotatedText(  160, 224, 'ETNF', 90);
+                } elseif ($edl->getSejourMeubleCuisineHaut() == 2){
+                    $pdf->RotatedText(160, 224, 'BE', 90);
+                } elseif ($edl->getSejourMeubleCuisineHaut() == 3){
+                    $pdf->RotatedText(160, 224, 'EU', 90);
+                } elseif ($edl->getSejourMeubleCuisineHaut() == 4){
+                    $pdf->RotatedText(160, 224, 'ME', 90);
+                } elseif ($edl->getSejourMeubleCuisineHaut() == 5){
+                    $pdf->RotatedText(160, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(160, 224, 'NC', 90);
+                }
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(160, 214, $dataEDL->getSejourMeubleCuisineHautCom(), 90);
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);
@@ -1810,95 +2209,251 @@ class GeneratePdf
                 $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
 
             }
+
+            // SALLE DE BAIN N°1
             if ($pageNo == '5') {
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(43, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbPorteSerrurerie() == 1){
+                    $pdf->RotatedText(  43, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbPorteSerrurerie() == 2){
+                    $pdf->RotatedText(43, 227, 'BE', 90);
+                } elseif ($edl->getSdbPorteSerrurerie() == 3){
+                    $pdf->RotatedText(43, 227, 'EU', 90);
+                } elseif ($edl->getSdbPorteSerrurerie() == 4){
+                    $pdf->RotatedText(43, 227, 'ME', 90);
+                } elseif ($edl->getSdbPorteSerrurerie() == 5){
+                    $pdf->RotatedText(43, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(43, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(43, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(43, 214, $dataEDL->getSdbPorteSerrurerieCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(53, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbPlafond() == 1){
+                    $pdf->RotatedText( 53, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbPlafond() == 2){
+                    $pdf->RotatedText(53, 227, 'BE', 90);
+                } elseif ($edl->getSdbPlafond() == 3){
+                    $pdf->RotatedText(53, 227, 'EU', 90);
+                } elseif ($edl->getSdbPlafond() == 4){
+                    $pdf->RotatedText(53, 227, 'ME', 90);
+                } elseif ($edl->getSdbPlafond() == 5){
+                    $pdf->RotatedText(53, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(53, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(53, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(53, 214, $dataEDL->getSdbPlafondCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(63, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbRevetementsMuraux() == 1){
+                    $pdf->RotatedText( 63, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbRevetementsMuraux() == 2){
+                    $pdf->RotatedText(63, 227, 'BE', 90);
+                } elseif ($edl->getSdbRevetementsMuraux() == 3){
+                    $pdf->RotatedText(63, 227, 'EU', 90);
+                } elseif ($edl->getSdbRevetementsMuraux() == 4){
+                    $pdf->RotatedText(63, 227, 'ME', 90);
+                } elseif ($edl->getSdbRevetementsMuraux() == 5){
+                    $pdf->RotatedText(63, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(63, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(63, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(63, 214, $dataEDL->getSdbRevetementsMuraux(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbPlinthes() == 1){
+                    $pdf->RotatedText( 74, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbPlinthes() == 2){
+                    $pdf->RotatedText(74, 227, 'BE', 90);
+                } elseif ($edl->getSdbPlinthes() == 3){
+                    $pdf->RotatedText(74, 227, 'EU', 90);
+                } elseif ($edl->getSdbPlinthes() == 4){
+                    $pdf->RotatedText(74, 227, 'ME', 90);
+                } elseif ($edl->getSdbPlinthes() == 5){
+                    $pdf->RotatedText(74, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(74, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(74, 214, $dataEDL->getSdbPlinthesCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbSol() == 1){
+                    $pdf->RotatedText( 84, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbSol() == 2){
+                    $pdf->RotatedText(84, 227, 'BE', 90);
+                } elseif ($edl->getSdbSol() == 3){
+                    $pdf->RotatedText(84, 227, 'EU', 90);
+                } elseif ($edl->getSdbSol() == 4){
+                    $pdf->RotatedText(84, 227, 'ME', 90);
+                } elseif ($edl->getSdbSol() == 5){
+                    $pdf->RotatedText(84, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(84, 227, 'NC', 90);
+                }
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(84, 214, $dataEDL->getSdbSol(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbLuminaire() == 1){
+                    $pdf->RotatedText( 95, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbLuminaire() == 2){
+                    $pdf->RotatedText(95, 227, 'BE', 90);
+                } elseif ($edl->getSdbLuminaire() == 3){
+                    $pdf->RotatedText(95, 227, 'EU', 90);
+                } elseif ($edl->getSdbLuminaire() == 4){
+                    $pdf->RotatedText(95, 227, 'ME', 90);
+                } elseif ($edl->getSdbLuminaire() == 5){
+                    $pdf->RotatedText(95, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(95, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(95, 214, $dataEDL->getSdbLuminaireCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbInteruptPrise() == 1){
+                    $pdf->RotatedText( 106, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbInteruptPrise() == 2){
+                    $pdf->RotatedText(106, 227, 'BE', 90);
+                } elseif ($edl->getSdbInteruptPrise() == 3){
+                    $pdf->RotatedText(106, 227, 'EU', 90);
+                } elseif ($edl->getSdbInteruptPrise() == 4){
+                    $pdf->RotatedText(106, 227, 'ME', 90);
+                } elseif ($edl->getSdbInteruptPrise() == 5){
+                    $pdf->RotatedText(106, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(106, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(106, 214, $dataEDL->getSdbInteruptPriseCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbRadiateur() == 1){
+                    $pdf->RotatedText( 116, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbRadiateur() == 2){
+                    $pdf->RotatedText(116, 227, 'BE', 90);
+                } elseif ($edl->getSdbRadiateur() == 3){
+                    $pdf->RotatedText(116, 227, 'EU', 90);
+                } elseif ($edl->getSdbRadiateur() == 4){
+                    $pdf->RotatedText(116, 227, 'ME', 90);
+                } elseif ($edl->getSdbRadiateur() == 5){
+                    $pdf->RotatedText(116, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(116, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(116, 214, $dataEDL->getSdbRadiateurCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbPlacard() == 1){
+                    $pdf->RotatedText( 127, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbPlacard() == 2){
+                    $pdf->RotatedText(127, 227, 'BE', 90);
+                } elseif ($edl->getSdbPlacard() == 3){
+                    $pdf->RotatedText(127, 227, 'EU', 90);
+                } elseif ($edl->getSdbPlacard() == 4){
+                    $pdf->RotatedText(127, 227, 'ME', 90);
+                } elseif ($edl->getSdbPlacard() == 5){
+                    $pdf->RotatedText(127, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(127, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(127, 214, $dataEDL->getSdbPlacardCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbFenetre() == 1){
+                    $pdf->RotatedText( 138, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbFenetre() == 2){
+                    $pdf->RotatedText(138, 227, 'BE', 90);
+                } elseif ($edl->getSdbFenetre() == 3){
+                    $pdf->RotatedText(138, 227, 'EU', 90);
+                } elseif ($edl->getSdbFenetre() == 4){
+                    $pdf->RotatedText(138, 227, 'ME', 90);
+                } elseif ($edl->getSdbFenetre() == 5){
+                    $pdf->RotatedText(138, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(138, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(138, 214, $dataEDL->getSdbFenetre(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbVolet() == 1){
+                    $pdf->RotatedText( 148, 227, 'ETNF', 90);
+                } elseif ($edl->getSdbVolet() == 2){
+                    $pdf->RotatedText(148, 227, 'BE', 90);
+                } elseif ($edl->getSdbVolet() == 3){
+                    $pdf->RotatedText(148, 227, 'EU', 90);
+                } elseif ($edl->getSdbVolet() == 4){
+                    $pdf->RotatedText(148, 227, 'ME', 90);
+                } elseif ($edl->getSdbVolet() == 5){
+                    $pdf->RotatedText(148, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(148, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(148, 214, $dataEDL->getSdbVolet(), 90);
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);
@@ -1911,95 +2466,225 @@ class GeneratePdf
 
                 $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
             }
+
+            // SALLE DE BAIN N°2
             if ($pageNo == '6') {
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                if ($edl->getSdbLavabo() == 1){
+                    $pdf->RotatedText(  43, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbLavabo() == 2){
+                    $pdf->RotatedText(43, 224, 'BE', 90);
+                } elseif ($edl->getSdbLavabo() == 3){
+                    $pdf->RotatedText(43, 224, 'EU', 90);
+                } elseif ($edl->getSdbLavabo() == 4){
+                    $pdf->RotatedText(43, 224, 'ME', 90);
+                } elseif ($edl->getSdbLavabo() == 5){
+                    $pdf->RotatedText(43, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(43, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(41, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(43, 214, $dataEDL->getSdbLavaboCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(41, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getSdbRobinetterieLavabo() == 1){
+                    $pdf->RotatedText( 53, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbRobinetterieLavabo() == 2){
+                    $pdf->RotatedText(53, 224, 'BE', 90);
+                } elseif ($edl->getSdbRobinetterieLavabo() == 3){
+                    $pdf->RotatedText(53, 224, 'EU', 90);
+                } elseif ($edl->getSdbRobinetterieLavabo() == 4){
+                    $pdf->RotatedText(53, 224, 'ME', 90);
+                } elseif ($edl->getSdbRobinetterieLavabo() == 5){
+                    $pdf->RotatedText(53, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(53, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(51, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(53, 214, $dataEDL->getSdbRobinetterieLavaboCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(51, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(63, 224, "NC" , 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(61, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(63, 214, "pas de bidet, a champ a virer", 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(61, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(74, 224, "NC", 90);
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(74, 214, "pas de bidet, a champ a virer", 90);
+
+
+
+
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);                if ($edl->getSdbDouche() == 1){
+                    $pdf->RotatedText( 84, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbDouche() == 2){
+                    $pdf->RotatedText(84, 224, 'BE', 90);
+                } elseif ($edl->getSdbDouche() == 3){
+                    $pdf->RotatedText(84, 224, 'EU', 90);
+                } elseif ($edl->getSdbDouche() == 4){
+                    $pdf->RotatedText(84, 224, 'ME', 90);
+                } elseif ($edl->getSdbDouche() == 5){
+                    $pdf->RotatedText(84, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(84, 224, 'NC', 90);
+                }
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(84, 214, $dataEDL->getSdbDoucheCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbRobinetterieDouche() == 1){
+                    $pdf->RotatedText( 95, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbRobinetterieDouche() == 2){
+                    $pdf->RotatedText(95, 224, 'BE', 90);
+                } elseif ($edl->getSdbRobinetterieDouche() == 3){
+                    $pdf->RotatedText(95, 224, 'EU', 90);
+                } elseif ($edl->getSdbRobinetterieDouche() == 4){
+                    $pdf->RotatedText(95, 224, 'ME', 90);
+                } elseif ($edl->getSdbRobinetterieDouche() == 5){
+                    $pdf->RotatedText(95, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(95, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(95, 214, $dataEDL->getSdbRobinetterieDoucheCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbParoiDouche() == 1){
+                    $pdf->RotatedText( 106, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbParoiDouche() == 2){
+                    $pdf->RotatedText(106, 224, 'BE', 90);
+                } elseif ($edl->getSdbParoiDouche() == 3){
+                    $pdf->RotatedText(106, 224, 'EU', 90);
+                } elseif ($edl->getSdbParoiDouche() == 4){
+                    $pdf->RotatedText(106, 224, 'ME', 90);
+                } elseif ($edl->getSdbParoiDouche() == 5){
+                    $pdf->RotatedText(106, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(106, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(106, 214, $dataEDL->getSdbParoiDoucheCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbBaignoire() == 1){
+                    $pdf->RotatedText( 116, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbBaignoire() == 2){
+                    $pdf->RotatedText(116, 224, 'BE', 90);
+                } elseif ($edl->getSdbBaignoire() == 3){
+                    $pdf->RotatedText(116, 224, 'EU', 90);
+                } elseif ($edl->getSdbBaignoire() == 4){
+                    $pdf->RotatedText(116, 224, 'ME', 90);
+                } elseif ($edl->getSdbBaignoire() == 5){
+                    $pdf->RotatedText(116, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(116, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(116, 214, $dataEDL->getSdbBaignoireCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbRobinetterieBaignoire() == 1){
+                    $pdf->RotatedText( 127, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbRobinetterieBaignoire() == 2){
+                    $pdf->RotatedText(127, 224, 'BE', 90);
+                } elseif ($edl->getSdbRobinetterieBaignoire() == 3){
+                    $pdf->RotatedText(127, 224, 'EU', 90);
+                } elseif ($edl->getSdbRobinetterieBaignoire() == 4){
+                    $pdf->RotatedText(127, 224, 'ME', 90);
+                } elseif ($edl->getSdbRobinetterieBaignoire() == 5){
+                    $pdf->RotatedText(127, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(127, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(127, 214, $dataEDL->getSdbRobinetterieBaignoire(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbFaience() == 1){
+                    $pdf->RotatedText( 138, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbFaience() == 2){
+                    $pdf->RotatedText(138, 224, 'BE', 90);
+                } elseif ($edl->getSdbFaience() == 3){
+                    $pdf->RotatedText(138, 224, 'EU', 90);
+                } elseif ($edl->getSdbFaience() == 4){
+                    $pdf->RotatedText(138, 224, 'ME', 90);
+                } elseif ($edl->getSdbFaience() == 5){
+                    $pdf->RotatedText(138, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(138, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(138, 214, $dataEDL->getSdbFaienceCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getSdbJoints() == 1){
+                    $pdf->RotatedText( 148, 224, 'ETNF', 90);
+                } elseif ($edl->getSdbJoints() == 2){
+                    $pdf->RotatedText(148, 224, 'BE', 90);
+                } elseif ($edl->getSdbJoints() == 3){
+                    $pdf->RotatedText(148, 224, 'EU', 90);
+                } elseif ($edl->getSdbJoints() == 4){
+                    $pdf->RotatedText(148, 224, 'ME', 90);
+                } elseif ($edl->getSdbJoints() == 5){
+                    $pdf->RotatedText(148, 224, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(148, 224, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(148, 214, $dataEDL->getSdbJointsCom(), 90);
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);
@@ -2013,87 +2698,209 @@ class GeneratePdf
                 $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
 
             }
+
+            // COULOIR
             if ($pageNo == '7') {
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(41, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getCouloirPorteSerrurerie() == 1){
+                    $pdf->RotatedText( 41, 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirPorteSerrurerie() == 2){
+                    $pdf->RotatedText(41, 227, 'BE', 90);
+                } elseif ($edl->getCouloirPorteSerrurerie() == 3){
+                    $pdf->RotatedText(41, 227, 'EU', 90);
+                } elseif ($edl->getCouloirPorteSerrurerie() == 4){
+                    $pdf->RotatedText(41, 227, 'ME', 90);
+                } elseif ($edl->getCouloirPorteSerrurerie() == 5){
+                    $pdf->RotatedText(41, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(41, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(41, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(41, 214, $dataEDL->getCouloirPorteSerrurerieCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(51, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getCouloirPlafond() == 1){
+                    $pdf->RotatedText( 51, 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirPlafond() == 2){
+                    $pdf->RotatedText(51, 227, 'BE', 90);
+                } elseif ($edl->getCouloirPlafond() == 3){
+                    $pdf->RotatedText(51, 227, 'EU', 90);
+                } elseif ($edl->getCouloirPlafond() == 4){
+                    $pdf->RotatedText(51, 227, 'ME', 90);
+                } elseif ($edl->getCouloirPlafond() == 5){
+                    $pdf->RotatedText(51, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(51, 227, 'NC', 90);
+                }
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(51, 214, $dataEDL->getCouloirPlafondCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(51, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getCouloirRevetementMuraux() == 1){
+                    $pdf->RotatedText( 61, 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirRevetementMuraux() == 2){
+                    $pdf->RotatedText(61, 227, 'BE', 90);
+                } elseif ($edl->getCouloirRevetementMuraux() == 3){
+                    $pdf->RotatedText(61, 227, 'EU', 90);
+                } elseif ($edl->getCouloirRevetementMuraux() == 4){
+                    $pdf->RotatedText(61, 227, 'ME', 90);
+                } elseif ($edl->getCouloirRevetementMuraux() == 5){
+                    $pdf->RotatedText(61, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(61, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(61, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(61, 227, $dataEDL->getCouloirRevetementMurauxCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(61, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getCouloirPlinthes() == 1){
+                    $pdf->RotatedText( 74, 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirPlinthes() == 2){
+                    $pdf->RotatedText(74, 227, 'BE', 90);
+                } elseif ($edl->getCouloirPlinthes() == 3){
+                    $pdf->RotatedText(74, 227, 'EU', 90);
+                } elseif ($edl->getCouloirPlinthes() == 4){
+                    $pdf->RotatedText(74, 227, 'ME', 90);
+                } elseif ($edl->getCouloirPlinthes() == 5){
+                    $pdf->RotatedText(74, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(74, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(74, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(74, 214, $dataEDL->getCouloirPlinthesCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(74, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getCouloirSol() == 1){
+                    $pdf->RotatedText( 84, 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirSol() == 2){
+                    $pdf->RotatedText(84, 227, 'BE', 90);
+                } elseif ($edl->getCouloirSol() == 3){
+                    $pdf->RotatedText(84, 227, 'EU', 90);
+                } elseif ($edl->getCouloirSol() == 4){
+                    $pdf->RotatedText(84, 227, 'ME', 90);
+                } elseif ($edl->getCouloirSol() == 5){
+                    $pdf->RotatedText(84, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(84, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(84, 214, $dataEDL->getCouloirSolCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(84, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getCouloirLuminaire() == 1){
+                    $pdf->RotatedText( 95, 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirLuminaire() == 2){
+                    $pdf->RotatedText(95, 227, 'BE', 90);
+                } elseif ($edl->getCouloirLuminaire() == 3){
+                    $pdf->RotatedText(95, 227, 'EU', 90);
+                } elseif ($edl->getCouloirLuminaire() == 4){
+                    $pdf->RotatedText(95, 227, 'ME', 90);
+                } elseif ($edl->getCouloirLuminaire() == 5){
+                    $pdf->RotatedText(95, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(95, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(95, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(95, 214, $dataEDL->getCouloirLuminaireCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(95, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getCouloirInteruptPrise() == 1){
+                    $pdf->RotatedText(106 , 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirInteruptPrise() == 2){
+                    $pdf->RotatedText(106, 227, 'BE', 90);
+                } elseif ($edl->getCouloirInteruptPrise() == 3){
+                    $pdf->RotatedText(106, 227, 'EU', 90);
+                } elseif ($edl->getCouloirInteruptPrise() == 4){
+                    $pdf->RotatedText(106, 227, 'ME', 90);
+                } elseif ($edl->getCouloirInteruptPrise() == 5){
+                    $pdf->RotatedText(106, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(106, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(106, 214, $dataEDL->getCouloirInteruptPriseCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getCouloirFenetre() == 1){
+                    $pdf->RotatedText(116 , 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirFenetre() == 2){
+                    $pdf->RotatedText(116, 227, 'BE', 90);
+                } elseif ($edl->getCouloirFenetre() == 3){
+                    $pdf->RotatedText(116, 227, 'EU', 90);
+                } elseif ($edl->getCouloirFenetre() == 4){
+                    $pdf->RotatedText(116, 227, 'ME', 90);
+                } elseif ($edl->getCouloirFenetre() == 5){
+                    $pdf->RotatedText(116, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(116, 227, 'NC', 90);
+                }
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(116, 214, $dataEDL->getCouloirFenetreCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getCouloirVolet() == 1){
+                    $pdf->RotatedText(127 , 227, 'ETNF', 90);
+                } elseif ($edl->getCouloirVolet() == 2){
+                    $pdf->RotatedText(127, 227, 'BE', 90);
+                } elseif ($edl->getCouloirVolet() == 3){
+                    $pdf->RotatedText(127, 227, 'EU', 90);
+                } elseif ($edl->getCouloirVolet() == 4){
+                    $pdf->RotatedText(127, 227, 'ME', 90);
+                } elseif ($edl->getCouloirVolet() == 5){
+                    $pdf->RotatedText(127, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(127, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                $pdf->RotatedText(127, 214, $dataEDL->getCouloirVoletCom(), 90);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(137, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
-
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(137, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);
@@ -2106,119 +2913,319 @@ class GeneratePdf
 
                 $pdf->RotatedImage($signatureTampon, 198, 290, 8, 8, 90);
             }
+
+            // WC
             if ($pageNo == '8') {
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(43, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcPorteSerrurerie() == 1){
+                    $pdf->RotatedText(43 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcPorteSerrurerie() == 2){
+                    $pdf->RotatedText(43, 227, 'BE', 90);
+                } elseif ($edl->getWcPorteSerrurerie() == 3){
+                    $pdf->RotatedText(43, 227, 'EU', 90);
+                } elseif ($edl->getWcPorteSerrurerie() == 4){
+                    $pdf->RotatedText(43, 227, 'ME', 90);
+                } elseif ($edl->getWcPorteSerrurerie() == 5){
+                    $pdf->RotatedText(43, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(43, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(43, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(43, 214, $dataEDL->getWcPorteSerrurerieCom(), 90);
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(53, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcPlafond() == 1){
+                    $pdf->RotatedText(53 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcPlafond() == 2){
+                    $pdf->RotatedText(53, 227, 'BE', 90);
+                } elseif ($edl->getWcPlafond() == 3){
+                    $pdf->RotatedText(53, 227, 'EU', 90);
+                } elseif ($edl->getWcPlafond() == 4){
+                    $pdf->RotatedText(53, 227, 'ME', 90);
+                } elseif ($edl->getWcPlafond() == 5){
+                    $pdf->RotatedText(53, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(53, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(53, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(53, 214, $dataEDL->getWcPlafondCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(63, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcRevetementMuraux() == 1){
+                    $pdf->RotatedText(63 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcRevetementMuraux() == 2){
+                    $pdf->RotatedText(63, 227, 'BE', 90);
+                } elseif ($edl->getWcRevetementMuraux() == 3){
+                    $pdf->RotatedText(63, 227, 'EU', 90);
+                } elseif ($edl->getWcRevetementMuraux() == 4){
+                    $pdf->RotatedText(63, 227, 'ME', 90);
+                } elseif ($edl->getWcRevetementMuraux() == 5){
+                    $pdf->RotatedText(63, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(63, 227, 'NC', 90);
+                }
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(63, 214, $dataEDL->getWcRevetementMurauxCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(63, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                if ($edl->getWcPlinthes() == 1){
+                    $pdf->RotatedText(76 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcPlinthes() == 2){
+                    $pdf->RotatedText(76, 227, 'BE', 90);
+                } elseif ($edl->getWcPlinthes() == 3){
+                    $pdf->RotatedText(76, 227, 'EU', 90);
+                } elseif ($edl->getWcPlinthes() == 4){
+                    $pdf->RotatedText(76, 227, 'ME', 90);
+                } elseif ($edl->getWcPlinthes() == 5){
+                    $pdf->RotatedText(76, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(76, 227, 'NC', 90);
+                }
+                $pdf->SetFont('Helvetica', '', 10);
+                $pdf->SetTextColor(0, 0, 0);
+                $pdf->RotatedText(76, 214, $dataEDL->getWcPlinthesCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(76, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcSol() == 1){
+                    $pdf->RotatedText(86 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcSol() == 2){
+                    $pdf->RotatedText(86, 227, 'BE', 90);
+                } elseif ($edl->getWcSol() == 3){
+                    $pdf->RotatedText(86, 227, 'EU', 90);
+                } elseif ($edl->getWcSol() == 4){
+                    $pdf->RotatedText(86, 227, 'ME', 90);
+                } elseif ($edl->getWcSol() == 5){
+                    $pdf->RotatedText(86, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(86, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(76, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(86, 214, $dataEDL->getWcSolCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(86, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcLuminaire() == 1){
+                    $pdf->RotatedText(96 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcLuminaire() == 2){
+                    $pdf->RotatedText(96, 227, 'BE', 90);
+                } elseif ($edl->getWcLuminaire() == 3){
+                    $pdf->RotatedText(96, 227, 'EU', 90);
+                } elseif ($edl->getWcLuminaire() == 4){
+                    $pdf->RotatedText(96, 227, 'ME', 90);
+                } elseif ($edl->getWcLuminaire() == 5){
+                    $pdf->RotatedText(96, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(96, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(86, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(96, 214, $dataEDL->getWcLuminaire(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(96, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcInteruptPrise() == 1){
+                    $pdf->RotatedText(106 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcInteruptPrise() == 2){
+                    $pdf->RotatedText(106, 227, 'BE', 90);
+                } elseif ($edl->getWcInteruptPrise() == 3){
+                    $pdf->RotatedText(106, 227, 'EU', 90);
+                } elseif ($edl->getWcInteruptPrise() == 4){
+                    $pdf->RotatedText(106, 227, 'ME', 90);
+                } elseif ($edl->getWcInteruptPrise() == 5){
+                    $pdf->RotatedText(106, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(106, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(96, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(106, 214, $dataEDL->getWcInteruptPriseCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcRadiateur() == 1){
+                    $pdf->RotatedText(116 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcRadiateur() == 2){
+                    $pdf->RotatedText(116, 227, 'BE', 90);
+                } elseif ($edl->getWcRadiateur() == 3){
+                    $pdf->RotatedText(116, 227, 'EU', 90);
+                } elseif ($edl->getWcRadiateur() == 4){
+                    $pdf->RotatedText(116, 227, 'ME', 90);
+                } elseif ($edl->getWcRadiateur() == 5){
+                    $pdf->RotatedText(116, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(116, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(106, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(116, 214, $dataEDL->getWcRadiateurCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcRadiateur() == 1){
+                    $pdf->RotatedText(127 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcRadiateur() == 2){
+                    $pdf->RotatedText(127, 227, 'BE', 90);
+                } elseif ($edl->getWcRadiateur() == 3){
+                    $pdf->RotatedText(127, 227, 'EU', 90);
+                } elseif ($edl->getWcRadiateur() == 4){
+                    $pdf->RotatedText(127, 227, 'ME', 90);
+                } elseif ($edl->getWcRadiateur() == 5){
+                    $pdf->RotatedText(127, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(127, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(116, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(127, 214, $dataEDL->getWcRadiateurCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcCuvetteMecanisme() == 1){
+                    $pdf->RotatedText(138 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcCuvetteMecanisme() == 2){
+                    $pdf->RotatedText(138, 227, 'BE', 90);
+                } elseif ($edl->getWcCuvetteMecanisme() == 3){
+                    $pdf->RotatedText(138, 227, 'EU', 90);
+                } elseif ($edl->getWcCuvetteMecanisme() == 4){
+                    $pdf->RotatedText(138, 227, 'ME', 90);
+                } elseif ($edl->getWcCuvetteMecanisme() == 5){
+                    $pdf->RotatedText(138, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(138, 227, 'NC', 90);
+                }
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(127, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(138, 214, $dataEDL->getWcCuvetteMecanismeCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(138, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcAbattant() == 1){
+                    $pdf->RotatedText(148 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcAbattant() == 2){
+                    $pdf->RotatedText(148, 227, 'BE', 90);
+                } elseif ($edl->getWcAbattant() == 3){
+                    $pdf->RotatedText(148, 227, 'EU', 90);
+                } elseif ($edl->getWcAbattant() == 4){
+                    $pdf->RotatedText(148, 227, 'ME', 90);
+                } elseif ($edl->getWcAbattant() == 5){
+                    $pdf->RotatedText(148, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(148, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(138, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(148, 214, $dataEDL->getWcAbattant(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(148, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcFenetre() == 1){
+                    $pdf->RotatedText(158 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcFenetre() == 2){
+                    $pdf->RotatedText(158, 227, 'BE', 90);
+                } elseif ($edl->getWcFenetre() == 3){
+                    $pdf->RotatedText(158, 227, 'EU', 90);
+                } elseif ($edl->getWcFenetre() == 4){
+                    $pdf->RotatedText(158, 227, 'ME', 90);
+                } elseif ($edl->getWcFenetre() == 5){
+                    $pdf->RotatedText(158, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(158, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(148, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(158, 214, $dataEDL->getWcFenetreCom(), 90);
+
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(158, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcVolet() == 1){
+                    $pdf->RotatedText(168 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcVolet() == 2){
+                    $pdf->RotatedText(168, 227, 'BE', 90);
+                } elseif ($edl->getWcVolet() == 3){
+                    $pdf->RotatedText(168, 227, 'EU', 90);
+                } elseif ($edl->getWcVolet() == 4){
+                    $pdf->RotatedText(168, 227, 'ME', 90);
+                } elseif ($edl->getWcVolet() == 5){
+                    $pdf->RotatedText(168, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(168, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(158, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(168, 214, $dataEDL->getWcVoletCom(), 90);
+
+
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(168, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
+                if ($edl->getWcFaiences() == 1){
+                    $pdf->RotatedText(178 , 227, 'ETNF', 90);
+                } elseif ($edl->getWcFaiences() == 2){
+                    $pdf->RotatedText(178, 227, 'BE', 90);
+                } elseif ($edl->getWcFaiences() == 3){
+                    $pdf->RotatedText(178, 227, 'EU', 90);
+                } elseif ($edl->getWcFaiences() == 4){
+                    $pdf->RotatedText(178, 227, 'ME', 90);
+                } elseif ($edl->getWcFaiences() == 5){
+                    $pdf->RotatedText(178, 227, 'ED', 90);
+                }else{
+                    $pdf->RotatedText(178, 227, 'NC', 90);
+                }
 
                 $pdf->SetFont('Helvetica', '', 10);
                 $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(168, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
+                $pdf->RotatedText(178, 214, $dataEDL->getWcFaiencesCom(), 90);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(178, 224, $dataEDL->getEntreeSonetteInterphone(), 90);
 
-                $pdf->SetFont('Helvetica', '', 10);
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->RotatedText(178, 214, $dataEDL->getEntreeSonetteInterphoneCom(), 90);
 
                 //pager
                 $pdf->SetFont('Helvetica', '', 10);

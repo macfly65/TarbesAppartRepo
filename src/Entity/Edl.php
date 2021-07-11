@@ -1170,7 +1170,7 @@ class Edl
         return $this->id;
     }
 
-    public function getEntreeSonetteInterphone(): ?int
+    public function getEntreeSonetteInterphone(): ?string
     {
         return $this->entree_sonette_interphone;
     }
@@ -3755,7 +3755,7 @@ class Edl
         return $this->couloir_interupt_prise_com;
     }
 
-    public function setCouloirInteruptPriseCo(?string $couloir_interupt_prise_com): self
+    public function setCouloirInteruptPriseCom(?string $couloir_interupt_prise_com): self
     {
         $this->couloir_interupt_prise_com = $couloir_interupt_prise_com;
 
@@ -3803,7 +3803,7 @@ class Edl
         return $this->couloir_volet_com;
     }
 
-    public function setCouloirVolet�Com(?string $couloir_volet_com): self
+    public function setCouloirVoletCom(?string $couloir_volet_com): self
     {
         $this->couloir_volet_com = $couloir_volet_com;
 
